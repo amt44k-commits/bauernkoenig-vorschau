@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bauern König: Feine Käse- & Fleischspezialitäten aus Österreich</title>
+<meta name="description" content="Handverlesene Käse-, Wurst- und Speckspezialitäten direkt vom österreichischen Hof. Frisch gekühlt versendet, kostenfreier Versand ab € 75.">
+<meta name="theme-color" content="#24502f">
+<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="static/img/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bauern König: Feine Spezialitäten aus Österreich">
+<meta property="og:description" content="Handverlesene Käse- und Fleischspezialitäten direkt vom Hof. Frisch gekühlt geliefert.">
+<meta property="og:image" content="static/img/products/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="static/shell.css?v=11">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--ink:#1a1a1a;--green:#2d5a27;--green2:#3d7a35;--cream:#f7f3ed;--warm:#efe7db;--brown:#6b4f3a;--brown2:#8b6f5a;--gold:#b8923a;--gold2:#d4b06a;--line:#d6cec0;--white:#fff;--red:#a33;--soft:#f0e8dc}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}.nav-btn.ghost:hover{border-color:var(--green);color:var(--green)}.nav-btn.solid:hover{background:var(--green2);border-color:var(--green2)}
+
+  .hero{background:linear-gradient(135deg,var(--green) 0%,#1a3a16 100%);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:120px 40px 110px;position:relative;overflow:hidden}
+  .hero::before{content:'❦';position:absolute;font-size:20rem;color:rgba(255,255,255,.03);top:-30px;right:-60px;transform:rotate(15deg)}
+  .hero-eyebrow{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold2);margin-bottom:16px;background:rgba(255,255,255,.08);padding:6px 16px;border-radius:4px}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.05;color:var(--cream);margin-bottom:16px}
+  .hero-title em{font-style:italic;color:var(--gold2)}
+  .hero-sub{font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.7);max-width:480px;line-height:1.8}
+  .hero-line{width:48px;height:2px;background:var(--gold);margin:28px auto}
+  .hero-btn{display:inline-block;background:var(--gold);color:var(--white);border:none;padding:14px 36px;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;text-decoration:none;font-weight:500}
+  .hero-btn:hover{background:var(--gold2)}
+
+  /* ── ADVANCED FILTER ── */
+  .filter-bar{background:var(--white);border-bottom:1px solid var(--line);padding:16px 40px}
+  .filter-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .filter-row+.filter-row{margin-top:10px}
+  .filter-cat-btn{background:none;border:1px solid var(--line);padding:7px 16px;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);cursor:pointer;transition:all .15s;white-space:nowrap}
+  .filter-cat-btn:hover{border-color:var(--green);color:var(--green)}
+  .filter-cat-btn.active{background:var(--green);border-color:var(--green);color:var(--cream)}
+  .filter-cat-btn.sub{font-size:.65rem;padding:5px 12px;letter-spacing:.08em;opacity:.7}
+  .filter-cat-btn.sub.active{opacity:1;background:var(--gold);border-color:var(--gold);color:var(--white)}
+  .filter-cat-btn.sub:hover{opacity:1}
+
+  .filter-search-wrap{position:relative;flex:1;min-width:180px}
+  .filter-search{width:100%;border:1px solid var(--line);padding:8px 12px 8px 32px;font-family:'Inter',sans-serif;font-size:.78rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s}
+  .filter-search:focus{border-color:var(--green)}
+  .filter-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--brown2);pointer-events:none}
+
+  .filter-select{border:1px solid var(--line);padding:8px 12px;font-family:'Inter',sans-serif;font-size:.72rem;color:var(--ink);background:var(--cream);outline:none;cursor:pointer;min-width:140px}
+  .filter-select:focus{border-color:var(--green)}
+
+  .filter-price{display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--brown)}
+  .filter-price input[type=range]{width:100px;accent-color:var(--green);cursor:pointer}
+  .filter-price-val{font-weight:500;color:var(--green);min-width:45px}
+
+  .active-filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .active-tag{display:inline-flex;align-items:center;gap:4px;background:var(--warm);border:1px solid var(--line);padding:4px 10px;font-size:.65rem;color:var(--brown);border-radius:3px}
+  .active-tag .remove-tag{cursor:pointer;font-size:.8rem;line-height:1;color:var(--brown2);margin-left:2px}
+  .active-tag .remove-tag:hover{color:var(--red)}
+  .filter-reset{background:none;border:none;color:var(--brown2);font-size:.65rem;cursor:pointer;text-decoration:underline;padding:4px 6px}
+  .filter-reset:hover{color:var(--green)}
+
+  /* ── VALUES ── */
+  .values-strip{background:var(--warm);padding:28px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;border-bottom:2px solid var(--line)}
+  .value-item{text-align:center}.value-icon{font-size:1.6rem;margin-bottom:6px}
+  .value-title{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
+  .value-text{font-size:.7rem;color:var(--brown2)}
+
+  /* ── SECTION ── */
+  .section-head{padding:32px 40px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:var(--green)}
+  .section-sub{font-size:.75rem;color:var(--brown2);letter-spacing:.12em}
+
+  /* ── PRODUCT GRID ── */
+  .products{padding:16px 40px 60px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+
+  /* ── CARD ── */
+  .card{background:var(--white);border:1px solid var(--line);transition:all .25s;position:relative;overflow:hidden}
+  .card:hover{box-shadow:0 12px 36px rgba(45,90,39,.12);transform:translateY(-3px);border-color:var(--green)}
+
+  .card-badge{position:absolute;top:12px;left:12px;z-index:3;background:var(--gold);color:var(--white);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px}
+  .card-badge.green{background:var(--green)}
+
+  .card-img-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative;background:var(--warm)}
+  .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
+  .card:hover .card-img-wrap img{transform:scale(1.05)}
+  .card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+  .card-cat-tag{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:var(--cream);padding:3px 10px;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;z-index:2;border-radius:2px}
+
+  .card-body{padding:14px 16px 16px}
+  .card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;line-height:1.25;color:var(--ink);cursor:pointer}
+  .card-name:hover{color:var(--green)}
+  .card-unit{font-size:.62rem;color:var(--brown2);letter-spacing:.05em;margin:2px 0 6px}
+  .card-desc{font-size:.74rem;color:var(--brown);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--green);white-space:nowrap}
+  .add-btn{background:var(--green);color:var(--cream);border:none;padding:8px 14px;font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
+  .add-btn:hover{background:var(--green2)}
+  .add-btn.added{background:var(--gold);color:var(--white)}
+  .add-btn.sold-out{background:var(--line);color:var(--brown2);cursor:not-allowed}
+
+  /* ── EMPTY STATE ── */
+  .empty-state{text-align:center;padding:80px 20px;color:var(--brown)}
+  .empty-state .icon{font-size:3rem;margin-bottom:12px;opacity:.4}
+  .empty-state h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green);margin-bottom:6px}
+  .empty-state p{font-size:.82rem;color:var(--brown2)}
+
+  /* ── ABOUT ── */
+  .about-section{background:var(--white);padding:60px 40px;border-top:2px solid var(--line)}
+  .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media(max-width:700px){.about-inner{grid-template-columns:1fr}}
+  .about-img{width:100%;aspect-ratio:1/1;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:8rem;border:2px solid var(--line);overflow:hidden}
+  .about-img img{width:100%;height:100%;object-fit:cover}
+  .about-content h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--green);margin-bottom:12px}
+  .about-content p{font-size:.88rem;color:var(--brown);line-height:1.9;margin-bottom:16px}
+  .about-content .signature{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--brown2);margin-top:20px}
+
+  /* ── FOOTER ── */
+  footer{background:var(--green);color:var(--cream);padding:40px 40px 28px}
+  .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:32px}
+  .footer-col h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold2);margin-bottom:12px}
+  .footer-col p,.footer-col a{font-size:.78rem;color:var(--cream);line-height:2;text-decoration:none;display:block;opacity:.85}
+  .footer-col a:hover{opacity:1;color:var(--gold2)}.footer-col .small{font-size:.7rem;opacity:.6}
+  
+
+  /* ── CART / OVERLAY / MODAL / AUTH / PROFILE / CHECKOUT / SUCCESS / TOAST / COOKIE / LEGAL / DETAIL / ADMIN ──
+     (unchanged from previous — all the same e-commerce infrastructure) ── */
+  .overlay{position:fixed;inset:0;background:rgba(26,26,26,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+  .overlay.open{opacity:1;pointer-events:all}
+  .drawer{position:fixed;top:0;right:0;height:100vh;width:min(420px,100vw);background:var(--white);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(26,26,26,.15)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{background:var(--green);padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+  .drawer-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--cream)}
+  .close-btn{background:none;border:none;color:var(--gold2);font-size:1.4rem;cursor:pointer;line-height:1;padding:4px}.close-btn:hover{color:var(--cream)}
+  .drawer-body{flex:1;overflow-y:auto;padding:24px 28px}
+  .empty-cart{text-align:center;padding:60px 20px;color:var(--brown);font-size:.85rem;line-height:2}
+  .empty-cart span{display:block;font-size:2.5rem;margin-bottom:12px;opacity:.3}
+  .cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .ci-img{width:56px;height:68px;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;overflow:hidden}
+  .ci-img img{width:100%;height:100%;object-fit:cover}
+  .ci-info{flex:1}.ci-cat{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  .ci-name{font-family:'Playfair Display',serif;font-size:.95rem;margin:2px 0 8px;color:var(--ink)}
+  .ci-controls{display:flex;align-items:center;gap:8px}
+  .qty-btn{width:24px;height:24px;border:1px solid var(--line);background:none;color:var(--ink);font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+  .qty-btn:hover{border-color:var(--green);color:var(--green)}
+  .qty-val{font-size:.82rem;width:18px;text-align:center}
+  .ci-price{font-size:.85rem;font-weight:600;margin-left:auto;color:var(--green)}
+  .remove-btn{background:none;border:none;color:var(--line);font-size:.85rem;cursor:pointer;margin-left:6px}.remove-btn:hover{color:#c0392b}
+  .drawer-foot{padding:20px 28px 28px;border-top:1px solid var(--line);background:var(--cream)}
+  .subtotal{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;font-size:1.15rem}
+  .subtotal-label{color:var(--brown)}.shipping-note{font-size:.72rem;color:var(--brown2);letter-spacing:.05em;margin-bottom:18px}
+  .checkout-btn{width:100%;padding:16px;background:var(--green);color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-weight:500}
+  .checkout-btn:hover{background:var(--green2)}
+  .checkout-btn:disabled{background:var(--line);color:var(--brown);cursor:not-allowed}
+  .modal-overlay{position:fixed;inset:0;background:rgba(26,26,26,.65);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:var(--white);width:100%;max-width:500px;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s}
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-head{background:var(--green);padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+  .modal-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:var(--cream)}
+  .modal-body{padding:28px}
+  .form-section{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:24px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .form-section:first-child{margin-top:0}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form-group{display:flex;flex-direction:column;margin-bottom:14px}
+  .form-group label{font-size:.7rem;letter-spacing:.08em;color:var(--brown);margin-bottom:6px}
+  .form-group input,.form-group select{border:1px solid var(--line);padding:10px 12px;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s}
+  .form-group input:focus,.form-group select:focus{border-color:var(--green)}
+  .form-error{font-size:.72rem;color:var(--red);margin-top:4px;display:none}.form-error.show{display:block}
+  .form-hint{font-size:.72rem;color:var(--brown2);margin-top:16px;text-align:center}
+  .form-hint a{color:var(--green);cursor:pointer;text-decoration:underline}
+  .auth-tabs{display:flex;border-bottom:1px solid var(--line)}
+  .auth-tab{flex:1;padding:14px;background:none;border:none;font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+  .auth-tab.active{color:var(--green);border-bottom-color:var(--green)}
+  .auth-panel{display:none;padding:24px 28px 28px}.auth-panel.active{display:block}
+  .order-summary{background:var(--warm);padding:16px;margin:20px 0}
+  .os-item{display:flex;justify-content:space-between;font-size:.82rem;padding:5px 0;color:var(--brown)}
+  .os-total{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;border-top:1px solid var(--line);margin-top:8px;padding-top:10px;color:var(--green)}
+  .place-btn{width:100%;padding:16px;background:var(--green);color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .2s;font-weight:500;margin-top:8px}.place-btn:hover{background:var(--green2)}
+  .profile-section{margin-bottom:28px}
+  .profile-section-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .profile-field{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #efe7db;font-size:.82rem}
+  .profile-field-label{color:var(--brown);font-size:.72rem;letter-spacing:.06em}
+  .profile-field-val{font-weight:500}
+  .order-card{background:var(--warm);padding:14px;margin-bottom:12px;border-left:3px solid var(--green)}
+  .order-card-num{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:4px}
+  .order-card-date{font-size:.72rem;color:var(--brown2);margin-bottom:8px}
+  .order-card-items{font-size:.78rem;color:var(--ink)}
+  .order-card-total{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-top:6px;color:var(--green)}
+  .no-orders{text-align:center;padding:32px 16px;color:var(--brown);font-size:.82rem;line-height:2}
+  .logout-btn{width:100%;padding:12px;background:none;border:1px solid var(--line);color:var(--brown);font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:8px}
+  .logout-btn:hover{border-color:#a33;color:#a33}
+  .edit-profile-btn{background:none;border:1px solid var(--line);color:var(--brown);font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;cursor:pointer;transition:all .2s}
+  .edit-profile-btn:hover{border-color:var(--green);color:var(--green)}
+  .inline-edit{display:none;margin-top:12px}.inline-edit.show{display:block}
+  .save-profile-btn{width:100%;padding:11px;background:var(--green);color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;margin-top:6px}
+  .save-profile-btn:hover{background:var(--green2)}
+  .success-modal{position:fixed;inset:0;background:rgba(26,26,26,.7);z-index:400;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+  .success-modal.open{opacity:1;pointer-events:all}
+  .success-box{background:var(--white);max-width:420px;width:100%;padding:48px 36px;text-align:center;transform:scale(.95);transition:transform .3s}
+  .success-modal.open .success-box{transform:scale(1)}
+  .success-icon{font-size:3rem;margin-bottom:16px}
+  .success-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;margin-bottom:10px;color:var(--green)}
+  .success-line{width:40px;height:2px;background:var(--gold);margin:16px auto}
+  .success-text{font-size:.82rem;color:var(--brown);line-height:1.8;margin-bottom:28px}
+  .success-num{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:24px}
+  .continue-btn{background:var(--green);color:var(--cream);border:none;padding:12px 32px;font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+  .continue-btn:hover{background:var(--green2)}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--green);color:var(--cream);padding:12px 24px;font-size:.78rem;letter-spacing:.1em;z-index:500;opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--green);border-top:1px solid #2a3a28;padding:20px 32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+  .cookie-banner.show{transform:translateY(0)}
+  .cookie-text{flex:1;min-width:260px;font-size:.78rem;color:var(--cream);line-height:1.7}
+  .cookie-text a{color:var(--gold2);cursor:pointer;text-decoration:underline}
+  .cookie-text strong{color:var(--cream)}
+  .cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .cookie-btn{padding:9px 20px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;transition:all .2s;white-space:nowrap}
+  .cookie-btn.accept{background:var(--gold);color:var(--white)}.cookie-btn.accept:hover{background:var(--gold2)}
+  .cookie-btn.settings{background:none;border:1px solid rgba(255,255,255,.3);color:var(--cream)}.cookie-btn.settings:hover{border-color:var(--gold);color:var(--gold)}
+  .cookie-btn.reject{background:none;border:1px solid rgba(255,255,255,.15);color:var(--brown2)}.cookie-btn.reject:hover{border-color:var(--brown2);color:var(--cream)}
+  .cookie-modal-overlay{position:fixed;inset:0;background:rgba(26,26,26,.75);z-index:700;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+  .cookie-modal-overlay.open{opacity:1;pointer-events:all}
+  .cookie-modal{background:var(--white);width:100%;max-width:520px;max-height:90vh;overflow-y:auto;transform:translateY(16px);transition:transform .3s}
+  .cookie-modal-overlay.open .cookie-modal{transform:translateY(0)}
+  .cookie-modal-head{background:var(--green);padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+  .cookie-modal-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--cream)}
+  .cookie-modal-body{padding:24px}
+  .cookie-category{border:1px solid var(--line);margin-bottom:12px}
+  .cookie-cat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--warm);cursor:pointer}
+  .cookie-cat-title{font-size:.78rem;font-weight:500;letter-spacing:.06em}
+  .cookie-cat-desc{font-size:.75rem;color:var(--brown);line-height:1.6;padding:12px 16px;border-top:1px solid var(--line)}
+  .cookie-toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+  .cookie-toggle input{opacity:0;width:0;height:0}
+  .cookie-toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:22px;transition:.3s;cursor:pointer}
+  .cookie-toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:white;border-radius:50%;transition:.3s}
+  .cookie-toggle input:checked+.cookie-toggle-slider{background:var(--green)}
+  .cookie-toggle input:checked+.cookie-toggle-slider::before{transform:translateX(18px)}
+  .cookie-toggle input:disabled+.cookie-toggle-slider{opacity:.5;cursor:not-allowed}
+  .cookie-save-btn{width:100%;padding:13px;background:var(--green);color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;margin-top:4px}
+  .cookie-save-btn:hover{background:var(--green2)}
+  .cookie-badge{position:fixed;bottom:16px;right:16px;z-index:590;background:var(--green);border:1px solid #2a3a28;color:var(--cream);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;cursor:pointer;transition:all .2s;display:none}
+  .cookie-badge:hover{border-color:var(--gold);color:var(--gold)}
+  .legal-overlay{position:fixed;inset:0;background:rgba(26,26,26,.7);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+  .legal-overlay.open{opacity:1;pointer-events:all}
+  .legal-modal{background:var(--white);width:100%;max-width:680px;max-height:88vh;overflow-y:auto;transform:translateY(16px);transition:transform .3s}
+  .legal-overlay.open .legal-modal{transform:translateY(0)}
+  .legal-head{background:var(--green);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1}
+  .legal-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:var(--cream)}
+  .legal-body{padding:32px 28px}
+  .legal-body h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin:24px 0 8px;color:var(--green);border-bottom:1px solid var(--line);padding-bottom:6px}
+  .legal-body h2:first-child{margin-top:0}
+  .legal-body p{font-size:.82rem;color:var(--brown);line-height:1.9;margin-bottom:10px}
+  .legal-body ul{padding-left:18px;margin-bottom:10px}
+  .legal-body ul li{font-size:.82rem;color:var(--brown);line-height:1.8}
+  .legal-body strong{color:var(--ink)}
+  .legal-tabs{display:flex;border-bottom:2px solid var(--line);margin-bottom:24px}
+  .legal-tab{padding:10px 20px;background:none;border:none;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+  .legal-tab.active{color:var(--green);border-bottom-color:var(--green)}
+  .legal-panel{display:none}.legal-panel.active{display:block}
+  .pd-overlay{position:fixed;inset:0;background:rgba(26,26,26,.7);z-index:250;display:flex;align-items:flex-start;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto;padding:24px 16px}
+  .pd-overlay.open{opacity:1;pointer-events:all}
+  .pd-modal{background:var(--white);width:100%;max-width:860px;margin:auto;transform:translateY(24px);transition:transform .35s}
+  .pd-overlay.open .pd-modal{transform:translateY(0)}
+  .pd-head{background:var(--green);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+  .pd-breadcrumb{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown2)}
+  .pd-breadcrumb span{color:var(--gold2)}
+  .pd-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  @media(max-width:700px){.pd-body{grid-template-columns:1fr}}
+  .pd-gallery{background:var(--warm)}
+  .pd-main-img{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:7rem;background:var(--warm);overflow:hidden}
+  .pd-main-img img{width:100%;height:100%;object-fit:cover}
+  .pd-thumbs{display:flex;border-top:1px solid var(--line)}
+  .pd-thumb{flex:1;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:2rem;cursor:pointer;background:var(--warm);border-right:1px solid var(--line);opacity:.6;overflow:hidden}
+  .pd-thumb img{width:100%;height:100%;object-fit:cover}
+  .pd-thumb:last-child{border-right:none}.pd-thumb.active,.pd-thumb:hover{opacity:1}.pd-thumb.active{box-shadow:inset 0 -3px 0 var(--green)}
+  .pd-info{padding:32px 28px;display:flex;flex-direction:column}
+  .pd-badge-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+  .pd-badge{background:var(--green);color:var(--cream);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px}
+  .pd-badge.gold{background:var(--gold)}
+  .pd-category{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .pd-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;line-height:1.1;margin:6px 0 4px;color:var(--ink)}
+  .pd-price{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--green);margin-bottom:4px}
+  .pd-unit{font-size:.72rem;color:var(--brown2)}
+  .pd-stock{font-size:.72rem;color:var(--green);margin-bottom:18px;letter-spacing:.06em}
+  .pd-stock.low{color:#c0772a}
+  .pd-desc{font-size:.85rem;color:var(--brown);line-height:1.8;margin-bottom:20px}
+  .pd-actions{display:flex;gap:10px;margin-top:4px;margin-bottom:20px}
+  .pd-add-btn{flex:1;padding:15px;background:var(--green);color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+  .pd-add-btn:hover{background:var(--green2)}
+  .pd-wish-btn{width:48px;background:none;border:1px solid var(--line);color:var(--brown);cursor:pointer;font-size:1.1rem;transition:all .2s}
+  .pd-wish-btn:hover,.pd-wish-btn.active{border-color:#c0392b;color:#c0392b}
+  .pd-details{border-top:1px solid var(--line);padding-top:16px}
+  .pd-details-title{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .pd-details-list{list-style:none;padding:0}
+  .pd-details-list li{font-size:.8rem;color:var(--brown);padding:5px 0;border-bottom:1px solid #f5f0e8;display:flex;align-items:center;gap:8px}
+  .pd-details-list li::before{content:'✦';color:var(--gold);font-size:.5rem;flex-shrink:0}
+  .pd-reviews{padding:24px 28px;border-top:1px solid var(--line);grid-column:1/-1}
+  .pd-reviews-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:18px}
+  .admin-overlay{position:fixed;inset:0;background:var(--ink);z-index:600;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .3s}
+  .admin-overlay.open{opacity:1;pointer-events:all}
+  .admin-wrap{min-height:100vh;display:flex;flex-direction:column}
+  .admin-nav{background:#1a2a18;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a3a28;position:sticky;top:0;z-index:10}
+  .admin-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--gold)}
+  .admin-logo span{color:var(--brown2);font-size:.75rem;margin-left:12px;letter-spacing:.1em;font-family:'Inter',sans-serif}
+  .admin-nav-right{display:flex;gap:12px;align-items:center}
+  .admin-tab-btn{background:none;border:none;color:var(--brown2);font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:6px 14px;border-bottom:2px solid transparent;transition:all .2s}
+  .admin-tab-btn:hover{color:var(--gold)}.admin-tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+  .admin-exit-btn{background:none;border:1px solid #2a3a28;color:var(--brown2);font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;cursor:pointer;transition:all .2s}
+  .admin-exit-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .admin-body{padding:28px 32px;flex:1}
+  .admin-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+  .stat-card{background:#1a2a18;border:1px solid #2a3a28;padding:20px 22px}
+  .stat-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brown2);margin-bottom:8px}
+  .stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--cream)}
+  .stat-sub{font-size:.7rem;color:var(--gold);margin-top:4px}
+  .admin-section-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--cream);margin-bottom:16px;letter-spacing:.06em}
+  .admin-table-wrap{overflow-x:auto;margin-bottom:36px}
+  .admin-table{width:100%;border-collapse:collapse;font-size:.8rem}
+  .admin-table th{background:#1a2a18;color:var(--gold);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid #2a3a28;font-weight:400}
+  .admin-table td{padding:11px 14px;border-bottom:1px solid #2a3a28;color:var(--cream);vertical-align:middle}
+  .admin-table tr:hover td{background:#1a2a18}
+  .admin-table .emoji-cell{font-size:1.6rem;width:50px}
+  .badge-pill{display:inline-block;padding:3px 10px;font-size:.62rem;letter-spacing:.08em;border-radius:2px;text-transform:uppercase}
+  .pill-gold{background:rgba(184,146,58,.15);color:var(--gold);border:1px solid rgba(184,146,58,.3)}
+  .pill-green{background:rgba(45,90,39,.15);color:#6dbf6a;border:1px solid rgba(45,90,39,.3)}
+  .pill-red{background:rgba(163,51,51,.15);color:#e07777;border:1px solid rgba(163,51,51,.3)}
+  .pill-grey{background:rgba(107,79,58,.15);color:var(--brown2);border:1px solid #2a3a28}
+  .admin-action-btn{background:none;border:1px solid #2a3a28;color:var(--brown2);font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s;margin-right:4px}
+  .admin-action-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .admin-action-btn.danger:hover{border-color:#a33;color:#e07777}
+  .admin-form-box{background:#1a2a18;border:1px solid #2a3a28;padding:24px;margin-bottom:28px}
+  .admin-form-title{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .admin-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .admin-form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+  .admin-form-group label{font-size:.68rem;letter-spacing:.08em;color:var(--brown2);text-transform:uppercase}
+  .admin-form-group input,.admin-form-group select,.admin-form-group textarea{background:#1a1a1a;border:1px solid #2a3a28;padding:9px 11px;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--cream);outline:none;transition:border-color .2s}
+  .admin-form-group input:focus,.admin-form-group select:focus,.admin-form-group textarea:focus{border-color:var(--gold)}
+  .admin-form-group textarea{resize:vertical;min-height:70px}
+  .admin-save-btn{background:var(--gold);color:var(--white);border:none;padding:10px 24px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+  .admin-save-btn:hover{background:var(--gold2)}
+  .admin-cancel-btn{background:none;border:1px solid #2a3a28;color:var(--brown2);padding:10px 20px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-left:8px}
+  .admin-cancel-btn:hover{border-color:var(--brown2);color:var(--cream)}
+  .admin-add-row{display:flex;justify-content:flex-end;margin-bottom:14px}
+  .admin-add-btn{background:none;border:1px solid var(--gold);color:var(--gold);padding:8px 18px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+  .admin-add-btn:hover{background:var(--gold);color:var(--white)}
+  .admin-login-box{max-width:380px;margin:100px auto;background:#1a2a18;border:1px solid #2a3a28;padding:40px}
+  .admin-login-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:var(--cream);text-align:center;margin-bottom:8px}
+  .admin-login-sub{font-size:.72rem;color:var(--brown2);text-align:center;letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+
+  @media(max-width:600px){
+    .filter-bar{padding:12px 16px}
+    .section-head,.products{padding-left:16px;padding-right:16px}
+    .modal-body,.auth-panel{padding:20px}
+    .form-row{grid-template-columns:1fr}
+    .drawer-body{padding:16px 20px}.drawer-foot{padding:16px 20px 24px}
+    .about-section{padding:40px 16px}footer{padding:32px 16px 24px}
+    .values-strip{padding:24px 16px}
+    .filter-row{flex-direction:column;align-items:stretch}
+    .filter-search-wrap{min-width:0}
+  }
+
+  /* ── UI POLISH (Higgsfield-Fotos) ── */
+  .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,transparent 40%,rgba(15,30,12,.55) 100%);pointer-events:none;z-index:0}
+  .hero>*{position:relative;z-index:1}
+  .hero-title{text-shadow:0 2px 24px rgba(0,0,0,.45)}
+  .hero-sub{text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .hero-btn{box-shadow:0 8px 28px rgba(184,146,58,.45);transition:transform .2s,background .2s}
+  .hero-btn:hover{transform:translateY(-2px)}
+  .hero-trust{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+  .hero-trust span{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:7px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .hero-trust b{color:var(--gold2);font-weight:600}
+
+  .card{border-radius:6px}
+  .card-img-wrap{background:linear-gradient(160deg,#efe7db,#e2d6c4)}
+  .card-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(26,26,26,.12));pointer-events:none}
+  .card-badge{box-shadow:0 4px 12px rgba(0,0,0,.18);border-radius:3px}
+  .add-btn{border-radius:4px}
+  .section-title{position:relative;padding-left:18px}
+  .section-title::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:80%;background:var(--gold);border-radius:3px}
+  .about-img{border-radius:8px}
+  .about-img img{transition:transform .6s}.about-img:hover img{transform:scale(1.04)}
+  .values-strip{background:linear-gradient(180deg,var(--warm),#e8ddcd)}
+  .value-item{transition:transform .2s}.value-item:hover{transform:translateY(-3px)}
+  /* ── SVG ICON SYSTEM ── */
+  .ico{width:1em;height:1em;display:inline-block;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .filter-cat-btn .ico,.footer-col a .ico,.nav-btn .ico{width:15px;height:15px;vertical-align:-.18em;margin-right:6px}
+  .value-icon .ico{width:34px;height:34px;stroke:var(--green);stroke-width:1.5}
+  .hero-trust .ico{width:15px;height:15px;stroke:var(--gold2);vertical-align:-.2em;margin-right:1px}
+  .drawer-title .ico{width:22px;height:22px;stroke:var(--cream);vertical-align:-.18em;margin-right:7px}
+  .shipping-note .ico,.top-bar .ico{width:14px;height:14px;margin-right:6px;vertical-align:-.14em}
+  .filter-search-icon .ico{width:15px;height:15px;stroke:var(--brown2)}
+  .success-icon .ico{width:50px;height:50px;stroke:var(--green)}
+  .footer-col h3 .ico{width:18px;height:18px;stroke:var(--gold2);vertical-align:-.14em;margin-right:7px}
+  @media(max-width:600px){.hero-trust{gap:16px}.hero{padding:90px 20px 70px}}
+
+  /* ════════ FITMEAT-INSPIRIERTES MODERN-THEME ════════ */
+  :root{
+    --ink:#1d1d1b;
+    --green:#24502f; --green2:#346b3e;
+    --gold:#c39a4d; --gold2:#dcbd77;
+    --cream:#ffffff;
+    --warm:#f4f1eb; --soft:#f8f6f1;
+    --brown:#5f574c; --brown2:#968b7c;
+    --line:#e9e4da;
+  }
+  body{background:#fff}
+
+  /* NAV — luftig & clean */
+  nav{height:78px;padding:0 48px;border-bottom:1px solid var(--line)}
+
+  /* HERO — mehr Raum, weichere CTA */
+  .hero{padding:150px 40px 140px}
+  .hero-eyebrow{background:rgba(255,255,255,.12)}
+  .hero-btn{border-radius:40px;padding:16px 42px}
+
+  /* WERTE — weiße Sektion mit runden Icon-Kacheln */
+  .values-strip{background:#fff;border-bottom:1px solid var(--line);padding:44px 40px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .value-icon{background:var(--soft);width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .value-icon .ico{width:30px;height:30px}
+  .value-title{font-size:.72rem;margin-bottom:5px}
+
+  /* FILTER — Pills */
+  .filter-bar{background:#fff;border-bottom:1px solid var(--line);padding:20px 40px}
+  .filter-cat-btn{border-radius:40px;background:var(--soft);border-color:transparent}
+  .filter-cat-btn:hover{background:#ece6da;color:var(--green)}
+  .filter-search,.filter-select{border-radius:40px;background:#fff}
+
+  /* SEKTIONEN — Atemraum */
+  .section-head{padding:64px 40px 0}
+  .section-title{font-size:2.1rem}
+  .section-title::before{height:72%}
+
+  /* PRODUKT-KARTEN — randlos, weicher Schatten, rund */
+  .products{padding:28px 40px 88px}
+  .grid{gap:26px;grid-template-columns:repeat(auto-fill,minmax(252px,1fr))}
+  .card{border:none;border-radius:14px;box-shadow:0 2px 12px rgba(29,29,27,.06);background:#fff}
+  .card:hover{box-shadow:0 20px 48px rgba(36,80,47,.15);transform:translateY(-5px);border:none}
+  .card-img-wrap{border-radius:14px 14px 0 0}
+  .card-img-wrap::after{border-radius:14px 14px 0 0}
+  .card-body{padding:18px 18px 20px}
+  .card-name{font-size:1.1rem}
+  .card-price{font-size:1.3rem}
+  .add-btn{border-radius:40px;padding:9px 17px}
+  .card-badge{border-radius:40px;padding:5px 12px}
+
+  /* ABOUT & FOOTER */
+  .about-section{padding:96px 40px}
+  .about-img{border-radius:18px}
+  footer{padding:60px 40px 34px}
+
+  /* Mobile wiederherstellen */
+  @media(max-width:600px){
+    .hero{padding:96px 18px 84px}
+    .values-strip,.filter-bar,.about-section,footer{padding-left:16px;padding-right:16px}
+    .section-head{padding:44px 16px 0}
+    .products{padding:20px 16px 60px}
+  }
+
+  /* ════════ FILTER-REDESIGN ════════ */
+  .filter-bar{background:#fff;padding-top:24px;padding-bottom:24px}
+  .filter-row{gap:10px;align-items:center}
+  .filter-row+.filter-row{margin-top:14px}
+  .filter-cats{gap:10px;justify-content:center;flex-wrap:wrap}
+  .filter-cat-btn{font-weight:500;padding:10px 22px}
+  .filter-cat-btn.active{font-weight:600}
+  .filter-cat-btn.active{box-shadow:0 6px 16px rgba(36,80,47,.22)}
+  .filter-tools{gap:12px}
+  .filter-search-wrap{flex:1;min-width:200px}
+  .filter-search{height:44px;border-radius:40px;padding:8px 14px 8px 40px}
+  .filter-search-icon{left:15px}
+  .filter-select{height:44px;border-radius:40px;min-width:185px;padding:0 16px}
+  .sub-label{font-size:.62rem;color:var(--brown2);letter-spacing:.12em;text-transform:uppercase;width:100%;text-align:center}
+  .filter-price{display:flex;align-items:center;gap:10px;background:var(--soft);padding:9px 18px;border-radius:40px;margin-left:auto}
+  .filter-price-cap{font-size:.62rem;color:var(--brown2);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  .filter-price input[type=range]{width:120px;accent-color:var(--gold)}
+  .filter-price-val{font-weight:600;color:var(--green);min-width:40px;text-align:right}
+  .active-tag{border-radius:40px;background:#fff;border:1px solid var(--line);padding:5px 13px}
+  .filter-reset{font-weight:600;color:var(--green)}
+
+  /* ── „MEHR LADEN" (Mobile-Paging) ── */
+  .load-more-wrap{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:11px;padding:22px 0 6px}
+  .load-more-count{font-size:.72rem;color:var(--brown2);letter-spacing:.04em}
+  .load-more-btn{background:#fff;border:1.5px solid var(--green);color:var(--green);border-radius:40px;padding:13px 38px;font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .2s}
+  .load-more-btn:hover{background:var(--green);color:#fff;box-shadow:0 8px 22px rgba(36,80,47,.25)}
+
+  /* ════════ MOBILE: 2 PRODUKTE NEBENEINANDER ════════ */
+  @media(max-width:600px){
+    .filter-bar{padding-top:16px;padding-bottom:16px}
+    .filter-cats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0}
+    .filter-cats .filter-cat-btn{width:100%;text-align:center;padding-left:8px;padding-right:8px}
+    .filter-cats .filter-cat-btn[data-cat="all"]{grid-column:1/-1}
+    .filter-tools{flex-direction:row;flex-wrap:nowrap;gap:8px}
+    .filter-search-wrap{flex:1;min-width:0}
+    .filter-select{min-width:0;width:auto;flex:0 0 auto;padding:0 12px;font-size:.66rem}
+    .filter-price{margin-left:0;width:100%;justify-content:space-between}
+    .filter-price input[type=range]{flex:1;width:auto}
+
+    .grid{grid-template-columns:1fr 1fr;gap:12px}
+    .card{border-radius:11px}
+    .card:hover{transform:none}
+    .card-img-wrap,.card-img-wrap::after{border-radius:11px 11px 0 0}
+    .card-body{padding:11px 11px 13px}
+    .card-name{font-size:.9rem;line-height:1.22}
+    .card-unit{font-size:.57rem;margin:1px 0 5px}
+    .card-desc{font-size:.68rem;-webkit-line-clamp:2;margin-bottom:9px}
+    .card-footer{flex-direction:column;align-items:stretch;gap:7px}
+    .card-price{font-size:1.12rem}
+    .add-btn{width:100%;padding:9px 6px;font-size:.6rem;letter-spacing:.05em}
+    .card-badge{font-size:.52rem;padding:4px 9px;top:8px;left:8px}
+    .card-cat-tag{font-size:.5rem;padding:2px 7px}
+  }
+
+  /* ════════ GESCHENKBOXEN-SEKTION (Design nach M3-Entwurf 27.08.) ════════ */
+  .gift-section{background:#1d3a18;color:var(--cream);padding:80px 32px;position:relative;overflow:hidden;margin-top:24px}
+  .gift-section::before{content:'';position:absolute;top:-150px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,176,106,.16) 0%,transparent 70%);pointer-events:none}
+  .gbx-head{max-width:1280px;margin:0 auto 40px;text-align:center}
+  .gbx-eyebrow{font-size:.68rem;text-transform:uppercase;letter-spacing:.24em;color:var(--gold2);font-weight:600}
+  .gbx-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--cream);margin:10px 0 12px}
+  .gbx-title em{color:var(--gold2);font-style:italic}
+  .gbx-sub{font-size:.9rem;color:rgba(247,243,237,.7);max-width:52ch;margin:0 auto;line-height:1.6}
+  .gbx-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:18px;position:relative}
+  @media(min-width:640px){.gbx-grid{grid-template-columns:1fr 1fr;gap:22px}}
+  @media(min-width:1080px){.gbx-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
+  .gbx-card{background:rgba(247,243,237,.04);border:1px solid rgba(212,176,106,.28);border-radius:16px;overflow:hidden;transition:border-color .3s,background .3s,transform .3s;display:flex;flex-direction:column;cursor:pointer}
+  .gbx-card:hover{border-color:var(--gold);background:rgba(247,243,237,.07);transform:translateY(-4px)}
+  .gbx-img{aspect-ratio:1;overflow:hidden;background:var(--warm)}
+  .gbx-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .gbx-card:hover .gbx-img img{transform:scale(1.05)}
+  .gbx-body{padding:22px 20px;flex-grow:1;display:flex;flex-direction:column}
+  .gbx-cat{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--gold2);font-weight:600;margin-bottom:10px}
+  .gbx-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:8px;line-height:1.2;color:var(--cream)}
+  .gbx-desc{font-size:.8rem;color:rgba(247,243,237,.7);line-height:1.55;margin-bottom:22px}
+  .gbx-foot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;gap:12px}
+  .gbx-price{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--gold2);line-height:1}
+  .gbx-price small{font-family:'Inter',sans-serif;font-size:11px;color:rgba(247,243,237,.6);font-weight:400;display:block;margin-top:5px;letter-spacing:0}
+  .gbx-btn{padding:10px 18px;background:var(--gold);color:#1d3a18;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;transition:background .2s;white-space:nowrap;cursor:pointer}
+  .gbx-card:hover .gbx-btn:not(:disabled){background:var(--cream)}
+  .gbx-btn:disabled{background:rgba(247,243,237,.25);color:rgba(29,58,24,.7);cursor:not-allowed}
+
+  /* ════════ MENGEN-WÄHLER (Detail) ════════ */
+  .pd-weight{margin-bottom:20px}
+  .pd-weight-label{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+  .pd-weight-opts{display:flex;gap:8px;flex-wrap:wrap}
+  .pd-weight-btn{flex:1;min-width:62px;padding:11px 8px;border:1.5px solid var(--line);background:#fff;border-radius:10px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;color:var(--brown);cursor:pointer;transition:all .18s}
+  .pd-weight-btn:hover{border-color:var(--green);color:var(--green)}
+  .pd-weight-btn.active{border-color:var(--green);background:var(--green);color:#fff}
+
+  /* ════════ KARTEN: STERNE + BESTAND ════════ */
+  .card-rating{display:inline-flex;align-items:center;gap:1px;margin:3px 0 6px}
+  .card-rating .star{font-size:.82rem;color:#ddd3c2;line-height:1}
+  .card-rating .star.on{color:var(--gold)}
+  .card-rating .rating-num{font-size:.68rem;color:var(--brown2);margin-left:6px;font-weight:500}
+  .card-stock{font-size:.66rem;font-weight:600;letter-spacing:.03em;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+  .card-stock.ok{color:#3d8b4a}
+  .card-stock.low{color:#c0772a}
+  .card-stock.out{color:var(--brown2)}
+  .card-stock::first-letter{font-size:.8rem}
+
+  /* ════════ CHECKOUT: ZAHLART + GUTSCHEIN ════════ */
+  .pay-methods{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .pay-chip{flex:1;min-width:96px;padding:11px 10px;border:1.5px solid var(--line);background:var(--cream);border-radius:40px;font-family:'Inter',sans-serif;font-size:.76rem;font-weight:500;color:var(--brown);cursor:pointer;transition:all .18s;white-space:nowrap}
+  .pay-chip:hover{border-color:var(--green);color:var(--green)}
+  .pay-chip.active{border-color:var(--green);background:var(--green);color:#fff}
+  .pay-note{background:var(--soft);border-left:3px solid var(--gold);padding:11px 14px;font-size:.78rem;color:var(--brown);margin-bottom:6px;border-radius:0 8px 8px 0}
+  .voucher-row{display:flex;gap:8px}
+  .voucher-row input{flex:1;border:1px solid var(--line);border-radius:40px;padding:11px 16px;font-family:'Inter',sans-serif;font-size:.85rem;background:var(--cream);outline:none;text-transform:uppercase}
+  .voucher-row input:focus{border-color:var(--green)}
+  .voucher-apply{border:1.5px solid var(--green);background:var(--cream);color:var(--green);border-radius:40px;padding:0 22px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .2s}
+  .voucher-apply:hover{background:var(--green);color:#fff}
+  .voucher-msg{font-size:.74rem;margin-top:8px;min-height:1em}
+  .voucher-msg.ok{color:var(--green)}.voucher-msg.err{color:#c0392b}
+
+  /* ════════ CROSS-SELLING (Detail) ════════ */
+  .pd-related{grid-column:1/-1;border-top:1px solid var(--line);padding:24px 28px}
+  .pd-related-title{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .pd-related-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .pd-rel-card{cursor:pointer;border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:all .18s;background:#fff}
+  .pd-rel-card:hover{border-color:var(--green);box-shadow:0 8px 20px rgba(36,80,47,.12);transform:translateY(-3px)}
+  .pd-rel-img{aspect-ratio:1/1;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:2rem;overflow:hidden}
+  .pd-rel-img img{width:100%;height:100%;object-fit:cover}
+  .pd-rel-info{padding:8px 10px 10px}
+  .pd-rel-name{font-family:'Playfair Display',serif;font-size:.82rem;line-height:1.2;color:var(--ink);margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pd-rel-price{font-size:.8rem;font-weight:700;color:var(--green)}
+  @media(max-width:600px){.pd-related-row{grid-template-columns:repeat(2,1fr)}.pd-related{padding:18px 16px}}
+
+  /* ════════ NEWSLETTER-BAND ════════ */
+  .newsletter-band{background:var(--green);color:#fff;padding:50px 40px}
+  .nl-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .nl-text h3{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:#fff;margin-bottom:6px}
+  .nl-text p{font-size:.88rem;color:rgba(255,255,255,.8);max-width:440px}
+  .nl-form{display:flex;gap:10px;flex:1;min-width:280px;max-width:470px}
+  .nl-form input{flex:1;border:none;border-radius:40px;padding:14px 20px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;color:var(--ink)}
+  .nl-form button{background:var(--gold);color:#fff;border:none;border-radius:40px;padding:14px 28px;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+  .nl-form button:hover{background:var(--gold2)}
+  .nl-done{max-width:1000px;margin:14px auto 0;color:var(--gold2);font-size:.85rem;display:none}
+  .nl-done.show{display:block}
+  @media(max-width:600px){
+    .newsletter-band{padding:34px 16px}
+    .nl-inner{gap:18px}
+    .nl-text h3{font-size:1.4rem}
+    .nl-text p{font-size:.84rem}
+    .nl-form{max-width:none;min-width:0;width:100%;flex-direction:column;gap:10px}
+    .nl-form input{width:100%;min-width:0}
+    .nl-form button{width:100%}
+  }
+
+  /* ════════ PRODUKTDETAIL – kompakter & mittig ════════ */
+  .pd-overlay{align-items:center;padding:20px 16px}
+  .pd-modal{max-width:720px;border-radius:16px;max-height:90vh;overflow-y:auto;overflow-x:hidden;transform:scale(.96)}
+  .pd-overlay.open .pd-modal{transform:scale(1)}
+  .pd-head{padding:15px 22px}
+  .pd-main-img{aspect-ratio:auto;height:clamp(230px,38vh,340px)}
+  .pd-main-img img{width:100%;height:100%;object-fit:cover}
+  .pd-thumbs{display:none}
+  .pd-info{padding:26px 26px}
+  .pd-name{font-size:1.6rem}
+  .pd-price{font-size:1.7rem}
+  .pd-unit{margin-bottom:2px}
+  .pd-desc{font-size:.84rem;line-height:1.7;margin-bottom:16px}
+  .pd-actions{margin-bottom:16px}
+  .pd-add-btn{padding:14px;border-radius:40px}
+  .pd-details{padding-top:14px}
+  .pd-details-list li{padding:4px 0;font-size:.78rem}
+  .pd-related{padding:18px 26px}
+  @media(max-width:700px){.pd-main-img{height:clamp(200px,34vh,280px)}.pd-info{padding:22px 20px}.pd-name{font-size:1.4rem}.pd-price{font-size:1.55rem}}
+
+  /* ════════ KARTEN – Feinschliff (Desktop) ════════ */
+  @media(min-width:601px){
+    .grid{gap:28px}
+    .card{border-radius:16px;box-shadow:0 1px 2px rgba(29,29,27,.04),0 8px 20px rgba(29,29,27,.06);transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s}
+    .card:hover{transform:translateY(-7px);box-shadow:0 22px 46px rgba(36,80,47,.17)}
+    .card-img-wrap,.card-img-wrap::after{border-radius:16px 16px 0 0}
+    .card-img-wrap::after{background:linear-gradient(180deg,transparent 56%,rgba(18,28,14,.24))}
+    .card-body{padding:16px 18px 18px}
+    .card-name{font-size:1.14rem;letter-spacing:-.01em}
+    .card-footer{margin-top:6px;padding-top:13px;border-top:1px solid var(--soft)}
+    .card-price{font-size:1.36rem;letter-spacing:-.01em}
+    .add-btn{border-radius:40px;padding:10px 17px;font-weight:600;box-shadow:0 4px 12px rgba(36,80,47,.18);transition:transform .15s,background .15s,box-shadow .15s}
+    .add-btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(36,80,47,.26)}
+  }
+
+  /* Karten-Chrome (alle Breiten) */
+  .card-cat-tag{background:rgba(20,32,18,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:40px;font-weight:500;letter-spacing:.06em}
+  .card-badge{box-shadow:0 4px 14px rgba(0,0,0,.22);font-weight:600;letter-spacing:.07em}
+  .card-name{transition:color .18s}
+  .section-sub{color:var(--brown2);font-weight:500}
+
+  /* ════════ WERTE-LEISTE: 2er-Raster auf Mobile ════════ */
+  @media(max-width:600px){
+    .values-strip{grid-template-columns:1fr 1fr;gap:22px 14px;padding:30px 16px}
+    .value-icon{width:54px;height:54px;margin-bottom:10px}
+    .value-icon .ico{width:26px;height:26px}
+    .value-title{font-size:.68rem}
+    .value-text{font-size:.66rem}
+  }
+
+  /* ════════ MOBILES MENÜ (Vollbild-Overlay) ════════ */
+  .nav-burger{display:none}
+  
+
+  /* ════════ PFLICHTANGABEN (Grundpreis + LMIV) ════════ */
+  .card-grundpreis{display:block;font-family:'Inter',sans-serif;font-size:.62rem;
+    color:var(--brown2);font-weight:400;letter-spacing:.02em;margin-top:2px}
+  .pd-pflicht{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+  .pd-pflicht-liste{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;
+    font-size:.8rem;line-height:1.6;margin-top:4px}
+  .pd-pflicht-liste dt{color:var(--brown2);white-space:nowrap}
+  .pd-pflicht-liste dd{color:var(--ink)}
+  .pd-nw{width:100%;margin-top:14px;font-size:.78rem;border-collapse:collapse}
+  .pd-nw caption{text-align:left;color:var(--brown2);font-size:.72rem;
+    letter-spacing:.06em;margin-bottom:6px}
+  .pd-nw td{padding:5px 0;border-bottom:1px solid var(--soft)}
+  .pd-nw td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+  .cart-item-grund{font-size:.66rem;color:var(--brown2);margin-top:2px}
+  .card-mwst{display:block;font-family:'Inter',sans-serif;font-size:.58rem;color:var(--brown2);
+    font-weight:400;letter-spacing:.02em;margin-top:1px}
+  .pd-mwst{font-size:.72rem;color:var(--brown2);margin-top:3px}
+  .pd-mwst a,.pd-widerruf a{color:var(--green);text-decoration:underline}
+  .pd-widerruf{margin-top:14px;padding:10px 12px;background:var(--soft);border-left:3px solid var(--gold);
+    font-size:.76rem;line-height:1.6;color:var(--brown)}
+  .checkout-pflicht{background:var(--soft);border:1px solid var(--line);padding:14px 16px;
+    font-size:.78rem;line-height:1.65;color:var(--brown);margin:16px 0 4px}
+  .checkout-pflicht strong{color:var(--ink)}
+  .checkout-pflicht a{color:var(--green);text-decoration:underline}
+  @media(max-width:600px){.pd-pflicht-liste{grid-template-columns:1fr;gap:2px 0}
+    .pd-pflicht-liste dt{margin-top:8px;font-size:.72rem}}
+</style>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+
+
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-cheese" viewBox="0 0 24 24"><path d="M2.5 14.4 17.6 8c1.8-.8 3.9.5 3.9 2.5v3.9z"/><path d="M2.5 14.4h19v2.7c0 .8-.7 1.4-1.5 1.4H4c-.8 0-1.5-.6-1.5-1.4z"/><circle cx="7" cy="16.6" r=".9"/><circle cx="12" cy="16.1" r="1"/><circle cx="16.6" cy="16.7" r=".8"/></symbol>
+  <symbol id="ic-pig" viewBox="0 0 24 24"><path d="M5.5 8.5 4.3 4.7l3.8 1.9M18.5 8.5l1.2-3.8-3.8 1.9"/><circle cx="12" cy="13.5" r="6.3"/><ellipse cx="12" cy="14.5" rx="3" ry="2.2"/><circle cx="11" cy="14.5" r=".5"/><circle cx="13" cy="14.5" r=".5"/></symbol>
+  <symbol id="ic-deer" viewBox="0 0 24 24"><path d="M12 21.5v-8.2"/><path d="M12 13.3c-2.6 0-4.2-2-4.2-4.1 0-1.1-.5-2.1-1.6-2.6M7.8 6.9C6.7 6.4 6.2 5.3 6.2 4"/><path d="M12 13.3c2.6 0 4.2-2 4.2-4.1 0-1.1.5-2.1 1.6-2.6M16.2 6.9c1.1-.5 1.6-1.6 1.6-2.9"/></symbol>
+  <symbol id="ic-bacon" viewBox="0 0 24 24"><path d="M3 8.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 13c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 17.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="ic-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2 3h3l2.5 12.4a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.2L21 6.5H6"/></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4 3.4-6 7.5-6s7.5 2 7.5 6"/></symbol>
+  <symbol id="ic-truck" viewBox="0 0 24 24"><path d="M2 6.5h12v9.5H2z"/><path d="M14 9.5h4l3 3v3.5h-7z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M4 20C4 11 11 5 20 4.5c0 9.5-7 15.5-16 15.5Z"/><path d="M4.5 19.5c4-6.5 8.5-9.5 12.5-10.5"/></symbol>
+  <symbol id="ic-medal" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="6"/><path d="m9.4 9.6 1.8 1.8 3.4-3.5"/><path d="M9 15 7.4 21l4.6-2.6L16.6 21 15 15"/></symbol>
+  <symbol id="ic-wheat" viewBox="0 0 24 24"><path d="M12 22V7.5"/><path d="M12 8c0-2-1.5-3.6-3.6-3.6C8.4 6.5 9.9 8 12 8m0 0c0-2 1.5-3.6 3.6-3.6C15.6 6.5 14.1 8 12 8"/><path d="M12 13.5c0-2-1.5-3.6-3.6-3.6C8.4 12 9.9 13.5 12 13.5m0 0c0-2 1.5-3.6 3.6-3.6C15.6 12 14.1 13.5 12 13.5"/></symbol>
+  <symbol id="ic-snow" viewBox="0 0 24 24"><path d="M12 2.5v19M3.7 7.2 20.3 16.8M20.3 7.2 3.7 16.8"/><path d="M12 2.5 10 4.6M12 2.5l2 2.1M12 21.5l-2-2.1M12 21.5l2-2.1"/></symbol>
+  <symbol id="ic-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13.2v8"/></symbol>
+  <symbol id="ic-meat" viewBox="0 0 24 24"><path d="M7.5 8.2C5 8.2 3 10.2 3 12.7s2 4.5 4.5 4.5c2 0 3.2-1.4 5.5-1.4 3.6 0 6.5-2.3 6.5-5.4S16.5 5 13 5C10.4 5 9.7 8.2 7.5 8.2Z"/><circle cx="7.5" cy="12.7" r="2"/></symbol>
+  <symbol id="ic-gift" viewBox="0 0 24 24"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M3 7.5h18V11H3z"/><path d="M12 7.5V21"/><path d="M12 7.5S11 4 8.5 4 6 7.5 8 7.5h4m0 0s1-3.5 3.5-3.5S18 7.5 16 7.5h-4"/></symbol>
+</svg>
+<div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
+
+<nav class="shell-nav">
+  <a class="nav-logo" href="#top"><img src="static/img/logo/logo-zeile.svg?v=11" alt="Bauern König, feine Spezialitäten"></a>
+  <div class="nav-links">
+    <a class="nav-link" href="#sortiment">Shop</a>
+    <a class="nav-link" href="#geschenke">Geschenkboxen</a>
+    <a class="nav-link" href="#" data-vorschau="aus">Versand</a>
+    <a class="nav-link" href="#" data-vorschau="aus">FAQ</a>
+    <a class="nav-link" href="#" data-vorschau="aus">Kontakt</a>
+  </div>
+  <div class="nav-right">
+    
+      <button class="nav-btn ghost" id="navLoginBtn" onclick="location.href='/anmelden'">Anmelden</button>
+      <button class="nav-btn solid" id="navRegisterBtn" onclick="location.href='/registrieren'" style="display:none">Registrieren</button>
+      <span class="nav-user-info" id="navUserGreet" style="display:none"></span>
+      <button class="nav-btn ghost" id="navProfileBtn" style="display:none" onclick="openProfile()"><svg class="ico"><use href="#ic-user"/></svg>Konto</button>
+      <button class="nav-btn cart-btn" onclick="openCart()"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
+    
+    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-head">
+    <span class="mm-logo"><img src="static/img/logo/logo-zeile.svg?v=11" alt="Bauern König"></span>
+    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
+  </div>
+  <nav class="mm-links">
+    <a href="#sortiment">Shop</a>
+    <a href="#geschenke">Geschenkboxen</a>
+    <a href="#hof">Unser Hof</a>
+    <a href="#" data-vorschau="aus">Versand &amp; Lieferung</a>
+    <a href="#" data-vorschau="aus">FAQ</a>
+    <a href="#" data-vorschau="aus">Kontakt</a>
+    <a href="#" data-vorschau="aus">Gutscheine</a>
+    <a href="#" data-vorschau="aus">Rezepte</a>
+    
+      <div class="mm-account" id="mmAccountBox"></div>
+    
+  </nav>
+</div>
+
+<section class="hero">
+  <p class="hero-eyebrow">✦ Seit 2025 ✦</p>
+  <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
+  <a class="hero-btn" href="#" onclick="document.querySelector('.section-head').scrollIntoView({behavior:'smooth'});return false">Zum Sortiment</a>
+  <div class="hero-trust">
+    <span><svg class="ico"><use href="#ic-cheese"/></svg> <b>21</b> Käsesorten</span>
+    <span><svg class="ico"><use href="#ic-meat"/></svg> <b>35</b> Fleischspezialitäten</span>
+    <span><svg class="ico"><use href="#ic-wheat"/></svg> <b>100%</b> aus Österreich</span>
+    <span><svg class="ico"><use href="#ic-truck"/></svg> Versand ab <b>€ 75</b> gratis</span>
+  </div>
+</section>
+
+<div class="values-strip">
+  <div class="value-item"><div class="value-icon"><svg class="ico"><use href="#ic-medal"/></svg></div><div class="value-title">Höchste Qualität</div><div class="value-text">Nur erlesene Stücke</div></div>
+  <div class="value-item"><div class="value-icon"><svg class="ico"><use href="#ic-wheat"/></svg></div><div class="value-title">Aus Österreich</div><div class="value-text">Direkt vom Kleinbauern</div></div>
+  <div class="value-item"><div class="value-icon"><svg class="ico"><use href="#ic-snow"/></svg></div><div class="value-title">Frische Garantie</div><div class="value-text">Nie tiefgekühlt</div></div>
+  <div class="value-item"><div class="value-icon"><svg class="ico"><use href="#ic-box"/></svg></div><div class="value-title">Ab Hof Versand</div><div class="value-text">Express bis 24h</div></div>
+</div>
+
+<!-- ───────────────────── FILTER BAR ───────────────────── -->
+<div class="filter-bar" id="filterBar">
+  <!-- Row 1: Kategorien (scrollbar auf Mobile) -->
+  <div class="filter-row filter-cats">
+    <button class="filter-cat-btn active" data-cat="all" onclick="setMainFilter('all',this)">Alle</button>
+    
+    <button class="filter-cat-btn" data-cat="kaese" onclick="setMainFilter('kaese',this)"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</button>
+    
+    <button class="filter-cat-btn" data-cat="mangalitza" onclick="setMainFilter('mangalitza',this)"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</button>
+    
+    <button class="filter-cat-btn" data-cat="wild" onclick="setMainFilter('wild',this)"><svg class="ico"><use href="#ic-deer"/></svg>Wild</button>
+    
+    <button class="filter-cat-btn" data-cat="hausschwein" onclick="setMainFilter('hausschwein',this)"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</button>
+    
+  </div>
+
+  <!-- Row 2: Suche + Sortierung -->
+  <div class="filter-row filter-tools">
+    <div class="filter-search-wrap">
+      <span class="filter-search-icon"><svg class="ico"><use href="#ic-search"/></svg></span>
+      <input class="filter-search" id="filterSearch" placeholder="Spezialität suchen…" oninput="applyFilters()">
+    </div>
+    <select class="filter-select" id="filterSort" onchange="applyFilters()">
+      <option value="">Sortieren nach</option>
+      <option value="price-asc">Preis aufsteigend</option>
+      <option value="price-desc">Preis absteigend</option>
+      <option value="name">Name A–Z</option>
+    </select>
+  </div>
+
+  <!-- Row 3: Unterkategorien -->
+  <div class="filter-row" id="subFilterRow">
+    <span class="sub-label">Unterkategorien</span>
+    <div id="subFilterButtons" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"></div>
+  </div>
+
+  <!-- Active filters -->
+  <div class="active-filters" id="activeFilters" style="display:none"></div>
+</div>
+
+<div class="section-head">
+  <h2 class="section-title">Unser Sortiment</h2>
+  <span class="section-sub" id="productCount">Produkte</span>
+</div>
+
+<section class="products">
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- ── GESCHENKBOXEN (eigene Sektion, Design nach M3-Entwurf) ── -->
+<section class="gift-section" id="giftSection">
+  <div class="gbx-head">
+    <span class="gbx-eyebrow">Geschenke aus dem Hof</span>
+    <h2 class="gbx-title">Unsere <em>Geschenkboxen.</em></h2>
+    <p class="gbx-sub">Fixfertig gepackte Holzboxen mit ausgesuchten Spezialitäten. Für Gastgeber, Genießer und alle, die Freude schenken möchten.</p>
+  </div>
+  <div class="gbx-grid" id="giftGrid"></div>
+</section>
+
+<section class="about-section" id="aboutSection">
+  <div class="about-inner">
+    <div class="about-img" id="aboutImg"></div>
+    <div class="about-content">
+      <h2>Bauern König, Tradition & Leidenschaft</h2>
+      <p>Wir sind ein kleiner Familienbetrieb aus dem Herzen Österreichs. Bei uns steht der respektvolle Umgang mit den Tieren, der Natur und den Menschen an erster Stelle. Unsere Produkte stammen ausschließlich von ausgewählten Kleinbauern und Traditionsmetzgereien aus der Region.</p>
+      <p>Jedes Stück Fleisch, jeder Laib Käse wird mit viel Sorgfalt hergestellt. Wir garantieren Ihnen höchste Qualität, vom Hof bis auf Ihren Teller.</p>
+      <p class="signature">„Aus Liebe zum Genuss", Ihr Bauern König Team</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CART DRAWER ── -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span><button class="close-btn" onclick="closeAll()">✕</button></div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="subtotal-label">Zwischensumme</span><span id="subtotal">€ 0,00</span></div>
+    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenloser Versand ab € 75</p>
+    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Zur Kasse</button>
+  </div>
+</div>
+
+<div class="drawer" id="profileDrawer" style="z-index:202">
+  <div class="drawer-head"><span class="drawer-title"><svg class="ico"><use href="#ic-user"/></svg>Mein Konto</span><button class="close-btn" onclick="closeProfile()">✕</button></div>
+  <div class="drawer-body" id="profileBody"></div>
+</div>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head"><span class="modal-title" id="authModalTitle">Willkommen bei Bauern König</span><button class="close-btn" onclick="closeAuth()">✕</button></div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Anmelden</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Registrieren</button>
+    </div>
+    <div class="auth-panel active" id="panelLogin">
+      <div class="form-group"><label>E-Mail</label><input type="email" id="loginEmail" placeholder="max@beispiel.at"></div>
+      <div class="form-group"><label>Passwort</label><input type="password" id="loginPw" placeholder="••••••••"><span class="form-error" id="loginError">E-Mail oder Passwort falsch.</span></div>
+      <button class="place-btn" onclick="doLogin()" style="margin-top:4px">Anmelden</button>
+      <p class="form-hint">Noch kein Konto? <a onclick="switchAuthTab('register')">Jetzt registrieren</a></p>
+    </div>
+    <div class="auth-panel" id="panelRegister">
+      <div class="form-section" style="margin-top:0">Persönliche Daten</div>
+      <div class="form-row">
+        <div class="form-group"><label>Vorname *</label><input type="text" id="regFirst" placeholder="Max"></div>
+        <div class="form-group"><label>Nachname *</label><input type="text" id="regLast" placeholder="Müller"></div>
+      </div>
+      <div class="form-group"><label>Telefon</label><input type="tel" id="regPhone" placeholder="+43 664 123 456"></div>
+      <div class="form-section">Lieferadresse</div>
+      <div class="form-group"><label>Straße & Hausnummer *</label><input type="text" id="regStreet" placeholder="Hauptstraße 1"></div>
+      <div class="form-row">
+        <div class="form-group"><label>PLZ *</label><input type="text" id="regPlz" placeholder="2601"></div>
+        <div class="form-group"><label>Ort *</label><input type="text" id="regCity" placeholder="Sollenau"></div>
+      </div>
+      <div class="form-group"><label>Land</label><select id="regCountry"><option value="AT" selected>Österreich</option><option value="DE">Deutschland</option><option value="CH">Schweiz</option></select></div>
+      <div class="form-section">Zugangsdaten</div>
+      <div class="form-group"><label>E-Mail *</label><input type="email" id="regEmail" placeholder="max@beispiel.at"><span class="form-error" id="regEmailError">Diese E-Mail ist bereits registriert.</span></div>
+      <div class="form-group"><label>Passwort *</label><input type="password" id="regPw" placeholder="Min. 6 Zeichen"><span class="form-error" id="regPwError">Mindestens 6 Zeichen erforderlich.</span></div>
+      <div class="form-group"><label>Passwort bestätigen *</label><input type="password" id="regPw2" placeholder="••••••••"><span class="form-error" id="regPw2Error">Passwörter stimmen nicht überein.</span></div>
+      <div class="form-group" style="flex-direction:row;align-items:flex-start;gap:10px"><input type="checkbox" id="regNewsletter" style="margin-top:3px;accent-color:var(--green);flex-shrink:0"><label style="font-size:.75rem;color:var(--brown);cursor:pointer">Newsletter erhalten</label></div>
+      <div class="form-group" style="flex-direction:row;align-items:flex-start;gap:10px"><input type="checkbox" id="regAgb" style="margin-top:3px;accent-color:var(--green);flex-shrink:0"><label style="font-size:.75rem;color:var(--brown);cursor:pointer">AGB & Datenschutz akzeptieren *</label></div>
+      <span class="form-error" id="regAgbError" style="margin-bottom:8px">Bitte AGB akzeptieren.</span>
+      <button class="place-btn" onclick="doRegister()" style="margin-top:8px">Konto erstellen</button>
+      <p class="form-hint">Bereits registriert? <a onclick="switchAuthTab('login')">Anmelden</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-head"><span class="modal-title">Bestellung abschließen</span><button class="close-btn" onclick="closeCheckout()">✕</button></div>
+    <div class="modal-body">
+      <div class="form-section">Kontaktdaten</div>
+      <div class="form-row"><div class="form-group"><label>Vorname</label><input type="text" id="firstName"></div><div class="form-group"><label>Nachname</label><input type="text" id="lastName"></div></div>
+      <div class="form-row"><div class="form-group"><label>E-Mail</label><input type="email" id="email"></div><div class="form-group"><label>Telefon (optional)</label><input type="tel" id="phone"></div></div>
+      <div class="form-section">Lieferadresse</div>
+      <div class="form-group"><label>Straße & Nr.</label><input type="text" id="street"></div>
+      <div class="form-row"><div class="form-group"><label>PLZ</label><input type="text" id="plz"></div><div class="form-group"><label>Ort</label><input type="text" id="city"></div></div>
+      <div class="form-section">Liefertermin</div>
+      <div class="form-group"><label>Wunsch-Lieferdatum (optional)</label><input type="date" id="deliveryDate"></div>
+      <p style="font-size:.72rem;color:var(--brown2);margin:-8px 0 2px">Wir versenden gekühlt, wähle einen Tag, an dem du die Lieferung entgegennehmen kannst.</p>
+
+      <div class="form-section">Zahlungsart</div>
+      <div class="pay-methods" id="payMethods">
+        <button type="button" class="pay-chip" data-pay="karte" onclick="selectPay('karte',this)">Online-Zahlung</button>
+        <button type="button" class="pay-chip" data-pay="vorkasse" onclick="selectPay('vorkasse',this)">Überweisung</button>
+      </div>
+      <div id="payNote" class="pay-note">Sichere Online-Zahlung mit Karte, Apple Pay oder Google Pay. Du wirst nach dem Bestellen zu unserem Zahlungspartner Stripe weitergeleitet.</div>
+
+      <div class="form-section">Gutscheincode</div>
+      <div class="voucher-row">
+        <input type="text" id="voucherCode" placeholder="z. B. GENUSS10">
+        <button type="button" class="voucher-apply" onclick="applyVoucher()">Einlösen</button>
+      </div>
+      <div id="voucherMsg" class="voucher-msg"></div>
+
+      <div class="form-section">Bestellübersicht</div>
+      <div class="order-summary" id="orderSummary"></div>
+      <div class="checkout-pflicht" id="checkoutPflicht"></div>
+      <button class="place-btn" id="bestellBtn" onclick="placeOrder()">Zahlungspflichtig bestellen</button>
+    </div>
+  </div>
+</div>
+
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <div class="success-icon"><svg class="ico"><use href="#ic-leaf"/></svg></div>
+    <h2 class="success-title">Vielen Dank!</h2>
+    <div class="success-line"></div>
+    <p class="success-text">Ihre Bestellung ist eingegangen.<br>Wir kümmern uns umgehend darum.</p>
+    <p class="success-num" id="orderNum"></p>
+    <button class="continue-btn" onclick="closeSuccess()">Weiter einkaufen</button>
+  </div>
+</div>
+
+<div class="pd-overlay" id="pdOverlay" onclick="handlePdOverlayClick(event)">
+  <div class="pd-modal" id="pdModal"></div>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text"><strong>Cookies.</strong> Notwendige & optionale Cookies. <a href="#" data-vorschau="aus">Mehr</a></div>
+  <div class="cookie-actions">
+    <button class="cookie-btn reject" onclick="cookieRejectAll()">Nur notwendige</button>
+    <button class="cookie-btn settings" onclick="openCookieSettings()">Einstellungen</button>
+    <button class="cookie-btn accept" onclick="cookieAcceptAll()">Alle akzeptieren</button>
+  </div>
+</div>
+<div class="cookie-modal-overlay" id="cookieSettingsOverlay">
+  <div class="cookie-modal">
+    <div class="cookie-modal-head"><span class="cookie-modal-title">Cookie-Einstellungen</span><button class="close-btn" onclick="closeCookieSettings()">✕</button></div>
+    <div class="cookie-modal-body">
+      <p style="font-size:.8rem;color:var(--brown);line-height:1.7;margin-bottom:16px">Wählen Sie, welche Cookies Sie zulassen.</p>
+      <div class="cookie-category"><div class="cookie-cat-head"><span class="cookie-cat-title">Notwendig</span><label class="cookie-toggle"><input type="checkbox" checked disabled><span class="cookie-toggle-slider"></span></label></div><div class="cookie-cat-desc">Für Warenkorb, Login & Session.</div></div>
+      <div class="cookie-category"><div class="cookie-cat-head"><span class="cookie-cat-title">Analyse</span><label class="cookie-toggle"><input type="checkbox" id="cookieAnalytics"><span class="cookie-toggle-slider"></span></label></div><div class="cookie-cat-desc">Nutzungsanalyse, anonymisiert.</div></div>
+      <div class="cookie-category"><div class="cookie-cat-head"><span class="cookie-cat-title">Marketing</span><label class="cookie-toggle"><input type="checkbox" id="cookieMarketing"><span class="cookie-toggle-slider"></span></label></div><div class="cookie-cat-desc">Personalisierte Werbung.</div></div>
+      <div class="cookie-category"><div class="cookie-cat-head"><span class="cookie-cat-title">Komfort</span><label class="cookie-toggle"><input type="checkbox" id="cookieComfort" checked><span class="cookie-toggle-slider"></span></label></div><div class="cookie-cat-desc">Präferenzen speichern.</div></div>
+      <button class="cookie-save-btn" onclick="saveCookieSettings()">Auswahl speichern</button>
+    </div>
+  </div>
+</div>
+<button class="cookie-badge" id="cookieBadge" onclick="openCookieSettings()"><svg class="ico"><use href="#ic-leaf"/></svg></button>
+
+
+
+<div class="toast" id="toast"></div>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter-band">
+  <div class="nl-inner">
+    <div class="nl-text">
+      <h3>Nichts mehr verpassen</h3>
+      <p>Neue Spezialitäten, saisonale Angebote & Genuss-Tipps, direkt in dein Postfach.</p>
+    </div>
+    <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
+      <input type="email" id="nlEmail" placeholder="deine@email.at" required>
+      <button type="submit">Abonnieren</button>
+    </form>
+  </div>
+  <p id="nlDone" class="nl-done">✓ Danke! Du bist dabei, wir melden uns mit den besten Genuss-News.</p>
+</section>
+
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="foot-marke">
+      <img src="static/img/logo/logo-zeile-creme.svg?v=11" alt="Bauern König">
+      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
+    </div>
+    <div><h4>Service</h4><a href="#top">Zum Shop</a><a href="#" data-vorschau="aus">Versand &amp; Lieferung</a><a href="#" data-vorschau="aus">FAQ</a><a href="#" data-vorschau="aus">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="#sortiment">Käse &amp; Fleisch</a><a href="#geschenke">Geschenkboxen</a><a href="#" data-vorschau="aus">Gutscheine</a><a href="#" data-vorschau="aus">Rezepte</a></div>
+    <div><h4>Rechtliches</h4><a href="#" data-vorschau="aus">Impressum</a><a href="#" data-vorschau="aus">Datenschutz</a><a href="#" data-vorschau="aus">AGB</a><a href="#" data-vorschau="aus">Widerruf</a></div>
+    <div><h4>Kontakt</h4>
+      
+      
+      <a href="#" data-vorschau="aus">2823 Pitten, Seebensteinerstraße</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
+</footer>
+
+<script>
+// ═════════════════════════════════════════════════
+// PRODUKTDATEN
+// ═════════════════════════════════════════════════
+
+// Image placeholders (kostenlose Unsplash-Food-Fotos als Kategorie-Hintergründe)
+const CAT_IMAGES = {
+  kaese: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=400&fit=crop',
+  mangalitza: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=400&fit=crop',
+  wild: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=400&fit=crop',
+  hausschwein: 'https://images.unsplash.com/photo-1529563021893-cc83c992d75d?w=400&h=400&fit=crop',
+};
+
+// Gradient placeholders per category (fallback wenn kein Bild)
+function placeGrad(cat) {
+  const g = {
+    kaese: 'linear-gradient(135deg,#f5d98a,#d4a34a)',
+    mangalitza: 'linear-gradient(135deg,#c4715a,#8b3a2a)',
+    wild: 'linear-gradient(135deg,#5a8a4a,#2d5a27)',
+    hausschwein: 'linear-gradient(135deg,#e8a85a,#c0772a)',
+    geschenk: 'linear-gradient(135deg,#c39a4d,#8b6a2a)'
+  };
+  return g[cat]||'linear-gradient(135deg,#d6cec0,#8b6f5a)';
+}
+
+// ── PFLICHTANGABEN (Preisangabenverordnung + LMIV) ──
+function eur(v){ return '€ ' + v.toFixed(2).replace('.', ','); }
+
+/* Grundpreis je kg. Pflicht bei Ware nach Gewicht; Geschenkboxen sind
+   Warenzusammenstellungen und daher ausgenommen (dort fehlt netto_g). */
+function grundpreisText(p){
+  if (!p.grundpreis) return '';
+  return eur(p.grundpreis) + ' / kg';
+}
+
+
+/* Kennzeichnung nach LMIV. Wird nur angezeigt, was der Betrieb hinterlegt hat:
+   hier werden keine Angaben erfunden. */
+function pflichtangabenHTML(p){
+  const zeilen = [];
+  if (p.verkehrsbezeichnung) zeilen.push(['Bezeichnung', p.verkehrsbezeichnung]);
+  if (p.zutaten)   zeilen.push(['Zutaten', p.zutaten]);
+  if (p.allergene) zeilen.push(['Allergene', `<strong>${p.allergene}</strong>`]);
+  if (p.netto_g)   zeilen.push(['Nettofüllmenge', p.netto_g >= 1000 ? (p.netto_g/1000).toFixed(2).replace('.', ',') + ' kg' : p.netto_g + ' g']);
+  if (p.herkunft)  zeilen.push(['Herkunft', p.herkunft]);
+  if (p.lagerung)  zeilen.push(['Aufbewahrung', p.lagerung]);
+  if (p.hersteller) zeilen.push(['Hersteller', p.hersteller]);
+  if (p.alkohol_vol) zeilen.push(['Alkoholgehalt', p.alkohol_vol + ' % vol']);
+
+  const nw = p.naehrwerte || {};
+  const nwZeilen = Object.keys(nw).length
+    ? `<table class="pd-nw"><caption>Durchschnittliche Nährwerte je 100 g</caption><tbody>
+        ${Object.entries(nw).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+      </tbody></table>` : '';
+
+  const widerruf = p.verderblich
+    ? '<p class="pd-widerruf">Frischware: Vom Widerrufsrecht ausgenommen, weil sie schnell verderben kann. Näheres in der <a href="#" data-vorschau="aus">Widerrufsbelehrung</a>.</p>'
+    : '<p class="pd-widerruf">Für dieses Produkt gilt das gesetzliche Widerrufsrecht von 14 Tagen. Näheres in der <a href="#" data-vorschau="aus">Widerrufsbelehrung</a>.</p>';
+  if (!zeilen.length && !nwZeilen) return `<div class="pd-pflicht">${widerruf}</div>`;
+  return `<div class="pd-pflicht">
+      <div class="pd-details-title">Produktinformationen</div>
+      <dl class="pd-pflicht-liste">${zeilen.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      ${nwZeilen}
+      ${widerruf}
+    </div>`;
+}
+
+// Kategorien kommen aus der Verwaltung, nicht aus dem Code
+const KATEGORIEN = {"kaese": {"label": "Käse", "icon": "cheese", "eigen": false}, "mangalitza": {"label": "Mangalitza", "icon": "pig", "eigen": false}, "wild": {"label": "Wild", "icon": "deer", "eigen": false}, "hausschwein": {"label": "Hausschwein", "icon": "bacon", "eigen": false}, "geschenk": {"label": "Geschenkbox", "icon": "gift", "eigen": true}};
+const UNTERKATEGORIEN = {"geschenk": ["kaese", "klassik", "premium", "wurst"], "hausschwein": ["duerre", "geselcht", "schmalz", "speck", "wurst"], "kaese": ["langgereift", "premium", "standard", "ziege-schaf"], "mangalitza": ["edel", "speck", "wurst"], "wild": ["edel", "salami", "schinken"]};
+function catEmoji(c) { const k=(KATEGORIEN[c]||{}).icon||'box'; return `<svg class="ico"><use href="#ic-${k}"/></svg>`; }
+function catLabel(c) { return (KATEGORIEN[c]||{}).label||c; }
+function beschriften(k){ return k.split('-').map(t => t.charAt(0).toUpperCase()+t.slice(1)).join(' / '); }
+function hatEigeneSektion(c) { return !!(KATEGORIEN[c]||{}).eigen; }
+
+const products = [{"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 5, "name": "Karottenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Natürlich mit Karotten, mild & fruchtig.", "stock": 22, "rating": 4.4, "details": ["Karottenextrakt", "Mild & fruchtig"], "price": 4.9, "img": "static/img/products/karotte.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 6, "name": "Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Scharf", "unit": "pro 100 g", "desc": "Feurig mit eingelegten Chilistücken.", "stock": 15, "rating": 4.9, "details": ["Mit Chilistücken", "Scharf, würzig"], "price": 4.9, "img": "static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 7, "name": "Weinkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Weißwein gereift, edel & mild.", "stock": 16, "rating": 4.6, "details": ["Weißwein gereift", "Edel mild"], "price": 4.9, "img": "static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 8, "name": "Mostkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Apfelmost gereift, fruchtig & herbstlich.", "stock": 14, "rating": 4.5, "details": ["Most gereift", "Herbstlich"], "price": 4.9, "img": "static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 9, "name": "Bärlaufkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Bärlauch verfeinert.", "stock": 12, "rating": 4.7, "details": ["Frischer Bärlauch", "Frühlingshaft"], "price": 4.9, "img": "static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 10, "name": "Pfefferkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit grobem Pfeffer, pikant & rustikal.", "stock": 20, "rating": 4.5, "details": ["Schwarzer Pfeffer", "Pikant"], "price": 4.9, "img": "static/img/products/pfeffer.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 11, "name": "Rebellkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Kräftiger Schnittkäse, alte Rezeptur.", "stock": 17, "rating": 4.4, "details": ["Alte Familienrezeptur", "Kräftig"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 12, "name": "Trüffelgouda", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Premium", "unit": "pro 100 g", "desc": "Edler Gouda mit Trüffelstücken.", "stock": 10, "rating": 5.0, "details": ["Mit Trüffel", "Echt edel"], "price": 5.9, "img": "static/img/products/trueffel.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 13, "name": "Bergkäse (18 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Extra lang", "unit": "pro 100 g", "desc": "Extrem würzig, mit Kristallen.", "stock": 8, "rating": 5.0, "details": ["18 Monate gereift", "Proteinkristalle"], "price": 5.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 14, "name": "Alter Gouda (38 Monate)", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Meisterstück, 38 Monate, mit Kristallen.", "stock": 5, "rating": 5.0, "details": ["38 Monate gereift", "Proteinkristalle", "Limitierter Bestand"], "price": 5.9, "img": "static/img/products/altgouda.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 15, "name": "Alter Ziegenkäse (38 Monate)", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Pikanter Ziegenkäse, unglaublich würzig.", "stock": 4, "rating": 4.9, "details": ["Ziegenmilch", "38 Monate", "Pikant"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 16, "name": "Walnusskäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit knackigen Walnüssen.", "stock": 22, "rating": 4.6, "details": ["Walnussstücke", "Herzhaft-nussig"], "price": 5.9, "img": "static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 17, "name": "Walnusstraum", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Cremig mit Walnüssen & Honignote.", "stock": 14, "rating": 4.7, "details": ["Walnüsse & Honig", "Cremig-süßlich"], "price": 5.9, "img": "static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 18, "name": "Edelziege", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Feinster Ziegenkäse, mild & edel.", "stock": 16, "rating": 4.5, "details": ["Ziegenmilch", "Cremig"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 19, "name": "Schafkäse", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Vollmundiger Schafskäse.", "stock": 12, "rating": 4.6, "details": ["Schafmilch", "Vollmundig"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 20, "name": "Boxhornkleekäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Boxhornklee, würzig.", "stock": 10, "rating": 4.3, "details": ["Boxhornklee", "Würzig"], "price": 5.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 21, "name": "Roter Rüben Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Neu", "unit": "pro 100 g", "desc": "Rote Rüben & Chili, fruchtig-scharf.", "stock": 18, "rating": 4.8, "details": ["Rote Rüben & Chili", "Fruchtig-scharf"], "price": 5.9, "img": "static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 22, "name": "Mangalitza Speck (geselcht)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Edler Mangalitza-Speck, Buchenholz geräuchert.", "stock": 20, "rating": 4.7, "details": ["Buchenholz geräuchert", "Marmoriert"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 23, "name": "Mangalitza Speck (Paprika)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit edelsüßer Paprika ummantelt.", "stock": 18, "rating": 4.6, "details": ["Paprika-ummantelt", "Würzig"], "price": 4.9, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 24, "name": "Mangalitza Speck (gesalzen)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Naturbelassen, pur & salzig.", "stock": 22, "rating": 4.5, "details": ["Nur gesalzen", "Puristisch"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 25, "name": "Mangalitza Würstel", "cat": "mangalitza", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, aromatisch, ohne Zusätze.", "stock": 25, "rating": 4.6, "details": ["Ohne Zusätze", "Saftig"], "price": 4.9, "img": "static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 26, "name": "Karreespeck-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Karree mit Rosmarin gewürzt.", "stock": 14, "rating": 4.8, "details": ["Mit Rosmarin", "Marmoriert"], "price": 6.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 27, "name": "Lungenbraten-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Zarter Lungenbraten mit Rosmarin.", "stock": 10, "rating": 5.0, "details": ["Rosmarin & Knoblauch", "Zart"], "price": 6.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 28, "name": "Mangalitza Lungenbraten", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "Königsstück", "unit": "pro 100 g", "desc": "Das Filet, zartestes Stück.", "stock": 6, "rating": 5.0, "details": ["Mangalitza-Filet", "Limitierter Bestand"], "price": 7.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 29, "name": "Mangalitza Karreespeck", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Stark marmoriert, besonders saftig.", "stock": 12, "rating": 4.7, "details": ["Stark marmoriert", "Saftig"], "price": 7.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 30, "name": "Mangalitza Salami", "cat": "mangalitza", "sub": "wurst", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "8 Wochen luftgetrocknet, kräftig.", "stock": 16, "rating": 4.8, "details": ["Luftgetrocknet 8 Wo.", "Kräftig-würzig"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 31, "name": "Hirschsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Edle Salami vom Hirsch.", "stock": 15, "rating": 4.7, "details": ["Hirschfleisch", "Luftgetrocknet"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 32, "name": "Wildschweinsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Kräftige Wildschweinsalami.", "stock": 14, "rating": 4.6, "details": ["Wildschwein", "Intensiv"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 33, "name": "Hirschrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Monatelang luftgetrocknet.", "stock": 8, "rating": 4.9, "details": ["Hirschkeule", "Monatelang gereift"], "price": 9.9, "img": "static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 34, "name": "Wildschweinrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Vollmundig & leicht süßlich.", "stock": 7, "rating": 4.8, "details": ["Vollmundig", "Luftgetrocknet"], "price": 9.9, "img": "static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 35, "name": "Entenfilet", "cat": "wild", "sub": "edel", "emoji": "🦆", "badge": "Premium", "unit": "pro 100 g", "desc": "Kaltgeräuchert, fein gewürzt.", "stock": 10, "rating": 4.9, "details": ["Kaltgeräuchert", "Buchenholz"], "price": 9.9, "img": "static/img/products/ente.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 40, "name": "Kümmelbraten", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Gepökelt mit Kümmel.", "stock": 20, "rating": 4.5, "details": ["Gepökelt", "Mit Kümmel"], "price": 2.8, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 41, "name": "Knoblauchwürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Würzig, für Grill & Pfanne.", "stock": 26, "rating": 4.6, "details": ["Mit Knoblauch", "Grillwürstel"], "price": 2.8, "img": "static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 42, "name": "Pusztawürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Paprika & Chili, ungarische Art.", "stock": 24, "rating": 4.7, "details": ["Paprika & Chili", "Feurig"], "price": 2.8, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 43, "name": "Knoblauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Geselcht mit würzigem Knoblauch.", "stock": 22, "rating": 4.5, "details": ["Geselcht", "Knoblauch"], "price": 2.8, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 44, "name": "Zigeunerspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Scharf-pikante Gewürzmischung.", "stock": 18, "rating": 4.6, "details": ["Paprika & Chili", "Pikant"], "price": 2.8, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 45, "name": "Geselchterspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz kaltgeräuchert.", "stock": 24, "rating": 4.4, "details": ["Buchenholz", "Kaltgeräuchert"], "price": 2.8, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 46, "name": "Pikante Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Luftgetrocknet, pikant.", "stock": 20, "rating": 4.6, "details": ["Luftgetrocknet", "Pikant"], "price": 2.9, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 47, "name": "Feurige Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Extra scharf für Chili-Fans.", "stock": 18, "rating": 4.7, "details": ["Extra scharf", "Chili"], "price": 2.9, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 48, "name": "Geselchter Schopf", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schweinsschopf, saftig & würzig.", "stock": 15, "rating": 4.5, "details": ["Geräuchert", "Saftig"], "price": 2.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 49, "name": "Geselchter Teilsames", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schulter, traditionell geselcht.", "stock": 14, "rating": 4.4, "details": ["Schulter", "Geselcht"], "price": 2.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 50, "name": "Knabber Nossi (scharf)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Pikante Trockenwurst.", "stock": 25, "rating": 4.5, "details": ["Trockenwurst", "Scharf"], "price": 4.0, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 51, "name": "Knabber Nossi (mild)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Milde Trockenwurst.", "stock": 27, "rating": 4.4, "details": ["Trockenwurst", "Mild"], "price": 4.0, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 52, "name": "Grammelschmalz", "cat": "hausschwein", "sub": "schmalz", "emoji": "🫙", "badge": "", "unit": "pro Stück (ca. 250g)", "desc": "Hausgemacht mit Grammeln.", "stock": 20, "rating": 4.8, "details": ["Hausgemacht", "Brotaufstrich"], "price": 4.9, "img": "static/img/products/leberwurst.webp", "netto_g": 250, "grundpreis": 19.6, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 53, "name": "Luftgetr. Bauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Wochen luftgetrocknet.", "stock": 16, "rating": 4.7, "details": ["Luftgetrocknet", "Gewürzkruste"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 54, "name": "Luftgetr. Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Konzentriertes Aroma.", "stock": 12, "rating": 4.6, "details": ["Intensives Aroma", "Luftgetrocknet"], "price": 5.9, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 55, "name": "Geselchter Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz geräuchert.", "stock": 14, "rating": 4.5, "details": ["Buchenholz", "Klassiker"], "price": 5.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 56, "name": "Kürbiskern Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit steirischen Kürbiskernen.", "stock": 12, "rating": 4.9, "details": ["Steirische Kürbiskerne", "Steirische Spezialität"], "price": 5.9, "img": "static/img/products/kuerbiskern.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 57, "name": "Käse-Genießerbox", "cat": "geschenk", "sub": "kaese", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.", "stock": 15, "rating": 5.0, "details": ["6 Käsesorten · ca. 600 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 39.9, "img": "static/img/products/boxkaese.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 58, "name": "Wurst & Speck Box", "cat": "geschenk", "sub": "wurst", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.", "stock": 12, "rating": 4.9, "details": ["5 Fleischspezialitäten · ca. 550 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 44.9, "img": "static/img/products/boxwurst.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 59, "name": "Premium Genussbox", "cat": "geschenk", "sub": "premium", "emoji": "🎁", "badge": "Bestseller", "unit": "pro Box", "desc": "Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.", "stock": 8, "rating": 5.0, "details": ["Käse, Wurst & Speck · ca. 1 kg", "Inkl. Flasche Wein", "Große Premium-Holzbox", "Inkl. Grußkarte"], "price": 69.9, "img": "static/img/products/boxpremium.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 60, "name": "Bauern Jausen-Box", "cat": "geschenk", "sub": "klassik", "emoji": "🎁", "badge": "", "unit": "pro Box", "desc": "Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.", "stock": 20, "rating": 4.8, "details": ["Jausen-Auswahl · ca. 450 g", "Inkl. Bauernbrot", "Rustikale Holzbox", "Sofort genussbereit"], "price": 29.9, "img": "static/img/products/boxjause.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
+// Versandregeln kommen aus der Verwaltung, nicht aus dem Code
+const VERSANDKOSTEN = 5.9;
+const VERSANDFREI   = 75.0;
+const LIEFERZEIT    = "Lieferung innerhalb von 1 bis 3 Werktagen nach Zahlungseingang.";
+
+// Hero-/Hof-Bilder (lokal, von Higgsfield gesichert)
+const IMG = {
+  hero: 'static/img/products/hero.webp',
+  bauer: 'static/img/products/bauer.webp',
+};
+
+// Hero-Hintergrund & Hof-Bild setzen
+(function(){
+  const hero = document.querySelector('.hero');
+  if (hero) hero.style.backgroundImage =
+    `linear-gradient(135deg,rgba(26,58,22,.78) 0%,rgba(26,42,20,.86) 100%),url('${IMG.hero}')`;
+  const ab = document.getElementById('aboutImg');
+  if (ab) ab.innerHTML = `<img src="${IMG.bauer}" alt="Bauern König, vom Hof" loading="lazy">`;
+})();
+
+// Unterkategorien entstehen aus den Produkten (siehe UNTERKATEGORIEN)
+
+// ── FILTER STATE ──
+let fMain = 'all', fSub = 'all', fSearch = '', fSort = '', fMaxPrice = 10;
+
+// ── MOBILE-PAGING (max. 10 laden) ──
+const MOBILE_PAGE = 10;
+let mobileShown = MOBILE_PAGE;
+let currentFiltered = products.slice();
+function isMobileView(){ return window.matchMedia('(max-width:600px)').matches; }
+
+function setMainFilter(cat, btn) {
+  fMain = cat; fSub = 'all';
+  document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  renderSubButtons();
+  applyFilters();
+}
+
+function renderSubButtons() {
+  const container = document.getElementById('subFilterButtons');
+  const row = document.getElementById('subFilterRow');
+  if (fMain === 'all') { container.innerHTML = ''; row.style.display = 'none'; return; }
+  row.style.display = '';
+  const liste = UNTERKATEGORIEN[fMain] || [];
+  if (!liste.length) { container.innerHTML = ''; row.style.display = 'none'; return; }
+  const eintraege = [{k: 'all', l: 'Alle'}].concat(liste.map(x => ({k: x, l: beschriften(x)})));
+  container.innerHTML = eintraege.map(sb =>
+    `<button class="filter-cat-btn sub ${sb.k===fSub?'active':''}" onclick="fSub='${sb.k}';applyFilters();document.querySelectorAll('#subFilterButtons .sub').forEach(b=>b.classList.remove('active'));this.classList.add('active')">${sb.l}</button>`
+  ).join('');
+}
+
+function applyFilters() {
+  fSearch = document.getElementById('filterSearch').value.toLowerCase().trim();
+  fSort = document.getElementById('filterSort').value;
+
+  let filtered = products.filter(p => {
+    if (hatEigeneSektion(p.cat)) return false;   // hat einen eigenen Block weiter unten
+    if (fMain !== 'all' && p.cat !== fMain) return false;
+    if (fSub !== 'all' && p.sub !== fSub) return false;
+    if (fSearch && !p.name.toLowerCase().includes(fSearch) && !p.desc.toLowerCase().includes(fSearch)) return false;
+    return true;
+  });
+
+  // Sort
+  if (fSort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (fSort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (fSort === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name, 'de'));
+
+  mobileShown = MOBILE_PAGE;   // bei jeder Filteränderung zurücksetzen
+  renderProductGrid(filtered);
+
+  // Active filter tags
+  const tags = [];
+  if (fMain !== 'all') tags.push({label: SUBS[fMain].label, remove: ()=>setMainFilter('all',document.querySelector('[data-cat="all"]'))});
+  if (fSub !== 'all') {
+    const s = SUBS[fMain].subs.find(x => x.k === fSub);
+    if (s) tags.push({label: s.l, remove: ()=>{fSub='all';renderSubButtons();applyFilters();}});
+  }
+  if (fSearch) tags.push({label: '„'+fSearch+'“', remove: ()=>{document.getElementById('filterSearch').value='';fSearch='';applyFilters();}});
+  const actEl = document.getElementById('activeFilters');
+  if (tags.length) {
+    actEl.style.display = 'flex';
+    actEl.innerHTML = tags.map(t => `<span class="active-tag">${t.label}<span class="remove-tag" onclick="(${t.remove.toString()})()">✕</span></span>`).join('');
+    actEl.innerHTML += '<button class="filter-reset" onclick="resetAllFilters()">Alle zurücksetzen</button>';
+  } else actEl.style.display = 'none';
+}
+
+function resetAllFilters() {
+  fMain='all'; fSub='all'; fSearch=''; fSort='';
+  document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+  document.getElementById('filterSearch').value = '';
+  document.getElementById('filterSort').value = '';
+  renderSubButtons();
+  applyFilters();
+}
+
+// ── RENDER PRODUCT GRID ──
+function starHTML(r){
+  const full = Math.round(r||0);
+  let s='';
+  for(let i=1;i<=5;i++) s += `<span class="star ${i<=full?'on':''}">★</span>`;
+  return `<span class="card-rating">${s}<span class="rating-num">${(r||0).toFixed(1)}</span></span>`;
+}
+function cardHTML(p){
+  const imgHtml = p.img
+    ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder style=background:${placeGrad(p.cat)}>${p.emoji}</div>'">`
+    : `<div class="card-img-placeholder" style="background:${placeGrad(p.cat)}">${p.emoji}</div>`;
+  const badgeCls = p.cat === 'kaese' ? '' : 'green';
+  const stockHtml = p.stock===0
+    ? `<div class="card-stock out">● Ausverkauft</div>`
+    : (p.stock<=5 ? `<div class="card-stock low">● Nur noch ${p.stock} Stück</div>` : `<div class="card-stock ok">● Auf Lager</div>`);
+  return `<div class="card">
+    ${p.badge ? `<div class="card-badge ${badgeCls}">${p.badge}</div>` : ''}
+    <div class="card-img-wrap" onclick="openDetail(${p.id})">
+      ${imgHtml}
+      <span class="card-cat-tag">${catEmoji(p.cat)} ${catLabel(p.cat)}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-name" onclick="openDetail(${p.id})">${p.name}</div>
+      ${starHTML(p.rating)}
+      <div class="card-unit">${p.unit}</div>
+      <div class="card-desc">${p.desc}</div>
+      ${stockHtml}
+      <div class="card-footer">
+        <div class="card-price">€ ${p.price.toFixed(2)}${p.grundpreis ? `<small class="card-grundpreis">${grundpreisText(p)}</small>` : ''}<small class="card-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. Versand' : ''}</small></div>
+        <button class="add-btn ${p.stock===0?'sold-out':''}" id="addBtn-${p.id}" onclick="addToCart(${p.id})" ${p.stock===0?'disabled':''}>${p.stock===0?'Ausverkauft':'+ Warenkorb'}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderProductGrid(filtered) {
+  const grid = document.getElementById('productGrid');
+  if (!filtered) filtered = products;
+  currentFiltered = filtered;
+  document.getElementById('productCount').textContent = filtered.length + ' Produkte';
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty-state"><div class="icon"><svg class="ico" style="width:34px;height:34px"><use href="#ic-search"/></svg></div><h3>Keine Produkte gefunden</h3><p>Versuchen Sie einen anderen Filter.</p></div>`;
+    return;
+  }
+
+  // Auf Mobile nur 10 (bzw. mobileShown) Produkte rendern, Rest per Button
+  const mobile = isMobileView();
+  const limit = mobile ? Math.min(mobileShown, filtered.length) : filtered.length;
+  let html = filtered.slice(0, limit).map(cardHTML).join('');
+
+  if (mobile && filtered.length > limit) {
+    const remaining = filtered.length - limit;
+    html += `<div class="load-more-wrap">
+      <span class="load-more-count">${limit} von ${filtered.length} angezeigt</span>
+      <button class="load-more-btn" onclick="loadMoreProducts()">Weitere ${Math.min(MOBILE_PAGE, remaining)} laden</button>
+    </div>`;
+  }
+  grid.innerHTML = html;
+}
+
+function loadMoreProducts(){
+  mobileShown += MOBILE_PAGE;
+  renderProductGrid(currentFiltered);
+}
+
+// ── GESCHENKBOXEN (eigene Sektion, Karten im M3-Look) ──
+function renderGiftBoxes(){
+  const grid = document.getElementById('giftGrid');
+  if (!grid) return;
+  grid.innerHTML = products.filter(p => hatEigeneSektion(p.cat)).map(p => `
+    <article class="gbx-card" onclick="openDetail(${p.id})">
+      <div class="gbx-img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+      <div class="gbx-body">
+        <span class="gbx-cat">Geschenkbox</span>
+        <h3 class="gbx-name">${p.name}</h3>
+        <p class="gbx-desc">${p.desc}</p>
+        <div class="gbx-foot">
+          <span class="gbx-price">€ ${p.price.toFixed(2).replace('.', ',')}<small>inkl. MwSt</small></span>
+          <button class="gbx-btn" onclick="event.stopPropagation();addToCart(${p.id})" ${p.stock===0?'disabled':''}>${p.stock===0?'Ausverkauft':'In den Warenkorb'}</button>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+// Bei Wechsel Mobile <-> Desktop neu rendern
+let _resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => renderProductGrid(currentFiltered), 150);
+});
+
+// ── CART / AUTH / CHECKOUT / PROFILE / DETAIL / ADMIN / COOKIE / LEGAL ──
+// (identisch zur vorherigen Version, alle Funktionen erhalten)
+let cart = [];
+let currentUser = null;
+
+function getUsers() { try { return JSON.parse(localStorage.getItem('bk_users')||'{}'); } catch{return {};} }
+function saveUsers(u) { localStorage.setItem('bk_users', JSON.stringify(u)); }
+function getOrders(email) { try { return JSON.parse(localStorage.getItem('bk_orders_'+email)||'[]'); } catch{return [];} }
+function saveOrder(email, order) { const o=getOrders(email); o.unshift(order); localStorage.setItem('bk_orders_'+email, JSON.stringify(o)); }
+function loadSession() { try { const s=localStorage.getItem('bk_session'); if(s) currentUser=JSON.parse(s); } catch{} }
+function saveSession() { localStorage.setItem('bk_session', JSON.stringify(currentUser)); }
+function clearSession() { localStorage.removeItem('bk_session'); }
+
+function updateNav() {
+  const loggedIn = !!currentUser;
+  // Die Kopfzeile ist ein gemeinsames Fragment: fehlende Knoepfe duerfen die
+  // Seite nicht lahmlegen (frueher brach hier das ganze Produktgrid ab).
+  const zeig = (id, an) => { const el = document.getElementById(id); if (el) el.style.display = an ? '' : 'none'; };
+  zeig('navLoginBtn', !loggedIn);
+  zeig('navRegisterBtn', false);
+  zeig('navUserGreet', loggedIn);
+  zeig('navProfileBtn', loggedIn);
+  const greet = document.getElementById('navUserGreet');
+  if (loggedIn && greet) greet.textContent = 'Hallo, ' + currentUser.firstName;
+  const mmBox = document.getElementById('mmAccountBox');
+  if (mmBox) {
+    mmBox.innerHTML = loggedIn
+      ? `<div class="mm-greet">Angemeldet als <strong>${currentUser.firstName}</strong></div><button class="mm-btn" onclick="closeMobileMenu();openProfile()">Mein Konto</button><button class="mm-btn ghost" onclick="closeMobileMenu();doLogout()">Abmelden</button>`
+      : `<a class="mm-btn" href="#" data-vorschau="aus">Anmelden</a><a class="mm-btn ghost" href="#" data-vorschau="aus">Registrieren</a>`;
+  }
+}
+
+// ── MOBILES MENÜ ──
+function toggleMobileMenu(){
+  const m=document.getElementById('mobileMenu'), b=document.getElementById('navBurger');
+  const open=m.classList.toggle('open'); b.classList.toggle('open',open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('navBurger').classList.remove('open');
+  document.body.style.overflow='';
+}
+function mobileAccount(){ closeMobileMenu(); if(currentUser) openProfile(); else openAuth('login'); }
+function subscribeNewsletter(e){ e.preventDefault(); const el=document.getElementById('nlEmail'); if(el&&el.value){ el.value=''; document.getElementById('nlDone').classList.add('show'); } return false; }
+
+function isPer100(p){ return /100\s*g/i.test(p.unit); }
+
+function addToCart(id, grams) {
+  const p = products.find(x=>x.id===id);
+  if (!p || p.stock===0) return;
+  const per100 = isPer100(p);
+  const g = per100 ? (grams || 100) : null;          // gewählte Grammzahl (null = pro Stück/Box)
+  const key = id + '_' + (g || 'stk');
+  const linePrice = g ? Math.round(p.price * g) / 100 : p.price;
+  const ex = cart.find(x=>x.key===key);
+  if(ex) ex.qty++;
+  else cart.push({ key, id, name:p.name, emoji:p.emoji, img:p.img, cat:p.cat, grams:g,
+                   unitLabel:(g?g+' g':p.unit), price:linePrice, qty:1,
+                   grundpreis:p.grundpreis || null });
+  updateCartCount(); renderDrawer();
+  const btn = document.getElementById('addBtn-'+id);
+  if(btn){ btn.classList.add('added'); btn.textContent='✓'; setTimeout(()=>{btn.classList.remove('added');btn.textContent='+ Warenkorb';},1200); }
+  showToast('"' + p.name + '" hinzugefügt');
+}
+
+function changeQty(key,d) { const i=cart.find(x=>x.key===key); if(!i) return; i.qty+=d; if(i.qty<=0) cart=cart.filter(x=>x.key!==key); updateCartCount(); renderDrawer(); }
+function removeItem(key) { cart=cart.filter(x=>x.key!==key); updateCartCount(); renderDrawer(); }
+function updateCartCount() { const t=cart.reduce((s,c)=>s+c.qty,0); const el=document.getElementById('cartCount'); el.textContent=t; el.classList.toggle('visible',t>0); document.getElementById('checkoutBtn').disabled=t===0; }
+function cartTotal() { return cart.reduce((s,c)=>s+c.price*c.qty,0); }
+function renderDrawer() {
+  const b=document.getElementById('drawerBody');
+  if(!cart.length){ b.innerHTML=`<div class="empty-cart"><span><svg class="ico" style="width:30px;height:30px"><use href="#ic-cart"/></svg></span>Ihr Warenkorb ist leer.</div>`; }
+  else { b.innerHTML=cart.map(i=>`<div class="cart-item"><div class="ci-img">${i.img?`<img src="${i.img}" alt="">`:i.emoji}</div><div class="ci-info"><div class="ci-cat">${i.unitLabel}${i.grundpreis ? ` · ${eur(i.grundpreis)} / kg` : ''}</div><div class="ci-name">${i.name}</div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button><span class="qty-val">${i.qty}</span><button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button><span class="ci-price">€ ${(i.price*i.qty).toFixed(2)}</span><button class="remove-btn" onclick="removeItem('${i.key}')">✕</button></div></div></div>`).join(''); }
+  document.getElementById('subtotal').textContent='€ '+cartTotal().toFixed(2);
+}
+function openCart() { document.getElementById('overlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); renderDrawer(); }
+function closeAll() { document.getElementById('overlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); document.getElementById('profileDrawer').classList.remove('open'); }
+
+function openAuth(tab) { switchAuthTab(tab||'login'); document.getElementById('authModal').classList.add('open'); }
+function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
+function switchAuthTab(tab) {
+  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
+  document.getElementById('tabRegister').classList.toggle('active',tab==='register');
+  document.getElementById('panelLogin').classList.toggle('active',tab==='login');
+  document.getElementById('panelRegister').classList.toggle('active',tab==='register');
+  document.getElementById('authModalTitle').textContent = tab==='login' ? 'Anmelden' : 'Konto erstellen';
+  document.querySelectorAll('.form-error').forEach(e=>e.classList.remove('show'));
+}
+function doLogin() {
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pw=document.getElementById('loginPw').value;
+  const users=getUsers();
+  const err=document.getElementById('loginError'); err.classList.remove('show');
+  if(!users[email]||users[email].pw!==btoa(pw)){err.classList.add('show');return;}
+  const u=users[email]; currentUser={email,firstName:u.firstName,lastName:u.lastName,phone:u.phone||'',street:u.street||'',plz:u.plz||'',city:u.city||'',country:u.country||'AT',newsletter:u.newsletter||false};
+  saveSession(); updateNav(); closeAuth(); showToast('Willkommen zurück, '+currentUser.firstName+'!'); prefillCheckout();
+}
+function doRegister() {
+  let ok=true;
+  const first=document.getElementById('regFirst').value.trim(),last=document.getElementById('regLast').value.trim(),phone=document.getElementById('regPhone').value.trim(),street=document.getElementById('regStreet').value.trim(),plz=document.getElementById('regPlz').value.trim(),city=document.getElementById('regCity').value.trim(),country=document.getElementById('regCountry').value,email=document.getElementById('regEmail').value.trim().toLowerCase(),pw=document.getElementById('regPw').value,pw2=document.getElementById('regPw2').value,newsletter=document.getElementById('regNewsletter').checked,agb=document.getElementById('regAgb').checked;
+  document.querySelectorAll('.form-error').forEach(e=>e.classList.remove('show'));
+  const users=getUsers();
+  if(users[email]){document.getElementById('regEmailError').classList.add('show');ok=false;}
+  if(pw.length<6){document.getElementById('regPwError').classList.add('show');ok=false;}
+  if(pw!==pw2){document.getElementById('regPw2Error').classList.add('show');ok=false;}
+  if(!agb){document.getElementById('regAgbError').classList.add('show');ok=false;}
+  if(!first||!last||!email||!street||!plz||!city){showToast('Pflichtfelder (*) ausfüllen');ok=false;}
+  if(!ok)return;
+  users[email]={firstName:first,lastName:last,phone,street,plz,city,country,newsletter,pw:btoa(pw)}; saveUsers(users);
+  currentUser={email,firstName:first,lastName:last,phone,street,plz,city,country,newsletter}; saveSession(); updateNav(); closeAuth(); showToast('Willkommen, '+first+'!'); prefillCheckout();
+}
+function doLogout(){currentUser=null;clearSession();updateNav();closeProfile();showToast('Abgemeldet.');}
+
+function openProfile(){document.getElementById('overlay').classList.add('open');document.getElementById('profileDrawer').classList.add('open');renderProfile();}
+function closeProfile(){document.getElementById('overlay').classList.remove('open');document.getElementById('profileDrawer').classList.remove('open');}
+function renderProfile(){
+  if(!currentUser)return;
+  const orders=getOrders(currentUser.email);
+  const countryName={AT:'Österreich',DE:'Deutschland',CH:'Schweiz'}[currentUser.country||'AT']||'Österreich';
+  document.getElementById('profileBody').innerHTML=`
+    <div class="profile-section"><div class="profile-section-title" style="display:flex;justify-content:space-between;align-items:center">Persönliche Daten<button class="edit-profile-btn" onclick="toggleEditProfile()">Bearbeiten</button></div>
+    <div class="profile-field"><span class="profile-field-label">Name</span><span class="profile-field-val">${currentUser.firstName} ${currentUser.lastName}</span></div>
+    <div class="profile-field"><span class="profile-field-label">E-Mail</span><span class="profile-field-val">${currentUser.email}</span></div>
+    ${currentUser.phone?`<div class="profile-field"><span class="profile-field-label">Telefon</span><span class="profile-field-val">${currentUser.phone}</span></div>`:''}
+    <div class="profile-field"><span class="profile-field-label">Adresse</span><span class="profile-field-val">${currentUser.street||'—'}</span></div>
+    <div class="profile-field"><span class="profile-field-label">PLZ / Ort</span><span class="profile-field-val">${currentUser.plz&&currentUser.city?currentUser.plz+' '+currentUser.city:'—'}</span></div>
+    <div class="profile-field"><span class="profile-field-label">Land</span><span class="profile-field-val">${countryName}</span></div>
+    <div class="inline-edit" id="editForm">
+      <div class="form-row" style="margin-top:14px"><div class="form-group"><label>Vorname</label><input id="editFirst" value="${currentUser.firstName}"></div><div class="form-group"><label>Nachname</label><input id="editLast" value="${currentUser.lastName}"></div></div>
+      <div class="form-group"><label>Telefon</label><input id="editPhone" value="${currentUser.phone||''}"></div>
+      <div class="form-group"><label>Straße</label><input id="editStreet" value="${currentUser.street||''}"></div>
+      <div class="form-row"><div class="form-group"><label>PLZ</label><input id="editPlz" value="${currentUser.plz||''}"></div><div class="form-group"><label>Ort</label><input id="editCity" value="${currentUser.city||''}"></div></div>
+      <button class="save-profile-btn" onclick="saveProfileEdit()">Speichern</button>
+    </div></div>
+    <div class="profile-section"><div class="profile-section-title">Bestellhistorie</div>
+    ${orders.length===0?'<div class="no-orders">Noch keine Bestellungen.</div>':orders.map(o=>`<div class="order-card"><div class="order-card-num">${o.num}</div><div class="order-card-date">${o.date}</div><div class="order-card-items">${o.items.map(i=>i.name+' ×'+i.qty).join(', ')}</div><div class="order-card-total">€ ${o.total.toFixed(2)}</div></div>`).join('')}</div>
+    <button class="logout-btn" onclick="doLogout()">Abmelden</button>`;
+}
+function toggleEditProfile(){document.getElementById('editForm').classList.toggle('show');}
+function saveProfileEdit(){
+  currentUser.firstName=document.getElementById('editFirst').value.trim();currentUser.lastName=document.getElementById('editLast').value.trim();currentUser.phone=document.getElementById('editPhone').value.trim();currentUser.street=document.getElementById('editStreet').value.trim();currentUser.plz=document.getElementById('editPlz').value.trim();currentUser.city=document.getElementById('editCity').value.trim();
+  const users=getUsers();
+  if(users[currentUser.email])Object.assign(users[currentUser.email],{firstName:currentUser.firstName,lastName:currentUser.lastName,phone:currentUser.phone,street:currentUser.street,plz:currentUser.plz,city:currentUser.city});
+  saveUsers(users);saveSession();updateNav();renderProfile();prefillCheckout();showToast('Profil gespeichert.');
+}
+function prefillCheckout(){
+  if(!currentUser)return;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+  set('firstName',currentUser.firstName);set('lastName',currentUser.lastName);set('email',currentUser.email);set('street',currentUser.street);set('plz',currentUser.plz);set('city',currentUser.city);
+}
+function openCheckout(){
+  closeAll(); prefillCheckout();
+  // erste angebotene Zahlart vorwählen (welche es gibt, entscheidet die Verwaltung)
+  const ersterChip = document.querySelector('.pay-chip');
+  if (ersterChip && !document.querySelector('.pay-chip.active')) selectPay(ersterChip.dataset.pay, ersterChip);
+  renderOrderSummary();
+  document.getElementById('checkoutModal').classList.add('open');
+}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open');}
+// ── ZAHLUNG / GUTSCHEIN / LIEFERTERMIN ──
+let payMethod='';   // wird beim Öffnen auf die erste freigegebene Zahlart gesetzt
+let voucher={code:'',type:'',value:0};
+
+const PAY_NOTES={
+  karte:'Sichere Online-Zahlung mit Karte, Apple Pay oder Google Pay. Du wirst nach dem Bestellen zu unserem Zahlungspartner Stripe weitergeleitet.',
+  vorkasse:'Du erhältst unsere Bankdaten per E-Mail. Versand nach Zahlungseingang.'
+};
+function selectPay(m,btn){
+  payMethod=m;
+  document.querySelectorAll('.pay-chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const note=document.getElementById('payNote');
+  note.style.display='block'; note.textContent=PAY_NOTES[m]||'';
+  renderOrderSummary();
+}
+
+async function applyVoucher(){
+  const code=document.getElementById('voucherCode').value.trim().toUpperCase();
+  const msg=document.getElementById('voucherMsg');
+  if(!code){ voucher={code:'',type:'',value:0}; msg.textContent=''; renderOrderSummary(); return; }
+  try{
+    const r=await fetch('/api/gutschein/'+encodeURIComponent(code));
+    if(r.ok){
+      const v=await r.json();
+      voucher={code:v.code,type:v.type,value:v.value};
+      msg.className='voucher-msg ok';
+      msg.textContent='Gutschein „'+v.code+'" angewendet ('+(v.type==='pct'?v.value+'% Rabatt':'€ '+(v.value/100).toFixed(2)+' Rabatt')+').';
+    } else {
+      voucher={code:'',type:'',value:0}; msg.className='voucher-msg err'; msg.textContent='Dieser Code ist leider ungültig.';
+    }
+  }catch(e){ voucher={code:'',type:'',value:0}; msg.className='voucher-msg err'; msg.textContent='Prüfung gerade nicht möglich.'; }
+  renderOrderSummary();
+}
+
+function computeTotals(){
+  const sub=cartTotal();
+  let discount=0;
+  if(voucher.type==='pct') discount=sub*voucher.value/100;
+  else if(voucher.type==='eur') discount=Math.min(voucher.value/100,sub);
+  discount=Math.round(discount*100)/100;
+  const shipping=(VERSANDFREI>0&&sub>=VERSANDFREI)?0:(sub>0?VERSANDKOSTEN:0);
+  const total=Math.max(0,sub-discount)+shipping;
+  return {sub,discount,shipping,total};
+}
+
+function renderOrderSummary(){
+  const t=computeTotals();
+  let html=cart.map(i=>`<div class="os-item"><span>${i.name}${i.grams?' · '+i.grams+' g':''} ×${i.qty}</span><span>€ ${(i.price*i.qty).toFixed(2)}</span></div>`).join('');
+  if(t.discount>0) html+=`<div class="os-item" style="color:var(--green)"><span>Gutschein ${voucher.code}</span><span>− € ${t.discount.toFixed(2)}</span></div>`;
+  html+=`<div class="os-item"><span>Versand</span><span>${t.shipping===0?'Kostenlos':eur(t.shipping)}</span></div><div class="os-total"><span>Gesamt</span><span>€ ${t.total.toFixed(2)}</span></div>`;
+  document.getElementById('orderSummary').innerHTML=html;
+  renderPflichtinfo(t);
+}
+
+/* Pflichtangaben unmittelbar vor dem Bestellknopf: Gesamtpreis, Versandkosten,
+   Lieferzeit und der produktbezogene Widerrufshinweis. */
+function renderPflichtinfo(t){
+  const kasten = document.getElementById('checkoutPflicht');
+  if (!kasten) return;
+  const frisch  = cart.some(i => { const p = products.find(x => x.id === i.id); return !p || p.verderblich; });
+  const haltbar = cart.some(i => { const p = products.find(x => x.id === i.id); return p && !p.verderblich; });
+  let widerruf;
+  if (frisch && haltbar) {
+    widerruf = 'Deine Bestellung enthält frische und haltbare Ware. Für die frischen Artikel besteht kein '
+             + 'Widerrufsrecht, für die haltbaren gelten 14 Tage.';
+  } else if (frisch) {
+    widerruf = 'Frischware ist vom Widerrufsrecht ausgenommen, weil sie schnell verderben kann.';
+  } else {
+    widerruf = 'Für diese Bestellung gilt das gesetzliche Widerrufsrecht von 14 Tagen.';
+  }
+  const versand = t.shipping === 0 ? 'Versandkosten entfallen.'
+                                    : 'Versandkosten ' + eur(t.shipping) + '.';
+  const stueck = cart.reduce((n, i) => n + i.qty, 0);
+  kasten.innerHTML = `Du bestellst <strong>${stueck} ${stueck === 1 ? 'Artikel' : 'Artikel'}</strong> zum `
+    + `Gesamtpreis von <strong>${eur(t.total)}</strong> inkl. MwSt. ${versand} `
+    + `${LIEFERZEIT}<br>${widerruf} `
+    + `Es gelten unsere <a href="#" data-vorschau="aus">AGB</a>, die <a href="#" data-vorschau="aus">Widerrufsbelehrung</a> `
+    + `und die <a href="#" data-vorschau="aus">Datenschutzhinweise</a>.`;
+}
+
+async function placeOrder(){
+  for(const f of['firstName','lastName','email','street','plz','city']){if(!document.getElementById(f).value.trim()){showToast('Bitte alle Felder ausfüllen');document.getElementById(f).focus();return;}}
+  const btn=document.getElementById('bestellBtn'); btn.disabled=true; btn.textContent='Wird gesendet…';
+  const val=id=>document.getElementById(id).value.trim();
+  const payload={
+    items:cart.map(i=>({id:i.id,grams:i.grams||null,qty:i.qty})),
+    customer:{first_name:val('firstName'),last_name:val('lastName'),email:val('email'),
+              phone:val('phone'),street:val('street'),plz:val('plz'),city:val('city'),country:'Österreich',note:''},
+    pay:payMethod,
+    voucher:voucher.code||'',
+    delivery_date:val('deliveryDate')
+  };
+  try{
+    const r=await fetch('/api/bestellung',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data=await r.json();
+    if(!r.ok||!data.ok){ showToast(data.error||'Bestellung fehlgeschlagen. Bitte erneut versuchen.'); return; }
+    if(data.redirect){ window.location.href=data.redirect; return; }
+    closeCheckout();
+    document.getElementById('orderNum').textContent='Bestellnr. '+data.num;
+    document.getElementById('successModal').classList.add('open');
+    cart=[];voucher={code:'',type:'',value:0};updateCartCount();renderDrawer();
+  }catch(e){ showToast('Verbindung fehlgeschlagen. Bitte erneut versuchen.'); }
+  finally{ btn.disabled=false; btn.textContent='Zahlungspflichtig bestellen'; }
+}
+function closeSuccess(){document.getElementById('successModal').classList.remove('open');}
+
+// ── DETAIL ──
+let pdProduct=null, pdSelectedGrams=100;
+function selectWeight(g, btn, base){
+  pdSelectedGrams = g;
+  document.querySelectorAll('#pdWeightOpts .pd-weight-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pdPrice').textContent = '€ ' + (base*g/100).toFixed(2);
+}
+function openDetail(id){
+  pdProduct=products.find(p=>p.id===id);
+  const p=pdProduct; if(!p)return;
+  const imgs=[p.img||p.emoji];
+  const stockMsg=p.stock<=5?'Nur noch '+p.stock:'✓ '+p.stock+' auf Lager';
+  const per100=isPer100(p); pdSelectedGrams = per100 ? 100 : null;
+  const weightHtml = per100 ? `<div class="pd-weight">
+        <span class="pd-weight-label">Menge wählen</span>
+        <div class="pd-weight-opts" id="pdWeightOpts">
+          ${[100,200,300,500].map((g,idx)=>`<button class="pd-weight-btn ${idx===0?'active':''}" data-g="${g}" onclick="selectWeight(${g},this,${p.price})">${g} g</button>`).join('')}
+        </div>
+      </div>` : '';
+  const related = products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
+  const relatedHtml = related.length ? `<div class="pd-related">
+        <div class="pd-related-title">Passt dazu</div>
+        <div class="pd-related-row">${related.map(r=>`<div class="pd-rel-card" onclick="openDetail(${r.id})"><div class="pd-rel-img">${r.img?`<img src="${r.img}" alt="${r.name}">`:('<span>'+r.emoji+'</span>')}</div><div class="pd-rel-info"><div class="pd-rel-name">${r.name}</div><div class="pd-rel-price">€ ${r.price.toFixed(2)}</div></div></div>`).join('')}</div>
+      </div>` : '';
+  document.getElementById('pdModal').innerHTML=`
+    <div class="pd-head"><span class="pd-breadcrumb">${catEmoji(p.cat)} ${catLabel(p.cat)} <span>/ ${p.name}</span></span><button class="close-btn" onclick="closeDetail()">✕</button></div>
+    <div class="pd-body">
+      <div class="pd-gallery">
+        <div class="pd-main-img" id="pdMainImg">${p.img?`<img src="${p.img}" alt="${p.name}">`:('<span style="font-size:7rem">'+p.emoji+'</span>')}</div>
+        <div class="pd-thumbs">${imgs.map((img,i)=>`<div class="pd-thumb ${i===0?'active':''}" onclick="setDetailImage(${i},'${img}')">${img}</div>`).join('')}</div>
+      </div>
+      <div class="pd-info">
+        <div class="pd-badge-row">${p.badge?`<span class="pd-badge ${p.cat==='kaese'?'':'gold'}">${p.badge}</span>`:''}<span class="pd-category">${catEmoji(p.cat)} ${catLabel(p.cat)}</span></div>
+        <h2 class="pd-name">${p.name}</h2>
+        <div class="pd-price" id="pdPrice">€ ${p.price.toFixed(2)}</div>
+        <div class="pd-unit">${p.unit}${p.grundpreis ? ` · <span id="pdGrundpreis">${grundpreisText(p)}</span>` : ''}</div>
+        <div class="pd-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. <a href="#" data-vorschau="aus">Versand</a>' : ''}</div>
+        <div class="pd-stock ${p.stock<=5?'low':''}">${stockMsg}</div>
+        <p class="pd-desc">${p.desc}</p>
+        ${weightHtml}
+        <div class="pd-actions"><button class="pd-add-btn" onclick="addToCart(${p.id},pdSelectedGrams);closeDetail()">+ In den Warenkorb</button></div>
+        <div class="pd-details"><div class="pd-details-title">Details</div><ul class="pd-details-list">${(p.details||[]).map(d=>`<li>${d}</li>`).join('')}</ul></div>
+        ${pflichtangabenHTML(p)}
+      </div>
+      ${relatedHtml}
+    </div>`;
+  document.getElementById('pdOverlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function setDetailImage(idx,val){document.getElementById('pdMainImg').innerHTML=val.length>5?`<img src="${val}" alt="">`:'<span style="font-size:7rem">'+val+'</span>';document.querySelectorAll('.pd-thumb').forEach((t,i)=>t.classList.toggle('active',i===idx));}
+function closeDetail(){document.getElementById('pdOverlay').classList.remove('open');document.body.style.overflow='';}
+function handlePdOverlayClick(e){if(e.target===document.getElementById('pdOverlay'))closeDetail();}
+
+// ── LEGAL ──
+// ── TOAST ──
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ── COOKIE ──
+const COOKIE_KEY='bk_cookie_consent';
+function cookieConsentStatus(){try{return JSON.parse(localStorage.getItem(COOKIE_KEY));}catch{return null;}}
+function saveCookieConsent(p){localStorage.setItem(COOKIE_KEY,JSON.stringify({...p,ts:Date.now()}));hideCookieBanner();document.getElementById('cookieBadge').style.display='block';}
+function showCookieBanner(){setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),600);}
+function hideCookieBanner(){document.getElementById('cookieBanner').classList.remove('show');}
+function cookieAcceptAll(){saveCookieConsent({necessary:true,analytics:true,marketing:true,comfort:true});showToast('Cookies gespeichert.');}
+function cookieRejectAll(){saveCookieConsent({necessary:true,analytics:false,marketing:false,comfort:false});showToast('Nur notwendige Cookies.');}
+function openCookieSettings(){const p=cookieConsentStatus();if(p){document.getElementById('cookieAnalytics').checked=p.analytics||false;document.getElementById('cookieMarketing').checked=p.marketing||false;document.getElementById('cookieComfort').checked=p.comfort!==false;}document.getElementById('cookieSettingsOverlay').classList.add('open');}
+function closeCookieSettings(){document.getElementById('cookieSettingsOverlay').classList.remove('open');}
+function saveCookieSettings(){saveCookieConsent({necessary:true,analytics:document.getElementById('cookieAnalytics').checked,marketing:document.getElementById('cookieMarketing').checked,comfort:document.getElementById('cookieComfort').checked});closeCookieSettings();showToast('Gespeichert.');}
+function initCookieBanner(){const s=cookieConsentStatus();if(!s)showCookieBanner();else document.getElementById('cookieBadge').style.display='block';}
+
+// ── EVENT LISTENERS ──
+document.getElementById('cookieSettingsOverlay').addEventListener('click',function(e){if(e.target===this)closeCookieSettings();});
+document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeAuth();});
+document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout();});
+document.getElementById('successModal').addEventListener('click',function(e){if(e.target===this)closeSuccess();});
+
+// ── INIT ──
+loadSession();
+updateNav();
+applyFilters();
+renderGiftBoxes();
+renderDrawer();
+renderSubButtons();
+initCookieBanner();
+
+// ── PWA ──
+if ('serviceWorker' in navigator) {
+}
+</script>
+<script src="static/shell.js?v=11"></script>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-vorschau="aus"]');
+    if (a) { e.preventDefault(); }
+  });
+  window.addEventListener('DOMContentLoaded', function () {
+    if (typeof placeOrder === 'function') {
+      window.placeOrder = function () {
+        alert('Das ist eine Vorschau der Gestaltung. Bestellen geht erst im '
+            + 'fertigen Shop mit Server und Zahlungsanbindung.');
+      };
+    }
+    var band = document.createElement('div');
+    band.textContent = 'Vorschau der Gestaltung. Bestellung und Verwaltung sind hier nicht aktiv.';
+    band.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;'
+      + 'background:#1d3a24;color:#f3ead9;font:500 13px/1.5 system-ui,sans-serif;'
+      + 'padding:9px 16px;text-align:center;letter-spacing:.02em';
+    document.body.appendChild(band);
+  });
+})();
+</script>
+</body>
+</html>

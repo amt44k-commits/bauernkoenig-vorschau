@@ -1,0 +1,17 @@
+{
+  "name": "Bauern König – Feine Spezialitäten",
+  "short_name": "Bauern König",
+  "description": "Handverlesene Käse- und Fleischspezialitäten direkt vom österreichischen Hof.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f3ed",
+  "theme_color": "#24502f",
+  "lang": "de",
+  "icons": [
+    { "src": "/static/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/static/img/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/static/img/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
