@@ -13,7 +13,7 @@
 <meta property="og:description" content="Handverlesene Käse- und Fleischspezialitäten direkt vom Hof. Frisch gekühlt geliefert.">
 <meta property="og:image" content="static/img/products/hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="static/shell.css?v=11">
+<link rel="stylesheet" href="static/shell.css?v=12">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -77,24 +77,26 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
 
   /* ── CARD ── */
-  .card{background:var(--white);border:1px solid var(--line);transition:all .25s;position:relative;overflow:hidden}
+  .card{background:var(--white);border:1px solid var(--line);transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
   .card:hover{box-shadow:0 12px 36px rgba(45,90,39,.12);transform:translateY(-3px);border-color:var(--green)}
 
   .card-badge{position:absolute;top:12px;left:12px;z-index:3;background:var(--gold);color:var(--white);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px}
   .card-badge.green{background:var(--green)}
 
-  .card-img-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative;background:var(--warm)}
+  .card-img-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative;background:var(--warm);flex-shrink:0}
   .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
   .card:hover .card-img-wrap img{transform:scale(1.05)}
   .card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
   .card-cat-tag{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:var(--cream);padding:3px 10px;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;z-index:2;border-radius:2px}
 
-  .card-body{padding:14px 16px 16px}
+  .card-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
   .card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;line-height:1.25;color:var(--ink);cursor:pointer}
   .card-name:hover{color:var(--green)}
   .card-unit{font-size:.62rem;color:var(--brown2);letter-spacing:.05em;margin:2px 0 6px}
-  .card-desc{font-size:.74rem;color:var(--brown);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  /* Feste Hoehe von zwei Zeilen (2 x line-height 1.5 = 3em): so sind alle
+     Karten gleich hoch, egal ob die Beschreibung ein- oder zweizeilig ist. */
+  .card-desc{font-size:.74rem;color:var(--brown);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3em}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
   .card-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--green);white-space:nowrap}
   .add-btn{background:var(--green);color:var(--cream);border:none;padding:8px 14px;font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .15s;font-weight:500;white-space:nowrap}
   .add-btn:hover{background:var(--green2)}
@@ -635,7 +637,9 @@
     .card-img-wrap::after{background:linear-gradient(180deg,transparent 56%,rgba(18,28,14,.24))}
     .card-body{padding:16px 18px 18px}
     .card-name{font-size:1.14rem;letter-spacing:-.01em}
-    .card-footer{margin-top:6px;padding-top:13px;border-top:1px solid var(--soft)}
+    /* auto statt eines festen Abstands: sonst rutscht der Fuss bei kurzer
+       Beschreibung nach oben und die Preise einer Reihe stehen versetzt. */
+    .card-footer{margin-top:auto;padding-top:13px;border-top:1px solid var(--soft)}
     .card-price{font-size:1.36rem;letter-spacing:-.01em}
     .add-btn{border-radius:40px;padding:10px 17px;font-weight:600;box-shadow:0 4px 12px rgba(36,80,47,.18);transition:transform .15s,background .15s,box-shadow .15s}
     .add-btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(36,80,47,.26)}
@@ -715,7 +719,7 @@
 <div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
 
 <nav class="shell-nav">
-  <a class="nav-logo" href="#top"><img src="static/img/logo/logo-zeile.svg?v=11" alt="Bauern König, feine Spezialitäten"></a>
+  <a class="nav-logo" href="#top"><img src="static/img/logo/logo-zeile.svg?v=12" alt="Bauern König, feine Spezialitäten"></a>
   <div class="nav-links">
     <a class="nav-link" href="#sortiment">Shop</a>
     <a class="nav-link" href="#geschenke">Geschenkboxen</a>
@@ -737,7 +741,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-head">
-    <span class="mm-logo"><img src="static/img/logo/logo-zeile.svg?v=11" alt="Bauern König"></span>
+    <span class="mm-logo"><img src="static/img/logo/logo-zeile.svg?v=12" alt="Bauern König"></span>
     <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
   </div>
   <nav class="mm-links">
@@ -1001,7 +1005,7 @@
 <footer class="site-footer">
   <div class="inner">
     <div class="foot-marke">
-      <img src="static/img/logo/logo-zeile-creme.svg?v=11" alt="Bauern König">
+      <img src="static/img/logo/logo-zeile-creme.svg?v=12" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
     <div><h4>Service</h4><a href="#top">Zum Shop</a><a href="#" data-vorschau="aus">Versand &amp; Lieferung</a><a href="#" data-vorschau="aus">FAQ</a><a href="#" data-vorschau="aus">Kontakt</a></div>
@@ -1215,7 +1219,7 @@ function cardHTML(p){
       <div class="card-desc">${p.desc}</div>
       ${stockHtml}
       <div class="card-footer">
-        <div class="card-price">€ ${p.price.toFixed(2)}${p.grundpreis ? `<small class="card-grundpreis">${grundpreisText(p)}</small>` : ''}<small class="card-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. Versand' : ''}</small></div>
+        <div class="card-price">${eur(p.price)}${p.grundpreis ? `<small class="card-grundpreis">${grundpreisText(p)}</small>` : ''}<small class="card-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. Versand' : ''}</small></div>
         <button class="add-btn ${p.stock===0?'sold-out':''}" id="addBtn-${p.id}" onclick="addToCart(${p.id})" ${p.stock===0?'disabled':''}>${p.stock===0?'Ausverkauft':'+ Warenkorb'}</button>
       </div>
     </div>
@@ -1265,7 +1269,7 @@ function renderGiftBoxes(){
         <h3 class="gbx-name">${p.name}</h3>
         <p class="gbx-desc">${p.desc}</p>
         <div class="gbx-foot">
-          <span class="gbx-price">€ ${p.price.toFixed(2).replace('.', ',')}<small>inkl. MwSt</small></span>
+          <span class="gbx-price">${eur(p.price)}<small>inkl. MwSt</small></span>
           <button class="gbx-btn" onclick="event.stopPropagation();addToCart(${p.id})" ${p.stock===0?'disabled':''}>${p.stock===0?'Ausverkauft':'In den Warenkorb'}</button>
         </div>
       </div>
@@ -1352,8 +1356,8 @@ function cartTotal() { return cart.reduce((s,c)=>s+c.price*c.qty,0); }
 function renderDrawer() {
   const b=document.getElementById('drawerBody');
   if(!cart.length){ b.innerHTML=`<div class="empty-cart"><span><svg class="ico" style="width:30px;height:30px"><use href="#ic-cart"/></svg></span>Ihr Warenkorb ist leer.</div>`; }
-  else { b.innerHTML=cart.map(i=>`<div class="cart-item"><div class="ci-img">${i.img?`<img src="${i.img}" alt="">`:i.emoji}</div><div class="ci-info"><div class="ci-cat">${i.unitLabel}${i.grundpreis ? ` · ${eur(i.grundpreis)} / kg` : ''}</div><div class="ci-name">${i.name}</div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button><span class="qty-val">${i.qty}</span><button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button><span class="ci-price">€ ${(i.price*i.qty).toFixed(2)}</span><button class="remove-btn" onclick="removeItem('${i.key}')">✕</button></div></div></div>`).join(''); }
-  document.getElementById('subtotal').textContent='€ '+cartTotal().toFixed(2);
+  else { b.innerHTML=cart.map(i=>`<div class="cart-item"><div class="ci-img">${i.img?`<img src="${i.img}" alt="">`:i.emoji}</div><div class="ci-info"><div class="ci-cat">${i.unitLabel}${i.grundpreis ? ` · ${eur(i.grundpreis)} / kg` : ''}</div><div class="ci-name">${i.name}</div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button><span class="qty-val">${i.qty}</span><button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button><span class="ci-price">${eur(i.price*i.qty)}</span><button class="remove-btn" onclick="removeItem('${i.key}')">✕</button></div></div></div>`).join(''); }
+  document.getElementById('subtotal').textContent=eur(cartTotal());
 }
 function openCart() { document.getElementById('overlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); renderDrawer(); }
 function closeAll() { document.getElementById('overlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); document.getElementById('profileDrawer').classList.remove('open'); }
@@ -1415,7 +1419,7 @@ function renderProfile(){
       <button class="save-profile-btn" onclick="saveProfileEdit()">Speichern</button>
     </div></div>
     <div class="profile-section"><div class="profile-section-title">Bestellhistorie</div>
-    ${orders.length===0?'<div class="no-orders">Noch keine Bestellungen.</div>':orders.map(o=>`<div class="order-card"><div class="order-card-num">${o.num}</div><div class="order-card-date">${o.date}</div><div class="order-card-items">${o.items.map(i=>i.name+' ×'+i.qty).join(', ')}</div><div class="order-card-total">€ ${o.total.toFixed(2)}</div></div>`).join('')}</div>
+    ${orders.length===0?'<div class="no-orders">Noch keine Bestellungen.</div>':orders.map(o=>`<div class="order-card"><div class="order-card-num">${o.num}</div><div class="order-card-date">${o.date}</div><div class="order-card-items">${o.items.map(i=>i.name+' ×'+i.qty).join(', ')}</div><div class="order-card-total">${eur(o.total)}</div></div>`).join('')}</div>
     <button class="logout-btn" onclick="doLogout()">Abmelden</button>`;
 }
 function toggleEditProfile(){document.getElementById('editForm').classList.toggle('show');}
@@ -1466,7 +1470,7 @@ async function applyVoucher(){
       const v=await r.json();
       voucher={code:v.code,type:v.type,value:v.value};
       msg.className='voucher-msg ok';
-      msg.textContent='Gutschein „'+v.code+'" angewendet ('+(v.type==='pct'?v.value+'% Rabatt':'€ '+(v.value/100).toFixed(2)+' Rabatt')+').';
+      msg.textContent='Gutschein „'+v.code+'" angewendet ('+(v.type==='pct'?v.value+'% Rabatt':eur(v.value/100)+' Rabatt')+').';
     } else {
       voucher={code:'',type:'',value:0}; msg.className='voucher-msg err'; msg.textContent='Dieser Code ist leider ungültig.';
     }
@@ -1487,9 +1491,9 @@ function computeTotals(){
 
 function renderOrderSummary(){
   const t=computeTotals();
-  let html=cart.map(i=>`<div class="os-item"><span>${i.name}${i.grams?' · '+i.grams+' g':''} ×${i.qty}</span><span>€ ${(i.price*i.qty).toFixed(2)}</span></div>`).join('');
-  if(t.discount>0) html+=`<div class="os-item" style="color:var(--green)"><span>Gutschein ${voucher.code}</span><span>− € ${t.discount.toFixed(2)}</span></div>`;
-  html+=`<div class="os-item"><span>Versand</span><span>${t.shipping===0?'Kostenlos':eur(t.shipping)}</span></div><div class="os-total"><span>Gesamt</span><span>€ ${t.total.toFixed(2)}</span></div>`;
+  let html=cart.map(i=>`<div class="os-item"><span>${i.name}${i.grams?' · '+i.grams+' g':''} ×${i.qty}</span><span>${eur(i.price*i.qty)}</span></div>`).join('');
+  if(t.discount>0) html+=`<div class="os-item" style="color:var(--green)"><span>Gutschein ${voucher.code}</span><span>− ${eur(t.discount)}</span></div>`;
+  html+=`<div class="os-item"><span>Versand</span><span>${t.shipping===0?'Kostenlos':eur(t.shipping)}</span></div><div class="os-total"><span>Gesamt</span><span>${eur(t.total)}</span></div>`;
   document.getElementById('orderSummary').innerHTML=html;
   renderPflichtinfo(t);
 }
@@ -1552,7 +1556,7 @@ function selectWeight(g, btn, base){
   pdSelectedGrams = g;
   document.querySelectorAll('#pdWeightOpts .pd-weight-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('pdPrice').textContent = '€ ' + (base*g/100).toFixed(2);
+  document.getElementById('pdPrice').textContent = eur(base*g/100);
 }
 function openDetail(id){
   pdProduct=products.find(p=>p.id===id);
@@ -1569,7 +1573,7 @@ function openDetail(id){
   const related = products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
   const relatedHtml = related.length ? `<div class="pd-related">
         <div class="pd-related-title">Passt dazu</div>
-        <div class="pd-related-row">${related.map(r=>`<div class="pd-rel-card" onclick="openDetail(${r.id})"><div class="pd-rel-img">${r.img?`<img src="${r.img}" alt="${r.name}">`:('<span>'+r.emoji+'</span>')}</div><div class="pd-rel-info"><div class="pd-rel-name">${r.name}</div><div class="pd-rel-price">€ ${r.price.toFixed(2)}</div></div></div>`).join('')}</div>
+        <div class="pd-related-row">${related.map(r=>`<div class="pd-rel-card" onclick="openDetail(${r.id})"><div class="pd-rel-img">${r.img?`<img src="${r.img}" alt="${r.name}">`:('<span>'+r.emoji+'</span>')}</div><div class="pd-rel-info"><div class="pd-rel-name">${r.name}</div><div class="pd-rel-price">${eur(r.price)}</div></div></div>`).join('')}</div>
       </div>` : '';
   document.getElementById('pdModal').innerHTML=`
     <div class="pd-head"><span class="pd-breadcrumb">${catEmoji(p.cat)} ${catLabel(p.cat)} <span>/ ${p.name}</span></span><button class="close-btn" onclick="closeDetail()">✕</button></div>
@@ -1581,7 +1585,7 @@ function openDetail(id){
       <div class="pd-info">
         <div class="pd-badge-row">${p.badge?`<span class="pd-badge ${p.cat==='kaese'?'':'gold'}">${p.badge}</span>`:''}<span class="pd-category">${catEmoji(p.cat)} ${catLabel(p.cat)}</span></div>
         <h2 class="pd-name">${p.name}</h2>
-        <div class="pd-price" id="pdPrice">€ ${p.price.toFixed(2)}</div>
+        <div class="pd-price" id="pdPrice">${eur(p.price)}</div>
         <div class="pd-unit">${p.unit}${p.grundpreis ? ` · <span id="pdGrundpreis">${grundpreisText(p)}</span>` : ''}</div>
         <div class="pd-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. <a href="#" data-vorschau="aus">Versand</a>' : ''}</div>
         <div class="pd-stock ${p.stock<=5?'low':''}">${stockMsg}</div>
@@ -1635,7 +1639,7 @@ initCookieBanner();
 if ('serviceWorker' in navigator) {
 }
 </script>
-<script src="static/shell.js?v=11"></script>
+<script src="static/shell.js?v=12"></script>
 
 <script>
 (function () {
