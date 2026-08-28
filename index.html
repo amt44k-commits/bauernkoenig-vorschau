@@ -725,8 +725,8 @@
   </div>
   <div class="nav-right">
     
-      <button class="nav-btn ghost" id="navLoginBtn" onclick="location.href='/anmelden'">Anmelden</button>
-      <button class="nav-btn solid" id="navRegisterBtn" onclick="location.href='/registrieren'" style="display:none">Registrieren</button>
+      <button class="nav-btn ghost" id="navLoginBtn" onclick="void 0">Anmelden</button>
+      <button class="nav-btn solid" id="navRegisterBtn" onclick="void 0" style="display:none">Registrieren</button>
       <span class="nav-user-info" id="navUserGreet" style="display:none"></span>
       <button class="nav-btn ghost" id="navProfileBtn" style="display:none" onclick="openProfile()"><svg class="ico"><use href="#ic-user"/></svg>Konto</button>
       <button class="nav-btn cart-btn" onclick="openCart()"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
@@ -1650,12 +1650,6 @@ if ('serviceWorker' in navigator) {
             + 'fertigen Shop mit Server und Zahlungsanbindung.');
       };
     }
-    var band = document.createElement('div');
-    band.textContent = 'Vorschau der Gestaltung. Bestellung und Verwaltung sind hier nicht aktiv.';
-    band.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;'
-      + 'background:#1d3a24;color:#f3ead9;font:500 13px/1.5 system-ui,sans-serif;'
-      + 'padding:9px 16px;text-align:center;letter-spacing:.02em';
-    document.body.appendChild(band);
   });
 })();
 </script>
