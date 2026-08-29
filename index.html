@@ -28,7 +28,9 @@
   .hero-title em{font-style:italic;color:var(--gold2)}
   .hero-sub{font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.7);max-width:480px;line-height:1.8}
   .hero-line{width:48px;height:2px;background:var(--gold);margin:28px auto}
-  .hero-btn{display:inline-block;background:var(--gold);color:var(--white);border:none;padding:14px 36px;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;text-decoration:none;font-weight:500}
+  /* margin-top: der Knopf klebte sonst ohne jeden Abstand am Untertitel,
+     waehrend Titel, Linie und Trust-Band 28 bis 44 px Luft haben. */
+  .hero-btn{display:inline-block;margin-top:30px;background:var(--gold);color:var(--white);border:none;padding:14px 36px;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;text-decoration:none;font-weight:500}
   .hero-btn:hover{background:var(--gold2)}
 
   /* ── ADVANCED FILTER ── */
