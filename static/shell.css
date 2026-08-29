@@ -74,6 +74,9 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
   #navLoginBtn,#navRegisterBtn,#navProfileBtn,#navUserGreet,
   .nav-desktop{display:none!important}   /* Platz fuer das Burger-Menue */
   .cart-label{display:none}
+  /* Ohne die Beschriftung braucht das Icon keinen Abstand nach rechts mehr,
+     sonst sitzt es im Knopf 6 px zu weit links. */
+  .nav-btn.cart-btn .ico{margin-right:0}
   .cart-btn{padding:9px 12px}
   .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;
     width:40px;height:40px;background:none;border:none;cursor:pointer;
