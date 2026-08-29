@@ -64,7 +64,9 @@
   .filter-reset:hover{color:var(--green)}
 
   /* ── VALUES ── */
-  .values-strip{background:var(--warm);padding:28px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;border-bottom:2px solid var(--line)}
+  /* auto-fit statt auto-fill: auto-fill legt auch leere Spalten an, dadurch
+     klebten die vier Werte links und rechts blieb die halbe Breite frei. */
+  .values-strip{background:var(--warm);padding:28px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;border-bottom:2px solid var(--line)}
   .value-item{text-align:center}.value-icon{font-size:1.6rem;margin-bottom:6px}
   .value-title{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
   .value-text{font-size:.7rem;color:var(--brown2)}
@@ -420,7 +422,7 @@
   .hero-btn{border-radius:40px;padding:16px 42px}
 
   /* WERTE — weiße Sektion mit runden Icon-Kacheln */
-  .values-strip{background:#fff;border-bottom:1px solid var(--line);padding:44px 40px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .values-strip{background:#fff;border-bottom:1px solid var(--line);padding:44px 40px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
   .value-icon{background:var(--soft);width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
   .value-icon .ico{width:30px;height:30px}
   .value-title{font-size:.72rem;margin-bottom:5px}
