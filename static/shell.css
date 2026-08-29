@@ -83,6 +83,14 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
     padding:9px 8px;flex-shrink:0}
   .nav-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px}
   .site-footer{padding:40px 16px 24px}
+  /* Fusszeile mobil: festes Zweispalten-Raster. Vorher war es ein Flex-Container
+     mit space-between und inhaltsbreiten Spalten, dadurch standen die Bloecke
+     ungleich weit auseinander und die lange Adresse lief aus dem Bild. */
+  .site-footer .inner{display:grid;grid-template-columns:1fr 1fr;gap:28px 18px;
+    justify-content:stretch}
+  .foot-marke{grid-column:1 / -1;max-width:none}
+  .site-footer .inner > div{min-width:0}
+  .site-footer .inner > div a{overflow-wrap:break-word}
 }
 
 /* ── Mobiles Vollbildmenue ── */
