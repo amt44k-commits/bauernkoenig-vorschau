@@ -1,0 +1,80 @@
+/* ══════════════════════════════════════════════════════════════════
+   PRODUKTFENSTER
+   Aufbau wie im echten Shop: links das Bild, rechts Kategorie, Name,
+   Preis, Mengenangabe, Lagerstand, Beschreibung, Mengenwahl und der
+   Knopf in den Warenkorb.
+   ══════════════════════════════════════════════════════════════════ */
+
+.pd-overlay{position:fixed;inset:0;z-index:9000;background:rgba(29,29,27,.55);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .25s}
+.pd-overlay.offen{opacity:1;pointer-events:auto}
+
+.pd-fenster{background:#fff;width:100%;max-width:900px;max-height:88vh;
+  overflow-y:auto;border-radius:16px;transform:translateY(14px);
+  transition:transform .25s;box-shadow:0 24px 60px rgba(29,29,27,.28)}
+.pd-overlay.offen .pd-fenster{transform:translateY(0)}
+
+.pd-kopf{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:15px 20px;border-bottom:1px solid #e9e4da;position:sticky;top:0;
+  background:#fff;z-index:2;border-radius:16px 16px 0 0}
+.pd-pfad{display:inline-flex;align-items:center;gap:7px;font-size:.68rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#968b7c}
+.pd-pfad svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;position:static!important}
+.pd-pfad b{color:#1d1d1b;font-weight:500}
+.pd-zu{background:none;border:none;font-size:1.3rem;line-height:1;color:#5f574c;
+  cursor:pointer;padding:4px 8px;border-radius:50%;transition:background .15s}
+.pd-zu:hover{background:#f4f1eb}
+
+.pd-koerper{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:22px 24px 26px}
+.pd-bild{border-radius:12px;overflow:hidden;background:#f4f1eb;align-self:start}
+.pd-bild img{display:block;width:100%;height:auto}
+
+.pd-name{font-family:var(--font-stack-headings);font-size:1.7rem;font-weight:600;
+  color:#1d1d1b;line-height:1.2;margin:0 0 10px}
+.pd-preis{font-family:var(--font-stack-headings);font-size:1.9rem;font-weight:700;
+  color:var(--bk-marine);line-height:1.1}
+.pd-einheit{font-size:.72rem;color:#968b7c;margin-top:5px}
+.pd-mwst{font-size:.66rem;color:#968b7c;margin-top:2px}
+.pd-lager{font-size:.72rem;font-weight:600;margin:13px 0 0;color:#3d8b4a}
+.pd-lager.knapp{color:#c0772a}
+.pd-lager.aus{color:#a33}
+.pd-text{font-size:.86rem;line-height:1.7;color:#5f574c;margin:14px 0 0}
+
+/* ── Mengenwahl ── */
+.pd-menge{margin-top:18px}
+.pd-menge-titel{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#968b7c;margin-bottom:8px}
+.pd-menge-reihe{display:flex;flex-wrap:wrap;gap:8px}
+.pd-menge-knopf{background:#fff;border:1px solid #ddd6c8;border-radius:40px;
+  padding:9px 16px;font-family:var(--font-stack-body);font-size:.72rem;
+  font-weight:500;color:#1d1d1b;cursor:pointer;transition:all .15s}
+.pd-menge-knopf:hover{border-color:var(--bk-marine)}
+.pd-menge-knopf.aktiv{background:var(--bk-marine);border-color:var(--bk-marine);color:#fff}
+
+.pd-korb{margin-top:20px;width:100%;background:var(--bk-marine);color:#fff;
+  border:none;border-radius:40px;padding:15px 26px;font-family:var(--font-stack-body);
+  font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  cursor:pointer;transition:background .15s}
+.pd-korb:hover{background:var(--bk-tief)}
+
+.pd-pflicht{margin-top:20px;padding-top:16px;border-top:1px solid #e9e4da;
+  font-size:.72rem;color:#5f574c;line-height:1.7}
+.pd-pflicht dt{color:#968b7c;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:9px}
+.pd-pflicht dd{margin:2px 0 0}
+
+/* Die Karte wird anklickbar */
+.product-item .card__image,
+.product-item .product-item__title{cursor:pointer}
+
+@media(max-width:749px){
+  .pd-overlay{padding:0;align-items:flex-end}
+  .pd-fenster{max-width:none;max-height:94vh;border-radius:16px 16px 0 0}
+  .pd-kopf{border-radius:16px 16px 0 0;padding:13px 15px}
+  .pd-koerper{grid-template-columns:1fr;gap:18px;padding:16px 15px 22px}
+  .pd-name{font-size:1.35rem}
+  .pd-preis{font-size:1.55rem}
+  .pd-text{font-size:.8rem}
+}
