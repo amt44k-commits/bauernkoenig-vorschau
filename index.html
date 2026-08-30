@@ -877,13 +877,13 @@
     <a class="nav-link" href="#" data-vorschau="aus">FAQ</a>
     <a class="nav-link" href="#" data-vorschau="aus">Kontakt</a>
   </div>
+  
+  <form class="nav-suche" role="search" onsubmit="return suchen(event)">
+    <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
+    <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
+           aria-label="Sortiment durchsuchen" autocomplete="off">
+  </form>
   <div class="nav-right">
-    
-    <form class="nav-suche" role="search" onsubmit="return suchen(event)">
-      <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
-      <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
-             aria-label="Sortiment durchsuchen" autocomplete="off">
-    </form>
     
       <a class="nav-icon" id="navLoginBtn" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
       <button class="nav-btn solid" id="navRegisterBtn" onclick="void 0" style="display:none">Registrieren</button>

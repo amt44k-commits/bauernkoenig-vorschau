@@ -150,11 +150,15 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
   #navRegisterBtn,#navUserGreet,
   .nav-desktop{display:none!important}   /* Platz fuer das Burger-Menue */
   /* Zeile 1 traegt Logo und Symbole, die Suche setzt sich darunter ueber
-     die volle Breite. Dafuer muss auch die rechte Gruppe umbrechen. */
+     die volle Breite. Das Suchfeld ist ein Geschwister von Logo und rechter
+     Gruppe, sonst kann es nicht auf eigener Zeile ganz breit werden. */
   nav.shell-nav{flex-wrap:wrap;height:auto;padding:9px 16px 11px;row-gap:0}
-  .nav-logo{flex:0 0 auto}
-  .nav-right{flex:1 1 auto;min-width:0;flex-wrap:wrap;justify-content:flex-end}
-  .nav-suche{order:3;flex:1 0 100%;margin-top:9px}
+  /* Das Wortbild darf mitschrumpfen. Bei fester Breite passt es unter
+     375 px nicht mehr neben die Symbole und die Zeile bricht um. */
+  .nav-logo{flex:0 1 auto;min-width:0}
+  .nav-logo img{height:auto;max-height:40px;max-width:100%}
+  .nav-right{flex:0 0 auto;gap:8px}
+  .nav-suche{order:3;flex:1 0 100%;width:100%;margin-top:9px}
   .nav-suche input{padding:10px 14px 10px 33px;font-size:.8rem}
   .nav-icon{width:34px;height:34px}
   .cart-label{display:none}
@@ -252,3 +256,14 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
   .palette-menu{width:min(70vw,230px)}
 }
 @media print{.palette-picker{display:none}}
+
+/* Schmale Geraete: unter 375 px passt das Wortbild in voller Groesse nicht
+   mehr neben die Symbole, die Zeile bricht um und der Kopf wird 40 px hoeher.
+   Gemessen bei 320 und 360 Pixeln. */
+@media(max-width:374px){
+  nav.shell-nav{padding:8px 12px 10px}
+  .nav-logo img{max-height:31px}
+  .nav-right{gap:6px}
+  .nav-icon{width:31px;height:31px}
+  .nav-icon .ico{width:15px;height:15px}
+}
