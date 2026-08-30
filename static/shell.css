@@ -5,14 +5,72 @@
    Werte stammen aus der Startseite (Vorbild-Design).
    ══════════════════════════════════════════════════════════════════ */
 
+/* ══════════════════════════════════════════════════════════════════
+   FARBPALETTEN
+   Einzige Quelle fuer alle Marken- und Flaechenfarben. Die gewaehlte
+   Palette steht als data-theme am <html>-Element; ohne Auswahl gilt
+   Mitternachtsblau. Jede Palette liefert denselben Satz Variablen:
+
+     --brand       Hauptfarbe (Kopfband, Fusszeile, Knoepfe, Links)
+     --brand2      hellere Abstufung fuer Hover-Zustaende
+     --brand-deep  dunkelster Ton fuer Verlaeufe und das Geschenkband
+     --brand-rgb   dieselbe Hauptfarbe als RGB-Tripel fuer rgba-Schatten
+     --brand-deep-rgb  desgleichen fuer den dunkelsten Ton
+     --gold/--gold2 Akzent
+     --dark/--dark-line  dunkle Flaechen und Linien der Verwaltung
+   ══════════════════════════════════════════════════════════════════ */
+
 :root{
-  --ink:#1a1a1a; --green:#2d5a27; --green2:#3d7a35; --cream:#f7f3ed;
-  --warm:#efe7db; --brown:#6b4f3a; --brown2:#8b6f5a; --gold:#b8923a;
-  --gold2:#d4b06a; --line:#d6cec0; --white:#fff; --red:#a33; --soft:#f0e8dc;
+  /* Neutraltoene, von der Palette unabhaengig */
+  --ink:#1a1a1a; --cream:#f7f3ed; --warm:#efe7db; --brown:#6b4f3a;
+  --brown2:#8b6f5a; --line:#d6cec0; --white:#fff; --red:#a33; --soft:#f0e8dc;
+}
+
+/* 1 Mitternachtsblau (Standard) */
+:root,
+html[data-theme="mitternacht"]{
+  --brand:#17233f; --brand2:#2a3d66; --brand-deep:#0d1526; --brand-deep-rgb:13,21,38; --brand-rgb:23,35,63;
+  --gold:#c39a4d; --gold2:#dcbd77;
+  --dark:#141c30; --dark-line:#27314b;
+}
+
+/* 2 Marineblau, heller und kuehler */
+html[data-theme="marine"]{
+  --brand:#1b3a5f; --brand2:#2c5688; --brand-deep:#102439; --brand-deep-rgb:16,36,57; --brand-rgb:27,58,95;
+  --gold:#c8a35a; --gold2:#e0c384;
+  --dark:#152b42; --dark-line:#28425f;
+}
+
+/* 3 Waldgruen, die urspruengliche Marke */
+html[data-theme="wald"]{
+  --brand:#24502f; --brand2:#346b3e; --brand-deep:#16351d; --brand-deep-rgb:22,53,29; --brand-rgb:36,80,47;
+  --gold:#c39a4d; --gold2:#dcbd77;
+  --dark:#1a2a18; --dark-line:#2a3a28;
+}
+
+/* 4 Burgunder */
+html[data-theme="burgund"]{
+  --brand:#5b1d2a; --brand2:#7d2c3c; --brand-deep:#3a1119; --brand-deep-rgb:58,17,25; --brand-rgb:91,29,42;
+  --gold:#c39a4d; --gold2:#dcbd77;
+  --dark:#2e1219; --dark-line:#46212a;
+}
+
+/* 5 Schiefer, neutrales Anthrazit */
+html[data-theme="schiefer"]{
+  --brand:#2b3440; --brand2:#3e4b5c; --brand-deep:#1b222b; --brand-deep-rgb:27,34,43; --brand-rgb:43,52,64;
+  --gold:#b9924a; --gold2:#d6b478;
+  --dark:#1c232c; --dark-line:#313c49;
+}
+
+/* 6 Espresso, warmes Dunkelbraun */
+html[data-theme="espresso"]{
+  --brand:#432b1f; --brand2:#61402d; --brand-deep:#2c1a12; --brand-deep-rgb:44,26,18; --brand-rgb:67,43,31;
+  --gold:#c39a4d; --gold2:#dcbd77;
+  --dark:#241710; --dark-line:#3b281c;
 }
 
 /* ── Ankuendigungsband ── */
-.top-bar{background:var(--green);color:var(--cream);text-align:center;
+.top-bar{background:var(--brand);color:var(--cream);text-align:center;
   padding:8px 20px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
 .top-bar span,.top-bar b{color:var(--gold2);font-weight:600}
 .top-bar .ico{width:14px;height:14px;margin-right:6px;vertical-align:-.14em}
@@ -27,27 +85,27 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
 .nav-link{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink);text-decoration:none;transition:color .2s}
 .nav-link{white-space:nowrap;font-weight:500}
-.nav-link:hover{color:var(--green)}
+.nav-link:hover{color:var(--brand)}
 .nav-right{display:flex;align-items:center;gap:12px}
 .nav-btn{background:none;border:1px solid var(--line);color:var(--ink);
   border-radius:40px;padding:9px 18px;font-family:'Inter',sans-serif;font-size:.72rem;
   letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;
   white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center}
-.nav-btn:hover{border-color:var(--green);color:var(--green)}
+.nav-btn:hover{border-color:var(--brand);color:var(--brand)}
 .nav-btn.ghost{border-color:var(--line);color:var(--brown)}
-.nav-btn.solid{background:var(--green);border-color:var(--green);color:var(--cream);
-  box-shadow:0 6px 18px rgba(36,80,47,.2)}
+.nav-btn.solid{background:var(--brand);border-color:var(--brand);color:var(--cream);
+  box-shadow:0 6px 18px rgba(var(--brand-rgb),.2)}
 .nav-btn .ico{width:15px;height:15px;vertical-align:-.18em;margin-right:6px}
 .cart-btn{position:relative}
 .cart-count{position:absolute;top:-8px;right:-8px;background:var(--gold);color:var(--white);
   width:18px;height:18px;border-radius:50%;font-size:.6rem;font-weight:600;display:flex;
   align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .cart-count.visible{opacity:1}
-.nav-user-info{font-size:.7rem;color:var(--green);font-weight:500;letter-spacing:.06em}
+.nav-user-info{font-size:.7rem;color:var(--brand);font-weight:500;letter-spacing:.06em}
 .nav-burger{display:none}
 
 /* ── Fusszeile ── */
-.site-footer{background:var(--green);color:var(--cream);padding:48px 48px 28px}
+.site-footer{background:var(--brand);color:var(--cream);padding:48px 48px 28px}
 .site-footer .inner{max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;
   gap:30px;justify-content:space-between}
 .site-footer h4{font-family:'Playfair Display',serif;color:var(--gold2);
@@ -111,16 +169,60 @@ nav.shell-nav{position:sticky;top:0;z-index:100;background:var(--white);
     padding:17px 22px;font-family:'Inter',sans-serif;font-size:1.02rem;color:var(--ink);
     background:none;border:none;border-bottom:1px solid var(--soft);cursor:pointer;
     letter-spacing:.01em;text-decoration:none}
-  .mobile-menu a:active{background:var(--soft);color:var(--green)}
+  .mobile-menu a:active{background:var(--soft);color:var(--brand)}
   .mm-account{padding:18px 22px 24px;margin-top:10px;border-top:1px solid var(--line);
     display:flex;flex-direction:column;gap:10px}
   .mm-greet{font-size:.92rem;color:var(--brown);margin-bottom:4px}
-  .mm-greet strong{color:var(--green)}
+  .mm-greet strong{color:var(--brand)}
   .mm-account .mm-btn{display:block;width:100%;text-align:center;padding:15px;
-    border:1.5px solid var(--green);border-radius:40px;font-family:'Inter',sans-serif;
+    border:1.5px solid var(--brand);border-radius:40px;font-family:'Inter',sans-serif;
     font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
-    cursor:pointer;background:var(--green);color:#fff;text-decoration:none;transition:all .18s}
-  .mm-account .mm-btn.ghost{background:none;color:var(--green)}
-  .mm-account .mm-btn:active{transform:scale(.98);background:var(--green2);color:#fff}
-  .mm-account .mm-btn.ghost:active{background:var(--soft);color:var(--green)}
+    cursor:pointer;background:var(--brand);color:#fff;text-decoration:none;transition:all .18s}
+  .mm-account .mm-btn.ghost{background:none;color:var(--brand)}
+  .mm-account .mm-btn:active{transform:scale(.98);background:var(--brand2);color:#fff}
+  .mm-account .mm-btn.ghost:active{background:var(--soft);color:var(--brand)}
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   PALETTENWAEHLER
+   Sitzt unten links, gleiche Ecke wie das Cookie-Band. Solange das
+   Cookie-Band offen ist, tritt er zurueck: erst die Einwilligung,
+   dann die Spielerei.
+   ══════════════════════════════════════════════════════════════════ */
+.palette-picker{position:fixed;left:16px;bottom:16px;z-index:595;
+  font-family:'Inter',sans-serif;transition:opacity .3s,transform .3s}
+.cookie-banner.show ~ .palette-picker{opacity:0;pointer-events:none;transform:translateY(10px)}
+
+.palette-toggle{display:flex;align-items:center;gap:9px;background:var(--white);
+  border:1px solid var(--line);border-radius:40px;padding:8px 15px 8px 11px;
+  cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:border-color .2s,box-shadow .2s}
+.palette-toggle:hover{border-color:var(--brand);box-shadow:0 8px 26px rgba(0,0,0,.14)}
+.palette-toggle .txt{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);font-weight:500}
+.palette-dots{display:inline-flex;gap:3px}
+.palette-dots i{width:9px;height:9px;border-radius:50%;display:block;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+
+.palette-menu{position:absolute;left:0;bottom:calc(100% + 10px);width:242px;
+  background:var(--white);border:1px solid var(--line);padding:15px 15px 13px;
+  box-shadow:0 18px 44px rgba(0,0,0,.16)}
+.palette-menu[hidden]{display:none}
+.palette-menu h4{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:600;
+  color:var(--ink);margin-bottom:11px}
+.palette-item{display:flex;align-items:center;gap:10px;width:100%;background:none;
+  border:1px solid transparent;padding:7px 8px;cursor:pointer;text-align:left;
+  transition:background .15s,border-color .15s;font-family:inherit}
+.palette-item:hover{background:var(--soft)}
+.palette-item[aria-checked="true"]{border-color:var(--brand);background:var(--soft)}
+.palette-item .name{font-size:.75rem;color:var(--ink);letter-spacing:.03em}
+.palette-item .palette-dots i{width:13px;height:13px}
+.palette-note{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);
+  font-size:.62rem;line-height:1.6;color:var(--brown2)}
+
+@media(max-width:600px){
+  .palette-picker{left:12px;bottom:12px}
+  .palette-toggle{padding:7px 12px 7px 9px}
+  .palette-toggle .txt{font-size:.6rem}
+  .palette-menu{width:min(70vw,230px)}
+}
+@media print{.palette-picker{display:none}}

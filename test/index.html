@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --gruen:#2d5a27; --gruen-dunkel:#1d3a24; --gold:#b8923a; --gold-hell:#d4af5f;
+    --marke:#17233f; --marke-dunkel:#0d1526; --gold:#c39a4d; --gold-hell:#dcbd77;
     --creme:#f6f1e7; --warm:#efe7d8; --weiss:#fff;
     --tinte:#1d1d1b; --braun:#6b5f4d; --braun2:#9b8f7d; --linie:#e3dacb;
   }
@@ -22,7 +22,7 @@
   .mitte{max-width:1240px;margin:0 auto;padding:0 24px}
 
   /* Hinweis, dass dies ein Entwurf ist */
-  .entwurf{background:var(--gruen-dunkel);color:#e8dcc4;font-size:.76rem;
+  .entwurf{background:var(--marke-dunkel);color:#e8dcc4;font-size:.76rem;
            letter-spacing:.04em;text-align:center;padding:9px 16px;line-height:1.5}
   .entwurf b{color:var(--gold-hell);font-weight:600}
 
@@ -39,7 +39,7 @@
   .kopf-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;
               padding:18px 24px;max-width:1240px;margin:0 auto}
   .marke{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;
-         color:var(--gruen);letter-spacing:.01em;text-decoration:none;line-height:1}
+         color:var(--marke);letter-spacing:.01em;text-decoration:none;line-height:1}
   .marke em{display:block;font-style:normal;font-family:'Inter',sans-serif;font-size:.52rem;
             letter-spacing:.34em;color:var(--gold);font-weight:600;margin-top:4px}
   .suche{flex:1;max-width:330px;display:flex;align-items:center;gap:9px;
@@ -48,7 +48,7 @@
                background:none;color:var(--tinte)}
   .kopf-rechts{display:flex;align-items:center;gap:20px;color:var(--braun)}
   .korb{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500}
-  .korb-zahl{background:var(--gruen);color:#fff;width:20px;height:20px;border-radius:50%;
+  .korb-zahl{background:var(--marke);color:#fff;width:20px;height:20px;border-radius:50%;
              display:grid;place-items:center;font-size:.68rem;font-weight:600}
   .kat-nav{border-top:1px solid var(--linie);background:var(--weiss)}
   .kat-nav ul{display:flex;gap:34px;justify-content:center;list-style:none;padding:14px 24px;
@@ -56,11 +56,11 @@
               font-weight:600}
   .kat-nav a{color:var(--tinte);text-decoration:none;padding-bottom:4px;
              border-bottom:2px solid transparent}
-  .kat-nav a:hover{color:var(--gruen);border-bottom-color:var(--gold)}
+  .kat-nav a:hover{color:var(--marke);border-bottom-color:var(--gold)}
 
   /* 3. Hero, geteilt statt Vollbild */
   .hero{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-        background:var(--gruen-dunkel);border-radius:4px;overflow:hidden;margin:26px 0}
+        background:var(--marke-dunkel);border-radius:4px;overflow:hidden;margin:26px 0}
   .hero-text{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;
              color:var(--creme)}
   .hero-eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
@@ -96,7 +96,7 @@
   .vertrauen div{background:var(--warm);text-align:center;padding:30px 20px}
   .vertrauen div + div{box-shadow:-1px 0 0 var(--linie)}
   .vertrauen b{display:block;font-family:'Playfair Display',serif;font-size:1.45rem;
-               color:var(--gruen);margin-bottom:5px}
+               color:var(--marke);margin-bottom:5px}
   .vertrauen span{font-size:.72rem;color:var(--braun);letter-spacing:.03em}
   .platzhalter{color:var(--braun2);font-style:italic}
 
@@ -104,7 +104,7 @@
   .reihe{margin:0 0 70px}
   .reihe-kopf{text-align:center;margin-bottom:34px}
   .reihe-kopf h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);
-                 font-weight:700;color:var(--gruen-dunkel);margin-bottom:9px}
+                 font-weight:700;color:var(--marke-dunkel);margin-bottom:9px}
   .unterstrichen{border-bottom:3px solid var(--gold);padding-bottom:2px}
   .reihe-kopf p{font-size:.9rem;color:var(--braun);line-height:1.6}
   .k-raster{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -118,14 +118,14 @@
            font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;
            border-radius:3px;font-weight:600;z-index:2}
   .k-add{position:absolute;right:12px;bottom:12px;width:42px;height:42px;border-radius:50%;
-         border:none;background:var(--gruen);color:var(--creme);cursor:pointer;
+         border:none;background:var(--marke);color:var(--creme);cursor:pointer;
          display:grid;place-items:center;box-shadow:0 4px 14px rgba(29,58,36,.35);
          transition:background .2s,transform .15s}
   .k-add:hover{background:var(--gold);transform:scale(1.07)}
   .k-text{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .k-name{font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:600;
           line-height:1.25;margin-bottom:4px}
-  .k-claim{font-size:.79rem;color:var(--gruen);line-height:1.45;margin-bottom:10px;
+  .k-claim{font-size:.79rem;color:var(--marke);line-height:1.45;margin-bottom:10px;
            min-height:2.3em}
   .k-punkte{list-style:none;margin-bottom:13px}
   .k-punkte li{font-size:.72rem;color:var(--braun);line-height:1.7;padding-left:12px;
@@ -133,12 +133,12 @@
   .k-punkte li::before{content:"";position:absolute;left:0;top:.62em;width:4px;height:4px;
                        border-radius:50%;background:var(--gold)}
   .k-preis{margin-top:auto;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
-  .k-preis strong{font-family:'Playfair Display',serif;font-size:1.28rem;color:var(--gruen);
+  .k-preis strong{font-family:'Playfair Display',serif;font-size:1.28rem;color:var(--marke);
                   font-weight:700}
   .k-gp{font-size:.68rem;color:var(--braun2)}
   .k-zustell{font-size:.7rem;color:var(--braun);margin-top:7px;
              padding-top:9px;border-top:1px solid var(--linie)}
-  .k-zustell b{color:var(--gruen);font-weight:600}
+  .k-zustell b{color:var(--marke);font-weight:600}
   .reihe-fuss{text-align:center;margin-top:32px}
   .knopf-linie{display:inline-block;border:1px solid var(--gold);color:var(--gold);
                text-decoration:none;padding:13px 32px;border-radius:40px;font-size:.72rem;
@@ -150,7 +150,7 @@
   .stimmen{background:var(--warm);padding:64px 0;margin-bottom:0}
   .stimmen-kopf{text-align:center;margin-bottom:16px}
   .stimmen-kopf h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);
-                   color:var(--gruen-dunkel);margin-bottom:9px}
+                   color:var(--marke-dunkel);margin-bottom:9px}
   .stimmen-hinweis{text-align:center;font-size:.8rem;color:var(--braun);
                    background:var(--weiss);border:1px dashed var(--braun2);border-radius:4px;
                    padding:15px 20px;max-width:680px;margin:0 auto 32px;line-height:1.6}
@@ -166,11 +166,11 @@
        padding:76px 0}
   .hof img{border-radius:6px}
   .hof h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);
-          color:var(--gruen);margin-bottom:18px;line-height:1.25}
+          color:var(--marke);margin-bottom:18px;line-height:1.25}
   .hof p{font-size:.92rem;line-height:1.85;color:var(--braun);margin-bottom:14px}
 
   /* 9. Fuss */
-  .fuss{background:var(--gruen-dunkel);color:rgba(246,241,231,.75);padding:52px 0 30px;
+  .fuss{background:var(--marke-dunkel);color:rgba(246,241,231,.75);padding:52px 0 30px;
         font-size:.82rem}
   .fuss-inner{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
   .fuss h4{color:var(--gold-hell);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
