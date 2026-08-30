@@ -1418,7 +1418,7 @@ nav.breadcrumb{border-bottom:0!important}
 <meta name="new-cookie-storage-activated" content="f">
 
 <script id="shopify-features" type="application/json">{"betas":[],"predictiveSearch":false,"locale":"de"}</script><script>window.Shopify=window.Shopify||{};window.Shopify.currency={active:"EUR",rate:"1.0"};window.Shopify.locale="de";window.Shopify.routes={root:"/"};</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"><link rel="stylesheet" href="eigen.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"><link rel="stylesheet" href="eigen.css"><link rel="stylesheet" href="karte.css">
 <meta name="robots" content="noindex, nofollow">
 </head>
 
@@ -1449,6 +1449,14 @@ nav.breadcrumb{border-bottom:0!important}
 </style>
 <script>
 (function(){
+  // Der Chip entsteht im Textteil der Karte, gehoert aber aufs Bild.
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.product-item .bk-cat').forEach(function(chip){
+      var karte = chip.closest('.product-item');
+      var bild = karte && karte.querySelector('.card__image');
+      if (bild) { bild.appendChild(chip); chip.hidden = false; }
+    });
+  });
   document.addEventListener('click', function(e){
     var a = e.target.closest('[data-testseite="aus"]');
     if (a) { e.preventDefault(); }
@@ -3510,9 +3518,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bauern Jausen-Box">Bauern Jausen-Box
-</a><div class="product-card-custom__subtitle">Die klassische Jause, fertig gepackt</div><ul class="product-card-custom__benefits" role="list"><li>Käse, Speck und Wurst</li><li>mit Brot und Pikantem</li><li>für 2 bis 3 Personen</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€29,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bauern Jausen-Box">Bauern Jausen-Box</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 29,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -3628,9 +3634,7 @@ max-height: 5000px;
 
   </div></div>
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Käse-Genießerbox">Käse-Genießerbox
-</a><div class="product-card-custom__subtitle">Sechs handverlesene Käse</div><ul class="product-card-custom__benefits" role="list"><li>6 Käsespezialitäten</li><li>in der Holzbox</li><li>zum Verschenken</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€39,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Käse-Genießerbox">Käse-Genießerbox</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 39,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -3746,9 +3750,7 @@ max-height: 5000px;
 
   </div></div>
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Wurst & Speck Box">Wurst & Speck Box
-</a><div class="product-card-custom__subtitle">Für alle, die es herzhaft mögen</div><ul class="product-card-custom__benefits" role="list"><li>Salami und Rohschinken</li><li>geräucherter Speck</li><li>in der Holzbox</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€44,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Wurst & Speck Box">Wurst & Speck Box</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 44,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -3848,9 +3850,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Premium Genussbox">Premium Genussbox
-</a><div class="product-card-custom__subtitle">Unser Meisterstück</div><ul class="product-card-custom__benefits" role="list"><li>feinste Käse und Wurst</li><li>mit einer Flasche Wein</li><li>für den großen Anlass</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€69,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Premium Genussbox">Premium Genussbox</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 69,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -3983,9 +3983,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bergkäse (18 Monate)">Bergkäse (18 Monate)
-</a><div class="product-card-custom__subtitle">Extrem würzig, mit Kristallen</div><ul class="product-card-custom__benefits" role="list"><li>18 Monate gereift</li><li>kräftig und würzig</li><li>mit Salzkristallen</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€5,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €59,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bergkäse (18 Monate)">Bergkäse (18 Monate)</a><span class="bk-cat" hidden>Käse</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Extrem würzig, mit Kristallen.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 5,90<small class="bk-grund">€59,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4085,9 +4083,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Heublumenkäse">Heublumenkäse
-</a><div class="product-card-custom__subtitle">Mit Heublumen veredelt</div><ul class="product-card-custom__benefits" role="list"><li>blumig und würzig</li><li>in Heublumen gereift</li><li>mild im Abgang</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€4,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €49,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Heublumenkäse">Heublumenkäse</a><span class="bk-cat" hidden>Käse</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Mit Heublumen veredelt, blumig & würzig.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 4,90<small class="bk-grund">€49,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4197,9 +4193,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Alter Gouda (38 Monate)">Alter Gouda (38 Monate)
-</a><div class="product-card-custom__subtitle">38 Monate gereift</div><ul class="product-card-custom__benefits" role="list"><li>lange gereift</li><li>mit Salzkristallen</li><li>kräftig im Geschmack</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€5,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €59,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Alter Gouda (38 Monate)">Alter Gouda (38 Monate)</a><span class="bk-cat" hidden>Käse</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Meisterstück, 38 Monate, mit Kristallen.</div><div class="bk-stock knapp">● Nur noch 5 Stück</div><div class="bk-foot"><div class="bk-preis">€ 5,90<small class="bk-grund">€59,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4299,9 +4293,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Alter Ziegenkäse (38 Monate)">Alter Ziegenkäse (38 Monate)
-</a><div class="product-card-custom__subtitle">Pikanter Ziegenkäse</div><ul class="product-card-custom__benefits" role="list"><li>38 Monate gereift</li><li>pikant und würzig</li><li>für Kenner</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€5,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €59,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Alter Ziegenkäse (38 Monate)">Alter Ziegenkäse (38 Monate)</a><span class="bk-cat" hidden>Käse</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Pikanter Ziegenkäse, unglaublich würzig.</div><div class="bk-stock knapp">● Nur noch 4 Stück</div><div class="bk-foot"><div class="bk-preis">€ 5,90<small class="bk-grund">€59,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4662,9 +4654,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Pikante Dürre">Pikante Dürre
-</a><div class="product-card-custom__subtitle">Luftgetrocknet, pikant</div><ul class="product-card-custom__benefits" role="list"><li>luftgetrocknet</li><li>für die Jause</li><li>gut für unterwegs</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€2,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €29,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Pikante Dürre">Pikante Dürre</a><span class="bk-cat" hidden>Hausschwein</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Luftgetrocknet, pikant.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 2,90<small class="bk-grund">€29,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4764,9 +4754,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Karreespeck">Mangalitza Karreespeck
-</a><div class="product-card-custom__subtitle">Stark marmoriert, besonders saftig</div><ul class="product-card-custom__benefits" role="list"><li>vom Wollschwein</li><li>stark marmoriert</li><li>besonders saftig</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€7,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €79,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Karreespeck">Mangalitza Karreespeck</a><span class="bk-cat" hidden>Mangalitza</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Stark marmoriert, besonders saftig.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 7,90<small class="bk-grund">€79,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4866,9 +4854,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Hirschrohschinken">Hirschrohschinken
-</a><div class="product-card-custom__subtitle">Monatelang luftgetrocknet</div><ul class="product-card-custom__benefits" role="list"><li>vom heimischen Hirsch</li><li>monatelang gereift</li><li>mager und fein</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€9,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €99,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Hirschrohschinken">Hirschrohschinken</a><span class="bk-cat" hidden>Wild</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Monatelang luftgetrocknet.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 9,90<small class="bk-grund">€99,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -4968,9 +4954,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Luftgetr. Bauchspeck">Luftgetr. Bauchspeck
-</a><div class="product-card-custom__subtitle">Wochen luftgetrocknet</div><ul class="product-card-custom__benefits" role="list"><li>kräftig und würzig</li><li>langsam gereift</li><li>warm wie kalt</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€4,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €49,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Luftgetr. Bauchspeck">Luftgetr. Bauchspeck</a><span class="bk-cat" hidden>Hausschwein</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Wochen luftgetrocknet.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 4,90<small class="bk-grund">€49,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5078,9 +5062,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Salami">Mangalitza Salami
-</a><div class="product-card-custom__subtitle">8 Wochen luftgetrocknet</div><ul class="product-card-custom__benefits" role="list"><li>vom Wollschwein</li><li>8 Wochen gereift</li><li>kräftig im Geschmack</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€7,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €79,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Salami">Mangalitza Salami</a><span class="bk-cat" hidden>Mangalitza</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">8 Wochen luftgetrocknet, kräftig.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 7,90<small class="bk-grund">€79,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5180,9 +5162,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Lungenbraten">Mangalitza Lungenbraten
-</a><div class="product-card-custom__subtitle">Das Filet, zartestes Stück</div><ul class="product-card-custom__benefits" role="list"><li>das zarteste Stück</li><li>vom Wollschwein</li><li>fein geschnitten</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€7,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €79,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Mangalitza Lungenbraten">Mangalitza Lungenbraten</a><span class="bk-cat" hidden>Mangalitza</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Das Filet, zartestes Stück.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 7,90<small class="bk-grund">€79,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5282,9 +5262,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Trüffelgouda">Trüffelgouda
-</a><div class="product-card-custom__subtitle">Edler Gouda mit Trüffelstücken</div><ul class="product-card-custom__benefits" role="list"><li>mit echtem Trüffel</li><li>cremig und edel</li><li>zur Käseplatte</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€5,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €59,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Trüffelgouda">Trüffelgouda</a><span class="bk-cat" hidden>Käse</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Edler Gouda mit Trüffelstücken.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 5,90<small class="bk-grund">€59,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5384,9 +5362,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Entenfilet">Entenfilet
-</a><div class="product-card-custom__subtitle">Kaltgeräuchert, fein gewürzt</div><ul class="product-card-custom__benefits" role="list"><li>kaltgeräuchert</li><li>fein gewürzt</li><li>hauchdünn geschnitten</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€9,90</span><span class="visually-hidden">Grundpreis</span><span class="product-price--unit">&nbsp;· €99,00 / kg</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Entenfilet">Entenfilet</a><span class="bk-cat" hidden>Wild</span><div class="bk-unit">pro 100 g</div><div class="bk-desc">Kaltgeräuchert, fein gewürzt.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 9,90<small class="bk-grund">€99,00 / kg</small><small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5494,9 +5470,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bauern Jausen-Box">Bauern Jausen-Box
-</a><div class="product-card-custom__subtitle">Die klassische Jause, fertig gepackt</div><ul class="product-card-custom__benefits" role="list"><li>Käse, Speck und Wurst</li><li>mit Brot und Pikantem</li><li>für 2 bis 3 Personen</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€29,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Bauern Jausen-Box">Bauern Jausen-Box</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 29,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5612,9 +5586,7 @@ max-height: 5000px;
 
   </div></div>
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Käse-Genießerbox">Käse-Genießerbox
-</a><div class="product-card-custom__subtitle">Sechs handverlesene Käse</div><ul class="product-card-custom__benefits" role="list"><li>6 Käsespezialitäten</li><li>in der Holzbox</li><li>zum Verschenken</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€39,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Käse-Genießerbox">Käse-Genießerbox</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 39,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5730,9 +5702,7 @@ max-height: 5000px;
 
   </div></div>
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Wurst & Speck Box">Wurst & Speck Box
-</a><div class="product-card-custom__subtitle">Für alle, die es herzhaft mögen</div><ul class="product-card-custom__benefits" role="list"><li>Salami und Rohschinken</li><li>geräucherter Speck</li><li>in der Holzbox</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€44,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Wurst & Speck Box">Wurst & Speck Box</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 44,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini
@@ -5832,9 +5802,7 @@ max-height: 5000px;
 
   <div class="card__text product-item__text product-card-custom__text gutter--regular remove-empty-space text-align--left">
 
-  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Premium Genussbox">Premium Genussbox
-</a><div class="product-card-custom__subtitle">Unser Meisterstück</div><ul class="product-card-custom__benefits" role="list"><li>feinste Käse und Wurst</li><li>mit einer Flasche Wein</li><li>für den großen Anlass</li></ul><div class="product-card-custom__price">
-<div class="product-price "><span class=" product-price--original "><span class="visually-hidden">Preis</span>€69,90</span></div></div><div class="tirolish-zustellung-mini-zeile">
+  <a class="product-item__title product-card-custom__title" href="#" data-testseite="aus" title="Premium Genussbox">Premium Genussbox</a><span class="bk-cat" hidden>Geschenkbox</span><div class="bk-unit">pro Box</div><div class="bk-desc">Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.</div><div class="bk-stock ok">● Auf Lager</div><div class="bk-foot"><div class="bk-preis">€ 69,90<small class="bk-mwst">inkl. MwSt. zzgl. Versand</small></div><button type="button" class="bk-add" data-testseite="korb">+ Warenkorb</button></div><div class="tirolish-zustellung-mini-zeile">
   <div
     class="tirolish-zustellung-mini"
     data-tirolish-delivery-mini

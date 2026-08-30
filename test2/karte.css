@@ -1,0 +1,72 @@
+/* ══════════════════════════════════════════════════════════════════
+   PRODUKTKARTE IM AUFBAU DER ECHTEN STARTSEITE
+   Titel, Mengenangabe, Beschreibung, Lagerstand, darunter der Preis
+   mit Grundpreis und Steuerhinweis, rechts daneben der Warenkorbknopf.
+   Auf dem Bild sitzt unten rechts der Kategoriechip.
+   Werte uebernommen aus app/templates/index.html.
+   ══════════════════════════════════════════════════════════════════ */
+
+.bk-unit{font-size:.62rem;color:#968b7c;letter-spacing:.05em;margin:4px 0 7px}
+
+.bk-desc{font-size:.78rem;color:#5f574c;line-height:1.55;margin-bottom:10px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;min-height:2.5em}
+
+/* Zwei feine Linien wie im Shop: eine ueber und eine unter dem Lagerstand */
+.bk-stock{font-size:.66rem;font-weight:600;letter-spacing:.03em;
+  display:flex;align-items:center;gap:5px;padding:10px 0;margin-bottom:11px;
+  border-top:1px solid var(--bk-linie);border-bottom:1px solid var(--bk-linie)}
+.bk-stock.ok{color:#3d8b4a}
+.bk-stock.knapp{color:#c0772a}
+.bk-stock.aus{color:#a33}
+
+.bk-foot{display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-top:auto;padding-top:2px}
+.bk-preis{font-family:var(--font-stack-headings);font-size:1.3rem;font-weight:700;
+  color:var(--bk-marine);white-space:nowrap;line-height:1.2}
+.bk-grund{display:block;font-family:var(--font-stack-body);font-size:.62rem;
+  color:#968b7c;font-weight:400;letter-spacing:.02em;margin-top:3px}
+.bk-mwst{display:block;font-family:var(--font-stack-body);font-size:.58rem;
+  color:#968b7c;font-weight:400;letter-spacing:.02em;margin-top:1px}
+
+.bk-add{background:var(--bk-marine);color:#f7f3ed;border:none;border-radius:40px;
+  padding:10px 17px;font-family:var(--font-stack-body);font-size:.65rem;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;cursor:pointer;
+  white-space:nowrap;transition:background .15s}
+.bk-add:hover{background:var(--bk-tief)}
+
+/* Kategoriechip auf dem Bild. Das Skript unten schiebt ihn dorthin. */
+.bk-cat{position:absolute;bottom:8px;right:8px;z-index:2;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);color:#f7f3ed;
+  padding:4px 10px;font-family:var(--font-stack-body);font-size:.58rem;
+  letter-spacing:.1em;text-transform:uppercase;border-radius:2px}
+
+/* Karte: weisser Grund mit weicher Kante, wie im Shop */
+.product-item.card{border-radius:11px!important;overflow:hidden;
+  border:1px solid var(--bk-linie);box-shadow:0 1px 3px rgba(29,29,27,.04)}
+.product-item .card__image{border-radius:11px 11px 0 0!important;position:relative}
+.product-item .card__text,.product-item .product-card-custom__text{padding:14px 15px 15px!important}
+
+/* Alle Kartenbilder gleich hoch, sonst stehen Titel und Preise einer Reihe
+   auf verschiedenen Hoehen. Die Vorlage setzt die Hoehe per padding-top am
+   figure, dieser Wert wird hier vereinheitlicht. */
+.product-item .card__image figure{padding-top:100%!important}
+
+/* Bei Produkten ohne Bewertung blieb ein leerer Kasten stehen und schob den
+   Titel um 19 Pixel nach unten. Wir zeigen ohnehin keine Bewertungen. */
+.product-card-custom__rating{display:none!important}
+
+/* Die Zustellzeile kommt aus der Vorlage. Unsere Karte zeigt sie nicht. */
+.tirolish-zustellung-mini-zeile{display:none!important}
+
+/* Der runde Knopf der Vorlage auf dem Bild entfaellt, wir haben unseren
+   eigenen in der Fusszeile der Karte. */
+.product-card-custom__quick-add-button,
+.product-item quick-add-to-cart{display:none!important}
+
+@media(max-width:749px){
+  .bk-preis{font-size:1.12rem}
+  .bk-add{padding:9px 12px;font-size:.6rem;letter-spacing:.05em}
+  .bk-foot{flex-direction:column;align-items:flex-start;gap:8px}
+  .bk-add{width:100%;text-align:center}
+}
