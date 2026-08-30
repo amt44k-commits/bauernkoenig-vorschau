@@ -670,6 +670,85 @@
      die Startseite blieb auf dem Handy ohne Menue (Unterseiten hatten es). */
   
 
+  /* ════════ KATEGORIEKACHELN ════════ */
+  .kachel-band{padding:60px 40px 10px;max-width:1400px;margin:0 auto}
+  .kachel-kopf{text-align:center;margin-bottom:26px}
+  .kachel-titel{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);
+    font-weight:600;color:var(--ink)}
+  .kachel-sub{font-size:.85rem;color:var(--brown);margin-top:7px}
+  .kachel-reihe{display:grid;gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .kachel{position:relative;display:block;border:none;padding:0;cursor:pointer;
+    background:none;text-align:left;border-radius:12px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(29,29,27,.04),0 2px 12px rgba(29,29,27,.06);
+    transition:transform .2s,box-shadow .2s}
+  .kachel:hover{transform:translateY(-3px);
+    box-shadow:0 4px 8px rgba(29,29,27,.06),0 10px 26px rgba(29,29,27,.12)}
+  .kachel-bild{aspect-ratio:1/1;overflow:hidden;background:var(--warm)}
+  .kachel-bild img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .4s}
+  .kachel:hover .kachel-bild img{transform:scale(1.04)}
+  .kachel-text{padding:12px 14px 14px;background:#fff}
+  .kachel-name{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+  .kachel-zahl{font-size:.68rem;color:var(--brown2);margin-top:3px}
+
+  @media(max-width:600px){
+    .kachel-band{padding:40px 16px 6px}
+    .kachel-reihe{grid-template-columns:1fr 1fr;gap:12px}
+    .kachel-text{padding:9px 10px 11px}
+    .kachel-name{font-size:.64rem;letter-spacing:.1em}
+  }
+
+  /* ════════ KURATIERTE REIHEN ════════
+     Ohne Filter zeigt das Sortiment je Kategorie eine Reihe mit vier
+     Karten statt aller Produkte am Stueck. Sobald gefiltert oder gesucht
+     wird, erscheint wieder das gewohnte Raster. */
+  .reihe{margin-bottom:44px}
+  .reihe-kopf{display:flex;align-items:baseline;justify-content:space-between;
+    gap:16px;margin-bottom:16px;flex-wrap:wrap}
+  .reihe-titel{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;
+    color:var(--ink)}
+  .reihe-titel em{font-style:italic;color:var(--gold)}
+  .reihe-alle{background:none;border:none;padding:0;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;color:var(--brand);
+    border-bottom:1px solid transparent;transition:border-color .2s}
+  .reihe-alle:hover{border-bottom-color:var(--brand)}
+  .reihe-grid{display:grid;gap:20px;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  @media(max-width:600px){
+    .reihe{margin-bottom:32px}
+    .reihe-titel{font-size:1.2rem}
+    .reihe-grid{grid-template-columns:1fr 1fr;gap:12px}
+  }
+
+  /* ════════ KOPFSCHAU MIT VIER FOLIEN ════════
+     Die Folien liegen uebereinander und werden ein- und ausgeblendet.
+     Das Bild jeder Folie steht als Hintergrund am Abschnitt, damit der
+     Wechsel weich laeuft und nur eine Ebene bewegt wird. */
+  .hero{position:relative;overflow:hidden;transition:background-image .6s ease;
+    background-size:cover;background-position:center}
+  .hero-folien{position:relative;z-index:1;width:100%;
+    display:grid;place-items:center}
+  .hero-folie{grid-area:1/1;display:flex;flex-direction:column;align-items:center;
+    text-align:center;opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .55s ease,transform .55s ease,visibility .55s;
+    pointer-events:none;max-width:760px}
+  .hero-folie.aktiv{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+
+  .hero-punkte{position:relative;z-index:2;display:flex;gap:9px;
+    justify-content:center;margin-top:26px}
+  .hero-punkt{width:30px;height:3px;border:none;padding:0;cursor:pointer;
+    background:rgba(255,255,255,.35);border-radius:2px;transition:background .25s}
+  .hero-punkt.aktiv{background:var(--gold2)}
+  .hero-punkt:hover{background:rgba(255,255,255,.6)}
+
+  @media(max-width:600px){
+    .hero-punkte{margin-top:20px}
+    .hero-punkt{width:22px}
+  }
+
   /* ════════ PFLICHTANGABEN (Grundpreis + LMIV) ════════ */
   .card-grundpreis{display:block;font-family:'Inter',sans-serif;font-size:.62rem;
     color:var(--brown2);font-weight:400;letter-spacing:.02em;margin-top:2px}
@@ -737,10 +816,16 @@
   </div>
   <div class="nav-right">
     
-      <button class="nav-btn ghost" id="navLoginBtn" onclick="void 0">Anmelden</button>
+    <form class="nav-suche" role="search" onsubmit="return suchen(event)">
+      <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
+      <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
+             aria-label="Sortiment durchsuchen" autocomplete="off">
+    </form>
+    
+      <a class="nav-icon" id="navLoginBtn" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
       <button class="nav-btn solid" id="navRegisterBtn" onclick="void 0" style="display:none">Registrieren</button>
       <span class="nav-user-info" id="navUserGreet" style="display:none"></span>
-      <button class="nav-btn ghost" id="navProfileBtn" style="display:none" onclick="openProfile()"><svg class="ico"><use href="#ic-user"/></svg>Konto</button>
+      <button class="nav-icon" id="navProfileBtn" style="display:none" onclick="openProfile()" title="Konto" aria-label="Konto"><svg class="ico"><use href="#ic-user"/></svg></button>
       <button class="nav-btn cart-btn" onclick="openCart()"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
     
     <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -767,11 +852,40 @@
   </nav>
 </div>
 
-<section class="hero">
-  <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
-  <div class="hero-line"></div>
-  <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
-  <a class="hero-btn" href="#" onclick="document.querySelector('.section-head').scrollIntoView({behavior:'smooth'});return false">Zum Sortiment</a>
+<section class="hero" id="hero">
+  
+  <div class="hero-folien" id="heroFolien">
+    <article class="hero-folie aktiv" data-bild="jausenbox">
+      <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
+      <a class="hero-btn" href="#sortiment" onclick="zumSortiment();return false">Zum Sortiment</a>
+    </article>
+
+    <article class="hero-folie" data-bild="verpackung">
+      <h1 class="hero-title">Sorgfältig <em>verpackt.</em></h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">Gekühlt in isolierten Boxen, die Kühlkette hält 72 Stunden. So kommt alles an, wie es den Hof verlassen hat.</p>
+      <a class="hero-btn" href="#" data-vorschau="aus">Mehr zum Versand</a>
+    </article>
+
+    <article class="hero-folie" data-bild="hof">
+      <h1 class="hero-title">Vom <em>Hof,</em><br>nicht aus der Fabrik.</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">Eigene Herstellung, lange Reifezeiten und Fleisch von Tieren, die wir kennen. Wer hier kauft, weiß, wo das Essen herkommt.</p>
+      <a class="hero-btn" href="#ueberuns" onclick="document.getElementById('aboutSection').scrollIntoView({behavior:'smooth'});return false">Über uns</a>
+    </article>
+
+    <article class="hero-folie" data-bild="kaese">
+      <h1 class="hero-title">Bergkäse, <em>18 Monate</em> gereift.</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">Kräftig, würzig, mit Salzkristallen im Bruch. Aus eigener Herstellung, ohne Eile gereift.</p>
+      <a class="hero-btn" href="#sortiment" onclick="zumSortiment('kaese');return false">Käse ansehen</a>
+    </article>
+  </div>
+
+  <div class="hero-punkte" id="heroPunkte" role="tablist" aria-label="Kopfschau"></div>
+
   <div class="hero-trust">
     <span><svg class="ico"><use href="#ic-cheese"/></svg> <b>21</b> Käsesorten</span>
     <span><svg class="ico"><use href="#ic-meat"/></svg> <b>35</b> Fleischspezialitäten</span>
@@ -826,6 +940,15 @@
   <!-- Active filters -->
   <div class="active-filters" id="activeFilters" style="display:none"></div>
 </div>
+
+<!-- ── EINSTIEG INS SORTIMENT: eine Kachel je Kategorie ── -->
+<section class="kachel-band" id="kategorien">
+  <div class="kachel-kopf">
+    <h2 class="kachel-titel">Wonach ist dir?</h2>
+    <p class="kachel-sub">Fünf Wege ins Sortiment. Ein Klick setzt den Filter.</p>
+  </div>
+  <div class="kachel-reihe" id="kachelReihe"></div>
+</section>
 
 <div class="section-head">
   <h2 class="section-title">Unser Sortiment</h2>
@@ -1129,14 +1252,78 @@ const IMG = {
   bauer: 'static/img/products/bauer.webp',
 };
 
-// Hero-Hintergrund & Hof-Bild setzen
-(function(){
+// ── KOPFSCHAU: vier Folien, Bild und Text wechseln gemeinsam ──
+const HERO_BILDER = {
+  jausenbox: 'static/img/hero/jausenbox',
+  verpackung: 'static/img/hero/verpackung',
+  hof: 'static/img/hero/hof',
+  kaese: 'static/img/hero/kaese',
+};
+let heroNr = 0, heroUhr = null;
+
+function heroBildpfad(schluessel){
+  // Am Handy ist der Ausschnitt hochkant, am Rechner breit
+  const eng = window.matchMedia('(max-width:749px)').matches;
+  return HERO_BILDER[schluessel] + (eng ? '-mobil' : '-desktop') + '.webp';
+}
+
+function heroZeigen(nr){
+  const folien = document.querySelectorAll('.hero-folie');
+  if (!folien.length) return;
+  heroNr = (nr + folien.length) % folien.length;
+  folien.forEach((f,i) => f.classList.toggle('aktiv', i === heroNr));
+  document.querySelectorAll('.hero-punkt').forEach((p,i) => {
+    p.classList.toggle('aktiv', i === heroNr);
+    p.setAttribute('aria-selected', i === heroNr ? 'true' : 'false');
+  });
   const hero = document.querySelector('.hero');
+  const bild = heroBildpfad(folien[heroNr].dataset.bild);
   if (hero) hero.style.backgroundImage =
-    `linear-gradient(135deg,rgba(var(--brand-rgb),.78) 0%,rgba(var(--brand-deep-rgb),.9) 100%),url('${IMG.hero}')`;
+    `linear-gradient(180deg,rgba(var(--brand-deep-rgb),.42) 0%,rgba(var(--brand-deep-rgb),.30) 45%,rgba(var(--brand-deep-rgb),.66) 100%),url('${bild}')`;
+}
+
+function heroWeiter(){ heroZeigen(heroNr + 1); }
+
+function heroUhrStarten(){
+  clearInterval(heroUhr);
+  // Wer die Bewegung abbestellt hat, bekommt keine Schau
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  heroUhr = setInterval(heroWeiter, 6500);
+}
+
+(function(){
+  const folien = document.querySelectorAll('.hero-folie');
+  const punkte = document.getElementById('heroPunkte');
+  if (folien.length && punkte) {
+    punkte.innerHTML = [...folien].map((f,i) =>
+      `<button type="button" class="hero-punkt${i===0?' aktiv':''}" role="tab"
+        aria-selected="${i===0}" aria-label="Folie ${i+1}"
+        onclick="heroZeigen(${i});heroUhrStarten()"></button>`).join('');
+    heroZeigen(0);
+    heroUhrStarten();
+    // Beim Wechsel zwischen Handy und Rechner das passende Bild nachladen
+    window.addEventListener('resize', () => heroZeigen(heroNr));
+    // Wischen am Handy
+    let start = null;
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('touchstart', e => { start = e.touches[0].clientX; }, {passive:true});
+    hero.addEventListener('touchend', e => {
+      if (start === null) return;
+      const weg = e.changedTouches[0].clientX - start;
+      if (Math.abs(weg) > 50) { heroZeigen(heroNr + (weg < 0 ? 1 : -1)); heroUhrStarten(); }
+      start = null;
+    }, {passive:true});
+  }
   const ab = document.getElementById('aboutImg');
   if (ab) ab.innerHTML = `<img src="${IMG.bauer}" alt="Bauern König, vom Hof" loading="lazy">`;
 })();
+
+// Sprung ins Sortiment, auf Wunsch mit gesetztem Filter
+function zumSortiment(kategorie){
+  if (kategorie && typeof setMainFilter === "function") setMainFilter(kategorie);
+  const ziel = document.querySelector('.section-head') || document.querySelector('.products');
+  if (ziel) ziel.scrollIntoView({behavior:'smooth'});
+}
 
 // Unterkategorien entstehen aus den Produkten (siehe UNTERKATEGORIEN)
 
@@ -1191,10 +1378,14 @@ function applyFilters() {
 
   // Active filter tags
   const tags = [];
-  if (fMain !== 'all') tags.push({label: SUBS[fMain].label, remove: ()=>setMainFilter('all',document.querySelector('[data-cat="all"]'))});
+  // Frueher stand hier SUBS, eine Tabelle, die es nie gab. Dadurch brach
+  // applyFilters bei jeder Kategoriewahl ab und die aktiven Filter blieben
+  // unsichtbar. Beschriftung kommt aus KATEGORIEN, die Unterpunkte aus
+  // UNTERKATEGORIEN.
+  if (fMain !== 'all') tags.push({label: catLabel(fMain), remove: ()=>setMainFilter('all',document.querySelector('[data-cat="all"]'))});
   if (fSub !== 'all') {
-    const s = SUBS[fMain].subs.find(x => x.k === fSub);
-    if (s) tags.push({label: s.l, remove: ()=>{fSub='all';renderSubButtons();applyFilters();}});
+    const treffer = (UNTERKATEGORIEN[fMain] || []).find(x => x === fSub);
+    if (treffer) tags.push({label: beschriften(treffer), remove: ()=>{fSub='all';renderSubButtons();applyFilters();}});
   }
   if (fSearch) tags.push({label: '„'+fSearch+'“', remove: ()=>{document.getElementById('filterSearch').value='';fSearch='';applyFilters();}});
   const actEl = document.getElementById('activeFilters');
@@ -1249,10 +1440,61 @@ function cardHTML(p){
   </div>`;
 }
 
+// ── KATEGORIEKACHELN ──
+// Ein Bild je Kategorie, genommen vom teuersten Produkt darin.
+function kachelnZeichnen(){
+  const reihe = document.getElementById('kachelReihe');
+  if (!reihe) return;
+  const reihenfolge = ['geschenk','kaese','hausschwein','mangalitza','wild'];
+  const vorhanden = reihenfolge.filter(k => KATEGORIEN[k] && products.some(p => p.cat===k));
+  reihe.innerHTML = vorhanden.map(k => {
+    const drin = products.filter(p => p.cat===k);
+    const bild = (drin.find(p => p.img) || {}).img || '';
+    const zahl = drin.length + (drin.length === 1 ? ' Artikel' : ' Artikel');
+    return `<button type="button" class="kachel" onclick="zumSortiment('${k}')"
+        aria-label="${catLabel(k)} ansehen">
+      <div class="kachel-bild">${bild ? `<img src="${bild}" alt="${catLabel(k)}" loading="lazy">` : ''}</div>
+      <div class="kachel-text">
+        <div class="kachel-name">${catLabel(k)}</div>
+        <div class="kachel-zahl">${zahl}</div>
+      </div>
+    </button>`;
+  }).join('');
+}
+
+// ── KURATIERTE REIHEN ──
+// Vier Karten je Kategorie, der Rest liegt eine Filterauswahl entfernt.
+function reihenZeichnen(){
+  const grid = document.getElementById('productGrid');
+  const reihenfolge = ['kaese','hausschwein','mangalitza','wild'];
+  const teile = reihenfolge.filter(k => KATEGORIEN[k]).map(k => {
+    const drin = products.filter(p => p.cat === k);
+    if (!drin.length) return '';
+    const vier = drin.slice(0, 4);
+    return `<div class="reihe">
+      <div class="reihe-kopf">
+        <h3 class="reihe-titel">Unser <em>${catLabel(k)}</em></h3>
+        <button type="button" class="reihe-alle" onclick="zumSortiment('${k}')">
+          Alle ${drin.length} ansehen</button>
+      </div>
+      <div class="reihe-grid">${vier.map(cardHTML).join('')}</div>
+    </div>`;
+  });
+  grid.className = 'reihen';
+  grid.innerHTML = teile.join('');
+  document.getElementById('productCount').textContent = products.length + ' Produkte';
+}
+
+function ohneFilter(){
+  return fMain === 'all' && fSub === 'all' && !fSearch && !fSort;
+}
+
 function renderProductGrid(filtered) {
   const grid = document.getElementById('productGrid');
   if (!filtered) filtered = products;
   currentFiltered = filtered;
+  if (ohneFilter()) { reihenZeichnen(); return; }
+  grid.className = 'grid';
   document.getElementById('productCount').textContent = filtered.length + ' Produkte';
 
   if (!filtered.length) {
@@ -1652,6 +1894,7 @@ document.getElementById('successModal').addEventListener('click',function(e){if(
 // ── INIT ──
 loadSession();
 updateNav();
+kachelnZeichnen();
 applyFilters();
 renderGiftBoxes();
 renderDrawer();
