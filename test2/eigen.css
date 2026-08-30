@@ -1,0 +1,144 @@
+/* ══════════════════════════════════════════════════════════════════
+   EIGENE HANDSCHRIFT
+   Liegt ueber dem Stil der Vorlage und ersetzt das, woran man sie
+   erkennt: die kondensierte Versalienschrift der Ueberschriften, den
+   animierten Unterstrich, die weichen Rundungen. Stattdessen die
+   Bauern-Koenig-Mittel aus dem echten Shop: Playfair Display fuer
+   Ueberschriften, Inter fuer den Text, ein goldener Strich als
+   Abschnittszeichen und Gold-Kursiv als Betonung.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root{
+  --font-stack-headings:'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-stack-body:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --bk-gold:#c8a35a;
+  --bk-gold-hell:#e0c384;
+  --bk-marine:#1b3a5f;
+  --bk-tief:#102439;
+  --bk-linie:#e3dccd;
+}
+
+/* ── Grundschrift ── */
+body, .rte, p, li, td, input, textarea, select{
+  font-family:var(--font-stack-body)!important;
+}
+body{letter-spacing:.005em}
+
+/* ── Ueberschriften: Serife statt Versalien ── */
+h1,h2,h3,h4,.h1,.h2,.h3,.h4,
+.section-heading__title,.slideshow-title,.video-with-tex__title,
+.product-item__title,.product-card-custom__title{
+  font-family:var(--font-stack-headings)!important;
+  text-transform:none!important;
+  letter-spacing:.002em!important;
+  font-weight:600!important;
+  line-height:1.16!important;
+}
+.section-heading__title,.h2{font-size:clamp(1.7rem,3.2vw,2.5rem)!important}
+.slideshow-title,.h1{font-size:clamp(2rem,4.4vw,3.4rem)!important;font-weight:700!important}
+.product-item__title,.product-card-custom__title{
+  font-size:1.06rem!important;font-weight:600!important;line-height:1.3!important}
+
+/* Der animierte Unterstrich ist die Handschrift der Vorlage. Wir betonen
+   stattdessen mit Gold und Kursiv, wie auf unserer eigenen Startseite. */
+[class*="text-animation--underline"]{
+  background-image:none!important;background:none!important;
+  padding-bottom:0!important;text-decoration:none!important;
+}
+/* Gold-Kursiv als Betonung, aber nur in Abschnittsueberschriften. In der
+   Kopfschau steht der Titel auf einem Foto und muss hell und ruhig bleiben. */
+.section-heading__title [class*="text-animation--underline"],
+.section-heading__title strong,.h2 strong{
+  color:var(--bk-gold)!important;font-style:italic!important;font-weight:600!important;
+  text-decoration:none!important;
+}
+.slideshow-title,.slideshow-title *{
+  color:#fff!important;font-style:normal!important;
+  text-shadow:0 2px 18px rgba(16,36,57,.45);
+}
+
+/* Goldener Strich unter der Abschnittsueberschrift */
+.section-heading__text{position:relative;padding-bottom:26px}
+.section-heading__text::after{
+  content:'';position:absolute;left:50%;bottom:6px;transform:translateX(-50%);
+  width:52px;height:2px;background:var(--bk-gold);
+}
+.section-heading--center .section-heading__subheading{
+  font-size:.95rem!important;color:#5f574c!important;letter-spacing:.01em}
+
+/* ── Kleintexte in unserer Manier: gesperrt, in Versalien ── */
+.collection-list-title,.product-card-custom__subtitle,
+.tirolish-zustellung-mini,.card__text .text-size--xsmall{
+  font-family:var(--font-stack-body)!important;
+}
+.collection-list-title{
+  text-transform:uppercase!important;letter-spacing:.15em!important;
+  font-size:.7rem!important;font-weight:500!important;color:#1d1d1b!important}
+.product-card-custom__subtitle{
+  font-style:italic;color:#6b6255!important;font-size:.86rem!important;letter-spacing:0}
+
+/* ── Formsprache: ruhiger, weniger Rundung ── */
+.card,.product-item,.card__image,.lazy-image,
+.collection-list-item,.card__image--background{
+  border-radius:2px!important;
+}
+/* Karten gleich hoch, Preis buendig unten. Sonst steht in einer Reihe jeder
+   Preis auf einer anderen Hoehe, sobald ein Titel zweizeilig wird. */
+.product-item{border:1px solid var(--bk-linie);background:#fff;padding-bottom:6px;
+  display:flex!important;flex-direction:column}
+.product-item .product-card-custom__text,.product-item .card__text{
+  display:flex;flex-direction:column;flex:1 1 auto}
+.product-card-custom__benefits{flex:1 1 auto;margin-bottom:10px}
+.product-card-custom__price{margin-top:auto}
+/* Bildhoehe nicht anfassen: die Vorlage baut den Bildkasten ueber padding-top
+   mit absolut gesetzten figure-Elementen. Eine eigene aspect-ratio darauf
+   loescht die Bilder komplett. */
+.product-item .card__image{border-radius:0!important}
+.grid--layout{--col-gap:22px}
+
+/* Knoepfe bleiben in Pillenform, das ist unser eigener Zuschnitt */
+.button,.button--solid,.button--outline{
+  font-family:var(--font-stack-body)!important;
+  text-transform:uppercase!important;letter-spacing:.13em!important;
+  font-size:.72rem!important;font-weight:600!important;border-radius:40px!important;
+}
+.button--solid{background:var(--bk-marine)!important;border-color:var(--bk-marine)!important}
+.button--solid:hover{background:var(--bk-tief)!important;border-color:var(--bk-tief)!important}
+
+/* Warenkorbknopf auf dem Bild: eckiger, dezenter */
+.product-card-custom__quick-add-button{border-radius:2px!important}
+
+/* Der Kasten des Versandabschnitts hielt ein Video der Vorlage. Jetzt steht
+   dort ein Bild, also darf der Kasten seine feste Hoehe verlieren. */
+.video-wrapper{height:auto!important;min-height:0!important;padding:0!important;
+  background:none!important}
+.video-wrapper img{display:block;width:100%;height:auto}
+
+/* ── Kopfschau ── */
+.slideshow-caption{font-size:1rem!important;line-height:1.75!important;letter-spacing:.005em}
+.slidehow-button .button{padding:15px 34px!important}
+
+/* ── Ankuendigungsband: ruhig statt Laufschrift ── */
+.announcement-bar,.announcement-bar *{
+  font-family:var(--font-stack-body)!important;
+  text-transform:uppercase!important;letter-spacing:.12em!important;font-size:.66rem!important}
+.announcement-bar{background:var(--bk-tief)!important;color:#f7f3ed!important}
+.announcement-bar a,.announcement-bar span,.announcement-bar p{color:#f7f3ed!important}
+.announcement-bar svg{stroke:var(--bk-gold-hell)!important}
+
+/* ── Preise ── */
+.product-price,.product-price--original{
+  font-family:var(--font-stack-headings)!important;font-size:1.15rem!important;
+  font-weight:600!important;color:#1d1d1b!important}
+.product-price--unit{font-family:var(--font-stack-body)!important;font-size:.74rem!important;
+  color:#8b8275!important;font-weight:400!important}
+
+/* ── Fusszeile ── */
+.footer h4,.footer .footer-item__title,.footer-item__title{
+  font-family:var(--font-stack-headings)!important;color:var(--bk-gold-hell)!important;
+  text-transform:none!important;letter-spacing:.01em!important;font-size:1.05rem!important}
+
+@media(max-width:749px){
+  .section-heading__text{padding-bottom:20px}
+  .product-item__title,.product-card-custom__title{font-size:.98rem!important}
+}

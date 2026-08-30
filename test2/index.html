@@ -199,7 +199,7 @@
      Bewusst OHNE !important, damit die regulaeren Regeln (und die mobile
      Linksbuendigkeit aus dynamic.css, die !important traegt) gewinnen. -->
 <style>
-  /* Menü-Zucken: „REZEPTE" bekommt font-weight:500 erst aus der
+  /* Menü-Zucken: „MAGAZIN / STAMMTISCH" bekommt font-weight:500 erst aus der
      verzögert geladenen dynamic.css. Bis dahin ist der Punkt schmaler und das
      halbe Menü rutscht — gemessen 28.08.: bei 297 ms springt das Gewicht von
      400 auf 500, der Punkt wandert dabei 51 px nach rechts. Nur das Gewicht
@@ -760,7 +760,7 @@ nav.breadcrumb{border-bottom:0!important}
 /* ── 3. Titelstreifen unter dem Hero abschneiden ──
    GEMESSEN bei 390 px: fünf Reiter à 70 px plus vier Lücken à 20 px = 430 px,
    der Streifen selbst ist 350 px breit. Bei den vorherigen VIER Folien ging das
-   exakt auf (4×70 + 3×20 = 350) — der fünfte Slide (Pitten) hat ihn gesprengt.
+   exakt auf (4×70 + 3×20 = 350) — der fünfte Slide (Zillertal) hat ihn gesprengt.
    Der Überstand machte die ganze Startseite seitlich scrollbar: 40 px mobil,
    49 px auf dem Quer-Tablet, 153 px auf dem Desktop. Per Ausschluss geprüft:
    ohne den Hero war der Überstand 0, ohne die Ankündigungsleiste unverändert 40.
@@ -787,7 +787,7 @@ nav.breadcrumb{border-bottom:0!important}
 /* ── 5. Kopfraum vor den Produkten kuerzen ──
    GEMESSEN bei 390 px: zwischen Sektionsoberkante und erstem Bild lagen
      Kachelblock    191 px = 38 Ueberschrift + 72 Subline (3 Zeilen) + 30 Abstand + Rest
-     Geschenkboxen   143 px = 38 Ueberschrift + 48 Subline (2 Zeilen) + 30 Abstand + Rest
+     Genusspakete   143 px = 38 Ueberschrift + 48 Subline (2 Zeilen) + 30 Abstand + Rest
    Zusammen 334 px reiner Vorspann, direkt vor der Stelle, an der die Haelfte der
    Besucher aufhoert. Die Subline des Kachelblocks ist zusaetzlich in
    templates/index.json von 118 auf 81 Zeichen gekuerzt, damit sie zweizeilig wird.
@@ -1418,7 +1418,7 @@ nav.breadcrumb{border-bottom:0!important}
 <meta name="new-cookie-storage-activated" content="f">
 
 <script id="shopify-features" type="application/json">{"betas":[],"predictiveSearch":false,"locale":"de"}</script><script>window.Shopify=window.Shopify||{};window.Shopify.currency={active:"EUR",rate:"1.0"};window.Shopify.locale="de";window.Shopify.routes={root:"/"};</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Jost:wght@400;500;600&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"><link rel="stylesheet" href="eigen.css">
 <meta name="robots" content="noindex, nofollow">
 </head>
 
@@ -5882,32 +5882,7 @@ max-height: 5000px;
       media="print"
       onload="this.media='all'; this.onload = null">
 
-<video-component id="video-template--25990808142160__video_with_text_iAyzWU" class="video-component  element--border-radius "
-  data-video data-media-type="video"
-  data-autoplay="true"
-   style="--aspect-ratio-padding: 56.46527385657821%" 
->
-
-  <template>
-    
-      <video autoplay  muted loop playsinline
-         poster="bilder/hero/verpackung-desktop.webp" 
-      >
-          
-        
-          
-        </video></template>
-
-  <div class="video-component__container" data-js-video-component-container>
-
-    <a class="video-component__link" 
-      href="#" data-testseite="aus" 
-      data-js-video-component-link
-      
-       tabindex="-1" 
-    ><span class="video-component__autoplay-poster lazy-image"></span></a>
-
-  </div></video-component><script defer src="assets/component-video.js"></script>
+<img src="bilder/hero/verpackung-desktop.webp" alt="Gekühlte Verpackung" style="display:block;width:100%;height:auto"><script defer src="assets/component-video.js"></script>
     </div>
     <div class="video-with-text_text align-content align-content--horizontal-center align-content--vertical-middle" style="background-color: #f7f4ee;">
       <div class="card__text">
@@ -7043,22 +7018,22 @@ if (typeof mdApp_syncstoresData == 'undefined') {var mdApp_syncstoresData = {
       var formattedDeliveryDate = formatDate(deliveryDate);
 
       if (day === 1 && isBeforeOrAt1100(now)) {
-        return 'Heute noch frisch aus dem Pitten raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
+        return 'Heute noch frisch aus dem Zillertal raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
       }
 
       if (day === 1) {
-        return 'Morgen frisch aus dem Pitten raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
+        return 'Morgen frisch aus dem Zillertal raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
       }
 
       if (day === 2 && isBeforeOrAt1100(now)) {
-        return 'Heute noch frisch aus dem Pitten raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
+        return 'Heute noch frisch aus dem Zillertal raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
       }
 
       if (day === 0) {
-        return 'Morgen frisch aus dem Pitten raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
+        return 'Morgen frisch aus dem Zillertal raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
       }
 
-      return 'Am Montag frisch aus dem Pitten raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
+      return 'Am Montag frisch aus dem Zillertal raus!<br><span>Vorauss. <strong>' + formattedDeliveryDate + '</strong> bei dir.</span>';
     }
 
     /* Kurzform fuer die Produktkarte. GEMESSEN am 11.08.2026 bei Roboto 13,12 px:
@@ -7160,7 +7135,7 @@ if (typeof mdApp_syncstoresData == 'undefined') {var mdApp_syncstoresData = {
       });
     }
 
-    function updateNiederösterreichishShipping() {
+    function updateTirolishShipping() {
       var config = getConfig();
       var now = getViennaDate();
 
@@ -7169,14 +7144,14 @@ if (typeof mdApp_syncstoresData == 'undefined') {var mdApp_syncstoresData = {
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateNiederösterreichishShipping);
+      document.addEventListener('DOMContentLoaded', updateTirolishShipping);
     } else {
-      updateNiederösterreichishShipping();
+      updateTirolishShipping();
     }
 
-    document.addEventListener('shopify:section:load', updateNiederösterreichishShipping);
-    document.addEventListener('shopify:section:reorder', updateNiederösterreichishShipping);
-    document.addEventListener('shopify:section:select', updateNiederösterreichishShipping);
+    document.addEventListener('shopify:section:load', updateTirolishShipping);
+    document.addEventListener('shopify:section:reorder', updateTirolishShipping);
+    document.addEventListener('shopify:section:select', updateTirolishShipping);
 
     // 18.08.2026: Karten aus der Section-Rendering-API (Empfehlungen) kommen NACH
     // DOMContentLoaded — Beobachter befuellt sie nach. Feuert nur, solange noch
@@ -7190,7 +7165,7 @@ if (typeof mdApp_syncstoresData == 'undefined') {var mdApp_syncstoresData = {
       if (!offen || tirZustellTimer) return;
       tirZustellTimer = setTimeout(function () {
         tirZustellTimer = null;
-        updateNiederösterreichishShipping();
+        updateTirolishShipping();
       }, 150);
     }).observe(document.body, { childList: true, subtree: true });
   })();
