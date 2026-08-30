@@ -35,22 +35,23 @@
   white-space:nowrap;transition:background .15s}
 .bk-add:hover{background:var(--bk-tief)}
 
-/* Kategoriechip auf dem Bild, Fassung der echten Startseite: Pille,
-   halbtransparent mit Weichzeichner, Symbol vor der Beschriftung.
-   Das Skript unten schiebt ihn aus dem Textteil auf das Bild. */
+/* Kategoriechip auf dem Bild. Werte am Original gemessen: Schrift 9,28 px,
+   Gewicht 500, Sperrung 0,06em, Polster 3/10, Radius 40, halbtransparenter
+   Grund mit 6 px Weichzeichner, 8 px Abstand nach unten und rechts. Das
+   Symbol ist genauso gross wie die Schrift, darum 1em. */
 .bk-cat{position:absolute;bottom:8px;right:8px;z-index:2;
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(16,36,57,.5);backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);color:#f7f3ed;
-  padding:4px 11px;font-family:var(--font-stack-body);font-size:.58rem;
+  display:inline-flex;align-items:center;gap:.42em;
+  background:rgba(16,36,57,.62);backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);color:#fff;
+  padding:3px 10px;font-family:var(--font-stack-body);font-size:.58rem;
   font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  border-radius:40px;line-height:1.5}
-/* Die Vorlage setzt SVG in Karten auf position:absolute und volle Groesse.
-   Fuer das Chipsymbol muss beides zurueckgenommen werden, sonst legt es
-   sich als Flaeche ueber die Beschriftung. */
-.bk-cat-ico{position:static!important;width:13px!important;height:13px!important;
+  border-radius:40px;line-height:1.2}
+/* Die Vorlage setzt SVG in Produktkarten auf position:absolute und volle
+   Groesse. Fuer das Chipsymbol muss beides zurueckgenommen werden, sonst
+   legt es sich als Flaeche ueber die Beschriftung. */
+.bk-cat-ico{position:static!important;width:1em!important;height:1em!important;
   inset:auto!important;flex:0 0 auto;display:block;
-  fill:none;stroke:currentColor;stroke-width:1.6;
+  fill:none;stroke:currentColor;stroke-width:1.7;
   stroke-linecap:round;stroke-linejoin:round}
 
 /* Karte: weisser Grund mit weicher Kante, wie im Shop */
@@ -77,9 +78,9 @@
 .product-item quick-add-to-cart{display:none!important}
 
 @media(max-width:749px){
-  /* Der Chip wird auf dem Handy kleiner, genau wie im Shop */
-  .bk-cat{font-size:.5rem;padding:3px 8px;gap:4px;bottom:7px;right:7px}
-  .bk-cat-ico{width:11px!important;height:11px!important}
+  /* Auf dem Handy kleiner, ebenfalls am Original gemessen: 8 px Schrift,
+     Polster 2/7, das Symbol folgt ueber 1em automatisch. */
+  .bk-cat{font-size:.5rem;padding:2px 7px}
   .bk-preis{font-size:1.12rem}
   .bk-add{padding:9px 12px;font-size:.6rem;letter-spacing:.05em}
   .bk-foot{flex-direction:column;align-items:flex-start;gap:8px}

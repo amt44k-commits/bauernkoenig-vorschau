@@ -13,7 +13,7 @@
 <meta property="og:description" content="Handverlesene Käse- und Fleischspezialitäten direkt vom Hof. Frisch gekühlt geliefert.">
 <meta property="og:image" content="static/img/products/hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="static/shell.css?v=20">
+<link rel="stylesheet" href="static/shell.css?v=21">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -637,7 +637,7 @@
     .card{border-radius:16px;box-shadow:0 1px 2px rgba(29,29,27,.04),0 8px 20px rgba(29,29,27,.06);transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s}
     .card:hover{transform:translateY(-7px);box-shadow:0 22px 46px rgba(var(--brand-rgb),.17)}
     .card-img-wrap,.card-img-wrap::after{border-radius:16px 16px 0 0}
-    .card-img-wrap::after{background:linear-gradient(180deg,transparent 56%,rgba(18,28,14,.24))}
+    .card-img-wrap::after{background:linear-gradient(180deg,transparent 56%,rgba(var(--brand-deep-rgb),.24))}
     .card-body{padding:16px 18px 18px}
     .card-name{font-size:1.14rem;letter-spacing:-.01em}
     /* auto statt eines festen Abstands: sonst rutscht der Fuss bei kurzer
@@ -649,7 +649,7 @@
   }
 
   /* Karten-Chrome (alle Breiten) */
-  .card-cat-tag{background:rgba(20,32,18,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:40px;font-weight:500;letter-spacing:.06em}
+  .card-cat-tag{background:rgba(var(--brand-deep-rgb),.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:40px;font-weight:500;letter-spacing:.06em}
   .card-badge{box-shadow:0 4px 14px rgba(0,0,0,.22);font-weight:600;letter-spacing:.07em}
   .card-name{transition:color .18s}
   .section-sub{color:var(--brown2);font-weight:500}
@@ -727,7 +727,7 @@
 <div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
 
 <nav class="shell-nav">
-  <a class="nav-logo" href="#top"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=20" alt="Bauern König, feine Spezialitäten"></a>
+  <a class="nav-logo" href="#top"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=21" alt="Bauern König, feine Spezialitäten"></a>
   <div class="nav-links">
     <a class="nav-link" href="#sortiment">Shop</a>
     <a class="nav-link" href="#geschenke">Geschenkboxen</a>
@@ -749,7 +749,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-head">
-    <span class="mm-logo"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=20" alt="Bauern König"></span>
+    <span class="mm-logo"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=21" alt="Bauern König"></span>
     <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
   </div>
   <nav class="mm-links">
@@ -1012,7 +1012,7 @@
 <footer class="site-footer">
   <div class="inner">
     <div class="foot-marke">
-      <img data-logo="zeile-creme" src="static/img/logo/palette/zeile-creme-mitternacht.svg?v=20" alt="Bauern König">
+      <img data-logo="zeile-creme" src="static/img/logo/palette/zeile-creme-mitternacht.svg?v=21" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
     <div><h4>Service</h4><a href="#top">Zum Shop</a><a href="#" data-vorschau="aus">Versand &amp; Lieferung</a><a href="#" data-vorschau="aus">FAQ</a><a href="#" data-vorschau="aus">Kontakt</a></div>
@@ -1039,7 +1039,7 @@
     <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
   </div>
 </div>
-<script src="static/palette.js?v=20"></script>
+<script src="static/palette.js?v=21"></script>
 
 
 <script>
@@ -1662,7 +1662,7 @@ initCookieBanner();
 if ('serviceWorker' in navigator) {
 }
 </script>
-<script src="static/shell.js?v=20"></script>
+<script src="static/shell.js?v=21"></script>
 
 <script>
 (function () {
