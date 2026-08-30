@@ -723,30 +723,93 @@
     .reihe-grid{grid-template-columns:1fr 1fr;gap:12px}
   }
 
-  /* ════════ KOPFSCHAU MIT VIER FOLIEN ════════
-     Die Folien liegen uebereinander und werden ein- und ausgeblendet.
-     Das Bild jeder Folie steht als Hintergrund am Abschnitt, damit der
-     Wechsel weich laeuft und nur eine Ebene bewegt wird. */
-  .hero{position:relative;overflow:hidden;transition:background-image .6s ease;
-    background-size:cover;background-position:center}
-  .hero-folien{position:relative;z-index:1;width:100%;
-    display:grid;place-items:center}
-  .hero-folie{grid-area:1/1;display:flex;flex-direction:column;align-items:center;
-    text-align:center;opacity:0;visibility:hidden;transform:translateY(14px);
-    transition:opacity .55s ease,transform .55s ease,visibility .55s;
-    pointer-events:none;max-width:760px}
+  /* ════════ KOPFSCHAU: BILDKASTEN MIT VIER FOLIEN ════════
+     Werte an der Testseite gemessen: Kasten 1280 breit und 540 hoch bei
+     1440 Fensterbreite, Textspalte 500 breit mit 80 Polster, Titel
+     54,4 px in Gewicht 700, Knopf 11,52 px mit Polster 15/34. */
+  .hero-band{padding:34px 0 0;background:var(--cream)}
+  .hero{position:relative;max-width:1280px;height:540px;margin:0 auto;
+    border-radius:16px;overflow:hidden;padding:0;
+    background-size:cover;background-position:center;
+    transition:background-image .6s ease;
+    display:flex;align-items:center}
+  .hero::before{content:none}
+  /* Schleier fuer die Lesbarkeit: am Rechner von links, weil der Text dort
+     steht; am Handy liegt der Text ueber der ganzen Breite. */
+  .hero::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(90deg,
+      rgba(var(--brand-deep-rgb),.80) 0%,
+      rgba(var(--brand-deep-rgb),.62) 32%,
+      rgba(var(--brand-deep-rgb),.22) 60%,
+      rgba(var(--brand-deep-rgb),.06) 100%)}
+
+  .hero-folien{position:relative;z-index:2;width:100%;height:100%;
+    display:grid}
+  .hero-folie{grid-area:1/1;display:flex;align-items:center;
+    opacity:0;visibility:hidden;transform:translateY(12px);
+    transition:opacity .5s ease,transform .5s ease,visibility .5s;
+    pointer-events:none}
   .hero-folie.aktiv{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .hero-inner{max-width:500px;padding:80px;text-align:left}
 
-  .hero-punkte{position:relative;z-index:2;display:flex;gap:9px;
-    justify-content:center;margin-top:26px}
-  .hero-punkt{width:30px;height:3px;border:none;padding:0;cursor:pointer;
-    background:rgba(255,255,255,.35);border-radius:2px;transition:background .25s}
-  .hero-punkt.aktiv{background:var(--gold2)}
-  .hero-punkt:hover{background:rgba(255,255,255,.6)}
+  .hero-title{font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,3.8vw,3.4rem);font-weight:700;line-height:1.08;
+    color:#fff;margin-bottom:16px;text-shadow:0 2px 22px rgba(0,0,0,.4)}
+  .hero-title em{font-style:italic;color:var(--gold2)}
+  .hero-sub{font-size:1rem;line-height:1.75;letter-spacing:0;
+    color:rgba(255,255,255,.92);max-width:420px;margin-top:7px;
+    text-shadow:0 1px 14px rgba(0,0,0,.5)}
+  .hero-btn{display:inline-block;margin-top:26px;background:var(--brand);
+    color:#fff;border:none;border-radius:40px;padding:15px 34px;
+    font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.13em;
+    text-transform:uppercase;font-weight:600;text-decoration:none;
+    box-shadow:0 8px 26px rgba(var(--brand-deep-rgb),.35);
+    transition:background .2s,transform .2s}
+  .hero-btn:hover{background:var(--brand2);transform:translateY(-2px)}
+  .hero-line{display:none}
 
+  /* Reiterleiste: je Folie ein Balken mit Beschriftung */
+  .hero-reiter{max-width:1280px;margin:0 auto;padding:0;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .hero-reiter-knopf{background:none;border:none;padding:14px 0 0;cursor:pointer;
+    text-align:left;font-family:'Inter',sans-serif;font-size:.82rem;
+    font-weight:400;color:var(--brown2);border-top:3px solid var(--line);
+    transition:color .2s,border-color .2s}
+  .hero-reiter-knopf:hover{color:var(--ink)}
+  .hero-reiter-knopf.aktiv{color:var(--ink);font-weight:500;
+    border-top-color:var(--brand)}
+
+  .hero-trust{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;
+    margin:30px auto 0;max-width:1280px}
+  .hero-trust span{color:var(--brown);text-shadow:none}
+  .hero-trust b{color:var(--brand)}
+  .hero-trust .ico{stroke:var(--gold)}
+
+  @media(max-width:1400px){
+    .hero,.hero-reiter,.hero-trust{max-width:none;margin-left:40px;margin-right:40px}
+  }
+  @media(max-width:900px){
+    .hero-inner{padding:48px}
+  }
   @media(max-width:600px){
-    .hero-punkte{margin-top:20px}
-    .hero-punkt{width:22px}
+    .hero-band{padding:16px 0 0}
+    .hero,.hero-reiter,.hero-trust{margin-left:16px;margin-right:16px}
+    /* Am Handy steht der Text oben und das Motiv bleibt darunter frei.
+       Der Schleier laeuft entsprechend von oben nach unten aus. */
+    .hero{height:480px;border-radius:12px;background-position:center bottom}
+    .hero::after{background:linear-gradient(180deg,
+      rgba(var(--brand-deep-rgb),.82) 0%,
+      rgba(var(--brand-deep-rgb),.62) 38%,
+      rgba(var(--brand-deep-rgb),.18) 70%,
+      rgba(var(--brand-deep-rgb),.05) 100%)}
+    .hero-folie{align-items:flex-start}
+    .hero-inner{padding:26px 22px}
+    .hero-sub{font-size:.88rem;line-height:1.65}
+    .hero-btn{margin-top:20px;padding:13px 26px;font-size:.66rem}
+    /* Vier Beschriftungen passen nicht nebeneinander: nur die Balken */
+    .hero-reiter{grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+    .hero-reiter-knopf{font-size:0;padding-top:0;border-top-width:3px;height:3px}
+    .hero-trust{gap:14px;margin-top:20px}
   }
 
   /* ════════ PFLICHTANGABEN (Grundpreis + LMIV) ════════ */
@@ -852,39 +915,45 @@
   </nav>
 </div>
 
-<section class="hero" id="hero">
+<section class="hero-band">
   
-  <div class="hero-folien" id="heroFolien">
-    <article class="hero-folie aktiv" data-bild="jausenbox">
-      <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
-      <div class="hero-line"></div>
-      <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
-      <a class="hero-btn" href="#sortiment" onclick="zumSortiment();return false">Zum Sortiment</a>
-    </article>
+  <div class="hero" id="hero">
+    <div class="hero-folien" id="heroFolien">
+      <article class="hero-folie aktiv" data-bild="jausenbox" data-reiter="Vom Hof, fixfertig gepackt">
+        <div class="hero-inner">
+          <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
+          <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
+          <a class="hero-btn" href="#sortiment" onclick="zumSortiment();return false">Zum Sortiment</a>
+        </div>
+      </article>
 
-    <article class="hero-folie" data-bild="verpackung">
-      <h1 class="hero-title">Sorgfältig <em>verpackt.</em></h1>
-      <div class="hero-line"></div>
-      <p class="hero-sub">Gekühlt in isolierten Boxen, die Kühlkette hält 72 Stunden. So kommt alles an, wie es den Hof verlassen hat.</p>
-      <a class="hero-btn" href="#" data-vorschau="aus">Mehr zum Versand</a>
-    </article>
+      <article class="hero-folie" data-bild="verpackung" data-reiter="Gekühlt und gut verpackt">
+        <div class="hero-inner">
+          <h1 class="hero-title">Sorgfältig <em>verpackt.</em></h1>
+          <p class="hero-sub">Gekühlt in isolierten Boxen, die Kühlkette hält 72 Stunden. So kommt alles an, wie es den Hof verlassen hat.</p>
+          <a class="hero-btn" href="#" data-vorschau="aus">Mehr zum Versand</a>
+        </div>
+      </article>
 
-    <article class="hero-folie" data-bild="hof">
-      <h1 class="hero-title">Vom <em>Hof,</em><br>nicht aus der Fabrik.</h1>
-      <div class="hero-line"></div>
-      <p class="hero-sub">Eigene Herstellung, lange Reifezeiten und Fleisch von Tieren, die wir kennen. Wer hier kauft, weiß, wo das Essen herkommt.</p>
-      <a class="hero-btn" href="#ueberuns" onclick="document.getElementById('aboutSection').scrollIntoView({behavior:'smooth'});return false">Über uns</a>
-    </article>
+      <article class="hero-folie" data-bild="hof" data-reiter="Eigene Herstellung">
+        <div class="hero-inner">
+          <h1 class="hero-title">Vom <em>Hof,</em><br>nicht aus der Fabrik.</h1>
+          <p class="hero-sub">Eigene Herstellung, lange Reifezeiten und Fleisch von Tieren, die wir kennen. Wer hier kauft, weiß, wo das Essen herkommt.</p>
+          <a class="hero-btn" href="#ueberuns" onclick="document.getElementById('aboutSection').scrollIntoView({behavior:'smooth'});return false">Über uns</a>
+        </div>
+      </article>
 
-    <article class="hero-folie" data-bild="kaese">
-      <h1 class="hero-title">Bergkäse, <em>18 Monate</em> gereift.</h1>
-      <div class="hero-line"></div>
-      <p class="hero-sub">Kräftig, würzig, mit Salzkristallen im Bruch. Aus eigener Herstellung, ohne Eile gereift.</p>
-      <a class="hero-btn" href="#sortiment" onclick="zumSortiment('kaese');return false">Käse ansehen</a>
-    </article>
+      <article class="hero-folie" data-bild="kaese" data-reiter="Große Auswahl: Käse">
+        <div class="hero-inner">
+          <h1 class="hero-title">Bergkäse, <em>18 Monate</em> gereift.</h1>
+          <p class="hero-sub">Kräftig, würzig, mit Salzkristallen im Bruch. Aus eigener Herstellung, ohne Eile gereift.</p>
+          <a class="hero-btn" href="#sortiment" onclick="zumSortiment('kaese');return false">Käse ansehen</a>
+        </div>
+      </article>
+    </div>
   </div>
 
-  <div class="hero-punkte" id="heroPunkte" role="tablist" aria-label="Kopfschau"></div>
+  <div class="hero-reiter" id="heroReiter" role="tablist" aria-label="Kopfschau"></div>
 
   <div class="hero-trust">
     <span><svg class="ico"><use href="#ic-cheese"/></svg> <b>21</b> Käsesorten</span>
@@ -1272,14 +1341,14 @@ function heroZeigen(nr){
   if (!folien.length) return;
   heroNr = (nr + folien.length) % folien.length;
   folien.forEach((f,i) => f.classList.toggle('aktiv', i === heroNr));
-  document.querySelectorAll('.hero-punkt').forEach((p,i) => {
+  document.querySelectorAll('.hero-reiter-knopf').forEach((p,i) => {
     p.classList.toggle('aktiv', i === heroNr);
     p.setAttribute('aria-selected', i === heroNr ? 'true' : 'false');
   });
   const hero = document.querySelector('.hero');
   const bild = heroBildpfad(folien[heroNr].dataset.bild);
-  if (hero) hero.style.backgroundImage =
-    `linear-gradient(180deg,rgba(var(--brand-deep-rgb),.42) 0%,rgba(var(--brand-deep-rgb),.30) 45%,rgba(var(--brand-deep-rgb),.66) 100%),url('${bild}')`;
+  // Nur das Bild, der Schleier darueber kommt aus dem Stylesheet
+  if (hero) hero.style.backgroundImage = `url('${bild}')`;
 }
 
 function heroWeiter(){ heroZeigen(heroNr + 1); }
@@ -1293,12 +1362,12 @@ function heroUhrStarten(){
 
 (function(){
   const folien = document.querySelectorAll('.hero-folie');
-  const punkte = document.getElementById('heroPunkte');
+  const punkte = document.getElementById('heroReiter');
   if (folien.length && punkte) {
     punkte.innerHTML = [...folien].map((f,i) =>
-      `<button type="button" class="hero-punkt${i===0?' aktiv':''}" role="tab"
-        aria-selected="${i===0}" aria-label="Folie ${i+1}"
-        onclick="heroZeigen(${i});heroUhrStarten()"></button>`).join('');
+      `<button type="button" class="hero-reiter-knopf${i===0?' aktiv':''}" role="tab"
+        aria-selected="${i===0}"
+        onclick="heroZeigen(${i});heroUhrStarten()">${f.dataset.reiter || ('Folie '+(i+1))}</button>`).join('');
     heroZeigen(0);
     heroUhrStarten();
     // Beim Wechsel zwischen Handy und Rechner das passende Bild nachladen
