@@ -13,7 +13,7 @@
 <meta property="og:description" content="Handverlesene Käse- und Fleischspezialitäten direkt vom Hof. Frisch gekühlt geliefert.">
 <meta property="og:image" content="static/img/products/hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="static/shell.css?v=21">
+<link rel="stylesheet" href="static/shell.css?v=38">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -670,6 +670,46 @@
      die Startseite blieb auf dem Handy ohne Menue (Unterseiten hatten es). */
   
 
+  /* ════════ KUEHLVERSAND ════════ */
+  .versand-band{background:var(--warm);padding:70px 40px}
+  .versand-inner{max-width:1200px;margin:0 auto;display:grid;
+    grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .versand-bild{border-radius:14px;overflow:hidden;
+    box-shadow:0 2px 6px rgba(29,29,27,.06),0 14px 40px rgba(29,29,27,.10)}
+  .versand-bild img{display:block;width:100%;height:auto}
+  .versand-eyebrow{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:600}
+  .versand-titel{font-family:'Playfair Display',serif;
+    font-size:clamp(1.7rem,2.6vw,2.4rem);font-weight:600;line-height:1.18;
+    color:var(--ink);margin:10px 0 12px}
+  .versand-titel em{font-style:italic;color:var(--gold)}
+  .versand-sub{font-size:.92rem;line-height:1.75;color:var(--brown)}
+  .versand-liste{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px}
+  /* Symbol links, darunter nichts: Titel und Zusatz gehoeren beide in die
+     zweite Spalte, sonst quetscht der Zusatz in die 22 Pixel des Symbols
+     und bricht nach jedem Wort um. */
+  .versand-liste li{display:grid;grid-template-columns:22px 1fr;
+    column-gap:12px;row-gap:2px;align-items:start;font-size:.84rem;line-height:1.5}
+  .versand-liste li b,.versand-liste li span{grid-column:2}
+  .versand-liste .ico{width:19px;height:19px;stroke:var(--brand);fill:none;
+    stroke-width:1.6;margin-top:2px}
+  .versand-liste b{display:block;color:var(--ink);font-weight:600}
+  .versand-liste span{color:var(--brown2);font-size:.78rem}
+  .versand-btn{display:inline-block;margin-top:26px;background:none;
+    border:1px solid var(--brand);border-radius:40px;padding:13px 28px;
+    font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.13em;
+    text-transform:uppercase;font-weight:600;color:var(--brand);
+    text-decoration:none;transition:background .2s,color .2s}
+  .versand-btn:hover{background:var(--brand);color:#fff}
+
+  @media(max-width:900px){
+    .versand-inner{grid-template-columns:1fr;gap:28px}
+  }
+  @media(max-width:600px){
+    .versand-band{padding:44px 16px}
+    .versand-liste{gap:12px}
+  }
+
   /* ════════ KATEGORIEKACHELN ════════ */
   .kachel-band{padding:60px 40px 10px;max-width:1400px;margin:0 auto}
   .kachel-kopf{text-align:center;margin-bottom:26px}
@@ -869,7 +909,7 @@
 <div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
 
 <nav class="shell-nav">
-  <a class="nav-logo" href="#top"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=21" alt="Bauern König, feine Spezialitäten"></a>
+  <a class="nav-logo" href="#top"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
   <div class="nav-links">
     <a class="nav-link" href="#sortiment">Shop</a>
     <a class="nav-link" href="#geschenke">Geschenkboxen</a>
@@ -897,7 +937,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-head">
-    <span class="mm-logo"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=21" alt="Bauern König"></span>
+    <span class="mm-logo"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
     <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
   </div>
   <nav class="mm-links">
@@ -970,6 +1010,19 @@
   <div class="value-item"><div class="value-icon"><svg class="ico"><use href="#ic-box"/></svg></div><div class="value-title">Ab Hof Versand</div><div class="value-text">72 Stunden gekühlt</div></div>
 </div>
 
+<section class="kachel-band" id="kategorien">
+  <div class="kachel-kopf">
+    <h2 class="kachel-titel">Wonach ist dir?</h2>
+    <p class="kachel-sub">Fünf Wege ins Sortiment. Ein Klick setzt den Filter.</p>
+  </div>
+  <div class="kachel-reihe" id="kachelReihe"></div>
+</section>
+
+<div class="section-head">
+  <h2 class="section-title">Unser Sortiment</h2>
+  <span class="section-sub" id="productCount">Produkte</span>
+</div>
+
 <!-- ───────────────────── FILTER BAR ───────────────────── -->
 <div class="filter-bar" id="filterBar">
   <!-- Row 1: Kategorien (scrollbar auf Mobile) -->
@@ -1011,21 +1064,36 @@
 </div>
 
 <!-- ── EINSTIEG INS SORTIMENT: eine Kachel je Kategorie ── -->
-<section class="kachel-band" id="kategorien">
-  <div class="kachel-kopf">
-    <h2 class="kachel-titel">Wonach ist dir?</h2>
-    <p class="kachel-sub">Fünf Wege ins Sortiment. Ein Klick setzt den Filter.</p>
-  </div>
-  <div class="kachel-reihe" id="kachelReihe"></div>
-</section>
-
-<div class="section-head">
-  <h2 class="section-title">Unser Sortiment</h2>
-  <span class="section-sub" id="productCount">Produkte</span>
-</div>
 
 <section class="products">
   <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- ── KUEHLVERSAND: die Frage vor dem Kauf bei Frischware ── -->
+<section class="versand-band" id="versandBand">
+  <div class="versand-inner">
+    <div class="versand-bild">
+      <img src="static/img/hero/verpackung-desktop.webp?v=38"
+           alt="Geöffnete Versandbox mit Vlies, Kühlelement, Käse und Speck" loading="lazy">
+    </div>
+    <div class="versand-text">
+      <span class="versand-eyebrow">Gekühlt bis zur Haustür</span>
+      <h2 class="versand-titel">Kommt an, <em>wie es den Hof verlässt.</em></h2>
+      <p class="versand-sub">Frischware reist in einer isolierten Box mit Kühlelementen.
+        Die Kühlung hält 72 Stunden, damit die Kühlkette bis zu dir dicht bleibt.</p>
+      <ul class="versand-liste">
+        <li><svg class="ico"><use href="#ic-box"/></svg>
+          <b>Isolierbox mit Kühlelementen</b><span>72 Stunden Kühlung</span></li>
+        <li><svg class="ico"><use href="#ic-truck"/></svg>
+          <b>Versand Montag bis Mittwoch</b><span>Zustellung Dienstag bis Freitag, nichts liegt übers Wochenende</span></li>
+        <li><svg class="ico"><use href="#ic-leaf"/></svg>
+          <b>Bestellschluss 14:00 Uhr</b><span>Bestellungen davor gehen am selben Tag raus</span></li>
+        <li><svg class="ico"><use href="#ic-wheat"/></svg>
+          <b>Kostenfrei ab € 75</b><span>darunter € 5,90 österreichweit</span></li>
+      </ul>
+      <a class="versand-btn" href="#" data-vorschau="aus">Alles zum Versand</a>
+    </div>
+  </div>
 </section>
 
 <!-- ── GESCHENKBOXEN (eigene Sektion, Design nach M3-Entwurf) ── -->
@@ -1204,7 +1272,7 @@
 <footer class="site-footer">
   <div class="inner">
     <div class="foot-marke">
-      <img data-logo="zeile-creme" src="static/img/logo/palette/zeile-creme-mitternacht.svg?v=21" alt="Bauern König">
+      <img data-logo="zeile-creme" src="static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
     <div><h4>Service</h4><a href="#top">Zum Shop</a><a href="#" data-vorschau="aus">Versand &amp; Lieferung</a><a href="#" data-vorschau="aus">FAQ</a><a href="#" data-vorschau="aus">Kontakt</a></div>
@@ -1231,7 +1299,7 @@
     <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
   </div>
 </div>
-<script src="static/palette.js?v=21"></script>
+<script src="static/palette.js?v=38"></script>
 
 
 <script>
@@ -1520,7 +1588,12 @@ function kachelnZeichnen(){
     const drin = products.filter(p => p.cat===k);
     const bild = (drin.find(p => p.img) || {}).img || '';
     const zahl = drin.length + (drin.length === 1 ? ' Artikel' : ' Artikel');
-    return `<button type="button" class="kachel" onclick="zumSortiment('${k}')"
+    // Geschenkboxen haben weiter unten eine eigene Sektion mit eigener
+    // Gestaltung. Die Kachel springt dorthin, statt nur zu filtern.
+    const ziel = k === 'geschenk'
+      ? `document.getElementById('giftSection').scrollIntoView({behavior:'smooth'})`
+      : `zumSortiment('${k}')`;
+    return `<button type="button" class="kachel" onclick="${ziel}"
         aria-label="${catLabel(k)} ansehen">
       <div class="kachel-bild">${bild ? `<img src="${bild}" alt="${catLabel(k)}" loading="lazy">` : ''}</div>
       <div class="kachel-text">
@@ -1974,7 +2047,7 @@ initCookieBanner();
 if ('serviceWorker' in navigator) {
 }
 </script>
-<script src="static/shell.js?v=21"></script>
+<script src="static/shell.js?v=38"></script>
 
 <script>
 (function () {
