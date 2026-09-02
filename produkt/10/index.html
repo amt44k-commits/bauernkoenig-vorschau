@@ -423,8 +423,14 @@
 </div>
 <div class="toast" id="toast"></div>
 
+
+<div class="pd-overlay" id="pdOverlay" onclick="handlePdOverlayClick(event)">
+  <div class="pd-modal" id="pdModal"></div>
+</div>
+
 <script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
 <script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 window.products = [{"id": 10, "name": "Pfefferkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit grobem Pfeffer, pikant & rustikal.", "stock": 20, "rating": 4.5, "details": ["Schwarzer Pfeffer", "Pikant"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/pfeffer.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "/bauernkoenig-vorschau/static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
@@ -455,17 +461,6 @@ function pdKaufen() {
 }
 </script>
 
-
-
-<div class="sa-overlay" id="saOverlay" role="dialog" aria-modal="true"
-     aria-labelledby="saName" hidden>
-  <div class="sa-fenster" id="saFenster">
-    <button type="button" class="sa-zu" onclick="schnellansichtSchliessen()"
-            aria-label="Schließen">&#10005;</button>
-    <div class="sa-inhalt" id="saInhalt"></div>
-  </div>
-</div>
-<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */

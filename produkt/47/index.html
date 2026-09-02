@@ -423,8 +423,14 @@
 </div>
 <div class="toast" id="toast"></div>
 
+
+<div class="pd-overlay" id="pdOverlay" onclick="handlePdOverlayClick(event)">
+  <div class="pd-modal" id="pdModal"></div>
+</div>
+
 <script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
 <script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 window.products = [{"id": 47, "name": "Feurige Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Extra scharf für Chili-Fans.", "stock": 18, "rating": 4.7, "details": ["Extra scharf", "Chili"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "/bauernkoenig-vorschau/static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
@@ -455,17 +461,6 @@ function pdKaufen() {
 }
 </script>
 
-
-
-<div class="sa-overlay" id="saOverlay" role="dialog" aria-modal="true"
-     aria-labelledby="saName" hidden>
-  <div class="sa-fenster" id="saFenster">
-    <button type="button" class="sa-zu" onclick="schnellansichtSchliessen()"
-            aria-label="Schließen">&#10005;</button>
-    <div class="sa-inhalt" id="saInhalt"></div>
-  </div>
-</div>
-<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */
