@@ -1,0 +1,1996 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sortiment | Bauern König</title>
+<meta name="description" content="Alle Käse- und Fleischspezialitäten von Bauern König im Überblick, mit Filter, Suche und Sortierung. Gekühlt ab Hof versendet.">
+<meta name="theme-color" content="#17233f">
+<link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/bauernkoenig-vorschau/static/img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/karte.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/sortiment.css?v=38">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600}
+  h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
+  .ico{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round}
+</style>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<script>try{var bkP=localStorage.getItem("bk_palette");if(bkP&&/^[a-z]{4,14}$/.test(bkP))document.documentElement.setAttribute("data-theme",bkP);}catch(e){}</script>
+
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-cheese" viewBox="0 0 24 24"><path d="M2.5 14.4 17.6 8c1.8-.8 3.9.5 3.9 2.5v3.9z"/><path d="M2.5 14.4h19v2.7c0 .8-.7 1.4-1.5 1.4H4c-.8 0-1.5-.6-1.5-1.4z"/><circle cx="7" cy="16.6" r=".9"/><circle cx="12" cy="16.1" r="1"/><circle cx="16.6" cy="16.7" r=".8"/></symbol>
+  <symbol id="ic-pig" viewBox="0 0 24 24"><path d="M5.5 8.5 4.3 4.7l3.8 1.9M18.5 8.5l1.2-3.8-3.8 1.9"/><circle cx="12" cy="13.5" r="6.3"/><ellipse cx="12" cy="14.5" rx="3" ry="2.2"/><circle cx="11" cy="14.5" r=".5"/><circle cx="13" cy="14.5" r=".5"/></symbol>
+  <symbol id="ic-deer" viewBox="0 0 24 24"><path d="M12 21.5v-8.2"/><path d="M12 13.3c-2.6 0-4.2-2-4.2-4.1 0-1.1-.5-2.1-1.6-2.6M7.8 6.9C6.7 6.4 6.2 5.3 6.2 4"/><path d="M12 13.3c2.6 0 4.2-2 4.2-4.1 0-1.1.5-2.1 1.6-2.6M16.2 6.9c1.1-.5 1.6-1.6 1.6-2.9"/></symbol>
+  <symbol id="ic-bacon" viewBox="0 0 24 24"><path d="M3 8.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 13c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 17.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="ic-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2 3h3l2.5 12.4a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.2L21 6.5H6"/></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4 3.4-6 7.5-6s7.5 2 7.5 6"/></symbol>
+  <symbol id="ic-truck" viewBox="0 0 24 24"><path d="M2 6.5h12v9.5H2z"/><path d="M14 9.5h4l3 3v3.5h-7z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M4 20C4 11 11 5 20 4.5c0 9.5-7 15.5-16 15.5Z"/><path d="M4.5 19.5c4-6.5 8.5-9.5 12.5-10.5"/></symbol>
+  <symbol id="ic-medal" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="6"/><path d="m9.4 9.6 1.8 1.8 3.4-3.5"/><path d="M9 15 7.4 21l4.6-2.6L16.6 21 15 15"/></symbol>
+  <symbol id="ic-wheat" viewBox="0 0 24 24"><path d="M12 22V7.5"/><path d="M12 8c0-2-1.5-3.6-3.6-3.6C8.4 6.5 9.9 8 12 8m0 0c0-2 1.5-3.6 3.6-3.6C15.6 6.5 14.1 8 12 8"/><path d="M12 13.5c0-2-1.5-3.6-3.6-3.6C8.4 12 9.9 13.5 12 13.5m0 0c0-2 1.5-3.6 3.6-3.6C15.6 12 14.1 13.5 12 13.5"/></symbol>
+  <symbol id="ic-snow" viewBox="0 0 24 24"><path d="M12 2.5v19M3.7 7.2 20.3 16.8M20.3 7.2 3.7 16.8"/><path d="M12 2.5 10 4.6M12 2.5l2 2.1M12 21.5l-2-2.1M12 21.5l2-2.1"/></symbol>
+  <symbol id="ic-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13.2v8"/></symbol>
+  <symbol id="ic-meat" viewBox="0 0 24 24"><path d="M7.5 8.2C5 8.2 3 10.2 3 12.7s2 4.5 4.5 4.5c2 0 3.2-1.4 5.5-1.4 3.6 0 6.5-2.3 6.5-5.4S16.5 5 13 5C10.4 5 9.7 8.2 7.5 8.2Z"/><circle cx="7.5" cy="12.7" r="2"/></symbol>
+  <symbol id="ic-gift" viewBox="0 0 24 24"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M3 7.5h18V11H3z"/><path d="M12 7.5V21"/><path d="M12 7.5S11 4 8.5 4 6 7.5 8 7.5h4m0 0s1-3.5 3.5-3.5S18 7.5 16 7.5h-4"/></symbol>
+  
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.5v6c0 5 3.2 7.8 7.5 10 4.3-2.2 7.5-5 7.5-10v-6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="ic-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="ic-trash" viewBox="0 0 24 24"><path d="M4 6.5h16M9.5 6.5V4h5v2.5"/><path d="M6.5 6.5 7.5 21h9l1-14.5"/><path d="M10.5 10v7M13.5 10v7"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="ic-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/></symbol>
+  <symbol id="ic-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 9.5V19M19 9.5V19M9.5 9.5V19M14.5 9.5V19"/><path d="M3 21h18"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></symbol>
+</svg>
+<div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
+
+<nav class="shell-nav">
+  <a class="nav-logo" href="/bauernkoenig-vorschau/"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
+  <div class="nav-links">
+    <a class="nav-link hier" href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/versand/">Versand</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+  </div>
+  
+  <form class="nav-suche" role="search" onsubmit="return suchen(event)">
+    <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
+    <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
+           aria-label="Sortiment durchsuchen" autocomplete="off">
+  </form>
+  <div class="nav-right">
+    
+    
+      <a class="nav-icon nav-desktop" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
+    
+    <button class="nav-btn cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-head">
+    <span class="mm-logo"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
+    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
+  </div>
+  <nav class="mm-links">
+    <a href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a href="/bauernkoenig-vorschau/#hof">Unser Hof</a>
+    <a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a>
+    <a href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+    <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
+    <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
+    
+      <div class="mm-account">
+        <a class="mm-btn ghost" href="#" data-vorschau="aus">Anmelden</a>
+        <a class="mm-btn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+      </div>
+    
+  </nav>
+</div>
+
+<main>
+
+<section class="seitenkopf">
+  <nav class="krume" aria-label="Pfad">
+    <a href="/bauernkoenig-vorschau/">Startseite</a><span>/</span><b>Sortiment</b>
+  </nav>
+  <h1>Unser <em>Sortiment</em></h1>
+  <p>60 Spezialitäten aus eigener Herstellung. Alles frisch
+    zugeschnitten, gekühlt verpackt und ab Hof versendet.</p>
+</section>
+
+
+<div class="filterleiste">
+  <div class="fl-inner">
+    <div class="fl-zeile">
+      <form class="fl-suche" role="search" onsubmit="return false">
+        <svg class="ico" aria-hidden="true"><use href="#ic-search"/></svg>
+        <input type="search" id="filterSearch" placeholder="Im Sortiment suchen …"
+               aria-label="Im Sortiment suchen" autocomplete="off">
+      </form>
+      <label class="fl-sortierung">
+        <span class="visuell-versteckt">Sortierung</span>
+        <select id="filterSort">
+          <option value="">Sortieren nach: Empfehlung</option>
+          <option value="preis-auf">Preis aufsteigend</option>
+          <option value="preis-ab">Preis absteigend</option>
+          <option value="name">Name A bis Z</option>
+        </select>
+      </label>
+    </div>
+    <div class="fl-chips" role="group" aria-label="Kategorie">
+      <button type="button" class="chip aktiv" data-cat="all">Alle</button>
+      
+      <button type="button" class="chip" data-cat="kaese">
+        <svg class="ico"><use href="#ic-cheese"/></svg>Käse
+        <span class="chip-zahl">21</span>
+      </button>
+      
+      <button type="button" class="chip" data-cat="mangalitza">
+        <svg class="ico"><use href="#ic-pig"/></svg>Mangalitza
+        <span class="chip-zahl">9</span>
+      </button>
+      
+      <button type="button" class="chip" data-cat="wild">
+        <svg class="ico"><use href="#ic-deer"/></svg>Wild
+        <span class="chip-zahl">5</span>
+      </button>
+      
+      <button type="button" class="chip" data-cat="hausschwein">
+        <svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein
+        <span class="chip-zahl">21</span>
+      </button>
+      
+      <button type="button" class="chip" data-cat="geschenk">
+        <svg class="ico"><use href="#ic-gift"/></svg>Geschenkbox
+        <span class="chip-zahl">4</span>
+      </button>
+      
+    </div>
+  </div>
+  <div class="fl-status">
+    <span><b id="trefferZahl">60</b> Artikel</span>
+    <span class="fl-trenner"></span>
+    <span class="fl-hinweis"><svg class="ico"><use href="#ic-snow"/></svg>
+      Frischware reist gekühlt, Versand Montag bis Mittwoch</span>
+  </div>
+</div>
+
+<section class="sortiment">
+  <div class="raster" id="raster">
+    
+
+<article class="karte" data-id="1" data-cat="kaese" data-sub="standard"
+         data-preis="3.9" data-name="emmentaler"
+         data-text="emmentaler würzig-milder klassiker. perfekt für brotzeit und gratins. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/1/">
+    <img src="/bauernkoenig-vorschau/static/img/products/emmentaler.webp" alt="Emmentaler" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/1/">Emmentaler</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 3,90
+        <small class="karte-grundpreis">€ 39,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-1" onclick="addToCart(1)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="2" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="bergkäse"
+         data-text="bergkäse klassischer alpkäse, herzhaft &amp; aromatisch. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/2/">
+    <img src="/bauernkoenig-vorschau/static/img/products/bergkaese.webp" alt="Bergkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/2/">Bergkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Klassischer Alpkäse, herzhaft &amp; aromatisch.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-2" onclick="addToCart(2)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="3" data-cat="kaese" data-sub="langgereift"
+         data-preis="4.9" data-name="bergkäse (10 monate)"
+         data-text="bergkäse (10 monate) intensiv-würzig, leicht bröckelig. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/3/">
+    <img src="/bauernkoenig-vorschau/static/img/products/bergkaese.webp" alt="Bergkäse (10 Monate)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Lang gereift</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/3/">Bergkäse (10 Monate)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Intensiv-würzig, leicht bröckelig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-3" onclick="addToCart(3)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="4" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="heublumenkäse"
+         data-text="heublumenkäse mit heublumen veredelt, blumig &amp; würzig. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/4/">
+    <img src="/bauernkoenig-vorschau/static/img/products/kraeuter.webp" alt="Heublumenkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/4/">Heublumenkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit Heublumen veredelt, blumig &amp; würzig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-4" onclick="addToCart(4)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="5" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="karottenkäse"
+         data-text="karottenkäse natürlich mit karotten, mild &amp; fruchtig. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/5/">
+    <img src="/bauernkoenig-vorschau/static/img/products/karotte.webp" alt="Karottenkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/5/">Karottenkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Natürlich mit Karotten, mild &amp; fruchtig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-5" onclick="addToCart(5)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="6" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="chillikäse"
+         data-text="chillikäse feurig mit eingelegten chilistücken. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/6/">
+    <img src="/bauernkoenig-vorschau/static/img/products/chilli.webp" alt="Chillikäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Scharf</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/6/">Chillikäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Feurig mit eingelegten Chilistücken.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-6" onclick="addToCart(6)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="7" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="weinkäse"
+         data-text="weinkäse in weißwein gereift, edel &amp; mild. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/7/">
+    <img src="/bauernkoenig-vorschau/static/img/products/wein.webp" alt="Weinkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/7/">Weinkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">In Weißwein gereift, edel &amp; mild.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-7" onclick="addToCart(7)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="8" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="mostkäse"
+         data-text="mostkäse in apfelmost gereift, fruchtig &amp; herbstlich. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/8/">
+    <img src="/bauernkoenig-vorschau/static/img/products/wein.webp" alt="Mostkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/8/">Mostkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">In Apfelmost gereift, fruchtig &amp; herbstlich.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-8" onclick="addToCart(8)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="9" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="bärlaufkäse"
+         data-text="bärlaufkäse mit bärlauch verfeinert. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/9/">
+    <img src="/bauernkoenig-vorschau/static/img/products/kraeuter.webp" alt="Bärlaufkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/9/">Bärlaufkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit Bärlauch verfeinert.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-9" onclick="addToCart(9)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="10" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="pfefferkäse"
+         data-text="pfefferkäse mit grobem pfeffer, pikant &amp; rustikal. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/10/">
+    <img src="/bauernkoenig-vorschau/static/img/products/pfeffer.webp" alt="Pfefferkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/10/">Pfefferkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit grobem Pfeffer, pikant &amp; rustikal.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-10" onclick="addToCart(10)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="11" data-cat="kaese" data-sub="standard"
+         data-preis="4.9" data-name="rebellkäse"
+         data-text="rebellkäse kräftiger schnittkäse, alte rezeptur. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/11/">
+    <img src="/bauernkoenig-vorschau/static/img/products/bergkaese.webp" alt="Rebellkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/11/">Rebellkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Kräftiger Schnittkäse, alte Rezeptur.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-11" onclick="addToCart(11)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="12" data-cat="kaese" data-sub="premium"
+         data-preis="5.9" data-name="trüffelgouda"
+         data-text="trüffelgouda edler gouda mit trüffelstücken. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/12/">
+    <img src="/bauernkoenig-vorschau/static/img/products/trueffel.webp" alt="Trüffelgouda" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Premium</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/12/">Trüffelgouda</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Edler Gouda mit Trüffelstücken.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-12" onclick="addToCart(12)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="13" data-cat="kaese" data-sub="langgereift"
+         data-preis="5.9" data-name="bergkäse (18 monate)"
+         data-text="bergkäse (18 monate) extrem würzig, mit kristallen. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/13/">
+    <img src="/bauernkoenig-vorschau/static/img/products/bergkaese.webp" alt="Bergkäse (18 Monate)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Extra lang</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/13/">Bergkäse (18 Monate)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Extrem würzig, mit Kristallen.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-13" onclick="addToCart(13)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="14" data-cat="kaese" data-sub="premium"
+         data-preis="5.9" data-name="alter gouda (38 monate)"
+         data-text="alter gouda (38 monate) meisterstück, 38 monate, mit kristallen. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/14/">
+    <img src="/bauernkoenig-vorschau/static/img/products/altgouda.webp" alt="Alter Gouda (38 Monate)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Vintage</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/14/">Alter Gouda (38 Monate)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Meisterstück, 38 Monate, mit Kristallen.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-14" onclick="addToCart(14)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="15" data-cat="kaese" data-sub="ziege-schaf"
+         data-preis="5.9" data-name="alter ziegenkäse (38 monate)"
+         data-text="alter ziegenkäse (38 monate) pikanter ziegenkäse, unglaublich würzig. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/15/">
+    <img src="/bauernkoenig-vorschau/static/img/products/ziege.webp" alt="Alter Ziegenkäse (38 Monate)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Vintage</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/15/">Alter Ziegenkäse (38 Monate)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Pikanter Ziegenkäse, unglaublich würzig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-15" onclick="addToCart(15)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="16" data-cat="kaese" data-sub="standard"
+         data-preis="5.9" data-name="walnusskäse"
+         data-text="walnusskäse mit knackigen walnüssen. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/16/">
+    <img src="/bauernkoenig-vorschau/static/img/products/walnuss.webp" alt="Walnusskäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/16/">Walnusskäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit knackigen Walnüssen.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-16" onclick="addToCart(16)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="17" data-cat="kaese" data-sub="standard"
+         data-preis="5.9" data-name="walnusstraum"
+         data-text="walnusstraum cremig mit walnüssen &amp; honignote. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/17/">
+    <img src="/bauernkoenig-vorschau/static/img/products/walnuss.webp" alt="Walnusstraum" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/17/">Walnusstraum</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Cremig mit Walnüssen &amp; Honignote.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-17" onclick="addToCart(17)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="18" data-cat="kaese" data-sub="ziege-schaf"
+         data-preis="5.9" data-name="edelziege"
+         data-text="edelziege feinster ziegenkäse, mild &amp; edel. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/18/">
+    <img src="/bauernkoenig-vorschau/static/img/products/ziege.webp" alt="Edelziege" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/18/">Edelziege</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Feinster Ziegenkäse, mild &amp; edel.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-18" onclick="addToCart(18)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="19" data-cat="kaese" data-sub="ziege-schaf"
+         data-preis="5.9" data-name="schafkäse"
+         data-text="schafkäse vollmundiger schafskäse. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/19/">
+    <img src="/bauernkoenig-vorschau/static/img/products/ziege.webp" alt="Schafkäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/19/">Schafkäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Vollmundiger Schafskäse.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-19" onclick="addToCart(19)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="20" data-cat="kaese" data-sub="standard"
+         data-preis="5.9" data-name="boxhornkleekäse"
+         data-text="boxhornkleekäse mit boxhornklee, würzig. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/20/">
+    <img src="/bauernkoenig-vorschau/static/img/products/bergkaese.webp" alt="Boxhornkleekäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/20/">Boxhornkleekäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit Boxhornklee, würzig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-20" onclick="addToCart(20)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="21" data-cat="kaese" data-sub="standard"
+         data-preis="5.9" data-name="roter rüben chillikäse"
+         data-text="roter rüben chillikäse rote rüben &amp; chili, fruchtig-scharf. käse">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/21/">
+    <img src="/bauernkoenig-vorschau/static/img/products/chilli.webp" alt="Roter Rüben Chillikäse" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</span>
+    <span class="karte-badge">Neu</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/21/">Roter Rüben Chillikäse</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Rote Rüben &amp; Chili, fruchtig-scharf.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-21" onclick="addToCart(21)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="22" data-cat="mangalitza" data-sub="speck"
+         data-preis="4.9" data-name="mangalitza speck (geselcht)"
+         data-text="mangalitza speck (geselcht) edler mangalitza-speck, buchenholz geräuchert. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/22/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Mangalitza Speck (geselcht)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/22/">Mangalitza Speck (geselcht)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Edler Mangalitza-Speck, Buchenholz geräuchert.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-22" onclick="addToCart(22)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="23" data-cat="mangalitza" data-sub="speck"
+         data-preis="4.9" data-name="mangalitza speck (paprika)"
+         data-text="mangalitza speck (paprika) mit edelsüßer paprika ummantelt. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/23/">
+    <img src="/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp" alt="Mangalitza Speck (Paprika)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/23/">Mangalitza Speck (Paprika)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit edelsüßer Paprika ummantelt.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-23" onclick="addToCart(23)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="24" data-cat="mangalitza" data-sub="speck"
+         data-preis="4.9" data-name="mangalitza speck (gesalzen)"
+         data-text="mangalitza speck (gesalzen) naturbelassen, pur &amp; salzig. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/24/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Mangalitza Speck (gesalzen)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/24/">Mangalitza Speck (gesalzen)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Naturbelassen, pur &amp; salzig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-24" onclick="addToCart(24)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="25" data-cat="mangalitza" data-sub="wurst"
+         data-preis="4.9" data-name="mangalitza würstel"
+         data-text="mangalitza würstel saftig, aromatisch, ohne zusätze. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/25/">
+    <img src="/bauernkoenig-vorschau/static/img/products/wuerstel.webp" alt="Mangalitza Würstel" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/25/">Mangalitza Würstel</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Saftig, aromatisch, ohne Zusätze.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-25" onclick="addToCart(25)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="26" data-cat="mangalitza" data-sub="edel"
+         data-preis="6.9" data-name="karreespeck-rosmarin"
+         data-text="karreespeck-rosmarin karree mit rosmarin gewürzt. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/26/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Karreespeck-Rosmarin" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/26/">Karreespeck-Rosmarin</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Karree mit Rosmarin gewürzt.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 6,90
+        <small class="karte-grundpreis">€ 69,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-26" onclick="addToCart(26)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="27" data-cat="mangalitza" data-sub="edel"
+         data-preis="6.9" data-name="lungenbraten-rosmarin"
+         data-text="lungenbraten-rosmarin zarter lungenbraten mit rosmarin. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/27/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Lungenbraten-Rosmarin" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/27/">Lungenbraten-Rosmarin</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Zarter Lungenbraten mit Rosmarin.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 6,90
+        <small class="karte-grundpreis">€ 69,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-27" onclick="addToCart(27)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="28" data-cat="mangalitza" data-sub="edel"
+         data-preis="7.9" data-name="mangalitza lungenbraten"
+         data-text="mangalitza lungenbraten das filet, zartestes stück. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/28/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Mangalitza Lungenbraten" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    <span class="karte-badge">Königsstück</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/28/">Mangalitza Lungenbraten</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Das Filet, zartestes Stück.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 7,90
+        <small class="karte-grundpreis">€ 79,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-28" onclick="addToCart(28)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="29" data-cat="mangalitza" data-sub="speck"
+         data-preis="7.9" data-name="mangalitza karreespeck"
+         data-text="mangalitza karreespeck stark marmoriert, besonders saftig. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/29/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Mangalitza Karreespeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/29/">Mangalitza Karreespeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Stark marmoriert, besonders saftig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 7,90
+        <small class="karte-grundpreis">€ 79,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-29" onclick="addToCart(29)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="30" data-cat="mangalitza" data-sub="wurst"
+         data-preis="7.9" data-name="mangalitza salami"
+         data-text="mangalitza salami 8 wochen luftgetrocknet, kräftig. mangalitza">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/30/">
+    <img src="/bauernkoenig-vorschau/static/img/products/salami.webp" alt="Mangalitza Salami" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/30/">Mangalitza Salami</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">8 Wochen luftgetrocknet, kräftig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 7,90
+        <small class="karte-grundpreis">€ 79,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-30" onclick="addToCart(30)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="31" data-cat="wild" data-sub="salami"
+         data-preis="7.9" data-name="hirschsalami"
+         data-text="hirschsalami edle salami vom hirsch. wild">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/31/">
+    <img src="/bauernkoenig-vorschau/static/img/products/salami.webp" alt="Hirschsalami" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-deer"/></svg>Wild</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/31/">Hirschsalami</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Edle Salami vom Hirsch.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 7,90
+        <small class="karte-grundpreis">€ 79,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-31" onclick="addToCart(31)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="32" data-cat="wild" data-sub="salami"
+         data-preis="7.9" data-name="wildschweinsalami"
+         data-text="wildschweinsalami kräftige wildschweinsalami. wild">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/32/">
+    <img src="/bauernkoenig-vorschau/static/img/products/salami.webp" alt="Wildschweinsalami" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-deer"/></svg>Wild</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/32/">Wildschweinsalami</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Kräftige Wildschweinsalami.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 7,90
+        <small class="karte-grundpreis">€ 79,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-32" onclick="addToCart(32)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="33" data-cat="wild" data-sub="schinken"
+         data-preis="9.9" data-name="hirschrohschinken"
+         data-text="hirschrohschinken monatelang luftgetrocknet. wild">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/33/">
+    <img src="/bauernkoenig-vorschau/static/img/products/rohschinken.webp" alt="Hirschrohschinken" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-deer"/></svg>Wild</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/33/">Hirschrohschinken</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Monatelang luftgetrocknet.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 9,90
+        <small class="karte-grundpreis">€ 99,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-33" onclick="addToCart(33)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="34" data-cat="wild" data-sub="schinken"
+         data-preis="9.9" data-name="wildschweinrohschinken"
+         data-text="wildschweinrohschinken vollmundig &amp; leicht süßlich. wild">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/34/">
+    <img src="/bauernkoenig-vorschau/static/img/products/rohschinken.webp" alt="Wildschweinrohschinken" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-deer"/></svg>Wild</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/34/">Wildschweinrohschinken</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Vollmundig &amp; leicht süßlich.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 9,90
+        <small class="karte-grundpreis">€ 99,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-34" onclick="addToCart(34)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="35" data-cat="wild" data-sub="edel"
+         data-preis="9.9" data-name="entenfilet"
+         data-text="entenfilet kaltgeräuchert, fein gewürzt. wild">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/35/">
+    <img src="/bauernkoenig-vorschau/static/img/products/ente.webp" alt="Entenfilet" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-deer"/></svg>Wild</span>
+    <span class="karte-badge">Premium</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/35/">Entenfilet</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Kaltgeräuchert, fein gewürzt.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 9,90
+        <small class="karte-grundpreis">€ 99,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-35" onclick="addToCart(35)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="36" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.5" data-name="blutwurst"
+         data-text="blutwurst hausmacher-art, herzhaft. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/36/">
+    <img src="/bauernkoenig-vorschau/static/img/products/blutwurst.webp" alt="Blutwurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/36/">Blutwurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Hausmacher-Art, herzhaft.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,50
+        <small class="karte-grundpreis">€ 15,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-36" onclick="addToCart(36)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="37" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.9" data-name="presswurst"
+         data-text="presswurst saftig, traditionell. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/37/">
+    <img src="/bauernkoenig-vorschau/static/img/products/blutwurst.webp" alt="Presswurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/37/">Presswurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Saftig, traditionell.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,90
+        <small class="karte-grundpreis">€ 19,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-37" onclick="addToCart(37)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="38" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.9" data-name="leberwurst"
+         data-text="leberwurst cremig, streichzart. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/38/">
+    <img src="/bauernkoenig-vorschau/static/img/products/leberwurst.webp" alt="Leberwurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/38/">Leberwurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Cremig, streichzart.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,90
+        <small class="karte-grundpreis">€ 19,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-38" onclick="addToCart(38)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="39" data-cat="hausschwein" data-sub="schmalz"
+         data-preis="2.4" data-name="grammeln"
+         data-text="grammeln knusprig, salzig, bier-snack! hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/39/">
+    <img src="/bauernkoenig-vorschau/static/img/products/grammeln.webp" alt="Grammeln" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/39/">Grammeln</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Knusprig, salzig, Bier-Snack!</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,40
+        <small class="karte-grundpreis">€ 24,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-39" onclick="addToCart(39)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="40" data-cat="hausschwein" data-sub="geselcht"
+         data-preis="2.8" data-name="kümmelbraten"
+         data-text="kümmelbraten gepökelt mit kümmel. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/40/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Kümmelbraten" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/40/">Kümmelbraten</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Gepökelt mit Kümmel.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-40" onclick="addToCart(40)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="41" data-cat="hausschwein" data-sub="wurst"
+         data-preis="2.8" data-name="knoblauchwürstel"
+         data-text="knoblauchwürstel würzig, für grill &amp; pfanne. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/41/">
+    <img src="/bauernkoenig-vorschau/static/img/products/wuerstel.webp" alt="Knoblauchwürstel" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/41/">Knoblauchwürstel</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Würzig, für Grill &amp; Pfanne.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-41" onclick="addToCart(41)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="42" data-cat="hausschwein" data-sub="wurst"
+         data-preis="2.8" data-name="pusztawürstel"
+         data-text="pusztawürstel paprika &amp; chili, ungarische art. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/42/">
+    <img src="/bauernkoenig-vorschau/static/img/products/duerre.webp" alt="Pusztawürstel" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/42/">Pusztawürstel</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Paprika &amp; Chili, ungarische Art.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-42" onclick="addToCart(42)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="43" data-cat="hausschwein" data-sub="speck"
+         data-preis="2.8" data-name="knoblauchspeck"
+         data-text="knoblauchspeck geselcht mit würzigem knoblauch. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/43/">
+    <img src="/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp" alt="Knoblauchspeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/43/">Knoblauchspeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Geselcht mit würzigem Knoblauch.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-43" onclick="addToCart(43)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="44" data-cat="hausschwein" data-sub="speck"
+         data-preis="2.8" data-name="zigeunerspeck"
+         data-text="zigeunerspeck scharf-pikante gewürzmischung. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/44/">
+    <img src="/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp" alt="Zigeunerspeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/44/">Zigeunerspeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Scharf-pikante Gewürzmischung.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-44" onclick="addToCart(44)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="45" data-cat="hausschwein" data-sub="speck"
+         data-preis="2.8" data-name="geselchterspeck"
+         data-text="geselchterspeck buchenholz kaltgeräuchert. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/45/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Geselchterspeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/45/">Geselchterspeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Buchenholz kaltgeräuchert.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,80
+        <small class="karte-grundpreis">€ 28,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-45" onclick="addToCart(45)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="46" data-cat="hausschwein" data-sub="duerre"
+         data-preis="2.9" data-name="pikante dürre"
+         data-text="pikante dürre luftgetrocknet, pikant. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/46/">
+    <img src="/bauernkoenig-vorschau/static/img/products/duerre.webp" alt="Pikante Dürre" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/46/">Pikante Dürre</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Luftgetrocknet, pikant.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,90
+        <small class="karte-grundpreis">€ 29,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-46" onclick="addToCart(46)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="47" data-cat="hausschwein" data-sub="duerre"
+         data-preis="2.9" data-name="feurige dürre"
+         data-text="feurige dürre extra scharf für chili-fans. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/47/">
+    <img src="/bauernkoenig-vorschau/static/img/products/duerre.webp" alt="Feurige Dürre" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/47/">Feurige Dürre</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Extra scharf für Chili-Fans.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,90
+        <small class="karte-grundpreis">€ 29,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-47" onclick="addToCart(47)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="48" data-cat="hausschwein" data-sub="geselcht"
+         data-preis="2.9" data-name="geselchter schopf"
+         data-text="geselchter schopf schweinsschopf, saftig &amp; würzig. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/48/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Geselchter Schopf" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/48/">Geselchter Schopf</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Schweinsschopf, saftig &amp; würzig.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,90
+        <small class="karte-grundpreis">€ 29,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-48" onclick="addToCart(48)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="49" data-cat="hausschwein" data-sub="geselcht"
+         data-preis="2.9" data-name="geselchter teilsames"
+         data-text="geselchter teilsames schulter, traditionell geselcht. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/49/">
+    <img src="/bauernkoenig-vorschau/static/img/products/lungenbraten.webp" alt="Geselchter Teilsames" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/49/">Geselchter Teilsames</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Schulter, traditionell geselcht.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,90
+        <small class="karte-grundpreis">€ 29,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-49" onclick="addToCart(49)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="50" data-cat="hausschwein" data-sub="duerre"
+         data-preis="4.0" data-name="knabber nossi (scharf)"
+         data-text="knabber nossi (scharf) pikante trockenwurst. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/50/">
+    <img src="/bauernkoenig-vorschau/static/img/products/duerre.webp" alt="Knabber Nossi (scharf)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/50/">Knabber Nossi (scharf)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Pikante Trockenwurst.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,00
+        <small class="karte-grundpreis">€ 40,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-50" onclick="addToCart(50)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="51" data-cat="hausschwein" data-sub="duerre"
+         data-preis="4.0" data-name="knabber nossi (mild)"
+         data-text="knabber nossi (mild) milde trockenwurst. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/51/">
+    <img src="/bauernkoenig-vorschau/static/img/products/duerre.webp" alt="Knabber Nossi (mild)" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/51/">Knabber Nossi (mild)</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Milde Trockenwurst.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,00
+        <small class="karte-grundpreis">€ 40,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-51" onclick="addToCart(51)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="52" data-cat="hausschwein" data-sub="schmalz"
+         data-preis="4.9" data-name="grammelschmalz"
+         data-text="grammelschmalz hausgemacht mit grammeln. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/52/">
+    <img src="/bauernkoenig-vorschau/static/img/products/leberwurst.webp" alt="Grammelschmalz" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/52/">Grammelschmalz</a>
+    <div class="karte-einheit">pro Stück (ca. 250g)</div>
+    <p class="karte-text">Hausgemacht mit Grammeln.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 19,60 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-52" onclick="addToCart(52)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="53" data-cat="hausschwein" data-sub="speck"
+         data-preis="4.9" data-name="luftgetr. bauchspeck"
+         data-text="luftgetr. bauchspeck wochen luftgetrocknet. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/53/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Luftgetr. Bauchspeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/53/">Luftgetr. Bauchspeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Wochen luftgetrocknet.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 4,90
+        <small class="karte-grundpreis">€ 49,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-53" onclick="addToCart(53)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="54" data-cat="hausschwein" data-sub="speck"
+         data-preis="5.9" data-name="luftgetr. karreespeck"
+         data-text="luftgetr. karreespeck konzentriertes aroma. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/54/">
+    <img src="/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp" alt="Luftgetr. Karreespeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/54/">Luftgetr. Karreespeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Konzentriertes Aroma.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-54" onclick="addToCart(54)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="55" data-cat="hausschwein" data-sub="speck"
+         data-preis="5.9" data-name="geselchter karreespeck"
+         data-text="geselchter karreespeck buchenholz geräuchert. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/55/">
+    <img src="/bauernkoenig-vorschau/static/img/products/mangaspeck.webp" alt="Geselchter Karreespeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/55/">Geselchter Karreespeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Buchenholz geräuchert.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-55" onclick="addToCart(55)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="56" data-cat="hausschwein" data-sub="speck"
+         data-preis="5.9" data-name="kürbiskern karreespeck"
+         data-text="kürbiskern karreespeck mit steirischen kürbiskernen. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/56/">
+    <img src="/bauernkoenig-vorschau/static/img/products/kuerbiskern.webp" alt="Kürbiskern Karreespeck" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/56/">Kürbiskern Karreespeck</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Mit steirischen Kürbiskernen.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 5,90
+        <small class="karte-grundpreis">€ 59,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-56" onclick="addToCart(56)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="57" data-cat="geschenk" data-sub="kaese"
+         data-preis="39.9" data-name="käse-genießerbox"
+         data-text="käse-genießerbox sechs handverlesene käsespezialitäten, liebevoll in einer holzbox arrangiert: das perfekte geschenk für genießer. geschenkbox">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/57/">
+    <img src="/bauernkoenig-vorschau/static/img/products/boxkaese.webp" alt="Käse-Genießerbox" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-gift"/></svg>Geschenkbox</span>
+    <span class="karte-badge">Geschenk</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/57/">Käse-Genießerbox</a>
+    <div class="karte-einheit">pro Box</div>
+    <p class="karte-text">Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 39,90
+        
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-57" onclick="addToCart(57)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="58" data-cat="geschenk" data-sub="wurst"
+         data-preis="44.9" data-name="wurst &amp; speck box"
+         data-text="wurst &amp; speck box auswahl edler salami, rohschinken und geräucherter speckspezialitäten: herzhafter genuss zum verschenken. geschenkbox">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/58/">
+    <img src="/bauernkoenig-vorschau/static/img/products/boxwurst.webp" alt="Wurst &amp; Speck Box" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-gift"/></svg>Geschenkbox</span>
+    <span class="karte-badge">Geschenk</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/58/">Wurst &amp; Speck Box</a>
+    <div class="karte-einheit">pro Box</div>
+    <p class="karte-text">Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 44,90
+        
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-58" onclick="addToCart(58)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="59" data-cat="geschenk" data-sub="premium"
+         data-preis="69.9" data-name="premium genussbox"
+         data-text="premium genussbox unser meisterstück: feinste käse, edle wurst, speck und eine flasche wein in einer großzügigen geschenkbox. geschenkbox">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/59/">
+    <img src="/bauernkoenig-vorschau/static/img/products/boxpremium.webp" alt="Premium Genussbox" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-gift"/></svg>Geschenkbox</span>
+    <span class="karte-badge">Bestseller</span>
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/59/">Premium Genussbox</a>
+    <div class="karte-einheit">pro Box</div>
+    <p class="karte-text">Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 69,90
+        
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-59" onclick="addToCart(59)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="60" data-cat="geschenk" data-sub="klassik"
+         data-preis="29.9" data-name="bauern jausen-box"
+         data-text="bauern jausen-box die klassische jause: käse, speck, wurst, brot und pikantes, fixfertig für den nächsten genussmoment. geschenkbox">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/60/">
+    <img src="/bauernkoenig-vorschau/static/img/products/boxjause.webp" alt="Bauern Jausen-Box" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-gift"/></svg>Geschenkbox</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/60/">Bauern Jausen-Box</a>
+    <div class="karte-einheit">pro Box</div>
+    <p class="karte-text">Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 29,90
+        
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-60" onclick="addToCart(60)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+  </div>
+  <p class="keine-treffer" id="keineTreffer" hidden>
+    Zu dieser Auswahl haben wir nichts im Sortiment.
+    <button type="button" class="btn btn-rand" onclick="filterZuruecksetzen()">Filter zurücksetzen</button>
+  </p>
+  <div class="mehr" id="mehrBereich">
+    <button type="button" class="btn btn-rand" id="mehrKnopf">Weitere Artikel anzeigen</button>
+    <p id="mehrText"></p>
+  </div>
+</section>
+
+<section class="hinweis-band">
+  <div class="hb-inner">
+    <div class="hb-block"><svg class="ico"><use href="#ic-info"/></svg>
+      <b>Preise je 100 Gramm</b>
+      <span>Unter jedem Preis steht der Grundpreis je Kilogramm, damit die
+        Angebote vergleichbar bleiben. Alle Preise inklusive Mehrwertsteuer,
+        zuzüglich Versand.</span></div>
+    <div class="hb-block"><svg class="ico"><use href="#ic-snow"/></svg>
+      <b>Zuschnitt auf Bestellung</b>
+      <span>Käse und Speck werden erst nach dem Eingang der Bestellung
+        geschnitten und vakuumiert. Kleine Gewichtsabweichungen sind möglich.</span></div>
+    <div class="hb-block"><svg class="ico"><use href="#ic-truck"/></svg>
+      <b>Kostenfrei ab 75 Euro</b>
+      <span>Darunter € 5,90 österreichweit. Bestellungen bis
+        14:00 Uhr gehen am selben Tag raus.</span></div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="foot-marke">
+      <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
+      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
+    </div>
+    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/#sortiment">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
+    <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
+    <div><h4>Kontakt</h4>
+      
+      
+      <a href="/bauernkoenig-vorschau/kontakt/">2823 Pitten, Seebensteinerstraße</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
+</footer>
+
+
+
+<div class="palette-picker" id="palettePicker">
+  <button type="button" class="palette-toggle" id="paletteToggle"
+          aria-expanded="false" aria-controls="paletteMenu" title="Farbpalette wählen">
+    <span class="palette-dots"></span><span class="txt">Farbe</span>
+  </button>
+  <div class="palette-menu" id="paletteMenu" hidden>
+    <h4>Farbpalette</h4>
+    <div id="paletteList" role="radiogroup" aria-label="Farbpalette"></div>
+    <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
+  </div>
+</div>
+<script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
+
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span>
+    <button class="close-btn" onclick="closeAll()" aria-label="Schließen">&#10005;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="subtotal-label">Zwischensumme</span><span id="subtotal">€ 0,00</span></div>
+    
+    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenfreier Versand ab € 75</p>
+    
+    <a class="checkout-btn" id="checkoutBtn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+
+<script>window.products = [{"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "/bauernkoenig-vorschau/static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 5, "name": "Karottenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Natürlich mit Karotten, mild & fruchtig.", "stock": 22, "rating": 4.4, "details": ["Karottenextrakt", "Mild & fruchtig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/karotte.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 6, "name": "Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Scharf", "unit": "pro 100 g", "desc": "Feurig mit eingelegten Chilistücken.", "stock": 15, "rating": 4.9, "details": ["Mit Chilistücken", "Scharf, würzig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 7, "name": "Weinkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Weißwein gereift, edel & mild.", "stock": 16, "rating": 4.6, "details": ["Weißwein gereift", "Edel mild"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 8, "name": "Mostkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Apfelmost gereift, fruchtig & herbstlich.", "stock": 14, "rating": 4.5, "details": ["Most gereift", "Herbstlich"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 9, "name": "Bärlaufkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Bärlauch verfeinert.", "stock": 12, "rating": 4.7, "details": ["Frischer Bärlauch", "Frühlingshaft"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 10, "name": "Pfefferkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit grobem Pfeffer, pikant & rustikal.", "stock": 20, "rating": 4.5, "details": ["Schwarzer Pfeffer", "Pikant"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/pfeffer.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 11, "name": "Rebellkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Kräftiger Schnittkäse, alte Rezeptur.", "stock": 17, "rating": 4.4, "details": ["Alte Familienrezeptur", "Kräftig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 12, "name": "Trüffelgouda", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Premium", "unit": "pro 100 g", "desc": "Edler Gouda mit Trüffelstücken.", "stock": 10, "rating": 5.0, "details": ["Mit Trüffel", "Echt edel"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/trueffel.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 13, "name": "Bergkäse (18 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Extra lang", "unit": "pro 100 g", "desc": "Extrem würzig, mit Kristallen.", "stock": 8, "rating": 5.0, "details": ["18 Monate gereift", "Proteinkristalle"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 14, "name": "Alter Gouda (38 Monate)", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Meisterstück, 38 Monate, mit Kristallen.", "stock": 5, "rating": 5.0, "details": ["38 Monate gereift", "Proteinkristalle", "Limitierter Bestand"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/altgouda.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 15, "name": "Alter Ziegenkäse (38 Monate)", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Pikanter Ziegenkäse, unglaublich würzig.", "stock": 4, "rating": 4.9, "details": ["Ziegenmilch", "38 Monate", "Pikant"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 16, "name": "Walnusskäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit knackigen Walnüssen.", "stock": 22, "rating": 4.6, "details": ["Walnussstücke", "Herzhaft-nussig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 17, "name": "Walnusstraum", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Cremig mit Walnüssen & Honignote.", "stock": 14, "rating": 4.7, "details": ["Walnüsse & Honig", "Cremig-süßlich"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 18, "name": "Edelziege", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Feinster Ziegenkäse, mild & edel.", "stock": 16, "rating": 4.5, "details": ["Ziegenmilch", "Cremig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 19, "name": "Schafkäse", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Vollmundiger Schafskäse.", "stock": 12, "rating": 4.6, "details": ["Schafmilch", "Vollmundig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 20, "name": "Boxhornkleekäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Boxhornklee, würzig.", "stock": 10, "rating": 4.3, "details": ["Boxhornklee", "Würzig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 21, "name": "Roter Rüben Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Neu", "unit": "pro 100 g", "desc": "Rote Rüben & Chili, fruchtig-scharf.", "stock": 18, "rating": 4.8, "details": ["Rote Rüben & Chili", "Fruchtig-scharf"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 22, "name": "Mangalitza Speck (geselcht)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Edler Mangalitza-Speck, Buchenholz geräuchert.", "stock": 20, "rating": 4.7, "details": ["Buchenholz geräuchert", "Marmoriert"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 23, "name": "Mangalitza Speck (Paprika)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit edelsüßer Paprika ummantelt.", "stock": 18, "rating": 4.6, "details": ["Paprika-ummantelt", "Würzig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 24, "name": "Mangalitza Speck (gesalzen)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Naturbelassen, pur & salzig.", "stock": 22, "rating": 4.5, "details": ["Nur gesalzen", "Puristisch"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 25, "name": "Mangalitza Würstel", "cat": "mangalitza", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, aromatisch, ohne Zusätze.", "stock": 25, "rating": 4.6, "details": ["Ohne Zusätze", "Saftig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 26, "name": "Karreespeck-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Karree mit Rosmarin gewürzt.", "stock": 14, "rating": 4.8, "details": ["Mit Rosmarin", "Marmoriert"], "price": 6.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 27, "name": "Lungenbraten-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Zarter Lungenbraten mit Rosmarin.", "stock": 10, "rating": 5.0, "details": ["Rosmarin & Knoblauch", "Zart"], "price": 6.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 28, "name": "Mangalitza Lungenbraten", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "Königsstück", "unit": "pro 100 g", "desc": "Das Filet, zartestes Stück.", "stock": 6, "rating": 5.0, "details": ["Mangalitza-Filet", "Limitierter Bestand"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 29, "name": "Mangalitza Karreespeck", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Stark marmoriert, besonders saftig.", "stock": 12, "rating": 4.7, "details": ["Stark marmoriert", "Saftig"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 30, "name": "Mangalitza Salami", "cat": "mangalitza", "sub": "wurst", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "8 Wochen luftgetrocknet, kräftig.", "stock": 16, "rating": 4.8, "details": ["Luftgetrocknet 8 Wo.", "Kräftig-würzig"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 31, "name": "Hirschsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Edle Salami vom Hirsch.", "stock": 15, "rating": 4.7, "details": ["Hirschfleisch", "Luftgetrocknet"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 32, "name": "Wildschweinsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Kräftige Wildschweinsalami.", "stock": 14, "rating": 4.6, "details": ["Wildschwein", "Intensiv"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 33, "name": "Hirschrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Monatelang luftgetrocknet.", "stock": 8, "rating": 4.9, "details": ["Hirschkeule", "Monatelang gereift"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 34, "name": "Wildschweinrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Vollmundig & leicht süßlich.", "stock": 7, "rating": 4.8, "details": ["Vollmundig", "Luftgetrocknet"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 35, "name": "Entenfilet", "cat": "wild", "sub": "edel", "emoji": "🦆", "badge": "Premium", "unit": "pro 100 g", "desc": "Kaltgeräuchert, fein gewürzt.", "stock": 10, "rating": 4.9, "details": ["Kaltgeräuchert", "Buchenholz"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/ente.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "/bauernkoenig-vorschau/static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 40, "name": "Kümmelbraten", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Gepökelt mit Kümmel.", "stock": 20, "rating": 4.5, "details": ["Gepökelt", "Mit Kümmel"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 41, "name": "Knoblauchwürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Würzig, für Grill & Pfanne.", "stock": 26, "rating": 4.6, "details": ["Mit Knoblauch", "Grillwürstel"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 42, "name": "Pusztawürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Paprika & Chili, ungarische Art.", "stock": 24, "rating": 4.7, "details": ["Paprika & Chili", "Feurig"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 43, "name": "Knoblauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Geselcht mit würzigem Knoblauch.", "stock": 22, "rating": 4.5, "details": ["Geselcht", "Knoblauch"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 44, "name": "Zigeunerspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Scharf-pikante Gewürzmischung.", "stock": 18, "rating": 4.6, "details": ["Paprika & Chili", "Pikant"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 45, "name": "Geselchterspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz kaltgeräuchert.", "stock": 24, "rating": 4.4, "details": ["Buchenholz", "Kaltgeräuchert"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 46, "name": "Pikante Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Luftgetrocknet, pikant.", "stock": 20, "rating": 4.6, "details": ["Luftgetrocknet", "Pikant"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 47, "name": "Feurige Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Extra scharf für Chili-Fans.", "stock": 18, "rating": 4.7, "details": ["Extra scharf", "Chili"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 48, "name": "Geselchter Schopf", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schweinsschopf, saftig & würzig.", "stock": 15, "rating": 4.5, "details": ["Geräuchert", "Saftig"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 49, "name": "Geselchter Teilsames", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schulter, traditionell geselcht.", "stock": 14, "rating": 4.4, "details": ["Schulter", "Geselcht"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 50, "name": "Knabber Nossi (scharf)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Pikante Trockenwurst.", "stock": 25, "rating": 4.5, "details": ["Trockenwurst", "Scharf"], "price": 4.0, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 51, "name": "Knabber Nossi (mild)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Milde Trockenwurst.", "stock": 27, "rating": 4.4, "details": ["Trockenwurst", "Mild"], "price": 4.0, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 52, "name": "Grammelschmalz", "cat": "hausschwein", "sub": "schmalz", "emoji": "🫙", "badge": "", "unit": "pro Stück (ca. 250g)", "desc": "Hausgemacht mit Grammeln.", "stock": 20, "rating": 4.8, "details": ["Hausgemacht", "Brotaufstrich"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 250, "grundpreis": 19.6, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 53, "name": "Luftgetr. Bauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Wochen luftgetrocknet.", "stock": 16, "rating": 4.7, "details": ["Luftgetrocknet", "Gewürzkruste"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 54, "name": "Luftgetr. Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Konzentriertes Aroma.", "stock": 12, "rating": 4.6, "details": ["Intensives Aroma", "Luftgetrocknet"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 55, "name": "Geselchter Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz geräuchert.", "stock": 14, "rating": 4.5, "details": ["Buchenholz", "Klassiker"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 56, "name": "Kürbiskern Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit steirischen Kürbiskernen.", "stock": 12, "rating": 4.9, "details": ["Steirische Kürbiskerne", "Steirische Spezialität"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/kuerbiskern.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 57, "name": "Käse-Genießerbox", "cat": "geschenk", "sub": "kaese", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.", "stock": 15, "rating": 5.0, "details": ["6 Käsesorten · ca. 600 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 39.9, "img": "/bauernkoenig-vorschau/static/img/products/boxkaese.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 58, "name": "Wurst & Speck Box", "cat": "geschenk", "sub": "wurst", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.", "stock": 12, "rating": 4.9, "details": ["5 Fleischspezialitäten · ca. 550 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 44.9, "img": "/bauernkoenig-vorschau/static/img/products/boxwurst.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 59, "name": "Premium Genussbox", "cat": "geschenk", "sub": "premium", "emoji": "🎁", "badge": "Bestseller", "unit": "pro Box", "desc": "Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.", "stock": 8, "rating": 5.0, "details": ["Käse, Wurst & Speck · ca. 1 kg", "Inkl. Flasche Wein", "Große Premium-Holzbox", "Inkl. Grußkarte"], "price": 69.9, "img": "/bauernkoenig-vorschau/static/img/products/boxpremium.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 60, "name": "Bauern Jausen-Box", "cat": "geschenk", "sub": "klassik", "emoji": "🎁", "badge": "", "unit": "pro Box", "desc": "Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.", "stock": 20, "rating": 4.8, "details": ["Jausen-Auswahl · ca. 450 g", "Inkl. Bauernbrot", "Rustikale Holzbox", "Sofort genussbereit"], "price": 29.9, "img": "/bauernkoenig-vorschau/static/img/products/boxjause.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];</script>
+<script src="/bauernkoenig-vorschau/static/sortiment.js?v=38"></script>
+
+
+<script>
+/* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */
+(function () {
+  function sagen(text) {
+    if (typeof showToast === 'function') { showToast(text); return; }
+    alert(text);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-vorschau="aus"]');
+    if (a) {
+      e.preventDefault();
+      sagen('Diese Seite gibt es nur im fertigen Shop.');
+    }
+  });
+  window.addEventListener('DOMContentLoaded', function () {
+    if (typeof bestellen === 'function') {
+      window.bestellen = function (e) {
+        if (e) e.preventDefault();
+        sagen('Das ist eine Vorschau der Gestaltung. Bestellen geht erst im '
+            + 'fertigen Shop mit Server und Zahlungsanbindung.');
+        return false;
+      };
+    }
+    if (typeof gutscheinPruefen === 'function') {
+      window.gutscheinPruefen = function () {
+        sagen('Gutscheine prueft der Shop erst im Betrieb.');
+      };
+    }
+    if (typeof subscribeNewsletter === 'function') {
+      window.subscribeNewsletter = function (e) {
+        if (e) e.preventDefault();
+        sagen('Die Anmeldung laeuft erst im fertigen Shop.');
+        return false;
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

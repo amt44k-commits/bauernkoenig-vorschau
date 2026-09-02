@@ -1,0 +1,104 @@
+/* ══════════════════════════════════════════════════════════════════
+   SORTIMENT
+   Seitenkopf, Filterleiste, volles Raster. Die Chipwerte stammen aus
+   der Messung am Shop: aktiv = Markenfarbe, inaktiv = weiche Flaeche.
+   ══════════════════════════════════════════════════════════════════ */
+
+.visuell-versteckt{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── Seitenkopf ── */
+.seitenkopf{max-width:1440px;margin:0 auto;padding:34px 40px 22px}
+.seitenkopf h1{font-size:2.6rem;margin:14px 0 10px}
+.seitenkopf p{font-size:.9rem;line-height:1.75;color:var(--brown);max-width:620px}
+
+/* ── Filterleiste ── */
+.filterleiste{position:sticky;top:82px;z-index:60;background:var(--cream);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* Zwei Zeilen: oben Suche und Sortierung, darunter die Chips. Alles in eine
+   Zeile zu zwingen bricht bei sechs Kategorien schon auf dem Desktop um. */
+.fl-inner{max-width:1440px;margin:0 auto;padding:18px 40px 14px;
+  display:flex;flex-direction:column;gap:14px}
+.fl-zeile{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fl-suche{position:relative;display:flex;align-items:center;flex:0 1 320px}
+.fl-suche .ico{position:absolute;left:13px;width:16px;height:16px;
+  stroke:var(--brown2);pointer-events:none}
+.fl-suche input{width:100%;border:1px solid var(--line);border-radius:40px;
+  padding:11px 16px 11px 36px;font-family:inherit;font-size:.78rem;
+  color:var(--ink);outline:none;transition:border-color .2s}
+.fl-suche input::placeholder{color:var(--brown2)}
+.fl-suche input:focus{border-color:var(--brand)}
+.fl-chips{display:flex;gap:9px;flex-wrap:wrap}
+.chip{border:1px solid transparent;background:var(--soft);color:var(--brown);
+  border-radius:40px;padding:10px 22px;font-size:.7rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;transition:all .18s}
+.chip .ico{width:14px;height:14px}
+.chip:hover{border-color:var(--line);color:var(--ink)}
+.chip-zahl{font-size:.62rem;color:var(--brown2);font-weight:400}
+.chip.aktiv .chip-zahl{color:rgba(255,255,255,.6)}
+.chip.aktiv{background:var(--brand);border-color:var(--brand);color:var(--cream);
+  font-weight:600;box-shadow:0 6px 16px rgba(var(--brand-rgb),.22)}
+.fl-sortierung select{border:1px solid var(--line);border-radius:40px;
+  background:var(--cream);padding:0 16px;height:44px;font-family:inherit;
+  font-size:.72rem;color:var(--ink);cursor:pointer;outline:none}
+.fl-status{max-width:1440px;margin:0 auto;padding:4px 40px 16px;display:flex;
+  align-items:center;gap:14px;font-size:.72rem;color:var(--brown2)}
+.fl-status b{color:var(--ink);font-weight:600}
+.fl-trenner{width:1px;height:12px;background:var(--line)}
+.fl-hinweis{display:inline-flex;align-items:center;gap:7px}
+.fl-hinweis .ico{width:14px;height:14px;color:var(--brand)}
+
+/* ── Raster ── */
+.sortiment{max-width:1440px;margin:0 auto;padding:28px 40px 20px}
+.mehr{text-align:center;padding:34px 0 10px}
+.mehr p{font-size:.7rem;color:var(--brown2);margin-top:14px;letter-spacing:.06em}
+.keine-treffer{text-align:center;padding:60px 20px;color:var(--brown);
+  font-size:.9rem;line-height:2.4}
+.keine-treffer .btn{display:block;width:max-content;margin:14px auto 0}
+
+/* ── Hinweisband ── */
+.hinweis-band{background:var(--soft);border-top:1px solid var(--line);
+  padding:56px 40px;margin-top:30px}
+.hb-inner{max-width:1200px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:34px}
+.hb-block{display:grid;grid-template-columns:26px 1fr;gap:6px 12px;align-items:start}
+.hb-block .ico{width:22px;height:22px;color:var(--brand);grid-row:span 2;margin-top:2px}
+.hb-block b{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.hb-block span{font-size:.8rem;line-height:1.75;color:var(--brown)}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBIL
+   ══════════════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .hb-inner{grid-template-columns:1fr 1fr;gap:26px}
+}
+@media(max-width:820px){
+  .seitenkopf{padding:24px 16px 16px}
+  .seitenkopf h1{font-size:1.9rem;margin:12px 0 8px}
+  .seitenkopf p{font-size:.84rem}
+
+  /* Die Kopfzeile ist am Handy hoeher und umbricht, ein fester Klebewert
+     wuerde die Leiste falsch setzen. Sie scrollt deshalb einfach mit. */
+  .filterleiste{position:static}
+  .fl-inner{padding:14px 16px 12px;gap:10px}
+  /* display:contents loest die Zeile auf, damit die drei Bedienelemente am
+     Handy einzeln sortiert werden koennen: Suche, Chips, Sortierung. */
+  .fl-zeile{display:contents}
+  .fl-suche{flex:none;order:1}
+  .fl-chips{order:2}
+  .fl-sortierung{order:3}
+  /* Chips waagrecht scrollen statt umbrechen: spart rund 200 px Hoehe. */
+  .fl-chips{flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-bottom:2px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .fl-chips::-webkit-scrollbar{display:none}
+  .chip{padding:9px 17px;font-size:.64rem;flex:0 0 auto}
+  .fl-sortierung select{width:100%;height:42px;font-size:.7rem}
+  .fl-status{padding:0 16px 14px;font-size:.66rem;flex-wrap:wrap;gap:8px}
+  .fl-hinweis{width:100%}
+
+  .sortiment{padding:20px 16px 10px}
+  .mehr{padding:24px 0 6px}
+  .hinweis-band{padding:40px 16px;margin-top:20px}
+  .hb-inner{grid-template-columns:1fr;gap:22px}
+}

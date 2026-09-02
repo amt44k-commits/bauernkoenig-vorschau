@@ -6,14 +6,15 @@
 <title>Bauern König: Feine Käse- & Fleischspezialitäten aus Österreich</title>
 <meta name="description" content="Handverlesene Käse-, Wurst- und Speckspezialitäten direkt vom österreichischen Hof. Frisch gekühlt versendet, kostenfreier Versand ab € 75.">
 <meta name="theme-color" content="#17233f" id="metaThemeColor">
-<link rel="icon" href="static/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="static/img/icon-192.png">
+<link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/bauernkoenig-vorschau/static/img/icon-192.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bauern König: Feine Spezialitäten aus Österreich">
 <meta property="og:description" content="Handverlesene Käse- und Fleischspezialitäten direkt vom Hof. Frisch gekühlt geliefert.">
-<meta property="og:image" content="static/img/products/hero.webp">
+<meta property="og:image" content="/bauernkoenig-vorschau/static/img/products/hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="static/shell.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -878,6 +879,27 @@
   .checkout-pflicht a{color:var(--brand);text-decoration:underline}
   @media(max-width:600px){.pd-pflicht-liste{grid-template-columns:1fr;gap:2px 0}
     .pd-pflicht-liste dt{margin-top:8px;font-size:.72rem}}
+
+  /* Bildflaeche und Name der Karte sind seit dem Umbau echte Verweise auf
+     /produkt/<id>, damit man sie in einem neuen Tab oeffnen und teilen kann.
+     Als Verweise braeuchten sie sonst Unterstreichung und Inline-Fluss. */
+  .card-img-wrap{display:block;text-decoration:none}
+  .card-name{display:block;text-decoration:none}
+  .card-name:hover{color:var(--brand)}
+
+  /* Steuerhinweis auf eigener Zeile: neben dem Warenkorbknopf bleiben in einer
+     schmalen Karte keine 100 px, er bricht dort mitten im Wort um. */
+  .card-mwst-zeile{font-family:'Inter',sans-serif;font-size:.58rem;
+    letter-spacing:.02em;color:var(--brown2);margin-top:8px}
+
+  /* Hinweis auf die Einwilligung. Er gehoert sichtbar neben das Feld,
+     nicht nur in den Datenschutzhinweis. */
+  .nl-recht{max-width:1000px;margin:14px auto 0;font-size:.68rem;line-height:1.7;
+    color:rgba(255,255,255,.62);text-align:center}
+  .nl-recht a{color:var(--gold2);text-decoration:underline}
+  .nl-done{max-width:1000px;margin:12px auto 0;font-size:.8rem;line-height:1.6;
+    color:var(--gold2);text-align:center;display:none}
+  .nl-done.show{display:block}
 </style>
 <meta name="robots" content="noindex, nofollow">
 </head>
@@ -905,17 +927,29 @@
   <symbol id="ic-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13.2v8"/></symbol>
   <symbol id="ic-meat" viewBox="0 0 24 24"><path d="M7.5 8.2C5 8.2 3 10.2 3 12.7s2 4.5 4.5 4.5c2 0 3.2-1.4 5.5-1.4 3.6 0 6.5-2.3 6.5-5.4S16.5 5 13 5C10.4 5 9.7 8.2 7.5 8.2Z"/><circle cx="7.5" cy="12.7" r="2"/></symbol>
   <symbol id="ic-gift" viewBox="0 0 24 24"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M3 7.5h18V11H3z"/><path d="M12 7.5V21"/><path d="M12 7.5S11 4 8.5 4 6 7.5 8 7.5h4m0 0s1-3.5 3.5-3.5S18 7.5 16 7.5h-4"/></symbol>
+  
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.5v6c0 5 3.2 7.8 7.5 10 4.3-2.2 7.5-5 7.5-10v-6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="ic-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="ic-trash" viewBox="0 0 24 24"><path d="M4 6.5h16M9.5 6.5V4h5v2.5"/><path d="M6.5 6.5 7.5 21h9l1-14.5"/><path d="M10.5 10v7M13.5 10v7"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="ic-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/></symbol>
+  <symbol id="ic-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 9.5V19M19 9.5V19M9.5 9.5V19M14.5 9.5V19"/><path d="M3 21h18"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></symbol>
 </svg>
 <div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
 
 <nav class="shell-nav">
-  <a class="nav-logo" href="#top"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
+  <a class="nav-logo" href="/bauernkoenig-vorschau/"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
   <div class="nav-links">
-    <a class="nav-link" href="#sortiment">Shop</a>
-    <a class="nav-link" href="#geschenke">Geschenkboxen</a>
-    <a class="nav-link" href="#" data-vorschau="aus">Versand</a>
-    <a class="nav-link" href="#" data-vorschau="aus">FAQ</a>
-    <a class="nav-link" href="#" data-vorschau="aus">Kontakt</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/versand/">Versand</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
   </div>
   
   <form class="nav-suche" role="search" onsubmit="return suchen(event)">
@@ -925,30 +959,31 @@
   </form>
   <div class="nav-right">
     
+    
       <a class="nav-icon" id="navLoginBtn" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
       <button class="nav-btn solid" id="navRegisterBtn" onclick="void 0" style="display:none">Registrieren</button>
       <span class="nav-user-info" id="navUserGreet" style="display:none"></span>
       <button class="nav-icon" id="navProfileBtn" style="display:none" onclick="openProfile()" title="Konto" aria-label="Konto"><svg class="ico"><use href="#ic-user"/></svg></button>
-      <button class="nav-btn cart-btn" onclick="openCart()"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
     
+    <button class="nav-btn cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
     <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-head">
-    <span class="mm-logo"><img data-logo="zeile" src="static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
+    <span class="mm-logo"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
     <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
   </div>
   <nav class="mm-links">
-    <a href="#sortiment">Shop</a>
-    <a href="#geschenke">Geschenkboxen</a>
-    <a href="#hof">Unser Hof</a>
-    <a href="#" data-vorschau="aus">Versand &amp; Lieferung</a>
-    <a href="#" data-vorschau="aus">FAQ</a>
-    <a href="#" data-vorschau="aus">Kontakt</a>
-    <a href="#" data-vorschau="aus">Gutscheine</a>
-    <a href="#" data-vorschau="aus">Rezepte</a>
+    <a href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a href="/bauernkoenig-vorschau/#hof">Unser Hof</a>
+    <a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a>
+    <a href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+    <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
+    <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
     
       <div class="mm-account" id="mmAccountBox"></div>
     
@@ -971,7 +1006,7 @@
         <div class="hero-inner">
           <h1 class="hero-title">Sorgfältig <em>verpackt.</em></h1>
           <p class="hero-sub">Gekühlt in isolierten Boxen, die Kühlkette hält 72 Stunden. So kommt alles an, wie es den Hof verlassen hat.</p>
-          <a class="hero-btn" href="#" data-vorschau="aus">Mehr zum Versand</a>
+          <a class="hero-btn" href="/bauernkoenig-vorschau/versand/">Mehr zum Versand</a>
         </div>
       </article>
 
@@ -1023,45 +1058,7 @@
   <span class="section-sub" id="productCount">Produkte</span>
 </div>
 
-<!-- ───────────────────── FILTER BAR ───────────────────── -->
-<div class="filter-bar" id="filterBar">
-  <!-- Row 1: Kategorien (scrollbar auf Mobile) -->
-  <div class="filter-row filter-cats">
-    <button class="filter-cat-btn active" data-cat="all" onclick="setMainFilter('all',this)">Alle</button>
-    
-    <button class="filter-cat-btn" data-cat="kaese" onclick="setMainFilter('kaese',this)"><svg class="ico"><use href="#ic-cheese"/></svg>Käse</button>
-    
-    <button class="filter-cat-btn" data-cat="mangalitza" onclick="setMainFilter('mangalitza',this)"><svg class="ico"><use href="#ic-pig"/></svg>Mangalitza</button>
-    
-    <button class="filter-cat-btn" data-cat="wild" onclick="setMainFilter('wild',this)"><svg class="ico"><use href="#ic-deer"/></svg>Wild</button>
-    
-    <button class="filter-cat-btn" data-cat="hausschwein" onclick="setMainFilter('hausschwein',this)"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</button>
-    
-  </div>
 
-  <!-- Row 2: Suche + Sortierung -->
-  <div class="filter-row filter-tools">
-    <div class="filter-search-wrap">
-      <span class="filter-search-icon"><svg class="ico"><use href="#ic-search"/></svg></span>
-      <input class="filter-search" id="filterSearch" placeholder="Spezialität suchen…" oninput="applyFilters()">
-    </div>
-    <select class="filter-select" id="filterSort" onchange="applyFilters()">
-      <option value="">Sortieren nach</option>
-      <option value="price-asc">Preis aufsteigend</option>
-      <option value="price-desc">Preis absteigend</option>
-      <option value="name">Name A–Z</option>
-    </select>
-  </div>
-
-  <!-- Row 3: Unterkategorien -->
-  <div class="filter-row" id="subFilterRow">
-    <span class="sub-label">Unterkategorien</span>
-    <div id="subFilterButtons" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"></div>
-  </div>
-
-  <!-- Active filters -->
-  <div class="active-filters" id="activeFilters" style="display:none"></div>
-</div>
 
 <!-- ── EINSTIEG INS SORTIMENT: eine Kachel je Kategorie ── -->
 
@@ -1073,7 +1070,7 @@
 <section class="versand-band" id="versandBand">
   <div class="versand-inner">
     <div class="versand-bild">
-      <img src="static/img/hero/verpackung-desktop.webp?v=38"
+      <img src="/bauernkoenig-vorschau/static/img/hero/verpackung-desktop.webp?v=38"
            alt="Geöffnete Versandbox mit Vlies, Kühlelement, Käse und Speck" loading="lazy">
     </div>
     <div class="versand-text">
@@ -1091,7 +1088,7 @@
         <li><svg class="ico"><use href="#ic-wheat"/></svg>
           <b>Kostenfrei ab € 75</b><span>darunter € 5,90 österreichweit</span></li>
       </ul>
-      <a class="versand-btn" href="#" data-vorschau="aus">Alles zum Versand</a>
+      <a class="versand-btn" href="/bauernkoenig-vorschau/versand/">Alles zum Versand</a>
     </div>
   </div>
 </section>
@@ -1118,17 +1115,24 @@
   </div>
 </section>
 
-<!-- ── CART DRAWER ── -->
+
+
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
 <div class="drawer" id="drawer">
-  <div class="drawer-head"><span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span><button class="close-btn" onclick="closeAll()">✕</button></div>
+  <div class="drawer-head">
+    <span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span>
+    <button class="close-btn" onclick="closeAll()" aria-label="Schließen">&#10005;</button>
+  </div>
   <div class="drawer-body" id="drawerBody"></div>
   <div class="drawer-foot">
     <div class="subtotal"><span class="subtotal-label">Zwischensumme</span><span id="subtotal">€ 0,00</span></div>
-    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenloser Versand ab € 75</p>
-    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Zur Kasse</button>
+    
+    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenfreier Versand ab € 75</p>
+    
+    <a class="checkout-btn" id="checkoutBtn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 
 <div class="drawer" id="profileDrawer" style="z-index:202">
   <div class="drawer-head"><span class="drawer-title"><svg class="ico"><use href="#ic-user"/></svg>Mein Konto</span><button class="close-btn" onclick="closeProfile()">✕</button></div>
@@ -1175,59 +1179,10 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="checkoutModal">
-  <div class="modal">
-    <div class="modal-head"><span class="modal-title">Bestellung abschließen</span><button class="close-btn" onclick="closeCheckout()">✕</button></div>
-    <div class="modal-body">
-      <div class="form-section">Kontaktdaten</div>
-      <div class="form-row"><div class="form-group"><label>Vorname</label><input type="text" id="firstName"></div><div class="form-group"><label>Nachname</label><input type="text" id="lastName"></div></div>
-      <div class="form-row"><div class="form-group"><label>E-Mail</label><input type="email" id="email"></div><div class="form-group"><label>Telefon (optional)</label><input type="tel" id="phone"></div></div>
-      <div class="form-section">Lieferadresse</div>
-      <div class="form-group"><label>Straße & Nr.</label><input type="text" id="street"></div>
-      <div class="form-row"><div class="form-group"><label>PLZ</label><input type="text" id="plz"></div><div class="form-group"><label>Ort</label><input type="text" id="city"></div></div>
-      <div class="form-section">Liefertermin</div>
-      <div class="form-group"><label>Wunsch-Lieferdatum (optional)</label><input type="date" id="deliveryDate"></div>
-      <p style="font-size:.72rem;color:var(--brown2);margin:-8px 0 2px">Wir versenden gekühlt, wähle einen Tag, an dem du die Lieferung entgegennehmen kannst.</p>
 
-      <div class="form-section">Zahlungsart</div>
-      <div class="pay-methods" id="payMethods">
-        <button type="button" class="pay-chip" data-pay="karte" onclick="selectPay('karte',this)">Online-Zahlung</button>
-        <button type="button" class="pay-chip" data-pay="vorkasse" onclick="selectPay('vorkasse',this)">Überweisung</button>
-      </div>
-      <div id="payNote" class="pay-note">Sichere Online-Zahlung mit Karte, Apple Pay oder Google Pay. Du wirst nach dem Bestellen zu unserem Zahlungspartner Stripe weitergeleitet.</div>
-
-      <div class="form-section">Gutscheincode</div>
-      <div class="voucher-row">
-        <input type="text" id="voucherCode" placeholder="z. B. GENUSS10">
-        <button type="button" class="voucher-apply" onclick="applyVoucher()">Einlösen</button>
-      </div>
-      <div id="voucherMsg" class="voucher-msg"></div>
-
-      <div class="form-section">Bestellübersicht</div>
-      <div class="order-summary" id="orderSummary"></div>
-      <div class="checkout-pflicht" id="checkoutPflicht"></div>
-      <button class="place-btn" id="bestellBtn" onclick="placeOrder()">Zahlungspflichtig bestellen</button>
-    </div>
-  </div>
-</div>
-
-<div class="success-modal" id="successModal">
-  <div class="success-box">
-    <div class="success-icon"><svg class="ico"><use href="#ic-leaf"/></svg></div>
-    <h2 class="success-title">Vielen Dank!</h2>
-    <div class="success-line"></div>
-    <p class="success-text">Ihre Bestellung ist eingegangen.<br>Wir kümmern uns umgehend darum.</p>
-    <p class="success-num" id="orderNum"></p>
-    <button class="continue-btn" onclick="closeSuccess()">Weiter einkaufen</button>
-  </div>
-</div>
-
-<div class="pd-overlay" id="pdOverlay" onclick="handlePdOverlayClick(event)">
-  <div class="pd-modal" id="pdModal"></div>
-</div>
 
 <div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-text"><strong>Cookies.</strong> Notwendige & optionale Cookies. <a href="#" data-vorschau="aus">Mehr</a></div>
+  <div class="cookie-text"><strong>Cookies.</strong> Notwendige & optionale Cookies. <a href="/bauernkoenig-vorschau/datenschutz/">Mehr</a></div>
   <div class="cookie-actions">
     <button class="cookie-btn reject" onclick="cookieRejectAll()">Nur notwendige</button>
     <button class="cookie-btn settings" onclick="openCookieSettings()">Einstellungen</button>
@@ -1251,37 +1206,42 @@
 
 
 
-<div class="toast" id="toast"></div>
-
-<!-- ── NEWSLETTER ── -->
-<section class="newsletter-band">
+<!-- ── NEWSLETTER ──
+     Doppelte Einwilligung: die Anmeldung gilt erst mit dem Klick in der
+     Bestaetigungsmail. Vorher hat das Formular nur eine Bestaetigung
+     angezeigt, ohne irgendetwas zu speichern. -->
+<section class="newsletter-band" id="newsletter">
   <div class="nl-inner">
     <div class="nl-text">
       <h3>Nichts mehr verpassen</h3>
-      <p>Neue Spezialitäten, saisonale Angebote & Genuss-Tipps, direkt in dein Postfach.</p>
+      <p>Neue Spezialitäten, saisonale Angebote und Genuss-Tipps, direkt in dein Postfach.</p>
     </div>
     <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
-      <input type="email" id="nlEmail" placeholder="deine@email.at" required>
-      <button type="submit">Abonnieren</button>
+      <input type="email" id="nlEmail" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
+      <button type="submit" id="nlBtn">Abonnieren</button>
     </form>
   </div>
-  <p id="nlDone" class="nl-done">✓ Danke! Du bist dabei, wir melden uns mit den besten Genuss-News.</p>
+  <p class="nl-recht">Mit dem Abonnieren willigst du ein, Werbung per E-Mail zu erhalten.
+    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken,
+    und lässt sich jederzeit widerrufen. Näheres im
+    <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <p id="nlDone" class="nl-done"></p>
 </section>
 
 
 <footer class="site-footer">
   <div class="inner">
     <div class="foot-marke">
-      <img data-logo="zeile-creme" src="static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
+      <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
-    <div><h4>Service</h4><a href="#top">Zum Shop</a><a href="#" data-vorschau="aus">Versand &amp; Lieferung</a><a href="#" data-vorschau="aus">FAQ</a><a href="#" data-vorschau="aus">Kontakt</a></div>
-    <div><h4>Sortiment</h4><a href="#sortiment">Käse &amp; Fleisch</a><a href="#geschenke">Geschenkboxen</a><a href="#" data-vorschau="aus">Gutscheine</a><a href="#" data-vorschau="aus">Rezepte</a></div>
-    <div><h4>Rechtliches</h4><a href="#" data-vorschau="aus">Impressum</a><a href="#" data-vorschau="aus">Datenschutz</a><a href="#" data-vorschau="aus">AGB</a><a href="#" data-vorschau="aus">Widerruf</a></div>
+    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/#sortiment">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
+    <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
     <div><h4>Kontakt</h4>
       
       
-      <a href="#" data-vorschau="aus">2823 Pitten, Seebensteinerstraße</a></div>
+      <a href="/bauernkoenig-vorschau/kontakt/">2823 Pitten, Seebensteinerstraße</a></div>
   </div>
   <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
 </footer>
@@ -1299,8 +1259,11 @@
     <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
   </div>
 </div>
-<script src="static/palette.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
 
+
+
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
 
 <script>
 // ═════════════════════════════════════════════════
@@ -1358,8 +1321,8 @@ function pflichtangabenHTML(p){
       </tbody></table>` : '';
 
   const widerruf = p.verderblich
-    ? '<p class="pd-widerruf">Frischware: Vom Widerrufsrecht ausgenommen, weil sie schnell verderben kann. Näheres in der <a href="#" data-vorschau="aus">Widerrufsbelehrung</a>.</p>'
-    : '<p class="pd-widerruf">Für dieses Produkt gilt das gesetzliche Widerrufsrecht von 14 Tagen. Näheres in der <a href="#" data-vorschau="aus">Widerrufsbelehrung</a>.</p>';
+    ? '<p class="pd-widerruf">Frischware: Vom Widerrufsrecht ausgenommen, weil sie schnell verderben kann. Näheres in der <a href="/bauernkoenig-vorschau/widerruf/">Widerrufsbelehrung</a>.</p>'
+    : '<p class="pd-widerruf">Für dieses Produkt gilt das gesetzliche Widerrufsrecht von 14 Tagen. Näheres in der <a href="/bauernkoenig-vorschau/widerruf/">Widerrufsbelehrung</a>.</p>';
   if (!zeilen.length && !nwZeilen) return `<div class="pd-pflicht">${widerruf}</div>`;
   return `<div class="pd-pflicht">
       <div class="pd-details-title">Produktinformationen</div>
@@ -1377,7 +1340,11 @@ function catLabel(c) { return (KATEGORIEN[c]||{}).label||c; }
 function beschriften(k){ return k.split('-').map(t => t.charAt(0).toUpperCase()+t.slice(1)).join(' / '); }
 function hatEigeneSektion(c) { return !!(KATEGORIEN[c]||{}).eigen; }
 
-const products = [{"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 5, "name": "Karottenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Natürlich mit Karotten, mild & fruchtig.", "stock": 22, "rating": 4.4, "details": ["Karottenextrakt", "Mild & fruchtig"], "price": 4.9, "img": "static/img/products/karotte.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 6, "name": "Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Scharf", "unit": "pro 100 g", "desc": "Feurig mit eingelegten Chilistücken.", "stock": 15, "rating": 4.9, "details": ["Mit Chilistücken", "Scharf, würzig"], "price": 4.9, "img": "static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 7, "name": "Weinkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Weißwein gereift, edel & mild.", "stock": 16, "rating": 4.6, "details": ["Weißwein gereift", "Edel mild"], "price": 4.9, "img": "static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 8, "name": "Mostkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Apfelmost gereift, fruchtig & herbstlich.", "stock": 14, "rating": 4.5, "details": ["Most gereift", "Herbstlich"], "price": 4.9, "img": "static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 9, "name": "Bärlaufkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Bärlauch verfeinert.", "stock": 12, "rating": 4.7, "details": ["Frischer Bärlauch", "Frühlingshaft"], "price": 4.9, "img": "static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 10, "name": "Pfefferkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit grobem Pfeffer, pikant & rustikal.", "stock": 20, "rating": 4.5, "details": ["Schwarzer Pfeffer", "Pikant"], "price": 4.9, "img": "static/img/products/pfeffer.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 11, "name": "Rebellkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Kräftiger Schnittkäse, alte Rezeptur.", "stock": 17, "rating": 4.4, "details": ["Alte Familienrezeptur", "Kräftig"], "price": 4.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 12, "name": "Trüffelgouda", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Premium", "unit": "pro 100 g", "desc": "Edler Gouda mit Trüffelstücken.", "stock": 10, "rating": 5.0, "details": ["Mit Trüffel", "Echt edel"], "price": 5.9, "img": "static/img/products/trueffel.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 13, "name": "Bergkäse (18 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Extra lang", "unit": "pro 100 g", "desc": "Extrem würzig, mit Kristallen.", "stock": 8, "rating": 5.0, "details": ["18 Monate gereift", "Proteinkristalle"], "price": 5.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 14, "name": "Alter Gouda (38 Monate)", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Meisterstück, 38 Monate, mit Kristallen.", "stock": 5, "rating": 5.0, "details": ["38 Monate gereift", "Proteinkristalle", "Limitierter Bestand"], "price": 5.9, "img": "static/img/products/altgouda.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 15, "name": "Alter Ziegenkäse (38 Monate)", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Pikanter Ziegenkäse, unglaublich würzig.", "stock": 4, "rating": 4.9, "details": ["Ziegenmilch", "38 Monate", "Pikant"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 16, "name": "Walnusskäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit knackigen Walnüssen.", "stock": 22, "rating": 4.6, "details": ["Walnussstücke", "Herzhaft-nussig"], "price": 5.9, "img": "static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 17, "name": "Walnusstraum", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Cremig mit Walnüssen & Honignote.", "stock": 14, "rating": 4.7, "details": ["Walnüsse & Honig", "Cremig-süßlich"], "price": 5.9, "img": "static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 18, "name": "Edelziege", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Feinster Ziegenkäse, mild & edel.", "stock": 16, "rating": 4.5, "details": ["Ziegenmilch", "Cremig"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 19, "name": "Schafkäse", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Vollmundiger Schafskäse.", "stock": 12, "rating": 4.6, "details": ["Schafmilch", "Vollmundig"], "price": 5.9, "img": "static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 20, "name": "Boxhornkleekäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Boxhornklee, würzig.", "stock": 10, "rating": 4.3, "details": ["Boxhornklee", "Würzig"], "price": 5.9, "img": "static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 21, "name": "Roter Rüben Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Neu", "unit": "pro 100 g", "desc": "Rote Rüben & Chili, fruchtig-scharf.", "stock": 18, "rating": 4.8, "details": ["Rote Rüben & Chili", "Fruchtig-scharf"], "price": 5.9, "img": "static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 22, "name": "Mangalitza Speck (geselcht)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Edler Mangalitza-Speck, Buchenholz geräuchert.", "stock": 20, "rating": 4.7, "details": ["Buchenholz geräuchert", "Marmoriert"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 23, "name": "Mangalitza Speck (Paprika)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit edelsüßer Paprika ummantelt.", "stock": 18, "rating": 4.6, "details": ["Paprika-ummantelt", "Würzig"], "price": 4.9, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 24, "name": "Mangalitza Speck (gesalzen)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Naturbelassen, pur & salzig.", "stock": 22, "rating": 4.5, "details": ["Nur gesalzen", "Puristisch"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 25, "name": "Mangalitza Würstel", "cat": "mangalitza", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, aromatisch, ohne Zusätze.", "stock": 25, "rating": 4.6, "details": ["Ohne Zusätze", "Saftig"], "price": 4.9, "img": "static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 26, "name": "Karreespeck-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Karree mit Rosmarin gewürzt.", "stock": 14, "rating": 4.8, "details": ["Mit Rosmarin", "Marmoriert"], "price": 6.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 27, "name": "Lungenbraten-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Zarter Lungenbraten mit Rosmarin.", "stock": 10, "rating": 5.0, "details": ["Rosmarin & Knoblauch", "Zart"], "price": 6.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 28, "name": "Mangalitza Lungenbraten", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "Königsstück", "unit": "pro 100 g", "desc": "Das Filet, zartestes Stück.", "stock": 6, "rating": 5.0, "details": ["Mangalitza-Filet", "Limitierter Bestand"], "price": 7.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 29, "name": "Mangalitza Karreespeck", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Stark marmoriert, besonders saftig.", "stock": 12, "rating": 4.7, "details": ["Stark marmoriert", "Saftig"], "price": 7.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 30, "name": "Mangalitza Salami", "cat": "mangalitza", "sub": "wurst", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "8 Wochen luftgetrocknet, kräftig.", "stock": 16, "rating": 4.8, "details": ["Luftgetrocknet 8 Wo.", "Kräftig-würzig"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 31, "name": "Hirschsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Edle Salami vom Hirsch.", "stock": 15, "rating": 4.7, "details": ["Hirschfleisch", "Luftgetrocknet"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 32, "name": "Wildschweinsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Kräftige Wildschweinsalami.", "stock": 14, "rating": 4.6, "details": ["Wildschwein", "Intensiv"], "price": 7.9, "img": "static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 33, "name": "Hirschrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Monatelang luftgetrocknet.", "stock": 8, "rating": 4.9, "details": ["Hirschkeule", "Monatelang gereift"], "price": 9.9, "img": "static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 34, "name": "Wildschweinrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Vollmundig & leicht süßlich.", "stock": 7, "rating": 4.8, "details": ["Vollmundig", "Luftgetrocknet"], "price": 9.9, "img": "static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 35, "name": "Entenfilet", "cat": "wild", "sub": "edel", "emoji": "🦆", "badge": "Premium", "unit": "pro 100 g", "desc": "Kaltgeräuchert, fein gewürzt.", "stock": 10, "rating": 4.9, "details": ["Kaltgeräuchert", "Buchenholz"], "price": 9.9, "img": "static/img/products/ente.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 40, "name": "Kümmelbraten", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Gepökelt mit Kümmel.", "stock": 20, "rating": 4.5, "details": ["Gepökelt", "Mit Kümmel"], "price": 2.8, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 41, "name": "Knoblauchwürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Würzig, für Grill & Pfanne.", "stock": 26, "rating": 4.6, "details": ["Mit Knoblauch", "Grillwürstel"], "price": 2.8, "img": "static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 42, "name": "Pusztawürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Paprika & Chili, ungarische Art.", "stock": 24, "rating": 4.7, "details": ["Paprika & Chili", "Feurig"], "price": 2.8, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 43, "name": "Knoblauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Geselcht mit würzigem Knoblauch.", "stock": 22, "rating": 4.5, "details": ["Geselcht", "Knoblauch"], "price": 2.8, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 44, "name": "Zigeunerspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Scharf-pikante Gewürzmischung.", "stock": 18, "rating": 4.6, "details": ["Paprika & Chili", "Pikant"], "price": 2.8, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 45, "name": "Geselchterspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz kaltgeräuchert.", "stock": 24, "rating": 4.4, "details": ["Buchenholz", "Kaltgeräuchert"], "price": 2.8, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 46, "name": "Pikante Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Luftgetrocknet, pikant.", "stock": 20, "rating": 4.6, "details": ["Luftgetrocknet", "Pikant"], "price": 2.9, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 47, "name": "Feurige Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Extra scharf für Chili-Fans.", "stock": 18, "rating": 4.7, "details": ["Extra scharf", "Chili"], "price": 2.9, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 48, "name": "Geselchter Schopf", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schweinsschopf, saftig & würzig.", "stock": 15, "rating": 4.5, "details": ["Geräuchert", "Saftig"], "price": 2.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 49, "name": "Geselchter Teilsames", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schulter, traditionell geselcht.", "stock": 14, "rating": 4.4, "details": ["Schulter", "Geselcht"], "price": 2.9, "img": "static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 50, "name": "Knabber Nossi (scharf)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Pikante Trockenwurst.", "stock": 25, "rating": 4.5, "details": ["Trockenwurst", "Scharf"], "price": 4.0, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 51, "name": "Knabber Nossi (mild)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Milde Trockenwurst.", "stock": 27, "rating": 4.4, "details": ["Trockenwurst", "Mild"], "price": 4.0, "img": "static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 52, "name": "Grammelschmalz", "cat": "hausschwein", "sub": "schmalz", "emoji": "🫙", "badge": "", "unit": "pro Stück (ca. 250g)", "desc": "Hausgemacht mit Grammeln.", "stock": 20, "rating": 4.8, "details": ["Hausgemacht", "Brotaufstrich"], "price": 4.9, "img": "static/img/products/leberwurst.webp", "netto_g": 250, "grundpreis": 19.6, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 53, "name": "Luftgetr. Bauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Wochen luftgetrocknet.", "stock": 16, "rating": 4.7, "details": ["Luftgetrocknet", "Gewürzkruste"], "price": 4.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 54, "name": "Luftgetr. Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Konzentriertes Aroma.", "stock": 12, "rating": 4.6, "details": ["Intensives Aroma", "Luftgetrocknet"], "price": 5.9, "img": "static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 55, "name": "Geselchter Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz geräuchert.", "stock": 14, "rating": 4.5, "details": ["Buchenholz", "Klassiker"], "price": 5.9, "img": "static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 56, "name": "Kürbiskern Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit steirischen Kürbiskernen.", "stock": 12, "rating": 4.9, "details": ["Steirische Kürbiskerne", "Steirische Spezialität"], "price": 5.9, "img": "static/img/products/kuerbiskern.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 57, "name": "Käse-Genießerbox", "cat": "geschenk", "sub": "kaese", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.", "stock": 15, "rating": 5.0, "details": ["6 Käsesorten · ca. 600 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 39.9, "img": "static/img/products/boxkaese.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 58, "name": "Wurst & Speck Box", "cat": "geschenk", "sub": "wurst", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.", "stock": 12, "rating": 4.9, "details": ["5 Fleischspezialitäten · ca. 550 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 44.9, "img": "static/img/products/boxwurst.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 59, "name": "Premium Genussbox", "cat": "geschenk", "sub": "premium", "emoji": "🎁", "badge": "Bestseller", "unit": "pro Box", "desc": "Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.", "stock": 8, "rating": 5.0, "details": ["Käse, Wurst & Speck · ca. 1 kg", "Inkl. Flasche Wein", "Große Premium-Holzbox", "Inkl. Grußkarte"], "price": 69.9, "img": "static/img/products/boxpremium.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 60, "name": "Bauern Jausen-Box", "cat": "geschenk", "sub": "klassik", "emoji": "🎁", "badge": "", "unit": "pro Box", "desc": "Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.", "stock": 20, "rating": 4.8, "details": ["Jausen-Auswahl · ca. 450 g", "Inkl. Bauernbrot", "Rustikale Holzbox", "Sofort genussbereit"], "price": 29.9, "img": "static/img/products/boxjause.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
+/* Bewusst an window: der gemeinsame Warenkorb in /static/warenkorb.js sucht
+   die Produkte der jeweiligen Seite dort. Ein "const" im Modulkopf waere
+   fuer ihn unsichtbar. */
+window.products = [{"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "/bauernkoenig-vorschau/static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 5, "name": "Karottenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Natürlich mit Karotten, mild & fruchtig.", "stock": 22, "rating": 4.4, "details": ["Karottenextrakt", "Mild & fruchtig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/karotte.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 6, "name": "Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Scharf", "unit": "pro 100 g", "desc": "Feurig mit eingelegten Chilistücken.", "stock": 15, "rating": 4.9, "details": ["Mit Chilistücken", "Scharf, würzig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 7, "name": "Weinkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Weißwein gereift, edel & mild.", "stock": 16, "rating": 4.6, "details": ["Weißwein gereift", "Edel mild"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 8, "name": "Mostkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "In Apfelmost gereift, fruchtig & herbstlich.", "stock": 14, "rating": 4.5, "details": ["Most gereift", "Herbstlich"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wein.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 9, "name": "Bärlaufkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Bärlauch verfeinert.", "stock": 12, "rating": 4.7, "details": ["Frischer Bärlauch", "Frühlingshaft"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 10, "name": "Pfefferkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit grobem Pfeffer, pikant & rustikal.", "stock": 20, "rating": 4.5, "details": ["Schwarzer Pfeffer", "Pikant"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/pfeffer.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 11, "name": "Rebellkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Kräftiger Schnittkäse, alte Rezeptur.", "stock": 17, "rating": 4.4, "details": ["Alte Familienrezeptur", "Kräftig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 12, "name": "Trüffelgouda", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Premium", "unit": "pro 100 g", "desc": "Edler Gouda mit Trüffelstücken.", "stock": 10, "rating": 5.0, "details": ["Mit Trüffel", "Echt edel"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/trueffel.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 13, "name": "Bergkäse (18 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Extra lang", "unit": "pro 100 g", "desc": "Extrem würzig, mit Kristallen.", "stock": 8, "rating": 5.0, "details": ["18 Monate gereift", "Proteinkristalle"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 14, "name": "Alter Gouda (38 Monate)", "cat": "kaese", "sub": "premium", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Meisterstück, 38 Monate, mit Kristallen.", "stock": 5, "rating": 5.0, "details": ["38 Monate gereift", "Proteinkristalle", "Limitierter Bestand"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/altgouda.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 15, "name": "Alter Ziegenkäse (38 Monate)", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "Vintage", "unit": "pro 100 g", "desc": "Pikanter Ziegenkäse, unglaublich würzig.", "stock": 4, "rating": 4.9, "details": ["Ziegenmilch", "38 Monate", "Pikant"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 16, "name": "Walnusskäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit knackigen Walnüssen.", "stock": 22, "rating": 4.6, "details": ["Walnussstücke", "Herzhaft-nussig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 17, "name": "Walnusstraum", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Cremig mit Walnüssen & Honignote.", "stock": 14, "rating": 4.7, "details": ["Walnüsse & Honig", "Cremig-süßlich"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/walnuss.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 18, "name": "Edelziege", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Feinster Ziegenkäse, mild & edel.", "stock": 16, "rating": 4.5, "details": ["Ziegenmilch", "Cremig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 19, "name": "Schafkäse", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Vollmundiger Schafskäse.", "stock": 12, "rating": 4.6, "details": ["Schafmilch", "Vollmundig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 20, "name": "Boxhornkleekäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Boxhornklee, würzig.", "stock": 10, "rating": 4.3, "details": ["Boxhornklee", "Würzig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 21, "name": "Roter Rüben Chillikäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "Neu", "unit": "pro 100 g", "desc": "Rote Rüben & Chili, fruchtig-scharf.", "stock": 18, "rating": 4.8, "details": ["Rote Rüben & Chili", "Fruchtig-scharf"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/chilli.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 22, "name": "Mangalitza Speck (geselcht)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Edler Mangalitza-Speck, Buchenholz geräuchert.", "stock": 20, "rating": 4.7, "details": ["Buchenholz geräuchert", "Marmoriert"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 23, "name": "Mangalitza Speck (Paprika)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit edelsüßer Paprika ummantelt.", "stock": 18, "rating": 4.6, "details": ["Paprika-ummantelt", "Würzig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 24, "name": "Mangalitza Speck (gesalzen)", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Naturbelassen, pur & salzig.", "stock": 22, "rating": 4.5, "details": ["Nur gesalzen", "Puristisch"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 25, "name": "Mangalitza Würstel", "cat": "mangalitza", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, aromatisch, ohne Zusätze.", "stock": 25, "rating": 4.6, "details": ["Ohne Zusätze", "Saftig"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 26, "name": "Karreespeck-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Karree mit Rosmarin gewürzt.", "stock": 14, "rating": 4.8, "details": ["Mit Rosmarin", "Marmoriert"], "price": 6.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 27, "name": "Lungenbraten-Rosmarin", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Zarter Lungenbraten mit Rosmarin.", "stock": 10, "rating": 5.0, "details": ["Rosmarin & Knoblauch", "Zart"], "price": 6.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 69.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 28, "name": "Mangalitza Lungenbraten", "cat": "mangalitza", "sub": "edel", "emoji": "🥩", "badge": "Königsstück", "unit": "pro 100 g", "desc": "Das Filet, zartestes Stück.", "stock": 6, "rating": 5.0, "details": ["Mangalitza-Filet", "Limitierter Bestand"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 29, "name": "Mangalitza Karreespeck", "cat": "mangalitza", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Stark marmoriert, besonders saftig.", "stock": 12, "rating": 4.7, "details": ["Stark marmoriert", "Saftig"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 30, "name": "Mangalitza Salami", "cat": "mangalitza", "sub": "wurst", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "8 Wochen luftgetrocknet, kräftig.", "stock": 16, "rating": 4.8, "details": ["Luftgetrocknet 8 Wo.", "Kräftig-würzig"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 31, "name": "Hirschsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Edle Salami vom Hirsch.", "stock": 15, "rating": 4.7, "details": ["Hirschfleisch", "Luftgetrocknet"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 32, "name": "Wildschweinsalami", "cat": "wild", "sub": "salami", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Kräftige Wildschweinsalami.", "stock": 14, "rating": 4.6, "details": ["Wildschwein", "Intensiv"], "price": 7.9, "img": "/bauernkoenig-vorschau/static/img/products/salami.webp", "netto_g": 100, "grundpreis": 79.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 33, "name": "Hirschrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Monatelang luftgetrocknet.", "stock": 8, "rating": 4.9, "details": ["Hirschkeule", "Monatelang gereift"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 34, "name": "Wildschweinrohschinken", "cat": "wild", "sub": "schinken", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Vollmundig & leicht süßlich.", "stock": 7, "rating": 4.8, "details": ["Vollmundig", "Luftgetrocknet"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/rohschinken.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 35, "name": "Entenfilet", "cat": "wild", "sub": "edel", "emoji": "🦆", "badge": "Premium", "unit": "pro 100 g", "desc": "Kaltgeräuchert, fein gewürzt.", "stock": 10, "rating": 4.9, "details": ["Kaltgeräuchert", "Buchenholz"], "price": 9.9, "img": "/bauernkoenig-vorschau/static/img/products/ente.webp", "netto_g": 100, "grundpreis": 99.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "/bauernkoenig-vorschau/static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 40, "name": "Kümmelbraten", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Gepökelt mit Kümmel.", "stock": 20, "rating": 4.5, "details": ["Gepökelt", "Mit Kümmel"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 41, "name": "Knoblauchwürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Würzig, für Grill & Pfanne.", "stock": 26, "rating": 4.6, "details": ["Mit Knoblauch", "Grillwürstel"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/wuerstel.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 42, "name": "Pusztawürstel", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Paprika & Chili, ungarische Art.", "stock": 24, "rating": 4.7, "details": ["Paprika & Chili", "Feurig"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 43, "name": "Knoblauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Geselcht mit würzigem Knoblauch.", "stock": 22, "rating": 4.5, "details": ["Geselcht", "Knoblauch"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 44, "name": "Zigeunerspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Scharf-pikante Gewürzmischung.", "stock": 18, "rating": 4.6, "details": ["Paprika & Chili", "Pikant"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 45, "name": "Geselchterspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz kaltgeräuchert.", "stock": 24, "rating": 4.4, "details": ["Buchenholz", "Kaltgeräuchert"], "price": 2.8, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 28.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 46, "name": "Pikante Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Luftgetrocknet, pikant.", "stock": 20, "rating": 4.6, "details": ["Luftgetrocknet", "Pikant"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 47, "name": "Feurige Dürre", "cat": "hausschwein", "sub": "duerre", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Extra scharf für Chili-Fans.", "stock": 18, "rating": 4.7, "details": ["Extra scharf", "Chili"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 48, "name": "Geselchter Schopf", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schweinsschopf, saftig & würzig.", "stock": 15, "rating": 4.5, "details": ["Geräuchert", "Saftig"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 49, "name": "Geselchter Teilsames", "cat": "hausschwein", "sub": "geselcht", "emoji": "🥩", "badge": "", "unit": "pro 100 g", "desc": "Schulter, traditionell geselcht.", "stock": 14, "rating": 4.4, "details": ["Schulter", "Geselcht"], "price": 2.9, "img": "/bauernkoenig-vorschau/static/img/products/lungenbraten.webp", "netto_g": 100, "grundpreis": 29.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 50, "name": "Knabber Nossi (scharf)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Pikante Trockenwurst.", "stock": 25, "rating": 4.5, "details": ["Trockenwurst", "Scharf"], "price": 4.0, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 51, "name": "Knabber Nossi (mild)", "cat": "hausschwein", "sub": "duerre", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Milde Trockenwurst.", "stock": 27, "rating": 4.4, "details": ["Trockenwurst", "Mild"], "price": 4.0, "img": "/bauernkoenig-vorschau/static/img/products/duerre.webp", "netto_g": 100, "grundpreis": 40.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 52, "name": "Grammelschmalz", "cat": "hausschwein", "sub": "schmalz", "emoji": "🫙", "badge": "", "unit": "pro Stück (ca. 250g)", "desc": "Hausgemacht mit Grammeln.", "stock": 20, "rating": 4.8, "details": ["Hausgemacht", "Brotaufstrich"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 250, "grundpreis": 19.6, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 53, "name": "Luftgetr. Bauchspeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Wochen luftgetrocknet.", "stock": 16, "rating": 4.7, "details": ["Luftgetrocknet", "Gewürzkruste"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 54, "name": "Luftgetr. Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Konzentriertes Aroma.", "stock": 12, "rating": 4.6, "details": ["Intensives Aroma", "Luftgetrocknet"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/paprikaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 55, "name": "Geselchter Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Buchenholz geräuchert.", "stock": 14, "rating": 4.5, "details": ["Buchenholz", "Klassiker"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/mangaspeck.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 56, "name": "Kürbiskern Karreespeck", "cat": "hausschwein", "sub": "speck", "emoji": "🥓", "badge": "", "unit": "pro 100 g", "desc": "Mit steirischen Kürbiskernen.", "stock": 12, "rating": 4.9, "details": ["Steirische Kürbiskerne", "Steirische Spezialität"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/kuerbiskern.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 57, "name": "Käse-Genießerbox", "cat": "geschenk", "sub": "kaese", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Sechs handverlesene Käsespezialitäten, liebevoll in einer Holzbox arrangiert: das perfekte Geschenk für Genießer.", "stock": 15, "rating": 5.0, "details": ["6 Käsesorten · ca. 600 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 39.9, "img": "/bauernkoenig-vorschau/static/img/products/boxkaese.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 58, "name": "Wurst & Speck Box", "cat": "geschenk", "sub": "wurst", "emoji": "🎁", "badge": "Geschenk", "unit": "pro Box", "desc": "Auswahl edler Salami, Rohschinken und geräucherter Speckspezialitäten: herzhafter Genuss zum Verschenken.", "stock": 12, "rating": 4.9, "details": ["5 Fleischspezialitäten · ca. 550 g", "Edle Holzbox", "Inkl. Grußkarte", "Versandfertig verpackt"], "price": 44.9, "img": "/bauernkoenig-vorschau/static/img/products/boxwurst.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 59, "name": "Premium Genussbox", "cat": "geschenk", "sub": "premium", "emoji": "🎁", "badge": "Bestseller", "unit": "pro Box", "desc": "Unser Meisterstück: feinste Käse, edle Wurst, Speck und eine Flasche Wein in einer großzügigen Geschenkbox.", "stock": 8, "rating": 5.0, "details": ["Käse, Wurst & Speck · ca. 1 kg", "Inkl. Flasche Wein", "Große Premium-Holzbox", "Inkl. Grußkarte"], "price": 69.9, "img": "/bauernkoenig-vorschau/static/img/products/boxpremium.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 60, "name": "Bauern Jausen-Box", "cat": "geschenk", "sub": "klassik", "emoji": "🎁", "badge": "", "unit": "pro Box", "desc": "Die klassische Jause: Käse, Speck, Wurst, Brot und Pikantes, fixfertig für den nächsten Genussmoment.", "stock": 20, "rating": 4.8, "details": ["Jausen-Auswahl · ca. 450 g", "Inkl. Bauernbrot", "Rustikale Holzbox", "Sofort genussbereit"], "price": 29.9, "img": "/bauernkoenig-vorschau/static/img/products/boxjause.webp", "netto_g": null, "grundpreis": null, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
+const products = window.products;
 // Versandregeln kommen aus der Verwaltung, nicht aus dem Code
 const VERSANDKOSTEN = 5.9;
 const VERSANDFREI   = 75.0;
@@ -1385,16 +1352,16 @@ const LIEFERZEIT    = "Lieferung innerhalb von 1 bis 3 Werktagen nach Zahlungsei
 
 // Hero-/Hof-Bilder (lokal, von Higgsfield gesichert)
 const IMG = {
-  hero: 'static/img/products/hero.webp',
-  bauer: 'static/img/products/bauer.webp',
+  hero: '/bauernkoenig-vorschau/static/img/products/hero.webp',
+  bauer: '/bauernkoenig-vorschau/static/img/products/bauer.webp',
 };
 
 // ── KOPFSCHAU: vier Folien, Bild und Text wechseln gemeinsam ──
 const HERO_BILDER = {
-  jausenbox: 'static/img/hero/jausenbox',
-  verpackung: 'static/img/hero/verpackung',
-  hof: 'static/img/hero/hof',
-  kaese: 'static/img/hero/kaese',
+  jausenbox: '/bauernkoenig-vorschau/static/img/hero/jausenbox',
+  verpackung: '/bauernkoenig-vorschau/static/img/hero/verpackung',
+  hof: '/bauernkoenig-vorschau/static/img/hero/hof',
+  kaese: '/bauernkoenig-vorschau/static/img/hero/kaese',
 };
 let heroNr = 0, heroUhr = null;
 
@@ -1457,101 +1424,27 @@ function heroUhrStarten(){
 
 // Sprung ins Sortiment, auf Wunsch mit gesetztem Filter
 function zumSortiment(kategorie){
-  if (kategorie && typeof setMainFilter === "function") setMainFilter(kategorie);
-  const ziel = document.querySelector('.section-head') || document.querySelector('.products');
-  if (ziel) ziel.scrollIntoView({behavior:'smooth'});
+  // Fuehrt auf die eigene Sortimentsseite. Die Kategorie kommt als Parameter
+  // mit, damit der Filter dort gleich gesetzt ist.
+  location.href = kategorie ? '/bauernkoenig-vorschau/sortiment/?kategorie=' + encodeURIComponent(kategorie)
+                            : '/bauernkoenig-vorschau/sortiment/';
 }
 
 // Unterkategorien entstehen aus den Produkten (siehe UNTERKATEGORIEN)
 
 // ── FILTER STATE ──
-let fMain = 'all', fSub = 'all', fSearch = '', fSort = '', fMaxPrice = 10;
 
 // ── MOBILE-PAGING (max. 10 laden) ──
-const MOBILE_PAGE = 10;
-let mobileShown = MOBILE_PAGE;
-let currentFiltered = products.slice();
-function isMobileView(){ return window.matchMedia('(max-width:600px)').matches; }
 
-function setMainFilter(cat, btn) {
-  fMain = cat; fSub = 'all';
-  document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  renderSubButtons();
-  applyFilters();
-}
-
-function renderSubButtons() {
-  const container = document.getElementById('subFilterButtons');
-  const row = document.getElementById('subFilterRow');
-  if (fMain === 'all') { container.innerHTML = ''; row.style.display = 'none'; return; }
-  row.style.display = '';
-  const liste = UNTERKATEGORIEN[fMain] || [];
-  if (!liste.length) { container.innerHTML = ''; row.style.display = 'none'; return; }
-  const eintraege = [{k: 'all', l: 'Alle'}].concat(liste.map(x => ({k: x, l: beschriften(x)})));
-  container.innerHTML = eintraege.map(sb =>
-    `<button class="filter-cat-btn sub ${sb.k===fSub?'active':''}" onclick="fSub='${sb.k}';applyFilters();document.querySelectorAll('#subFilterButtons .sub').forEach(b=>b.classList.remove('active'));this.classList.add('active')">${sb.l}</button>`
-  ).join('');
-}
-
-function applyFilters() {
-  fSearch = document.getElementById('filterSearch').value.toLowerCase().trim();
-  fSort = document.getElementById('filterSort').value;
-
-  let filtered = products.filter(p => {
-    if (hatEigeneSektion(p.cat)) return false;   // hat einen eigenen Block weiter unten
-    if (fMain !== 'all' && p.cat !== fMain) return false;
-    if (fSub !== 'all' && p.sub !== fSub) return false;
-    if (fSearch && !p.name.toLowerCase().includes(fSearch) && !p.desc.toLowerCase().includes(fSearch)) return false;
-    return true;
-  });
-
-  // Sort
-  if (fSort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
-  else if (fSort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
-  else if (fSort === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name, 'de'));
-
-  mobileShown = MOBILE_PAGE;   // bei jeder Filteränderung zurücksetzen
-  renderProductGrid(filtered);
-
-  // Active filter tags
-  const tags = [];
-  // Frueher stand hier SUBS, eine Tabelle, die es nie gab. Dadurch brach
-  // applyFilters bei jeder Kategoriewahl ab und die aktiven Filter blieben
-  // unsichtbar. Beschriftung kommt aus KATEGORIEN, die Unterpunkte aus
-  // UNTERKATEGORIEN.
-  if (fMain !== 'all') tags.push({label: catLabel(fMain), remove: ()=>setMainFilter('all',document.querySelector('[data-cat="all"]'))});
-  if (fSub !== 'all') {
-    const treffer = (UNTERKATEGORIEN[fMain] || []).find(x => x === fSub);
-    if (treffer) tags.push({label: beschriften(treffer), remove: ()=>{fSub='all';renderSubButtons();applyFilters();}});
-  }
-  if (fSearch) tags.push({label: '„'+fSearch+'“', remove: ()=>{document.getElementById('filterSearch').value='';fSearch='';applyFilters();}});
-  const actEl = document.getElementById('activeFilters');
-  if (tags.length) {
-    actEl.style.display = 'flex';
-    actEl.innerHTML = tags.map(t => `<span class="active-tag">${t.label}<span class="remove-tag" onclick="(${t.remove.toString()})()">✕</span></span>`).join('');
-    actEl.innerHTML += '<button class="filter-reset" onclick="resetAllFilters()">Alle zurücksetzen</button>';
-  } else actEl.style.display = 'none';
-}
-
-function resetAllFilters() {
-  fMain='all'; fSub='all'; fSearch=''; fSort='';
-  document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
-  document.getElementById('filterSearch').value = '';
-  document.getElementById('filterSort').value = '';
-  renderSubButtons();
-  applyFilters();
-}
-
-// ── RENDER PRODUCT GRID ──
-function starHTML(r){
-  const full = Math.round(r||0);
-  let s='';
-  for(let i=1;i<=5;i++) s += `<span class="star ${i<=full?'on':''}">★</span>`;
-  return `<span class="card-rating">${s}<span class="rating-num">${(r||0).toFixed(1)}</span></span>`;
-}
+// ── KATEGORIEKACHELN ──
+// Ein Bild je Kategorie, genommen vom teuersten Produkt darin.
+/* Produktkarte der Startseite. Bildflaeche und Name sind echte Verweise auf
+   /produkt/<id>, damit man sie teilen und in einem neuen Tab oeffnen kann.
+   Bewertungssterne fuehrt die Karte bewusst nicht: es gibt keine echten
+   Kundenbewertungen. Der Grundpreis je Kilogramm dagegen ist Pflicht. */
 function cardHTML(p){
   const imgHtml = p.img
-    ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-placeholder style=background:${placeGrad(p.cat)}>${p.emoji}</div>'">`
+    ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
     : `<div class="card-img-placeholder" style="background:${placeGrad(p.cat)}">${p.emoji}</div>`;
   const badgeCls = p.cat === 'kaese' ? '' : 'green';
   const stockHtml = p.stock===0
@@ -1559,26 +1452,24 @@ function cardHTML(p){
     : (p.stock<=5 ? `<div class="card-stock low">● Nur noch ${p.stock} Stück</div>` : `<div class="card-stock ok">● Auf Lager</div>`);
   return `<div class="card">
     ${p.badge ? `<div class="card-badge ${badgeCls}">${p.badge}</div>` : ''}
-    <div class="card-img-wrap" onclick="openDetail(${p.id})">
+    <a class="card-img-wrap" href="/produkt/${p.id}">
       ${imgHtml}
       <span class="card-cat-tag">${catEmoji(p.cat)} ${catLabel(p.cat)}</span>
-    </div>
+    </a>
     <div class="card-body">
-      <div class="card-name" onclick="openDetail(${p.id})">${p.name}</div>
-      ${starHTML(p.rating)}
+      <a class="card-name" href="/produkt/${p.id}">${p.name}</a>
       <div class="card-unit">${p.unit}</div>
       <div class="card-desc">${p.desc}</div>
       ${stockHtml}
       <div class="card-footer">
-        <div class="card-price">${eur(p.price)}${p.grundpreis ? `<small class="card-grundpreis">${grundpreisText(p)}</small>` : ''}<small class="card-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. Versand' : ''}</small></div>
+        <div class="card-price">${eur(p.price)}${p.grundpreis ? `<small class="card-grundpreis">${grundpreisText(p)}</small>` : ''}</div>
         <button class="add-btn ${p.stock===0?'sold-out':''}" id="addBtn-${p.id}" onclick="addToCart(${p.id})" ${p.stock===0?'disabled':''}>${p.stock===0?'Ausverkauft':'+ Warenkorb'}</button>
       </div>
+      <div class="card-mwst-zeile">inkl. MwSt.${VERSANDKOSTEN > 0 ? ', zuzüglich Versand' : ''}</div>
     </div>
   </div>`;
 }
 
-// ── KATEGORIEKACHELN ──
-// Ein Bild je Kategorie, genommen vom teuersten Produkt darin.
 function kachelnZeichnen(){
   const reihe = document.getElementById('kachelReihe');
   if (!reihe) return;
@@ -1612,14 +1503,14 @@ function reihenZeichnen(){
   const teile = reihenfolge.filter(k => KATEGORIEN[k]).map(k => {
     const drin = products.filter(p => p.cat === k);
     if (!drin.length) return '';
-    const vier = drin.slice(0, 4);
+    const zeigen = drin.slice(0, 5);
     return `<div class="reihe">
       <div class="reihe-kopf">
         <h3 class="reihe-titel">Unser <em>${catLabel(k)}</em></h3>
         <button type="button" class="reihe-alle" onclick="zumSortiment('${k}')">
           Alle ${drin.length} ansehen</button>
       </div>
-      <div class="reihe-grid">${vier.map(cardHTML).join('')}</div>
+      <div class="reihe-grid">${zeigen.map(cardHTML).join('')}</div>
     </div>`;
   });
   grid.className = 'reihen';
@@ -1627,42 +1518,8 @@ function reihenZeichnen(){
   document.getElementById('productCount').textContent = products.length + ' Produkte';
 }
 
-function ohneFilter(){
-  return fMain === 'all' && fSub === 'all' && !fSearch && !fSort;
-}
 
-function renderProductGrid(filtered) {
-  const grid = document.getElementById('productGrid');
-  if (!filtered) filtered = products;
-  currentFiltered = filtered;
-  if (ohneFilter()) { reihenZeichnen(); return; }
-  grid.className = 'grid';
-  document.getElementById('productCount').textContent = filtered.length + ' Produkte';
 
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="icon"><svg class="ico" style="width:34px;height:34px"><use href="#ic-search"/></svg></div><h3>Keine Produkte gefunden</h3><p>Versuchen Sie einen anderen Filter.</p></div>`;
-    return;
-  }
-
-  // Auf Mobile nur 10 (bzw. mobileShown) Produkte rendern, Rest per Button
-  const mobile = isMobileView();
-  const limit = mobile ? Math.min(mobileShown, filtered.length) : filtered.length;
-  let html = filtered.slice(0, limit).map(cardHTML).join('');
-
-  if (mobile && filtered.length > limit) {
-    const remaining = filtered.length - limit;
-    html += `<div class="load-more-wrap">
-      <span class="load-more-count">${limit} von ${filtered.length} angezeigt</span>
-      <button class="load-more-btn" onclick="loadMoreProducts()">Weitere ${Math.min(MOBILE_PAGE, remaining)} laden</button>
-    </div>`;
-  }
-  grid.innerHTML = html;
-}
-
-function loadMoreProducts(){
-  mobileShown += MOBILE_PAGE;
-  renderProductGrid(currentFiltered);
-}
 
 // ── GESCHENKBOXEN (eigene Sektion, Karten im M3-Look) ──
 function renderGiftBoxes(){
@@ -1687,12 +1544,11 @@ function renderGiftBoxes(){
 let _resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(_resizeTimer);
-  _resizeTimer = setTimeout(() => renderProductGrid(currentFiltered), 150);
+  _resizeTimer = setTimeout(reihenZeichnen, 150);
 });
 
-// ── CART / AUTH / CHECKOUT / PROFILE / DETAIL / ADMIN / COOKIE / LEGAL ──
-// (identisch zur vorherigen Version, alle Funktionen erhalten)
-let cart = [];
+// ── AUTH / PROFILE / DETAIL / COOKIE / LEGAL ──
+// Der Warenkorb liegt seit dem Umbau in /static/warenkorb.js.
 let currentUser = null;
 
 function getUsers() { try { return JSON.parse(localStorage.getItem('bk_users')||'{}'); } catch{return {};} }
@@ -1734,40 +1590,47 @@ function closeMobileMenu(){
   document.body.style.overflow='';
 }
 function mobileAccount(){ closeMobileMenu(); if(currentUser) openProfile(); else openAuth('login'); }
-function subscribeNewsletter(e){ e.preventDefault(); const el=document.getElementById('nlEmail'); if(el&&el.value){ el.value=''; document.getElementById('nlDone').classList.add('show'); } return false; }
-
-function isPer100(p){ return /100\s*g/i.test(p.unit); }
-
-function addToCart(id, grams) {
-  const p = products.find(x=>x.id===id);
-  if (!p || p.stock===0) return;
-  const per100 = isPer100(p);
-  const g = per100 ? (grams || 100) : null;          // gewählte Grammzahl (null = pro Stück/Box)
-  const key = id + '_' + (g || 'stk');
-  const linePrice = g ? Math.round(p.price * g) / 100 : p.price;
-  const ex = cart.find(x=>x.key===key);
-  if(ex) ex.qty++;
-  else cart.push({ key, id, name:p.name, emoji:p.emoji, img:p.img, cat:p.cat, grams:g,
-                   unitLabel:(g?g+' g':p.unit), price:linePrice, qty:1,
-                   grundpreis:p.grundpreis || null });
-  updateCartCount(); renderDrawer();
-  const btn = document.getElementById('addBtn-'+id);
-  if(btn){ btn.classList.add('added'); btn.textContent='✓'; setTimeout(()=>{btn.classList.remove('added');btn.textContent='+ Warenkorb';},1200); }
-  showToast('"' + p.name + '" hinzugefügt');
+function subscribeNewsletter(e){
+  e.preventDefault();
+  const feld = document.getElementById('nlEmail');
+  const meldung = document.getElementById('nlDone');
+  const knopf = document.getElementById('nlBtn');
+  if (!feld || !feld.value.trim()) return false;
+  knopf.disabled = true;
+  fetch('/api/newsletter', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email: feld.value.trim(), quelle: 'startseite'})
+  })
+    .then(r => r.json())
+    .then(d => {
+      knopf.disabled = false;
+      if (d.ok) {
+        feld.value = '';
+        meldung.textContent = 'Fast geschafft: wir haben dir eine Bestätigungsmail geschickt. '
+          + 'Erst mit dem Klick darin ist die Anmeldung gültig.';
+      } else {
+        meldung.textContent = d.error || 'Das hat nicht geklappt. Bitte später erneut versuchen.';
+      }
+      meldung.classList.add('show');
+    })
+    .catch(() => {
+      knopf.disabled = false;
+      meldung.textContent = 'Die Verbindung ist abgebrochen. Bitte später erneut versuchen.';
+      meldung.classList.add('show');
+    });
+  return false;
 }
 
-function changeQty(key,d) { const i=cart.find(x=>x.key===key); if(!i) return; i.qty+=d; if(i.qty<=0) cart=cart.filter(x=>x.key!==key); updateCartCount(); renderDrawer(); }
-function removeItem(key) { cart=cart.filter(x=>x.key!==key); updateCartCount(); renderDrawer(); }
-function updateCartCount() { const t=cart.reduce((s,c)=>s+c.qty,0); const el=document.getElementById('cartCount'); el.textContent=t; el.classList.toggle('visible',t>0); document.getElementById('checkoutBtn').disabled=t===0; }
-function cartTotal() { return cart.reduce((s,c)=>s+c.price*c.qty,0); }
-function renderDrawer() {
-  const b=document.getElementById('drawerBody');
-  if(!cart.length){ b.innerHTML=`<div class="empty-cart"><span><svg class="ico" style="width:30px;height:30px"><use href="#ic-cart"/></svg></span>Ihr Warenkorb ist leer.</div>`; }
-  else { b.innerHTML=cart.map(i=>`<div class="cart-item"><div class="ci-img">${i.img?`<img src="${i.img}" alt="">`:i.emoji}</div><div class="ci-info"><div class="ci-cat">${i.unitLabel}${i.grundpreis ? ` · ${eur(i.grundpreis)} / kg` : ''}</div><div class="ci-name">${i.name}</div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button><span class="qty-val">${i.qty}</span><button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button><span class="ci-price">${eur(i.price*i.qty)}</span><button class="remove-btn" onclick="removeItem('${i.key}')">✕</button></div></div></div>`).join(''); }
-  document.getElementById('subtotal').textContent=eur(cartTotal());
+/* Warenkorb, Schublade und Kurzmeldung stehen seit dem Umbau in
+   /static/warenkorb.js. Sie werden von allen Seiten gebraucht und liegen
+   im Speicher des Browsers, damit der Warenkorb den Seitenwechsel zur
+   Kasse ueberlebt. Hier bleibt nur, was die Startseite zusaetzlich hat:
+   die Kontoschublade muss beim Schliessen mitgehen. */
+function closeAll() {
+  closeCart();
+  const p = document.getElementById('profileDrawer');
+  if (p) p.classList.remove('open');
 }
-function openCart() { document.getElementById('overlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); renderDrawer(); }
-function closeAll() { document.getElementById('overlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); document.getElementById('profileDrawer').classList.remove('open'); }
 
 function openAuth(tab) { switchAuthTab(tab||'login'); document.getElementById('authModal').classList.add('open'); }
 function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
@@ -1786,7 +1649,7 @@ function doLogin() {
   const err=document.getElementById('loginError'); err.classList.remove('show');
   if(!users[email]||users[email].pw!==btoa(pw)){err.classList.add('show');return;}
   const u=users[email]; currentUser={email,firstName:u.firstName,lastName:u.lastName,phone:u.phone||'',street:u.street||'',plz:u.plz||'',city:u.city||'',country:u.country||'AT',newsletter:u.newsletter||false};
-  saveSession(); updateNav(); closeAuth(); showToast('Willkommen zurück, '+currentUser.firstName+'!'); prefillCheckout();
+  saveSession(); updateNav(); closeAuth(); showToast('Willkommen zurück, '+currentUser.firstName+'!');
 }
 function doRegister() {
   let ok=true;
@@ -1800,7 +1663,7 @@ function doRegister() {
   if(!first||!last||!email||!street||!plz||!city){showToast('Pflichtfelder (*) ausfüllen');ok=false;}
   if(!ok)return;
   users[email]={firstName:first,lastName:last,phone,street,plz,city,country,newsletter,pw:btoa(pw)}; saveUsers(users);
-  currentUser={email,firstName:first,lastName:last,phone,street,plz,city,country,newsletter}; saveSession(); updateNav(); closeAuth(); showToast('Willkommen, '+first+'!'); prefillCheckout();
+  currentUser={email,firstName:first,lastName:last,phone,street,plz,city,country,newsletter}; saveSession(); updateNav(); closeAuth(); showToast('Willkommen, '+first+'!');
 }
 function doLogout(){currentUser=null;clearSession();updateNav();closeProfile();showToast('Abgemeldet.');}
 
@@ -1834,185 +1697,19 @@ function saveProfileEdit(){
   currentUser.firstName=document.getElementById('editFirst').value.trim();currentUser.lastName=document.getElementById('editLast').value.trim();currentUser.phone=document.getElementById('editPhone').value.trim();currentUser.street=document.getElementById('editStreet').value.trim();currentUser.plz=document.getElementById('editPlz').value.trim();currentUser.city=document.getElementById('editCity').value.trim();
   const users=getUsers();
   if(users[currentUser.email])Object.assign(users[currentUser.email],{firstName:currentUser.firstName,lastName:currentUser.lastName,phone:currentUser.phone,street:currentUser.street,plz:currentUser.plz,city:currentUser.city});
-  saveUsers(users);saveSession();updateNav();renderProfile();prefillCheckout();showToast('Profil gespeichert.');
+  saveUsers(users);saveSession();updateNav();renderProfile();showToast('Profil gespeichert.');
 }
-function prefillCheckout(){
-  if(!currentUser)return;
-  const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
-  set('firstName',currentUser.firstName);set('lastName',currentUser.lastName);set('email',currentUser.email);set('street',currentUser.street);set('plz',currentUser.plz);set('city',currentUser.city);
-}
-function openCheckout(){
-  closeAll(); prefillCheckout();
-  // erste angebotene Zahlart vorwählen (welche es gibt, entscheidet die Verwaltung)
-  const ersterChip = document.querySelector('.pay-chip');
-  if (ersterChip && !document.querySelector('.pay-chip.active')) selectPay(ersterChip.dataset.pay, ersterChip);
-  renderOrderSummary();
-  document.getElementById('checkoutModal').classList.add('open');
-}
-function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open');}
-// ── ZAHLUNG / GUTSCHEIN / LIEFERTERMIN ──
-let payMethod='';   // wird beim Öffnen auf die erste freigegebene Zahlart gesetzt
-let voucher={code:'',type:'',value:0};
-
-const PAY_NOTES={
-  karte:'Sichere Online-Zahlung mit Karte, Apple Pay oder Google Pay. Du wirst nach dem Bestellen zu unserem Zahlungspartner Stripe weitergeleitet.',
-  vorkasse:'Du erhältst unsere Bankdaten per E-Mail. Versand nach Zahlungseingang.'
-};
-function selectPay(m,btn){
-  payMethod=m;
-  document.querySelectorAll('.pay-chip').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const note=document.getElementById('payNote');
-  note.style.display='block'; note.textContent=PAY_NOTES[m]||'';
-  renderOrderSummary();
-}
-
-async function applyVoucher(){
-  const code=document.getElementById('voucherCode').value.trim().toUpperCase();
-  const msg=document.getElementById('voucherMsg');
-  if(!code){ voucher={code:'',type:'',value:0}; msg.textContent=''; renderOrderSummary(); return; }
-  try{
-    const r=await fetch('/api/gutschein/'+encodeURIComponent(code));
-    if(r.ok){
-      const v=await r.json();
-      voucher={code:v.code,type:v.type,value:v.value};
-      msg.className='voucher-msg ok';
-      msg.textContent='Gutschein „'+v.code+'" angewendet ('+(v.type==='pct'?v.value+'% Rabatt':eur(v.value/100)+' Rabatt')+').';
-    } else {
-      voucher={code:'',type:'',value:0}; msg.className='voucher-msg err'; msg.textContent='Dieser Code ist leider ungültig.';
-    }
-  }catch(e){ voucher={code:'',type:'',value:0}; msg.className='voucher-msg err'; msg.textContent='Prüfung gerade nicht möglich.'; }
-  renderOrderSummary();
-}
-
-function computeTotals(){
-  const sub=cartTotal();
-  let discount=0;
-  if(voucher.type==='pct') discount=sub*voucher.value/100;
-  else if(voucher.type==='eur') discount=Math.min(voucher.value/100,sub);
-  discount=Math.round(discount*100)/100;
-  const shipping=(VERSANDFREI>0&&sub>=VERSANDFREI)?0:(sub>0?VERSANDKOSTEN:0);
-  const total=Math.max(0,sub-discount)+shipping;
-  return {sub,discount,shipping,total};
-}
-
-function renderOrderSummary(){
-  const t=computeTotals();
-  let html=cart.map(i=>`<div class="os-item"><span>${i.name}${i.grams?' · '+i.grams+' g':''} ×${i.qty}</span><span>${eur(i.price*i.qty)}</span></div>`).join('');
-  if(t.discount>0) html+=`<div class="os-item" style="color:var(--brand)"><span>Gutschein ${voucher.code}</span><span>− ${eur(t.discount)}</span></div>`;
-  html+=`<div class="os-item"><span>Versand</span><span>${t.shipping===0?'Kostenlos':eur(t.shipping)}</span></div><div class="os-total"><span>Gesamt</span><span>${eur(t.total)}</span></div>`;
-  document.getElementById('orderSummary').innerHTML=html;
-  renderPflichtinfo(t);
-}
-
-/* Pflichtangaben unmittelbar vor dem Bestellknopf: Gesamtpreis, Versandkosten,
-   Lieferzeit und der produktbezogene Widerrufshinweis. */
-function renderPflichtinfo(t){
-  const kasten = document.getElementById('checkoutPflicht');
-  if (!kasten) return;
-  const frisch  = cart.some(i => { const p = products.find(x => x.id === i.id); return !p || p.verderblich; });
-  const haltbar = cart.some(i => { const p = products.find(x => x.id === i.id); return p && !p.verderblich; });
-  let widerruf;
-  if (frisch && haltbar) {
-    widerruf = 'Deine Bestellung enthält frische und haltbare Ware. Für die frischen Artikel besteht kein '
-             + 'Widerrufsrecht, für die haltbaren gelten 14 Tage.';
-  } else if (frisch) {
-    widerruf = 'Frischware ist vom Widerrufsrecht ausgenommen, weil sie schnell verderben kann.';
-  } else {
-    widerruf = 'Für diese Bestellung gilt das gesetzliche Widerrufsrecht von 14 Tagen.';
-  }
-  const versand = t.shipping === 0 ? 'Versandkosten entfallen.'
-                                    : 'Versandkosten ' + eur(t.shipping) + '.';
-  const stueck = cart.reduce((n, i) => n + i.qty, 0);
-  kasten.innerHTML = `Du bestellst <strong>${stueck} ${stueck === 1 ? 'Artikel' : 'Artikel'}</strong> zum `
-    + `Gesamtpreis von <strong>${eur(t.total)}</strong> inkl. MwSt. ${versand} `
-    + `${LIEFERZEIT}<br>${widerruf} `
-    + `Es gelten unsere <a href="#" data-vorschau="aus">AGB</a>, die <a href="#" data-vorschau="aus">Widerrufsbelehrung</a> `
-    + `und die <a href="#" data-vorschau="aus">Datenschutzhinweise</a>.`;
-}
-
-async function placeOrder(){
-  for(const f of['firstName','lastName','email','street','plz','city']){if(!document.getElementById(f).value.trim()){showToast('Bitte alle Felder ausfüllen');document.getElementById(f).focus();return;}}
-  const btn=document.getElementById('bestellBtn'); btn.disabled=true; btn.textContent='Wird gesendet…';
-  const val=id=>document.getElementById(id).value.trim();
-  const payload={
-    items:cart.map(i=>({id:i.id,grams:i.grams||null,qty:i.qty})),
-    customer:{first_name:val('firstName'),last_name:val('lastName'),email:val('email'),
-              phone:val('phone'),street:val('street'),plz:val('plz'),city:val('city'),country:'Österreich',note:''},
-    pay:payMethod,
-    voucher:voucher.code||'',
-    delivery_date:val('deliveryDate')
-  };
-  try{
-    const r=await fetch('/api/bestellung',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    const data=await r.json();
-    if(!r.ok||!data.ok){ showToast(data.error||'Bestellung fehlgeschlagen. Bitte erneut versuchen.'); return; }
-    if(data.redirect){ window.location.href=data.redirect; return; }
-    closeCheckout();
-    document.getElementById('orderNum').textContent='Bestellnr. '+data.num;
-    document.getElementById('successModal').classList.add('open');
-    cart=[];voucher={code:'',type:'',value:0};updateCartCount();renderDrawer();
-  }catch(e){ showToast('Verbindung fehlgeschlagen. Bitte erneut versuchen.'); }
-  finally{ btn.disabled=false; btn.textContent='Zahlungspflichtig bestellen'; }
-}
-function closeSuccess(){document.getElementById('successModal').classList.remove('open');}
-
-// ── DETAIL ──
-let pdProduct=null, pdSelectedGrams=100;
-function selectWeight(g, btn, base){
-  pdSelectedGrams = g;
-  document.querySelectorAll('#pdWeightOpts .pd-weight-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('pdPrice').textContent = eur(base*g/100);
-}
-function openDetail(id){
-  pdProduct=products.find(p=>p.id===id);
-  const p=pdProduct; if(!p)return;
-  const imgs=[p.img||p.emoji];
-  const stockMsg=p.stock<=5?'Nur noch '+p.stock:'✓ '+p.stock+' auf Lager';
-  const per100=isPer100(p); pdSelectedGrams = per100 ? 100 : null;
-  const weightHtml = per100 ? `<div class="pd-weight">
-        <span class="pd-weight-label">Menge wählen</span>
-        <div class="pd-weight-opts" id="pdWeightOpts">
-          ${[100,200,300,500].map((g,idx)=>`<button class="pd-weight-btn ${idx===0?'active':''}" data-g="${g}" onclick="selectWeight(${g},this,${p.price})">${g} g</button>`).join('')}
-        </div>
-      </div>` : '';
-  const related = products.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
-  const relatedHtml = related.length ? `<div class="pd-related">
-        <div class="pd-related-title">Passt dazu</div>
-        <div class="pd-related-row">${related.map(r=>`<div class="pd-rel-card" onclick="openDetail(${r.id})"><div class="pd-rel-img">${r.img?`<img src="${r.img}" alt="${r.name}">`:('<span>'+r.emoji+'</span>')}</div><div class="pd-rel-info"><div class="pd-rel-name">${r.name}</div><div class="pd-rel-price">${eur(r.price)}</div></div></div>`).join('')}</div>
-      </div>` : '';
-  document.getElementById('pdModal').innerHTML=`
-    <div class="pd-head"><span class="pd-breadcrumb">${catEmoji(p.cat)} ${catLabel(p.cat)} <span>/ ${p.name}</span></span><button class="close-btn" onclick="closeDetail()">✕</button></div>
-    <div class="pd-body">
-      <div class="pd-gallery">
-        <div class="pd-main-img" id="pdMainImg">${p.img?`<img src="${p.img}" alt="${p.name}">`:('<span style="font-size:7rem">'+p.emoji+'</span>')}</div>
-        <div class="pd-thumbs">${imgs.map((img,i)=>`<div class="pd-thumb ${i===0?'active':''}" onclick="setDetailImage(${i},'${img}')">${img}</div>`).join('')}</div>
-      </div>
-      <div class="pd-info">
-        <div class="pd-badge-row">${p.badge?`<span class="pd-badge ${p.cat==='kaese'?'':'gold'}">${p.badge}</span>`:''}<span class="pd-category">${catEmoji(p.cat)} ${catLabel(p.cat)}</span></div>
-        <h2 class="pd-name">${p.name}</h2>
-        <div class="pd-price" id="pdPrice">${eur(p.price)}</div>
-        <div class="pd-unit">${p.unit}${p.grundpreis ? ` · <span id="pdGrundpreis">${grundpreisText(p)}</span>` : ''}</div>
-        <div class="pd-mwst">inkl. MwSt.${VERSANDKOSTEN > 0 ? ' zzgl. <a href="#" data-vorschau="aus">Versand</a>' : ''}</div>
-        <div class="pd-stock ${p.stock<=5?'low':''}">${stockMsg}</div>
-        <p class="pd-desc">${p.desc}</p>
-        ${weightHtml}
-        <div class="pd-actions"><button class="pd-add-btn" onclick="addToCart(${p.id},pdSelectedGrams);closeDetail()">+ In den Warenkorb</button></div>
-        <div class="pd-details"><div class="pd-details-title">Details</div><ul class="pd-details-list">${(p.details||[]).map(d=>`<li>${d}</li>`).join('')}</ul></div>
-        ${pflichtangabenHTML(p)}
-      </div>
-      ${relatedHtml}
-    </div>`;
-  document.getElementById('pdOverlay').classList.add('open');document.body.style.overflow='hidden';
-}
-function setDetailImage(idx,val){document.getElementById('pdMainImg').innerHTML=val.length>5?`<img src="${val}" alt="">`:'<span style="font-size:7rem">'+val+'</span>';document.querySelectorAll('.pd-thumb').forEach((t,i)=>t.classList.toggle('active',i===idx));}
-function closeDetail(){document.getElementById('pdOverlay').classList.remove('open');document.body.style.overflow='';}
-function handlePdOverlayClick(e){if(e.target===document.getElementById('pdOverlay'))closeDetail();}
+// ── KASSE UND PRODUKTSEITE ──
+// Beides sind seit dem Umbau eigene Seiten. Das Fenster ueber der Startseite
+// gab es doppelt und ohne eigene Adresse; die Pflichtangaben nach LMIV
+// brauchen aber eine Seite, die man verlinken und aufrufen kann.
+function openCheckout(){ location.href = '/bauernkoenig-vorschau/kasse/'; }
+function openDetail(id){ location.href = '/bauernkoenig-vorschau/produkt/' + id + '/'; }
 
 // ── LEGAL ──
 // ── TOAST ──
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2200);}
+/* showToast steht in /static/warenkorb.js, damit alle Seiten dieselbe
+   Kurzmeldung haben. */
 
 // ── COOKIE ──
 const COOKIE_KEY='bk_cookie_consent';
@@ -2030,36 +1727,55 @@ function initCookieBanner(){const s=cookieConsentStatus();if(!s)showCookieBanner
 // ── EVENT LISTENERS ──
 document.getElementById('cookieSettingsOverlay').addEventListener('click',function(e){if(e.target===this)closeCookieSettings();});
 document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeAuth();});
-document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout();});
-document.getElementById('successModal').addEventListener('click',function(e){if(e.target===this)closeSuccess();});
 
 // ── INIT ──
 loadSession();
 updateNav();
 kachelnZeichnen();
-applyFilters();
+reihenZeichnen();
 renderGiftBoxes();
 renderDrawer();
-renderSubButtons();
 initCookieBanner();
 
 // ── PWA ──
 if ('serviceWorker' in navigator) {
 }
 </script>
-<script src="static/shell.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
 
 <script>
+/* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */
 (function () {
+  function sagen(text) {
+    if (typeof showToast === 'function') { showToast(text); return; }
+    alert(text);
+  }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-vorschau="aus"]');
-    if (a) { e.preventDefault(); }
+    if (a) {
+      e.preventDefault();
+      sagen('Diese Seite gibt es nur im fertigen Shop.');
+    }
   });
   window.addEventListener('DOMContentLoaded', function () {
-    if (typeof placeOrder === 'function') {
-      window.placeOrder = function () {
-        alert('Das ist eine Vorschau der Gestaltung. Bestellen geht erst im '
+    if (typeof bestellen === 'function') {
+      window.bestellen = function (e) {
+        if (e) e.preventDefault();
+        sagen('Das ist eine Vorschau der Gestaltung. Bestellen geht erst im '
             + 'fertigen Shop mit Server und Zahlungsanbindung.');
+        return false;
+      };
+    }
+    if (typeof gutscheinPruefen === 'function') {
+      window.gutscheinPruefen = function () {
+        sagen('Gutscheine prueft der Shop erst im Betrieb.');
+      };
+    }
+    if (typeof subscribeNewsletter === 'function') {
+      window.subscribeNewsletter = function (e) {
+        if (e) e.preventDefault();
+        sagen('Die Anmeldung laeuft erst im fertigen Shop.');
+        return false;
       };
     }
   });

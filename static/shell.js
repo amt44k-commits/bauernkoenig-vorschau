@@ -37,7 +37,9 @@ function suchen(e) {
     const ziel = document.querySelector('.section-head') || document.querySelector('.products');
     if (ziel) ziel.scrollIntoView({ behavior: 'smooth' });
   } else {
-    location.href = '/?suche=' + encodeURIComponent(begriff) + '#sortiment';
+    // Seit es eine eigene Sortimentsseite gibt, landet die Suche dort und
+    // nicht mehr im Filter der Startseite.
+    location.href = '/sortiment?suche=' + encodeURIComponent(begriff);
   }
   return false;
 }

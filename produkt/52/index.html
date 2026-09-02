@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammelschmalz | Bauern König</title>
+<meta name="description" content="Hausgemacht mit Grammeln. pro Stück (ca. 250g), gekühlt ab Hof versendet.">
+<meta name="theme-color" content="#17233f">
+<link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/bauernkoenig-vorschau/static/img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/karte.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/produkt.css?v=38">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600}
+  h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
+  .ico{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round}
+</style>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<script>try{var bkP=localStorage.getItem("bk_palette");if(bkP&&/^[a-z]{4,14}$/.test(bkP))document.documentElement.setAttribute("data-theme",bkP);}catch(e){}</script>
+
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-cheese" viewBox="0 0 24 24"><path d="M2.5 14.4 17.6 8c1.8-.8 3.9.5 3.9 2.5v3.9z"/><path d="M2.5 14.4h19v2.7c0 .8-.7 1.4-1.5 1.4H4c-.8 0-1.5-.6-1.5-1.4z"/><circle cx="7" cy="16.6" r=".9"/><circle cx="12" cy="16.1" r="1"/><circle cx="16.6" cy="16.7" r=".8"/></symbol>
+  <symbol id="ic-pig" viewBox="0 0 24 24"><path d="M5.5 8.5 4.3 4.7l3.8 1.9M18.5 8.5l1.2-3.8-3.8 1.9"/><circle cx="12" cy="13.5" r="6.3"/><ellipse cx="12" cy="14.5" rx="3" ry="2.2"/><circle cx="11" cy="14.5" r=".5"/><circle cx="13" cy="14.5" r=".5"/></symbol>
+  <symbol id="ic-deer" viewBox="0 0 24 24"><path d="M12 21.5v-8.2"/><path d="M12 13.3c-2.6 0-4.2-2-4.2-4.1 0-1.1-.5-2.1-1.6-2.6M7.8 6.9C6.7 6.4 6.2 5.3 6.2 4"/><path d="M12 13.3c2.6 0 4.2-2 4.2-4.1 0-1.1.5-2.1 1.6-2.6M16.2 6.9c1.1-.5 1.6-1.6 1.6-2.9"/></symbol>
+  <symbol id="ic-bacon" viewBox="0 0 24 24"><path d="M3 8.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 13c3-2.6 6 2.6 9 0s6-2.6 9 0"/><path d="M3 17.5c3-2.6 6 2.6 9 0s6-2.6 9 0"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="ic-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2 3h3l2.5 12.4a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.2L21 6.5H6"/></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4 3.4-6 7.5-6s7.5 2 7.5 6"/></symbol>
+  <symbol id="ic-truck" viewBox="0 0 24 24"><path d="M2 6.5h12v9.5H2z"/><path d="M14 9.5h4l3 3v3.5h-7z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M4 20C4 11 11 5 20 4.5c0 9.5-7 15.5-16 15.5Z"/><path d="M4.5 19.5c4-6.5 8.5-9.5 12.5-10.5"/></symbol>
+  <symbol id="ic-medal" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="6"/><path d="m9.4 9.6 1.8 1.8 3.4-3.5"/><path d="M9 15 7.4 21l4.6-2.6L16.6 21 15 15"/></symbol>
+  <symbol id="ic-wheat" viewBox="0 0 24 24"><path d="M12 22V7.5"/><path d="M12 8c0-2-1.5-3.6-3.6-3.6C8.4 6.5 9.9 8 12 8m0 0c0-2 1.5-3.6 3.6-3.6C15.6 6.5 14.1 8 12 8"/><path d="M12 13.5c0-2-1.5-3.6-3.6-3.6C8.4 12 9.9 13.5 12 13.5m0 0c0-2 1.5-3.6 3.6-3.6C15.6 12 14.1 13.5 12 13.5"/></symbol>
+  <symbol id="ic-snow" viewBox="0 0 24 24"><path d="M12 2.5v19M3.7 7.2 20.3 16.8M20.3 7.2 3.7 16.8"/><path d="M12 2.5 10 4.6M12 2.5l2 2.1M12 21.5l-2-2.1M12 21.5l2-2.1"/></symbol>
+  <symbol id="ic-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13.2v8"/></symbol>
+  <symbol id="ic-meat" viewBox="0 0 24 24"><path d="M7.5 8.2C5 8.2 3 10.2 3 12.7s2 4.5 4.5 4.5c2 0 3.2-1.4 5.5-1.4 3.6 0 6.5-2.3 6.5-5.4S16.5 5 13 5C10.4 5 9.7 8.2 7.5 8.2Z"/><circle cx="7.5" cy="12.7" r="2"/></symbol>
+  <symbol id="ic-gift" viewBox="0 0 24 24"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M3 7.5h18V11H3z"/><path d="M12 7.5V21"/><path d="M12 7.5S11 4 8.5 4 6 7.5 8 7.5h4m0 0s1-3.5 3.5-3.5S18 7.5 16 7.5h-4"/></symbol>
+  
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.5v6c0 5 3.2 7.8 7.5 10 4.3-2.2 7.5-5 7.5-10v-6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="ic-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="ic-trash" viewBox="0 0 24 24"><path d="M4 6.5h16M9.5 6.5V4h5v2.5"/><path d="M6.5 6.5 7.5 21h9l1-14.5"/><path d="M10.5 10v7M13.5 10v7"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="ic-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/></symbol>
+  <symbol id="ic-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 9.5V19M19 9.5V19M9.5 9.5V19M14.5 9.5V19"/><path d="M3 21h18"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></symbol>
+</svg>
+<div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
+
+<nav class="shell-nav">
+  <a class="nav-logo" href="/bauernkoenig-vorschau/"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
+  <div class="nav-links">
+    <a class="nav-link hier" href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/versand/">Versand</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a class="nav-link" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+  </div>
+  
+  <form class="nav-suche" role="search" onsubmit="return suchen(event)">
+    <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
+    <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
+           aria-label="Sortiment durchsuchen" autocomplete="off">
+  </form>
+  <div class="nav-right">
+    
+    
+      <a class="nav-icon nav-desktop" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
+    
+    <button class="nav-btn cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-head">
+    <span class="mm-logo"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
+    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
+  </div>
+  <nav class="mm-links">
+    <a href="/bauernkoenig-vorschau/sortiment/">Shop</a>
+    <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+    <a href="/bauernkoenig-vorschau/#hof">Unser Hof</a>
+    <a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a>
+    <a href="/bauernkoenig-vorschau/faq/">FAQ</a>
+    <a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+    <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
+    <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
+    
+      <div class="mm-account">
+        <a class="mm-btn ghost" href="#" data-vorschau="aus">Anmelden</a>
+        <a class="mm-btn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+      </div>
+    
+  </nav>
+</div>
+
+<main>
+
+<section class="pd-kopf">
+  <nav class="krume" aria-label="Pfad">
+    <a href="/bauernkoenig-vorschau/">Startseite</a><span>/</span>
+    <a href="/bauernkoenig-vorschau/sortiment/">Sortiment</a><span>/</span>
+    <a href="/sortiment?kategorie=hausschwein">Hausschwein</a><span>/</span>
+    <b>Grammelschmalz</b>
+  </nav>
+
+  <div class="pd-raster">
+    <div class="pd-galerie">
+      <div class="pd-buehne">
+        <img id="pdGross" src="/bauernkoenig-vorschau/static/img/products/leberwurst.webp" alt="Grammelschmalz">
+        <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+        
+      </div>
+      
+      <div class="pd-mini">
+        
+        <button type="button" class="aktiv"
+                onclick="pdBild(this)" aria-label="Grammelschmalz">
+          <img src="/bauernkoenig-vorschau/static/img/products/leberwurst.webp" alt="Grammelschmalz">
+        </button>
+        
+        <button type="button" class=""
+                onclick="pdBild(this)" aria-label="Versandbox mit Kühlelementen">
+          <img src="/bauernkoenig-vorschau/static/img/hero/verpackung-desktop.webp" alt="Versandbox mit Kühlelementen">
+        </button>
+        
+        <button type="button" class=""
+                onclick="pdBild(this)" aria-label="Vom Hof">
+          <img src="/bauernkoenig-vorschau/static/img/products/bauer.webp" alt="Vom Hof">
+        </button>
+        
+      </div>
+    </div>
+
+    <div class="pd-kauf">
+      <h1>Grammelschmalz</h1>
+      <p class="pd-kurz">Hausgemacht mit Grammeln.</p>
+
+      <div class="pd-preisblock">
+        <div class="pd-preis"><span id="pdPreis">€ 4,90</span></div>
+        <div class="pd-grundpreis" id="pdGrund">€ 19,60 / kg</div>
+        <div class="pd-mwst">inkl. MwSt., zuzüglich Versand</div>
+      </div>
+
+      
+
+      
+        <div class="pd-lager"><span class="punkt"></span>Auf Lager, sofort versandfertig</div>
+      
+
+      <div class="pd-aktionen">
+        
+        <button type="button" class="btn btn-voll pd-kaufen" id="addBtn-52" onclick="pdKaufen()">
+          <svg class="ico"><use href="#ic-cart"/></svg>In den Warenkorb</button>
+        <a class="btn btn-rand" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+        
+      </div>
+
+      
+      <ul class="pd-merkmale">
+        <li>Hausgemacht</li><li>Brotaufstrich</li>
+      </ul>
+      
+
+      <div class="pd-versandkasten">
+        <div><svg class="ico"><use href="#ic-snow"/></svg>
+          <b>Gekühlter Versand</b>
+          <span>Isolierbox mit Kühlelementen, Kühlung hält 72 Stunden.</span></div>
+        <div><svg class="ico"><use href="#ic-truck"/></svg>
+          <b>Kostenfrei ab 75 Euro</b>
+          <span>Darunter € 5,90. Bestellschluss 14:00 Uhr.</span></div>
+        <div><svg class="ico"><use href="#ic-shield"/></svg>
+          <b>Frisch zugeschnitten</b>
+          <span>Wird erst nach Bestelleingang geschnitten und vakuumiert.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pd-text">
+  <div class="pd-text-inner">
+    <div class="pd-spalte">
+      <h2>Beschreibung</h2>
+      <p>Hausgemacht mit Grammeln.</p>
+      
+    </div>
+
+    <div class="pd-spalte">
+      <h2>Pflichtangaben</h2>
+      <dl class="pd-angaben">
+        <div><dt>Bezeichnung</dt>
+          <dd>Grammelschmalz</dd></div>
+        <div><dt>Zutaten</dt>
+          <dd><span class="pd-fehlt">Liegt noch nicht vor. Bitte vor der Bestellung erfragen.</span></dd></div>
+        <div><dt>Allergene</dt>
+          <dd><span class="pd-fehlt">Liegt noch nicht vor. Bitte vor der Bestellung erfragen.</span></dd></div>
+        <div><dt>Nettofüllmenge</dt>
+          <dd>250 g</dd></div>
+        
+        <div><dt>Lagerung</dt>
+          <dd>Durchgehend gekühlt lagern, nach dem Öffnen rasch verbrauchen.</dd></div>
+        <div><dt>Hersteller</dt>
+          <dd>Bauern König, Seebensteinerstraße, 2823 Pitten, Österreich</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="pd-dazu">
+  <div class="reihe-kopf">
+    <h2 class="reihe-titel">Passt <em>dazu</em></h2>
+    <a class="reihe-alle" href="/bauernkoenig-vorschau/sortiment/">Ganzes Sortiment</a>
+  </div>
+  <div class="raster pd-dazu-raster">
+    
+
+<article class="karte" data-id="36" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.5" data-name="blutwurst"
+         data-text="blutwurst hausmacher-art, herzhaft. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/36/">
+    <img src="/bauernkoenig-vorschau/static/img/products/blutwurst.webp" alt="Blutwurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/36/">Blutwurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Hausmacher-Art, herzhaft.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,50
+        <small class="karte-grundpreis">€ 15,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-36" onclick="addToCart(36)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="37" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.9" data-name="presswurst"
+         data-text="presswurst saftig, traditionell. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/37/">
+    <img src="/bauernkoenig-vorschau/static/img/products/blutwurst.webp" alt="Presswurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/37/">Presswurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Saftig, traditionell.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,90
+        <small class="karte-grundpreis">€ 19,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-37" onclick="addToCart(37)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="38" data-cat="hausschwein" data-sub="wurst"
+         data-preis="1.9" data-name="leberwurst"
+         data-text="leberwurst cremig, streichzart. hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/38/">
+    <img src="/bauernkoenig-vorschau/static/img/products/leberwurst.webp" alt="Leberwurst" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/38/">Leberwurst</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Cremig, streichzart.</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 1,90
+        <small class="karte-grundpreis">€ 19,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-38" onclick="addToCart(38)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+
+<article class="karte" data-id="39" data-cat="hausschwein" data-sub="schmalz"
+         data-preis="2.4" data-name="grammeln"
+         data-text="grammeln knusprig, salzig, bier-snack! hausschwein">
+  <a class="karte-bild" href="/bauernkoenig-vorschau/produkt/39/">
+    <img src="/bauernkoenig-vorschau/static/img/products/grammeln.webp" alt="Grammeln" loading="lazy">
+    <span class="karte-chip"><svg class="ico"><use href="#ic-bacon"/></svg>Hausschwein</span>
+    
+  </a>
+  <div class="karte-koerper">
+    <a class="karte-name" href="/bauernkoenig-vorschau/produkt/39/">Grammeln</a>
+    <div class="karte-einheit">pro 100 g</div>
+    <p class="karte-text">Knusprig, salzig, Bier-Snack!</p>
+    
+      <div class="karte-lager">Auf Lager</div>
+    
+    <div class="karte-fuss">
+      <div class="karte-preis">€ 2,40
+        <small class="karte-grundpreis">€ 24,00 / kg</small>
+      </div>
+      
+        <button class="karte-knopf" id="addBtn-39" onclick="addToCart(39)">+ Warenkorb</button>
+      
+    </div>
+    <div class="karte-mwst">inkl. MwSt., zuzüglich Versand</div>
+  </div>
+</article>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="foot-marke">
+      <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
+      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
+    </div>
+    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/#sortiment">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
+    <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
+    <div><h4>Kontakt</h4>
+      
+      
+      <a href="/bauernkoenig-vorschau/kontakt/">2823 Pitten, Seebensteinerstraße</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
+</footer>
+
+
+
+<div class="palette-picker" id="palettePicker">
+  <button type="button" class="palette-toggle" id="paletteToggle"
+          aria-expanded="false" aria-controls="paletteMenu" title="Farbpalette wählen">
+    <span class="palette-dots"></span><span class="txt">Farbe</span>
+  </button>
+  <div class="palette-menu" id="paletteMenu" hidden>
+    <h4>Farbpalette</h4>
+    <div id="paletteList" role="radiogroup" aria-label="Farbpalette"></div>
+    <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
+  </div>
+</div>
+<script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
+
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span>
+    <button class="close-btn" onclick="closeAll()" aria-label="Schließen">&#10005;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="subtotal-label">Zwischensumme</span><span id="subtotal">€ 0,00</span></div>
+    
+    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenfreier Versand ab € 75</p>
+    
+    <a class="checkout-btn" id="checkoutBtn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
+<script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+
+<script>
+window.products = [{"id": 52, "name": "Grammelschmalz", "cat": "hausschwein", "sub": "schmalz", "emoji": "🫙", "badge": "", "unit": "pro Stück (ca. 250g)", "desc": "Hausgemacht mit Grammeln.", "stock": 20, "rating": 4.8, "details": ["Hausgemacht", "Brotaufstrich"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 250, "grundpreis": 19.6, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 36, "name": "Blutwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Hausmacher-Art, herzhaft.", "stock": 30, "rating": 4.4, "details": ["Hausrezeptur", "Ohne Konservierungsstoffe"], "price": 1.5, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 15.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 37, "name": "Presswurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Saftig, traditionell.", "stock": 28, "rating": 4.3, "details": ["Traditionell", "Saftig"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/blutwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 38, "name": "Leberwurst", "cat": "hausschwein", "sub": "wurst", "emoji": "🌭", "badge": "", "unit": "pro 100 g", "desc": "Cremig, streichzart.", "stock": 32, "rating": 4.5, "details": ["Frische Leber", "Streichzart"], "price": 1.9, "img": "/bauernkoenig-vorschau/static/img/products/leberwurst.webp", "netto_g": 100, "grundpreis": 19.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 39, "name": "Grammeln", "cat": "hausschwein", "sub": "schmalz", "emoji": "🍖", "badge": "", "unit": "pro 100 g", "desc": "Knusprig, salzig, Bier-Snack!", "stock": 35, "rating": 4.8, "details": ["Ausgelassen", "Knusprig"], "price": 2.4, "img": "/bauernkoenig-vorschau/static/img/products/grammeln.webp", "netto_g": 100, "grundpreis": 24.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
+var PD_ID = 52;
+var PD_BASIS = 4.9;          // Preis je 100 g bei Gewichtsware, sonst Stueckpreis
+var PD_NACH_GEWICHT = false;
+var pdGramm = null;
+
+function pdBild(knopf) {
+  document.querySelectorAll('.pd-mini button').forEach(function (b) { b.classList.remove('aktiv'); });
+  knopf.classList.add('aktiv');
+  var gross = document.getElementById('pdGross');
+  if (gross) gross.src = knopf.querySelector('img').src;
+}
+
+function pdMenge(knopf) {
+  document.querySelectorAll('.mengenknopf').forEach(function (b) { b.classList.remove('aktiv'); });
+  knopf.classList.add('aktiv');
+  pdGramm = parseInt(knopf.dataset.gramm, 10);
+  var feld = document.getElementById('pdPreis');
+  if (feld) feld.textContent = eurBk(Math.round(PD_BASIS * pdGramm) / 100);
+}
+
+function pdKaufen() {
+  addToCart(PD_ID, PD_NACH_GEWICHT ? pdGramm : null);
+}
+</script>
+
+
+<script>
+/* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */
+(function () {
+  function sagen(text) {
+    if (typeof showToast === 'function') { showToast(text); return; }
+    alert(text);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-vorschau="aus"]');
+    if (a) {
+      e.preventDefault();
+      sagen('Diese Seite gibt es nur im fertigen Shop.');
+    }
+  });
+  window.addEventListener('DOMContentLoaded', function () {
+    if (typeof bestellen === 'function') {
+      window.bestellen = function (e) {
+        if (e) e.preventDefault();
+        sagen('Das ist eine Vorschau der Gestaltung. Bestellen geht erst im '
+            + 'fertigen Shop mit Server und Zahlungsanbindung.');
+        return false;
+      };
+    }
+    if (typeof gutscheinPruefen === 'function') {
+      window.gutscheinPruefen = function () {
+        sagen('Gutscheine prueft der Shop erst im Betrieb.');
+      };
+    }
+    if (typeof subscribeNewsletter === 'function') {
+      window.subscribeNewsletter = function (e) {
+        if (e) e.preventDefault();
+        sagen('Die Anmeldung laeuft erst im fertigen Shop.');
+        return false;
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

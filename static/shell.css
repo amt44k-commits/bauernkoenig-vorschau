@@ -24,6 +24,9 @@
   /* Neutraltoene, von der Palette unabhaengig */
   --ink:#1a1a1a; --cream:#f7f3ed; --warm:#efe7db; --brown:#6b4f3a;
   --brown2:#8b6f5a; --line:#d6cec0; --white:#fff; --red:#a33; --soft:#f0e8dc;
+  /* Zustandsfarben: gruen fuer Lagerbestand, rot fuer Fehler und Entfernen.
+     Von Sortiment, Produktseite und Kasse genutzt. */
+  --gruen:#3d8b4a; --rot:#a33;
 }
 
 /* 1 Mitternachtsblau (Standard) */

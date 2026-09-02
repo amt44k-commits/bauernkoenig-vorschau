@@ -1,0 +1,66 @@
+/* ══════════════════════════════════════════════════════════════════
+   WARENKORB-SCHUBLADE UND KURZMELDUNG
+   Von allen Seiten geladen. Vorher lagen diese Regeln im Stylesheet
+   der Startseite und standen damit nur dort zur Verfuegung.
+   Werte unveraendert uebernommen, damit sich die Optik nicht aendert.
+   ══════════════════════════════════════════════════════════════════ */
+
+.overlay{position:fixed;inset:0;background:rgba(26,26,26,.5);z-index:200;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;height:100vh;width:min(420px,100vw);
+  background:var(--white);z-index:201;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+  box-shadow:-8px 0 40px rgba(26,26,26,.15)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{background:var(--brand);padding:20px 28px;display:flex;
+  align-items:center;justify-content:space-between}
+.drawer-title{font-family:'Playfair Display',serif;font-size:1.4rem;
+  font-weight:600;color:var(--cream)}
+.drawer-title .ico{width:22px;height:22px;stroke:var(--cream);fill:none;
+  stroke-width:1.7;vertical-align:-.18em;margin-right:7px}
+.close-btn{background:none;border:none;color:var(--gold2);font-size:1.4rem;
+  cursor:pointer;line-height:1;padding:4px}
+.close-btn:hover{color:var(--cream)}
+.drawer-body{flex:1;overflow-y:auto;padding:24px 28px}
+.empty-cart{text-align:center;padding:60px 20px;color:var(--brown);
+  font-size:.85rem;line-height:2}
+.empty-cart span{display:block;font-size:2.5rem;margin-bottom:12px;opacity:.3}
+.cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ci-img{width:56px;height:68px;background:var(--warm);display:flex;
+  align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;overflow:hidden}
+.ci-img img{width:100%;height:100%;object-fit:cover}
+.ci-info{flex:1;min-width:0}
+.ci-cat{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.ci-name{font-family:'Playfair Display',serif;font-size:.95rem;margin:2px 0 8px;color:var(--ink)}
+.ci-controls{display:flex;align-items:center;gap:8px}
+.qty-btn{width:24px;height:24px;border:1px solid var(--line);background:none;
+  color:var(--ink);font-size:.9rem;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all .15s}
+.qty-btn:hover{border-color:var(--brand);color:var(--brand)}
+.qty-val{font-size:.82rem;width:18px;text-align:center}
+.ci-price{font-size:.85rem;font-weight:600;margin-left:auto;color:var(--brand)}
+.remove-btn{background:none;border:none;color:var(--line);font-size:.85rem;
+  cursor:pointer;margin-left:6px}
+.remove-btn:hover{color:#c0392b}
+.drawer-foot{padding:20px 28px 28px;border-top:1px solid var(--line);background:var(--cream)}
+.subtotal{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;
+  font-size:1.15rem}
+.subtotal-label{color:var(--brown)}
+.shipping-note{font-size:.72rem;color:var(--brown2);letter-spacing:.05em;margin-bottom:18px}
+.shipping-note .ico{width:14px;height:14px;stroke:currentColor;fill:none;
+  stroke-width:1.7;vertical-align:-.16em;margin-right:5px}
+.checkout-btn{display:block;width:100%;padding:16px;background:var(--brand);
+  color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.8rem;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-align:center;
+  text-decoration:none;transition:background .2s;font-weight:500}
+.checkout-btn:hover{background:var(--brand2)}
+.checkout-btn:disabled,.checkout-btn.aus{background:var(--line);color:var(--brown);
+  cursor:not-allowed;pointer-events:none}
+
+/* ── Kurzmeldung ── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--brand);color:var(--cream);padding:12px 24px;font-size:.78rem;
+  letter-spacing:.1em;z-index:500;opacity:0;transition:all .3s;white-space:nowrap;
+  pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
