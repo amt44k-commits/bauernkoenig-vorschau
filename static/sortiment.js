@@ -6,13 +6,42 @@
    sie nur ein- und ausgeblendet und umsortiert.
    ══════════════════════════════════════════════════════════════════ */
 
-var SEITE = 25;                 // wie viele Artikel auf einmal sichtbar sind
+/* Wie viele Artikel auf einmal sichtbar sind: fuenf volle Zeilen. Die Zahl
+   haengt an der Spaltenzahl, sonst bleibt in der letzten Zeile eine Luecke,
+   sobald das Fenster nicht gerade fuenf Spalten hergibt. */
+var ZEILEN = 5;
+var SEITE = 25;
 var gezeigt = SEITE;
+
+function seitengroesse() {
+    var raster = document.getElementById('raster');
+    if (!raster) return 25;
+    var spalten = getComputedStyle(raster).gridTemplateColumns
+        .split(' ').filter(function (x) { return parseFloat(x) > 0; }).length;
+    return Math.max(spalten, 1) * ZEILEN;
+}
 var karten = [];
 var stand = { suche: '', cat: 'all', sort: '' };
 
 document.addEventListener('DOMContentLoaded', function () {
   karten = Array.prototype.slice.call(document.querySelectorAll('#raster .karte'));
+  SEITE = seitengroesse();
+  gezeigt = SEITE;
+
+  // Beim Ändern der Fensterbreite ändert sich die Spaltenzahl mit.
+  var uhr;
+  window.addEventListener('resize', function () {
+    clearTimeout(uhr);
+    uhr = setTimeout(function () {
+      var neu = seitengroesse();
+      if (neu === SEITE) return;
+      // Bereits nachgeladene Zeilen behalten, nur auf volle Zeilen runden.
+      var zeilen = Math.max(1, Math.round(gezeigt / SEITE));
+      SEITE = neu;
+      gezeigt = SEITE * zeilen;
+      anwenden();
+    }, 180);
+  });
 
   var suchfeld = document.getElementById('filterSearch');
   var sortfeld = document.getElementById('filterSort');
