@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/schnellansicht.css?v=38">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1359,7 +1360,11 @@ function pflichtangabenHTML(p){
 }
 
 // Kategorien kommen aus der Verwaltung, nicht aus dem Code
-const KATEGORIEN = {"kaese": {"label": "Käse", "icon": "cheese", "eigen": false}, "mangalitza": {"label": "Mangalitza", "icon": "pig", "eigen": false}, "wild": {"label": "Wild", "icon": "deer", "eigen": false}, "hausschwein": {"label": "Hausschwein", "icon": "bacon", "eigen": false}, "geschenk": {"label": "Geschenkbox", "icon": "gift", "eigen": true}};
+/* An window, damit die Schnellansicht sie findet: ein const im
+   Modulkopf waere fuer sie unsichtbar. */
+window.KATEGORIEN = {"kaese": {"label": "Käse", "icon": "cheese", "eigen": false}, "mangalitza": {"label": "Mangalitza", "icon": "pig", "eigen": false}, "wild": {"label": "Wild", "icon": "deer", "eigen": false}, "hausschwein": {"label": "Hausschwein", "icon": "bacon", "eigen": false}, "geschenk": {"label": "Geschenkbox", "icon": "gift", "eigen": true}};
+const KATEGORIEN = window.KATEGORIEN;
+window.GRAMM_OPTIONEN = [100, 200, 300, 500];
 const UNTERKATEGORIEN = {"geschenk": ["kaese", "klassik", "premium", "wurst"], "hausschwein": ["duerre", "geselcht", "schmalz", "speck", "wurst"], "kaese": ["langgereift", "premium", "standard", "ziege-schaf"], "mangalitza": ["edel", "speck", "wurst"], "wild": ["edel", "salami", "schinken"]};
 function catEmoji(c) { const k=(KATEGORIEN[c]||{}).icon||'box'; return `<svg class="ico"><use href="#ic-${k}"/></svg>`; }
 function catLabel(c) { return (KATEGORIEN[c]||{}).label||c; }
@@ -1740,6 +1745,16 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+
+<div class="sa-overlay" id="saOverlay" role="dialog" aria-modal="true"
+     aria-labelledby="saName" hidden>
+  <div class="sa-fenster" id="saFenster">
+    <button type="button" class="sa-zu" onclick="schnellansichtSchliessen()"
+            aria-label="Schließen">&#10005;</button>
+    <div class="sa-inhalt" id="saInhalt"></div>
+  </div>
+</div>
+<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */

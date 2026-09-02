@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/karte.css?v=38">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/schnellansicht.css?v=38">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/produkt.css?v=38">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -427,6 +428,8 @@
 
 <script>
 window.products = [{"id": 19, "name": "Schafkäse", "cat": "kaese", "sub": "ziege-schaf", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Vollmundiger Schafskäse.", "stock": 12, "rating": 4.6, "details": ["Schafmilch", "Vollmundig"], "price": 5.9, "img": "/bauernkoenig-vorschau/static/img/products/ziege.webp", "netto_g": 100, "grundpreis": 59.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 1, "name": "Emmentaler", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Würzig-milder Klassiker. Perfekt für Brotzeit und Gratins.", "stock": 30, "rating": 4.5, "details": ["Vollfett 45% F.i.Tr.", "Kuhmilch, Österreich", "4 Monate gereift"], "price": 3.9, "img": "/bauernkoenig-vorschau/static/img/products/emmentaler.webp", "netto_g": 100, "grundpreis": 39.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 2, "name": "Bergkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Klassischer Alpkäse, herzhaft & aromatisch.", "stock": 25, "rating": 4.6, "details": ["Alpkäse Tradition", "Herzhaft", "Vollfettstufe"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 3, "name": "Bergkäse (10 Monate)", "cat": "kaese", "sub": "langgereift", "emoji": "🧀", "badge": "Lang gereift", "unit": "pro 100 g", "desc": "Intensiv-würzig, leicht bröckelig.", "stock": 20, "rating": 4.8, "details": ["10 Monate gereift", "Würzig, intensiv", "Vollfett"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/bergkaese.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}, {"id": 4, "name": "Heublumenkäse", "cat": "kaese", "sub": "standard", "emoji": "🧀", "badge": "", "unit": "pro 100 g", "desc": "Mit Heublumen veredelt, blumig & würzig.", "stock": 18, "rating": 4.7, "details": ["Heublumen-Umwicklung", "Blumiges Aroma"], "price": 4.9, "img": "/bauernkoenig-vorschau/static/img/products/kraeuter.webp", "netto_g": 100, "grundpreis": 49.0, "zutaten": "", "allergene": "", "naehrwerte": {}, "herkunft": "", "hersteller": "", "lagerung": "", "verkehrsbezeichnung": "", "alkohol_vol": "", "verderblich": true}];
+window.KATEGORIEN = {"kaese": {"label": "Käse", "icon": "cheese"}, "mangalitza": {"label": "Mangalitza", "icon": "pig"}, "wild": {"label": "Wild", "icon": "deer"}, "hausschwein": {"label": "Hausschwein", "icon": "bacon"}, "geschenk": {"label": "Geschenkbox", "icon": "gift"}};
+window.GRAMM_OPTIONEN = [100, 200, 300, 500];
 var PD_ID = 19;
 var PD_BASIS = 5.9;          // Preis je 100 g bei Gewichtsware, sonst Stueckpreis
 var PD_NACH_GEWICHT = true;
@@ -452,6 +455,17 @@ function pdKaufen() {
 }
 </script>
 
+
+
+<div class="sa-overlay" id="saOverlay" role="dialog" aria-modal="true"
+     aria-labelledby="saName" hidden>
+  <div class="sa-fenster" id="saFenster">
+    <button type="button" class="sa-zu" onclick="schnellansichtSchliessen()"
+            aria-label="Schließen">&#10005;</button>
+    <div class="sa-inhalt" id="saInhalt"></div>
+  </div>
+</div>
+<script src="/bauernkoenig-vorschau/static/schnellansicht.js?v=38"></script>
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */
