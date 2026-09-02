@@ -717,8 +717,9 @@
   .kachel-titel{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);
     font-weight:600;color:var(--ink)}
   .kachel-sub{font-size:.85rem;color:var(--brown);margin-top:7px}
-  .kachel-reihe{display:grid;gap:18px;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  /* Feste Spaltenzahl: mit auto-fit blieb bei 1024 px eine Kachel allein
+     in der letzten Zeile, weil dort gerade nur vier Spalten passen. */
+  .kachel-reihe{display:grid;gap:18px;grid-template-columns:repeat(5,1fr)}
   .kachel{position:relative;display:block;border:none;padding:0;cursor:pointer;
     background:none;text-align:left;border-radius:12px;overflow:hidden;
     box-shadow:0 1px 2px rgba(29,29,27,.04),0 2px 12px rgba(29,29,27,.06);
@@ -734,9 +735,22 @@
     letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
   .kachel-zahl{font-size:.68rem;color:var(--brown2);margin-top:3px}
 
+  /* Fuenf Kategorien in zwei oder drei Spalten lassen die letzte Kachel
+     allein stehen. Sie geht deshalb ueber die volle Zeile und bekommt ein
+     flacheres Bild, damit sie nicht doppelt so hoch wird wie die anderen.
+     Eine Kategorie wegzulassen kommt nicht in Frage, sie ist der Einstieg. */
+  @media(max-width:1099px){
+    .kachel-reihe{grid-template-columns:repeat(3,1fr)}
+    .kachel-reihe .kachel:nth-child(4){grid-column:span 2}
+    .kachel-reihe .kachel:nth-child(4) .kachel-bild{aspect-ratio:2/1}
+  }
   @media(max-width:600px){
     .kachel-band{padding:40px 16px 6px}
     .kachel-reihe{grid-template-columns:1fr 1fr;gap:12px}
+    .kachel-reihe .kachel:nth-child(4){grid-column:auto}
+    .kachel-reihe .kachel:nth-child(4) .kachel-bild{aspect-ratio:1/1}
+    .kachel-reihe .kachel:last-child{grid-column:span 2}
+    .kachel-reihe .kachel:last-child .kachel-bild{aspect-ratio:5/2}
     .kachel-text{padding:9px 10px 11px}
     .kachel-name{font-size:.64rem;letter-spacing:.1em}
   }
@@ -756,12 +770,27 @@
     text-transform:uppercase;font-weight:600;color:var(--brand);
     border-bottom:1px solid transparent;transition:border-color .2s}
   .reihe-alle:hover{border-bottom-color:var(--brand)}
-  .reihe-grid{display:grid;gap:20px;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  /* Feste Spaltenzahl je Stufe, keine automatische Aufteilung: die Reihen
+     tragen genau fuenf Karten, ueberzaehlige werden ausgeblendet. Mit
+     auto-fill entstand sonst je nach Fensterbreite eine Luecke, weil fuenf
+     Karten nicht in drei oder vier Spalten aufgehen. */
+  .reihe-grid{display:grid;gap:20px;grid-template-columns:repeat(5,1fr)}
+  @media(max-width:1279px){
+    .reihe-grid{grid-template-columns:repeat(4,1fr)}
+    .reihe-grid .card:nth-child(5){display:none}
+  }
+  @media(max-width:1023px){
+    .reihe-grid{grid-template-columns:repeat(3,1fr)}
+    .reihe-grid .card:nth-child(4){display:none}
+  }
   @media(max-width:600px){
     .reihe{margin-bottom:32px}
     .reihe-titel{font-size:1.2rem}
     .reihe-grid{grid-template-columns:1fr 1fr;gap:12px}
+    /* Am Handy wieder vier Karten, zwei volle Zeilen. display:flex, nicht
+       block: die Karte ist ein Flex-Container. */
+    .reihe-grid .card:nth-child(4){display:flex}
+    .reihe-grid .card:nth-child(5){display:none}
   }
 
   /* ════════ KOPFSCHAU: BILDKASTEN MIT VIER FOLIEN ════════
