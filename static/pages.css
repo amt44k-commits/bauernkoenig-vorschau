@@ -31,7 +31,13 @@ a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
 .nl-form input{flex:1;min-width:0;border:none;border-radius:40px;padding:14px 20px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;color:var(--ink)}
 .nl-form button{background:var(--gold);color:#fff;border:none;border-radius:40px;padding:14px 28px;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
 .nl-form button:hover{background:var(--gold2)}
-.nl-done{display:none;width:100%;color:var(--gold2);font-size:.85rem;margin-top:2px}
+/* Der Hinweis auf die Einwilligung gehoert sichtbar neben das Feld, nicht
+   nur in den Datenschutzhinweis. */
+.nl-recht{max-width:1000px;margin:14px auto 0;font-size:.68rem;line-height:1.7;
+  color:rgba(255,255,255,.62);text-align:center}
+.nl-recht a{color:var(--gold2);text-decoration:underline}
+.nl-done{display:none;max-width:1000px;margin:12px auto 0;color:var(--gold2);
+  font-size:.8rem;line-height:1.6;text-align:center}
 .nl-done.show{display:block}
 @media(max-width:600px){.newsletter-band{padding:36px 16px}.nl-text h3{font-size:1.4rem}.nl-form{max-width:none;flex-direction:column}.nl-form input,.nl-form button{width:100%}}
 

@@ -998,7 +998,7 @@
         <div class="hero-inner">
           <h1 class="hero-title">Feinste <em>Bauernkost,</em><br>direkt vom Hof.</h1>
           <p class="hero-sub">Handverlesene Käse- und Fleischspezialitäten aus Österreich. Mit Liebe hergestellt, mit Stolz geliefert.</p>
-          <a class="hero-btn" href="#sortiment" onclick="zumSortiment();return false">Zum Sortiment</a>
+          <a class="hero-btn" href="/bauernkoenig-vorschau/sortiment/" onclick="zumSortiment();return false">Zum Sortiment</a>
         </div>
       </article>
 
@@ -1014,7 +1014,7 @@
         <div class="hero-inner">
           <h1 class="hero-title">Vom <em>Hof,</em><br>nicht aus der Fabrik.</h1>
           <p class="hero-sub">Eigene Herstellung, lange Reifezeiten und Fleisch von Tieren, die wir kennen. Wer hier kauft, weiß, wo das Essen herkommt.</p>
-          <a class="hero-btn" href="#ueberuns" onclick="document.getElementById('aboutSection').scrollIntoView({behavior:'smooth'});return false">Über uns</a>
+          <a class="hero-btn" href="#hof" onclick="document.getElementById('hof').scrollIntoView({behavior:'smooth'});return false">Über uns</a>
         </div>
       </article>
 
@@ -1022,7 +1022,7 @@
         <div class="hero-inner">
           <h1 class="hero-title">Bergkäse, <em>18 Monate</em> gereift.</h1>
           <p class="hero-sub">Kräftig, würzig, mit Salzkristallen im Bruch. Aus eigener Herstellung, ohne Eile gereift.</p>
-          <a class="hero-btn" href="#sortiment" onclick="zumSortiment('kaese');return false">Käse ansehen</a>
+          <a class="hero-btn" href="/bauernkoenig-vorschau/sortiment/?kategorie=kaese" onclick="zumSortiment('kaese');return false">Käse ansehen</a>
         </div>
       </article>
     </div>
@@ -1094,7 +1094,7 @@
 </section>
 
 <!-- ── GESCHENKBOXEN (eigene Sektion, Design nach M3-Entwurf) ── -->
-<section class="gift-section" id="giftSection">
+<section class="gift-section" id="geschenke">
   <div class="gbx-head">
     <span class="gbx-eyebrow">Geschenke aus dem Hof</span>
     <h2 class="gbx-title">Unsere <em>Geschenkboxen.</em></h2>
@@ -1103,7 +1103,7 @@
   <div class="gbx-grid" id="giftGrid"></div>
 </section>
 
-<section class="about-section" id="aboutSection">
+<section class="about-section" id="hof">
   <div class="about-inner">
     <div class="about-img" id="aboutImg"></div>
     <div class="about-content">
@@ -1206,10 +1206,7 @@
 
 
 
-<!-- ── NEWSLETTER ──
-     Doppelte Einwilligung: die Anmeldung gilt erst mit dem Klick in der
-     Bestaetigungsmail. Vorher hat das Formular nur eine Bestaetigung
-     angezeigt, ohne irgendetwas zu speichern. -->
+
 <section class="newsletter-band" id="newsletter">
   <div class="nl-inner">
     <div class="nl-text">
@@ -1217,17 +1214,17 @@
       <p>Neue Spezialitäten, saisonale Angebote und Genuss-Tipps, direkt in dein Postfach.</p>
     </div>
     <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
-      <input type="email" id="nlEmail" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
-      <button type="submit" id="nlBtn">Abonnieren</button>
+      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
+      <button type="submit">Abonnieren</button>
     </form>
   </div>
   <p class="nl-recht">Mit dem Abonnieren willigst du ein, Werbung per E-Mail zu erhalten.
     Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken,
     und lässt sich jederzeit widerrufen. Näheres im
     <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
-  <p id="nlDone" class="nl-done"></p>
+  <p class="nl-done"></p>
 </section>
-
+<script src="/bauernkoenig-vorschau/static/newsletter.js?v=38"></script>
 
 <footer class="site-footer">
   <div class="inner">
@@ -1235,8 +1232,8 @@
       <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
-    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
-    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/#sortiment">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
+    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/sortiment/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/sortiment/">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
     <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
     <div><h4>Kontakt</h4>
       
@@ -1452,12 +1449,12 @@ function cardHTML(p){
     : (p.stock<=5 ? `<div class="card-stock low">● Nur noch ${p.stock} Stück</div>` : `<div class="card-stock ok">● Auf Lager</div>`);
   return `<div class="card">
     ${p.badge ? `<div class="card-badge ${badgeCls}">${p.badge}</div>` : ''}
-    <a class="card-img-wrap" href="/produkt/${p.id}">
+    <a class="card-img-wrap" href="/bauernkoenig-vorschau/produkt/${p.id}/">
       ${imgHtml}
       <span class="card-cat-tag">${catEmoji(p.cat)} ${catLabel(p.cat)}</span>
     </a>
     <div class="card-body">
-      <a class="card-name" href="/produkt/${p.id}">${p.name}</a>
+      <a class="card-name" href="/bauernkoenig-vorschau/produkt/${p.id}/">${p.name}</a>
       <div class="card-unit">${p.unit}</div>
       <div class="card-desc">${p.desc}</div>
       ${stockHtml}
@@ -1482,7 +1479,7 @@ function kachelnZeichnen(){
     // Geschenkboxen haben weiter unten eine eigene Sektion mit eigener
     // Gestaltung. Die Kachel springt dorthin, statt nur zu filtern.
     const ziel = k === 'geschenk'
-      ? `document.getElementById('giftSection').scrollIntoView({behavior:'smooth'})`
+      ? `document.getElementById('geschenke').scrollIntoView({behavior:'smooth'})`
       : `zumSortiment('${k}')`;
     return `<button type="button" class="kachel" onclick="${ziel}"
         aria-label="${catLabel(k)} ansehen">
@@ -1590,36 +1587,8 @@ function closeMobileMenu(){
   document.body.style.overflow='';
 }
 function mobileAccount(){ closeMobileMenu(); if(currentUser) openProfile(); else openAuth('login'); }
-function subscribeNewsletter(e){
-  e.preventDefault();
-  const feld = document.getElementById('nlEmail');
-  const meldung = document.getElementById('nlDone');
-  const knopf = document.getElementById('nlBtn');
-  if (!feld || !feld.value.trim()) return false;
-  knopf.disabled = true;
-  fetch('/api/newsletter', {
-    method: 'POST', headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email: feld.value.trim(), quelle: 'startseite'})
-  })
-    .then(r => r.json())
-    .then(d => {
-      knopf.disabled = false;
-      if (d.ok) {
-        feld.value = '';
-        meldung.textContent = 'Fast geschafft: wir haben dir eine Bestätigungsmail geschickt. '
-          + 'Erst mit dem Klick darin ist die Anmeldung gültig.';
-      } else {
-        meldung.textContent = d.error || 'Das hat nicht geklappt. Bitte später erneut versuchen.';
-      }
-      meldung.classList.add('show');
-    })
-    .catch(() => {
-      knopf.disabled = false;
-      meldung.textContent = 'Die Verbindung ist abgebrochen. Bitte später erneut versuchen.';
-      meldung.classList.add('show');
-    });
-  return false;
-}
+/* subscribeNewsletter steht in /static/newsletter.js, damit alle Seiten
+   mit Newsletter-Band dieselbe Fassung nutzen. */
 
 /* Warenkorb, Schublade und Kurzmeldung stehen seit dem Umbau in
    /static/warenkorb.js. Sie werden von allen Seiten gebraucht und liegen

@@ -31,14 +31,14 @@ function zeichnen() {
 
   if (!cart.length) {
     ziel.innerHTML = '<p class="ka-leer">Dein Warenkorb ist leer.' +
-      '<a class="btn btn-rand" href="/sortiment">Zum Sortiment</a></p>';
+      '<a class="btn btn-rand" href="/bauernkoenig-vorschau/sortiment/">Zum Sortiment</a></p>';
   } else {
     ziel.innerHTML = cart.map(function (i) {
       return '<div class="posten">' +
-        '<a class="posten-bild" href="/produkt/' + i.id + '">' +
+        '<a class="posten-bild" href="/bauernkoenig-vorschau/produkt/' + i.id + '/">' +
           (i.img ? '<img src="' + esc(i.img) + '" alt="">' : '') + '</a>' +
         '<div class="posten-mitte">' +
-          '<a class="posten-name" href="/produkt/' + i.id + '">' + esc(i.name) + '</a>' +
+          '<a class="posten-name" href="/bauernkoenig-vorschau/produkt/' + i.id + '/">' + esc(i.name) + '</a>' +
           '<div class="posten-menge">' + esc(i.unitLabel) + '</div>' +
           (i.grundpreis ? '<div class="posten-grund">' + eurBk(i.grundpreis) + ' / kg</div>' : '') +
           '<div class="posten-steller">' +

@@ -131,7 +131,7 @@ function renderDrawer() {
     body.innerHTML = '<div class="empty-cart">' +
       '<span><svg class="ico" style="width:30px;height:30px"><use href="#ic-cart"/></svg></span>' +
       'Ihr Warenkorb ist leer.' +
-      '<a class="btn btn-rand" href="/sortiment" style="margin-top:18px">Zum Sortiment</a></div>';
+      '<a class="btn btn-rand" href="/bauernkoenig-vorschau/sortiment/" style="margin-top:18px">Zum Sortiment</a></div>';
   } else {
     body.innerHTML = cart.map(function (i) {
       return '<div class="cart-item">' +
@@ -157,7 +157,7 @@ function renderDrawer() {
 
 function openCart() {
   var o = document.getElementById('overlay'), d = document.getElementById('drawer');
-  if (!o || !d) { location.href = '/kasse'; return; }
+  if (!o || !d) { location.href = '/bauernkoenig-vorschau/kasse/'; return; }
   o.classList.add('open'); d.classList.add('open');
   renderDrawer();
 }

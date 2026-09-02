@@ -39,7 +39,7 @@ function suchen(e) {
   } else {
     // Seit es eine eigene Sortimentsseite gibt, landet die Suche dort und
     // nicht mehr im Filter der Startseite.
-    location.href = '/sortiment?suche=' + encodeURIComponent(begriff);
+    location.href = '/bauernkoenig-vorschau/sortiment/?suche=' + encodeURIComponent(begriff);
   }
   return false;
 }

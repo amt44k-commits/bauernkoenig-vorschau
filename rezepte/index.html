@@ -8,6 +8,7 @@
 <link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
 <link rel="stylesheet" href="/bauernkoenig-vorschau/static/pages.css?v=38">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
 <style>.recipe-img img{width:100%;height:100%;object-fit:cover;display:block}</style>
 <meta name="robots" content="noindex, nofollow">
 </head>
@@ -134,16 +135,25 @@
   <p class="muted">Du hast ein Lieblingsrezept mit unseren Produkten? Schick es uns über das <a href="/bauernkoenig-vorschau/kontakt/">Kontaktformular</a> – die schönsten Ideen veröffentlichen wir hier.</p>
 </main>
 
-<section class="newsletter-band">
+
+<section class="newsletter-band" id="newsletter">
   <div class="nl-inner">
-    <div class="nl-text"><h3>Nichts mehr verpassen</h3><p>Neue Spezialitäten, saisonale Angebote & Genuss-Tipps – direkt in dein Postfach.</p></div>
-    <form class="nl-form" onsubmit="this.querySelector('input').value='';this.querySelector('.nl-done').classList.add('show');return false;">
-      <input type="email" placeholder="deine@email.at" required>
+    <div class="nl-text">
+      <h3>Nichts mehr verpassen</h3>
+      <p>Neue Spezialitäten, saisonale Angebote und Genuss-Tipps, direkt in dein Postfach.</p>
+    </div>
+    <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
+      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
       <button type="submit">Abonnieren</button>
-      <span class="nl-done">✓ Danke, du bist dabei!</span>
     </form>
   </div>
+  <p class="nl-recht">Mit dem Abonnieren willigst du ein, Werbung per E-Mail zu erhalten.
+    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken,
+    und lässt sich jederzeit widerrufen. Näheres im
+    <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <p class="nl-done"></p>
 </section>
+<script src="/bauernkoenig-vorschau/static/newsletter.js?v=38"></script>
 
 <footer class="site-footer">
   <div class="inner">
@@ -151,8 +161,8 @@
       <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
       <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
     </div>
-    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
-    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/#sortiment">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
+    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/sortiment/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
+    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/sortiment/">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
     <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
     <div><h4>Kontakt</h4>
       
@@ -177,6 +187,24 @@
 </div>
 <script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
 
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-title"><svg class="ico"><use href="#ic-cart"/></svg>Warenkorb</span>
+    <button class="close-btn" onclick="closeAll()" aria-label="Schließen">&#10005;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="subtotal-label">Zwischensumme</span><span id="subtotal">€ 0,00</span></div>
+    
+    <p class="shipping-note"><svg class="ico"><use href="#ic-truck"/></svg>Kostenfreier Versand ab € 75</p>
+    
+    <a class="checkout-btn" id="checkoutBtn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
 <script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
 
 <script>
