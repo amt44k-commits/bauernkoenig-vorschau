@@ -141,10 +141,24 @@ function bestellen(e) {
   if (!gewaehlt) { fehler('Bitte eine Zahlungsart wählen.'); return false; }
 
   var wert = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+
+  // Das Formular traegt novalidate (eigene Meldungen), also hier pruefen:
+  // Haken fuer AGB und Widerruf, Wunschtermin nur innerhalb von min und max.
+  var agb = document.getElementById('fAgb');
+  if (agb && !agb.checked) { fehler('Bitte die AGB und die Widerrufsbelehrung bestätigen.'); return false; }
+  var termin = document.getElementById('wunschtermin');
+  if (termin && termin.value) {
+    if ((termin.min && termin.value < termin.min) || (termin.max && termin.value > termin.max)) {
+      fehler('Der Wunschtermin muss in der Zukunft liegen, höchstens 60 Tage voraus.'); return false;
+    }
+    var tag = new Date(termin.value + 'T12:00:00').getDay();
+    if (tag === 0 || tag === 6) { fehler('Wir liefern nicht am Wochenende. Bitte einen Werktag als Wunschtermin wählen.'); return false; }
+  }
   var daten = {
     items: cart.map(function (i) { return { id: i.id, qty: i.qty, grams: i.grams }; }),
     pay: gewaehlt.value,
     voucher: rabatt.code,
+    agb: true,
     delivery_date: wert('wunschtermin'),
     customer: {
       first_name: wert('fVorname'), last_name: wert('fNachname'),

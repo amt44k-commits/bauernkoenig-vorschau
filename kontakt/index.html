@@ -100,10 +100,7 @@
       <div>
         <h2>So erreichst du uns</h2>
         
-        <div class="kontakt-weg">
-          <svg class="ico" aria-hidden="true"><use href="#ic-mail"/></svg>
-          <div><h3>E-Mail</h3><a href="mailto:hallo@bauernkoenig.at">hallo@bauernkoenig.at</a></div>
-        </div>
+        
         <div class="kontakt-weg">
           <svg class="ico" aria-hidden="true"><use href="#ic-pin"/></svg>
           <div><h3>Adresse</h3>Seebensteinerstraße<span>2823 Pitten</span></div>
@@ -112,13 +109,10 @@
 
       <div>
         <h2>Schreib uns</h2>
-        <form class="kontakt-form" onsubmit="return kontaktSenden(event)">
-          <label class="feld"><span>Name</span><input id="kName" required placeholder="Dein Name"></label>
-          <label class="feld"><span>E-Mail</span><input id="kMail" type="email" required placeholder="name@beispiel.at"></label>
-          <label class="feld"><span>Nachricht</span><textarea id="kMsg" required placeholder="Wie können wir helfen?"></textarea></label>
-          <button type="submit" class="knopf knopf-blau">Nachricht senden</button>
-          <p id="kDone" class="kontakt-erledigt" hidden>Danke. Wir melden uns so schnell wie möglich.</p>
-        </form>
+        
+        <p>Die E-Mail-Adresse für Anfragen wird gerade eingerichtet. Bis dahin erreichst du uns
+          über die Adresse in der Fußzeile.</p>
+        
       </div>
     </div>
   </div>
@@ -231,7 +225,7 @@ function kontaktSenden(e){
   var mail = document.getElementById('kMail').value;
   var msg  = document.getElementById('kMsg').value;
   var body = encodeURIComponent(msg + '\n\nVon: ' + name + ' (' + mail + ')');
-  window.location.href = 'mailto:hallo@bauernkoenig.at?subject=' + encodeURIComponent('Anfrage von ' + name) + '&body=' + body;
+  window.location.href = 'mailto:?subject=' + encodeURIComponent('Anfrage von ' + name) + '&body=' + body;
   document.getElementById('kDone').hidden = false;
   return false;
 }

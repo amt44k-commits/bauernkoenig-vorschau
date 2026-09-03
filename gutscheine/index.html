@@ -227,7 +227,9 @@ function gutWaehlen(v, el){
 function gutBestellen(){
   var feld = document.getElementById('gutWahl');
   if(!gutWert){ feld.textContent = 'Bitte zuerst einen Betrag wählen.'; return; }
-  window.location.href = 'mailto:hallo@bauernkoenig.at?subject=' + encodeURIComponent('Gutschein-Bestellung € ' + gutWert)
+  var adresse = '';
+  if(!adresse){ feld.textContent = 'Die Bestelladresse für Gutscheine wird gerade eingerichtet. Bitte schau bald wieder vorbei.'; return; }
+  window.location.href = 'mailto:' + adresse + '?subject=' + encodeURIComponent('Gutschein-Bestellung € ' + gutWert)
     + '&body=' + encodeURIComponent('Ich möchte einen Wertgutschein über € ' + gutWert + ' bestellen.');
 }
 </script>

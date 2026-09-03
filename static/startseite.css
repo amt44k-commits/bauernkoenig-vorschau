@@ -131,7 +131,7 @@ html.ruhe .schau-reiter button.aktiv i::after{animation:none;transform:none}
   .kat-reihe{grid-template-columns:repeat(6,1fr)}
   .kat{grid-column:span 2}
   .kat:nth-child(n+4){grid-column:span 3}
-  .kat:nth-child(3n){border-right:none}
+  .kat:nth-child(3n){border-right:none;margin-right:0}
   .kat{padding:18px 16px 18px 0;margin-right:16px}
   .handwerk-text{padding:56px 40px}
   .handwerk-text h2{font-size:2.1rem}

@@ -4,7 +4,7 @@
 .krume a{color:var(--tinte-3);text-decoration:none}
 .krume a:hover{color:var(--blau)}
 .krume b{font-weight:500;color:var(--tinte)}
-.seitenkopf h1{font-size:3rem;line-height:1.05}
+.seitenkopf h1{font-size:3rem;line-height:1.05;hyphens:auto;overflow-wrap:anywhere}
 .seitenkopf p{font-size:1rem;color:var(--tinte-2);margin-top:12px;max-width:520px}
 
 /* ── Filterzeile ── */

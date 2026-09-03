@@ -102,6 +102,8 @@ main [id],footer[id]{scroll-margin-top:77px}
 .feld input[aria-invalid="true"]{border-color:var(--rot)}
 .fehler{color:var(--rot);font-size:.86rem}
 .hinweis-gut{color:var(--gruen);font-size:.86rem}
+.hinweis-band{background:var(--blau-hell);color:var(--tinte);text-align:center;
+  padding:12px var(--rand);font-size:.9rem;border-bottom:1px solid var(--linie)}
 
 /* ══════════════════════════════════════════════════════════════════
    KOPFZEILE
