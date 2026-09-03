@@ -1,0 +1,210 @@
+/* ══════════════════════════════════════════════════════════════════
+   STARTSEITE, ENTWURF 2
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Kopfschau, Masse von tirolish.at/shop (gemessen 03.09.2026) ──
+   Desktop 1440: Kasten 1280 x 540, Radius 0 20 20 20, Textbox 500 mit
+   Polster 80, Kleintext 13, Titel 48/52, Text 18/21 max 340, Knopf 48
+   hoch mit Polster 15/46 und Radius 0 30 30 30, Reiterleiste 20 darunter
+   mit vier Balken 6 px, Abstand 10, Beschriftung 14 (aktiv fett).
+   Handy 390: Kasten 350 x 450, Polster 25, Titel 32/42, Knopf 42 hoch,
+   Balken je 70 x 6 ohne Beschriftung. */
+.schau{padding:24px 0 0}
+.schau-kasten{position:relative;height:540px;border-radius:0 20px 20px 20px;overflow:hidden;
+  background:var(--blau-hell)}
+/* Motiv kommt als Variable von der Folie (--bild, optional --bild-mobil),
+   damit das Handy ein Hochformat bekommen kann, wo eines vorliegt. */
+.folie{position:absolute;inset:0;background:var(--bild) var(--pos,center)/cover no-repeat var(--blau-hell);
+  display:flex;align-items:flex-start;opacity:0;transition:opacity .7s ease}
+.folie.aktiv{opacity:1;z-index:1}
+html.ruhe .folie{transition:none}
+/* Schleier fuer die Lesbarkeit: von links, wo der Text steht. Die Fotos
+   sind hell, ohne Schleier traegt weisser Text nicht. */
+.folie::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(13,21,38,.86) 0%,rgba(13,21,38,.6) 34%,rgba(13,21,38,.1) 62%,rgba(13,21,38,0) 100%)}
+.folie-text{position:relative;max-width:500px;padding:80px;color:#fff}
+.folie-klein{display:block;font-size:.82rem;font-weight:500;letter-spacing:.04em;
+  color:var(--gold-2);margin-bottom:14px}
+.folie-text h1{font-size:3rem;line-height:1.08;color:#fff;margin:0 0 16px;
+  font-variation-settings:'SOFT' 60,'opsz' 96}
+.folie-text p{font-size:1.125rem;line-height:1.2;color:rgba(255,255,255,.92);max-width:340px}
+.folie-knopf{margin-top:30px;height:48px;padding:0 46px;border-radius:0 30px 30px 30px;
+  font-size:1rem;letter-spacing:.06em}
+
+.schau-reiter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 60px 0}
+.schau-reiter button{background:none;border:none;padding:0;text-align:left;cursor:pointer;
+  color:var(--tinte-2);font-size:.875rem;font-weight:300;transition:color .18s}
+.schau-reiter button i{display:block;height:6px;border-radius:3px;background:var(--linie);
+  overflow:hidden;position:relative;margin-bottom:11px}
+.schau-reiter button i::after{content:"";position:absolute;inset:0;background:var(--blau);
+  transform:scaleX(0);transform-origin:left}
+.schau-reiter button.aktiv{color:var(--tinte);font-weight:500}
+.schau-reiter button.aktiv i::after{animation:balken 6.5s linear forwards}
+html.ruhe .schau-reiter button.aktiv i::after{animation:none;transform:none}
+.schau-reiter button:hover{color:var(--tinte)}
+@keyframes balken{to{transform:scaleX(1)}}
+
+.fakten{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  margin-top:40px;padding:22px 0;border-top:1px solid var(--linie);
+  border-bottom:1px solid var(--linie);font-size:.86rem;color:var(--tinte-2);line-height:1.5}
+.fakten li{position:relative;padding-left:16px}
+.fakten li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;
+  border-radius:50%;background:var(--gold)}
+.fakten b{display:block;font-weight:600;color:var(--tinte)}
+
+/* ── Kategorien ── */
+.kategorien{padding:72px 0 0}
+.kat-reihe{display:grid;grid-template-columns:repeat(5,1fr);
+  border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+.kat{display:flex;align-items:center;gap:16px;padding:22px 20px 22px 0;
+  text-decoration:none;border-right:1px solid var(--linie);margin-right:20px;
+  transition:color .18s}
+.kat:last-child{border-right:none;margin-right:0}
+.kat-bild{width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;
+  background:var(--blau-hell)}
+.kat-bild img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.kat:hover .kat-bild img{transform:scale(1.08)}
+.kat-name{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:500;color:var(--tinte);
+  font-variation-settings:'SOFT' 40,'opsz' 18}
+.kat:hover .kat-name{color:var(--blau)}
+.kat-zahl{font-size:.78rem;color:var(--tinte-3);margin-top:2px}
+
+/* ── Reihen ── */
+.reihen{padding:64px 0 24px}
+.reihe{margin-bottom:56px}
+.reihe .abschnitt-kopf{margin-bottom:22px}
+
+/* ── Handwerk ── */
+.handwerk{background:var(--blau-tief);color:#fff;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:40px}
+.handwerk-bild{min-height:560px}
+.handwerk-bild img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.handwerk-text{padding:80px 80px 80px 72px;display:flex;flex-direction:column;justify-content:center}
+.handwerk-text h2{font-size:2.6rem;line-height:1.12;color:#fff;margin:14px 0 20px;max-width:520px}
+.handwerk-text p{font-size:1rem;line-height:1.75;color:rgba(255,255,255,.72);max-width:520px}
+.handwerk-zahlen{display:grid;grid-template-columns:repeat(3,auto);gap:36px;margin-top:40px;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,.14);width:max-content;max-width:100%}
+.handwerk-zahlen dt{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:500;
+  color:var(--gold-2);line-height:1;font-variant-numeric:tabular-nums}
+.handwerk-zahlen dd{font-size:.82rem;color:rgba(255,255,255,.62);margin-top:8px;max-width:150px}
+
+/* ── Kuehlversand ── */
+.versand{background:var(--blau-hell);padding:88px 0}
+.versand-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.versand-bild{border-radius:var(--radius-gross);overflow:hidden;aspect-ratio:4/3}
+.versand-bild img{width:100%;height:100%;object-fit:cover}
+.versand-text h2{font-size:2.2rem;line-height:1.12;margin:12px 0 16px}
+.versand-text p{font-size:1rem;line-height:1.7;color:var(--tinte-2)}
+.versand-haken{list-style:none;margin-top:26px;display:grid;gap:12px}
+.versand-haken li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;
+  font-size:.92rem;line-height:1.55}
+.versand-haken .ico{width:20px;height:20px;color:var(--gold);stroke-width:2;margin-top:2px}
+
+/* ── Geschenkboxen ── */
+.geschenke{padding:88px 0 72px}
+.geschenke .ware-bild{aspect-ratio:1/1}
+
+/* ── Newsletter ── */
+.newsletter{border-top:1px solid var(--linie);padding:56px 0 48px}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.newsletter h3{font-size:1.7rem;line-height:1.2}
+.newsletter p{font-size:.95rem;color:var(--tinte-2);margin-top:8px}
+.newsletter-form{display:flex;gap:10px}
+.newsletter-form input{flex:1;min-width:0;border:1px solid var(--linie);border-radius:999px;
+  padding:0 20px;height:48px;font:inherit;font-size:.95rem;color:var(--tinte);outline:none;
+  transition:border-color .18s}
+.newsletter-form input:focus{border-color:var(--blau)}
+.newsletter-recht{margin-top:20px;font-size:.74rem;line-height:1.6;color:var(--tinte-3)}
+.newsletter-recht a{color:var(--blau)}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBIL
+   ══════════════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .schau-kasten{height:480px}
+  .folie-text{padding:56px}
+  .folie-text h1{font-size:2.6rem}
+  .schau-reiter{margin:18px 40px 0}
+  /* Fuenf Kategorien in drei Spalten gehen nicht auf: Raster mit sechs
+     Spalten, die ersten drei Kacheln je zwei breit, die letzten beiden je
+     drei, damit die zweite Zeile die volle Breite fuellt. */
+  .kat-reihe{grid-template-columns:repeat(6,1fr)}
+  .kat{grid-column:span 2}
+  .kat:nth-child(n+4){grid-column:span 3}
+  .kat:nth-child(3n){border-right:none}
+  .kat{padding:18px 16px 18px 0;margin-right:16px}
+  .handwerk-text{padding:56px 40px}
+  .handwerk-text h2{font-size:2.1rem}
+  .handwerk-zahlen{gap:24px}
+  .handwerk-zahlen dt{font-size:2rem}
+}
+@media(max-width:900px){
+  .schau{padding-top:16px}
+  .schau-kasten{height:450px}
+  /* Querformat-Fotos zeigen am Handy nur ein Drittel ihrer Breite; jede
+     Folie sagt per --pos-mobil, wo ihr Motiv im Foto liegt. */
+  .folie{align-items:flex-start;background-image:var(--bild-mobil,var(--bild));
+    background-position:var(--pos-mobil,var(--pos,center))}
+  /* Am Handy steht der Text oben, der Schleier kommt von oben, das Motiv
+     bleibt unten frei. */
+  .folie::before{background:linear-gradient(180deg,rgba(13,21,38,.9) 0%,rgba(13,21,38,.74) 45%,rgba(13,21,38,.28) 72%,rgba(13,21,38,0) 100%)}
+  .folie-text{padding:25px;max-width:none}
+  .folie-text h1{font-size:2rem;line-height:1.3;margin-bottom:12px}
+  .folie-text p{font-size:1.125rem;line-height:1.2;max-width:300px}
+  .folie-knopf{margin-top:22px;height:42px;padding:0 32px;font-size:.94rem}
+  .schau-reiter{margin:15px 20px 0;gap:10px}
+  .schau-reiter button span{display:none}
+  .schau-reiter button i{margin-bottom:0}
+  .fakten{grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:32px}
+  .handwerk{grid-template-columns:1fr}
+  .handwerk-bild{min-height:0;aspect-ratio:16/10}
+  .versand-inner{grid-template-columns:1fr;gap:32px}
+  .newsletter-inner{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:600px){
+  .schau-kasten{height:450px;border-radius:0 16px 16px 16px}
+  .fakten{grid-template-columns:1fr;gap:12px;font-size:.84rem}
+  .kategorien{padding-top:48px}
+  .kat-reihe{grid-template-columns:1fr 1fr}
+  .kat,.kat:nth-child(n+4){grid-column:auto}
+  .kat{border-right:none;margin-right:0;padding:14px 0;gap:12px;
+    border-bottom:1px solid var(--linie)}
+  .kat:nth-last-child(-n+1){border-bottom:none}
+  /* Fuenf Kategorien in zwei Spalten: die letzte (Geschenkboxen) nimmt die
+     ganze Zeile, sonst bleibt ein Feld leer. */
+  .kat:last-child{grid-column:1/-1}
+  .kat-bild{width:52px;height:52px}
+  .kat-name{font-size:1.02rem}
+  /* "Hausschwein" ist bei 320 px breiter als die halbe Zeile: Textspalte
+     darf schrumpfen und trennen. */
+  .kat > span{min-width:0}
+  .kat-name{display:block;hyphens:auto;overflow-wrap:break-word}
+  .reihen{padding:44px 0 8px}
+  .reihe{margin-bottom:40px}
+  .handwerk{margin-top:24px}
+  .handwerk-text{padding:40px 18px 44px}
+  .handwerk-text h2{font-size:1.75rem}
+  /* minmax(0,1fr) statt 1fr: "1fr" heisst minmax(auto,1fr) und laesst die
+     Spalte auf ihren Mindestinhalt wachsen. */
+  .handwerk > *{min-width:0}
+  .handwerk-zahlen{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%}
+  .handwerk-zahlen > div{min-width:0}
+  .handwerk-zahlen dt{font-size:1.6rem}
+  .handwerk-zahlen dd{font-size:.74rem;max-width:none}
+  .versand{padding:56px 0}
+  .versand-text h2{font-size:1.7rem}
+  .geschenke{padding:56px 0 44px}
+  .newsletter{padding:40px 0 36px}
+  .newsletter h3{font-size:1.4rem}
+  .newsletter-form{flex-direction:column}
+  /* flex:1 wirkt in der Spalte als flex-basis:0 und drueckte das Feld auf
+     22 px zusammen. */
+  .newsletter-form input{flex:none;width:100%;height:48px}
+  .newsletter-form .knopf{width:100%}
+}
+@media(max-width:360px){
+  .kat-reihe{grid-template-columns:1fr}
+  .kat{border-bottom:1px solid var(--linie)}
+  .kat:last-child{border-bottom:none}
+  .schau-kasten{height:420px}
+}

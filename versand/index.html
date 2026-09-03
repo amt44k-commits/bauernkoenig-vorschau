@@ -1,20 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Versand & Lieferung | Bauern König</title>
+<title>Versand und Lieferung, Bauern König</title>
 <meta name="description" content="Kühlversand in der Isolierbox, Liefertage, Versandkosten und Lieferregionen bei Bauern König.">
+<meta name="theme-color" content="#17233f">
 <link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/pages.css?v=38">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
+<link rel="apple-touch-icon" href="/bauernkoenig-vorschau/static/img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=40">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=40">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/schnellansicht.css?v=40">
+
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/pages.css?v=40">
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
-
-<script>try{var bkP=localStorage.getItem("bk_palette");if(bkP&&/^[a-z]{4,14}$/.test(bkP))document.documentElement.setAttribute("data-theme",bkP);}catch(e){}</script>
-
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -46,155 +51,141 @@
   <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></symbol>
   <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></symbol>
 </svg>
-<div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
-
-<nav class="shell-nav">
-  <a class="nav-logo" href="/bauernkoenig-vorschau/"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
-  <div class="nav-links">
-    <a class="nav-link" href="/bauernkoenig-vorschau/sortiment/">Shop</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/versand/">Versand</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/faq/">FAQ</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+<header class="kopf" id="kopf">
+  <div class="inner">
+    <a class="kopf-logo" href="/bauernkoenig-vorschau/"><img src="/bauernkoenig-vorschau/static/img/logo/zeile-e2-dunkel.svg?v=40" alt="Bauern König, feine Spezialitäten"></a>
+    <nav class="kopf-nav" id="kopfNav" aria-label="Hauptnavigation">
+      <a class="" href="/bauernkoenig-vorschau/sortiment/">Sortiment</a>
+      <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+      <a class="" href="/bauernkoenig-vorschau/versand/">Versand</a>
+      <a href="/bauernkoenig-vorschau/#hof">Der Hof</a>
+      <a class="" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+      
+      <a class="nur-menue" href="#" data-vorschau="aus">Anmelden</a>
+    </nav>
+    <div class="kopf-rechts">
+      <button type="button" class="kopf-rund kopf-suche" id="kopfSuche" aria-label="Suchen" aria-expanded="false" aria-controls="kopfSuchleiste"><svg class="ico"><use href="#ic-search"/></svg></button>
+      <a class="kopf-rund kopf-konto" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
+      <button type="button" class="kopf-korb" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span>Warenkorb</span><b class="cart-count" id="cartCount">0</b></button>
+      <button type="button" class="kopf-burger" id="kopfBurger" aria-label="Menü" aria-expanded="false" aria-controls="kopfNav"><span></span><span></span></button>
+    </div>
   </div>
-  
-  <form class="nav-suche" role="search" onsubmit="return suchen(event)">
-    <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
-    <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
-           aria-label="Sortiment durchsuchen" autocomplete="off">
-  </form>
-  <div class="nav-right">
-    
-    
-      <a class="nav-icon nav-desktop" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
-    
-    <button class="nav-btn cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
-    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+  <div class="kopf-suchleiste" id="kopfSuchleiste">
+    <form role="search" action="/bauernkoenig-vorschau/sortiment/" method="get">
+      <input type="search" name="suche" id="kopfSuchfeld" placeholder="Käse, Speck, Wurst suchen …" aria-label="Sortiment durchsuchen" autocomplete="off" value="">
+      <button type="submit" class="knopf knopf-blau">Suchen</button>
+    </form>
   </div>
-</nav>
+</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mm-head">
-    <span class="mm-logo"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
-    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
+<main>
+
+<section class="seitenkopf">
+  <div class="inner">
+    <nav class="krume" aria-label="Pfad"><a href="/bauernkoenig-vorschau/">Startseite</a><span>/</span><b>Versand</b></nav>
+    <h1>Versand und Lieferung</h1>
+    <p>Frisch verpackt, gekühlt versendet, damit unsere Spezialitäten genauso bei dir ankommen, wie sie den Hof verlassen.</p>
   </div>
-  <nav class="mm-links">
-    <a href="/bauernkoenig-vorschau/sortiment/">Shop</a>
-    <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
-    <a href="/bauernkoenig-vorschau/#hof">Unser Hof</a>
-    <a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a>
-    <a href="/bauernkoenig-vorschau/faq/">FAQ</a>
-    <a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
-    <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
-    <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
-    
-      <div class="mm-account">
-        <a class="mm-btn ghost" href="#" data-vorschau="aus">Anmelden</a>
-        <a class="mm-btn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
-      </div>
-    
-  </nav>
-</div>
-
-<section class="page-hero">
-  <p class="eyebrow">Service</p>
-  <h1>Versand & Lieferung</h1>
-  <p>Frisch verpackt, gekühlt versendet – damit unsere Spezialitäten genauso bei dir ankommen, wie sie den Hof verlassen.</p>
-  <div class="line"></div>
 </section>
 
-<main class="page">
-  <div class="info-grid">
-    <div class="info-card">
-      <svg class="ic" viewBox="0 0 24 24"><path d="M2 6.5h12v9.5H2z"/><path d="M14 9.5h4l3 3v3.5h-7z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></svg>
-      <h3>Kühlversand in der Isolierbox</h3>
-      <p>Alle Frischwaren reisen in einer isolierten Box mit Kühlelementen. Die Kühlung hält 72 Stunden, die Kühlkette bleibt damit bis zur Haustür erhalten.</p>
+<section class="seite">
+  <div class="inner seite-inner">
+    <div class="info-karten">
+      <div class="info-karte">
+        <svg class="ico" aria-hidden="true"><use href="#ic-snow"/></svg>
+        <h3>Kühlversand in der Isolierbox</h3>
+        <p>Alle Frischwaren reisen in einer isolierten Box mit Kühlelementen. Die Kühlung hält 72 Stunden, die Kühlkette bleibt damit bis zur Haustür erhalten.</p>
+      </div>
+      <div class="info-karte">
+        <svg class="ico" aria-hidden="true"><use href="#ic-truck"/></svg>
+        <h3>Liefertage</h3>
+        <p>Versand Mo–Mi für österreichweite Lieferung (Zustellung Di–Fr). So vermeiden wir Pakete übers Wochenende.</p>
+      </div>
+      <div class="info-karte">
+        <svg class="ico" aria-hidden="true"><use href="#ic-clock"/></svg>
+        <h3>Bestellschluss 14:00 Uhr</h3>
+        <p>Bestellungen bis 14:00 Uhr gehen am selben Tag in den Versand.</p>
+      </div>
+      <div class="info-karte">
+        <svg class="ico" aria-hidden="true"><use href="#ic-pin"/></svg>
+        <h3>Liefergebiet</h3>
+        <p>Versand österreichweit. Lieferung nach Deutschland auf Anfrage.</p>
+      </div>
     </div>
-    <div class="info-card">
-      <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
-      <h3>Liefertage</h3>
-      <p>Versand Mo–Mi für österreichweite Lieferung (Zustellung Di–Fr). So vermeiden wir Pakete übers Wochenende.</p>
-    </div>
-    <div class="info-card">
-      <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      <h3>Bestellschluss 14:00 Uhr</h3>
-      <p>Bestellungen bis 14:00 Uhr gehen am selben Tag in den Versand.</p>
-    </div>
-    <div class="info-card">
-      <svg class="ic" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7Z"/><circle cx="12" cy="9" r="2.3"/></svg>
-      <h3>Liefergebiet</h3>
-      <p>Versand österreichweit. Lieferung nach Deutschland auf Anfrage.</p>
-    </div>
+
+    <h2>Versandkosten</h2>
+    <ul>
+      <li>Österreichweiter Kühlversand: <strong>€ 5,90</strong></li>
+      <li><strong>Kostenfrei ab € 75</strong> Bestellwert</li>
+    </ul>
+
+    <h2>Wunsch-Liefertermin</h2>
+    <p>Im Bestellabschluss kannst du ein Wunsch-Lieferdatum angeben. Wir stimmen den Versand so ab, dass deine Ware frisch und zu einem Zeitpunkt ankommt, an dem du sie entgegennehmen kannst.</p>
+
+    <h2>Auspacken und Lagern</h2>
+    <p>Bitte lagere die Ware nach Erhalt umgehend gekühlt. Vakuumierte Produkte halten ungeöffnet mehrere Wochen. Das genaue Mindesthaltbarkeitsdatum findest du auf jeder Verpackung.</p>
+
+    <h2>Fragen zur Lieferung?</h2>
+    <p>Schreib uns über <a href="/bauernkoenig-vorschau/kontakt/">unser Kontaktformular</a>.</p>
   </div>
+</section>
 
-  <h2>Versandkosten</h2>
-  <ul>
-    <li>Österreichweiter Kühlversand: <strong>€ 5,90</strong></li>
-    <li><strong>Kostenfrei ab € 75</strong> Bestellwert</li>
-  </ul>
 
-  <h2>Wunsch-Liefertermin</h2>
-  <p>Im Bestellabschluss kannst du ein Wunsch-Lieferdatum angeben. Wir stimmen den Versand so ab, dass deine Ware frisch und zu einem Zeitpunkt ankommt, an dem du sie entgegennehmen kannst.</p>
+<section class="newsletter" id="newsletter">
+  <div class="inner newsletter-inner">
+    <div>
+      <h3>Neues vom Hof, selten und ohne Lärm.</h3>
+      <p>Neue Sorten, saisonale Boxen und ab und zu ein Rezept.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="return subscribeNewsletter(event)">
+      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
+      <button type="submit" class="knopf knopf-blau">Anmelden</button>
+    </form>
+  </div>
+  <p class="inner newsletter-recht">Mit dem Anmelden willigst du ein, Werbung per E-Mail zu erhalten.
+    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken, und lässt
+    sich jederzeit widerrufen. Näheres im <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <p class="inner nl-done" aria-live="polite"></p>
+</section>
+<script src="/bauernkoenig-vorschau/static/newsletter.js?v=40"></script>
 
-  <h2>Auspacken & Lagern</h2>
-  <p>Bitte lagere die Ware nach Erhalt umgehend gekühlt. Vakuumierte Produkte halten ungeöffnet mehrere Wochen – das genaue Mindesthaltbarkeitsdatum findest du auf jeder Verpackung.</p>
-
-  <h2>Fragen zur Lieferung?</h2>
-  <p>Schreib uns über <a href="/bauernkoenig-vorschau/kontakt/">unser Kontaktformular</a> oder ruf an: <a href="tel:+436601234567">+43 660 123 45 67</a>.</p>
 </main>
 
 
-<section class="newsletter-band" id="newsletter">
-  <div class="nl-inner">
-    <div class="nl-text">
-      <h3>Nichts mehr verpassen</h3>
-      <p>Neue Spezialitäten, saisonale Angebote und Genuss-Tipps, direkt in dein Postfach.</p>
-    </div>
-    <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
-      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
-      <button type="submit">Abonnieren</button>
-    </form>
-  </div>
-  <p class="nl-recht">Mit dem Abonnieren willigst du ein, Werbung per E-Mail zu erhalten.
-    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken,
-    und lässt sich jederzeit widerrufen. Näheres im
-    <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
-  <p class="nl-done"></p>
-</section>
-<script src="/bauernkoenig-vorschau/static/newsletter.js?v=38"></script>
-
-<footer class="site-footer">
+<footer class="fuss" id="kontakt-fuss">
   <div class="inner">
-    <div class="foot-marke">
-      <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
-      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
+    <div class="fuss-marke">
+      <img src="/bauernkoenig-vorschau/static/img/logo/zeile-e2-creme.svg?v=40" alt="Bauern König">
+      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof in Pitten, gekühlt versendet in ganz Österreich.</p>
     </div>
-    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/sortiment/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
-    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/sortiment/">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
-    <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
+    <div><h4>Sortiment</h4>
+      <a href="/bauernkoenig-vorschau/sortiment/">Alle Spezialitäten</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=kaese">Käse</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=hausschwein">Hausschwein</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=mangalitza">Mangalitza</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=wild">Wild</a>
+      <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a></div>
+    <div><h4>Service</h4>
+      <a href="/bauernkoenig-vorschau/versand/">Versand und Kühlkette</a>
+      <a href="/bauernkoenig-vorschau/faq/">Häufige Fragen</a>
+      <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
+      <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
+      <a href="#" data-vorschau="aus">Anmelden</a></div>
+    <div><h4>Rechtliches</h4>
+      <a href="/bauernkoenig-vorschau/impressum/">Impressum</a>
+      <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a>
+      <a href="/bauernkoenig-vorschau/agb/">AGB</a>
+      <a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
     <div><h4>Kontakt</h4>
       
       
-      <a href="/bauernkoenig-vorschau/kontakt/">2823 Pitten, Seebensteinerstraße</a></div>
+      <a href="/bauernkoenig-vorschau/kontakt/">Seebensteinerstraße<br>2823 Pitten</a></div>
   </div>
-  <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
+  <div class="fuss-unten">
+    <span>&copy; 2026 Bauern König</span>
+    <span>Feine Spezialitäten aus Österreich</span>
+  </div>
 </footer>
-
-
-
-<div class="palette-picker" id="palettePicker">
-  <button type="button" class="palette-toggle" id="paletteToggle"
-          aria-expanded="false" aria-controls="paletteMenu" title="Farbpalette wählen">
-    <span class="palette-dots"></span><span class="txt">Farbe</span>
-  </button>
-  <div class="palette-menu" id="paletteMenu" hidden>
-    <h4>Farbpalette</h4>
-    <div id="paletteList" role="radiogroup" aria-label="Farbpalette"></div>
-    <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
-  </div>
-</div>
-<script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
-
 
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
 <div class="drawer" id="drawer">
@@ -212,8 +203,32 @@
   </div>
 </div>
 <div class="toast" id="toast"></div>
-<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
-<script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+
+<div class="cookie-band" id="cookieBand" hidden role="region" aria-label="Hinweis zu Cookies">
+  <p>Diese Seite verwendet nur technisch notwendige Cookies und speichert deinen Warenkorb
+    in deinem Browser. Näheres im <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <button type="button" class="knopf knopf-blau" id="cookieOk">Verstanden</button>
+</div>
+<script>
+(function () {
+  var band = document.getElementById('cookieBand'), ok = document.getElementById('cookieOk');
+  if (!band) return;
+  var gesehen = false;
+  try { gesehen = localStorage.getItem('bk_cookie_hinweis') === '1'; } catch (e) {}
+  if (gesehen) return;
+  band.hidden = false;
+  ok.addEventListener('click', function () {
+    try { localStorage.setItem('bk_cookie_hinweis', '1'); } catch (e) {}
+    band.hidden = true;
+  });
+})();
+</script>
+
+
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=40"></script>
+<script src="/bauernkoenig-vorschau/static/shell.js?v=40"></script>
+
+
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */

@@ -1,138 +1,281 @@
-/* Unterseiten-Styles. Palette, Kopf- und Fusszeile kommen aus shell.css
-   (dort ist die einzige Quelle), hier steht nur der Seiteninhalt. */
-/* ════════ Bauern König – gemeinsames Stylesheet für Unterseiten ════════ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#fff;color:var(--ink);line-height:1.65}
-a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+/* ══════════════════════════════════════════════════════════════════
+   UNTERSEITEN, ENTWURF 2 (uebernommen am 03.09.2026)
+   Rechtstexte, FAQ, Kontakt, Versand, Gutscheine, Rezepte, Anmelden,
+   Registrieren, Newsletter-Bestaetigung, Bestellbestaetigung.
 
-/* TOP BAR */
-.top-bar{background:var(--brand);color:#fff;text-align:center;padding:9px 20px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
-.top-bar b{color:var(--gold2)}
+   Palette, Kopf- und Fusszeile kommen aus shell.css (einzige Quelle).
+   Hier nur der Seiteninhalt. Kein Farbverlauf, keine flaechigen Schatten:
+   Trennung ueber Linien (var(--linie)), Flaechenwechsel ueber
+   var(--blau-hell). Fraunces (aus shell.css) fuer Ueberschriften,
+   DM Sans fuer Text.
+   ══════════════════════════════════════════════════════════════════ */
 
-/* HEADER */
-.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:74px}
-.back-shop{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line);padding:10px 20px;border-radius:40px;transition:all .2s}
-.back-shop:hover{border-color:var(--brand);color:var(--brand);text-decoration:none}
+/* ── Seitenkopf und Brotkrume (Werte aus sortiment.css, damit alle
+      Seiten gleich beginnen) ── */
+.seitenkopf{padding:44px 0 28px}
+.krume{font-size:.78rem;color:var(--tinte-3);display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.krume a{color:var(--tinte-3);text-decoration:none}
+.krume a:hover{color:var(--blau)}
+.krume b{font-weight:500;color:var(--tinte)}
+.seitenkopf h1{font-size:3rem;line-height:1.05}
+.seitenkopf p{font-size:1rem;color:var(--tinte-2);margin-top:12px;max-width:560px}
 
-/* Header-Navi (einheitlich mit Shop) */
-.site-links{display:flex;gap:22px}
-.snav-btn.solid:hover{background:var(--brand2);border-color:var(--brand2);color:#fff}
+/* ── Inhaltsrahmen ──
+   .seite-inner: 860 px Textbreite fuer Rechtstexte.
+   Rasterseiten (Kontakt, Gutscheine, Rezepte) nehmen die volle .inner-Breite. */
+.seite{padding:12px 0 80px}
+.seite-inner{max-width:860px}
 
-@media(max-width:560px){.site-actions .snav-btn:not(.solid){display:none}}
+/* ── Fliesstext-Typografie (Rechtstexte) ── */
+.seite h2{font-size:1.5rem;font-weight:500;color:var(--tinte);margin:36px 0 14px}
+.seite h2:first-child{margin-top:0}
+.seite-inner h2{padding-bottom:10px;border-bottom:1px solid var(--linie)}
+.seite h3{font-size:1.15rem;font-weight:500;color:var(--tinte);margin:24px 0 8px}
+.seite p{font-size:.95rem;line-height:1.75;color:var(--tinte-2);margin-bottom:14px}
+.seite ul,.seite ol{margin:0 0 18px 22px}
+.seite li{font-size:.95rem;line-height:1.75;color:var(--tinte-2);margin-bottom:8px}
+.seite strong{color:var(--tinte);font-weight:600}
+.seite a{color:var(--blau);text-decoration:none;border-bottom:1px solid var(--linie);
+  transition:border-color .18s}
+.seite a:hover{border-bottom-color:var(--blau)}
+/* Knopf-Links im Inhalt behalten ihre Knopffarbe (sonst faerbt .seite a
+   die Beschriftung dunkel und sie verschwindet auf dem dunklen Knopf). */
+.seite a.knopf{border-bottom:none}
+.seite a.knopf-blau{color:#fff}
+.seite a.knopf-rand,.seite a.knopf-hell{color:var(--blau)}
+.seite a.knopf-rand:hover{color:#fff}
+.notiz,.muted{color:var(--tinte-3);font-size:.85rem;line-height:1.7}
 
-/* Newsletter-Band (einheitlich mit Shop) */
-.newsletter-band{background:var(--brand);color:#fff;padding:50px 40px}
-.nl-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.nl-text h3{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:#fff;margin-bottom:6px}
-.nl-text p{font-size:.88rem;color:rgba(255,255,255,.82);max-width:440px}
-.nl-form{display:flex;flex-wrap:wrap;gap:10px;flex:1;min-width:280px;max-width:480px}
-.nl-form input{flex:1;min-width:0;border:none;border-radius:40px;padding:14px 20px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;color:var(--ink)}
-.nl-form button{background:var(--gold);color:#fff;border:none;border-radius:40px;padding:14px 28px;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
-.nl-form button:hover{background:var(--gold2)}
-/* Der Hinweis auf die Einwilligung gehoert sichtbar neben das Feld, nicht
-   nur in den Datenschutzhinweis. */
-.nl-recht{max-width:1000px;margin:14px auto 0;font-size:.68rem;line-height:1.7;
-  color:rgba(255,255,255,.62);text-align:center}
-.nl-recht a{color:var(--gold2);text-decoration:underline}
-.nl-done{display:none;max-width:1000px;margin:12px auto 0;color:var(--gold2);
-  font-size:.8rem;line-height:1.6;text-align:center}
+/* ── Tabellen mit Linien ── */
+.seite table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:.92rem}
+.seite th,.seite td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--linie);
+  line-height:1.6;color:var(--tinte-2)}
+.seite th{font-weight:600;color:var(--tinte)}
+.seite tr:first-child th{border-top:1px solid var(--linie)}
+
+/* ── Muster-Kasten (Widerrufsformular) ── */
+.muster-kasten{border:1px solid var(--linie);border-radius:var(--radius);
+  background:var(--blau-hell);padding:22px 24px;margin:14px 0 20px;
+  font-size:.9rem;line-height:1.9;color:var(--tinte-2)}
+.muster-kasten p{margin:0 0 8px;color:var(--tinte-2)}
+
+/* ══════════════════════════════════════════════════════════════════
+   INFO-KARTEN (Versand): Raster, Karten auf var(--blau-hell), ohne Rahmen
+   ══════════════════════════════════════════════════════════════════ */
+.info-karten{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:8px 0 12px}
+.info-karte{background:var(--blau-hell);border-radius:var(--radius-gross);padding:26px 26px}
+.info-karte .ico{width:30px;height:30px;color:var(--blau);stroke-width:1.6;margin-bottom:14px}
+.info-karte h3{font-size:1.1rem;font-weight:500;color:var(--tinte);margin:0 0 8px}
+.info-karte p{font-size:.9rem;line-height:1.65;color:var(--tinte-2);margin:0}
+
+/* ══════════════════════════════════════════════════════════════════
+   FAQ-AKKORDEON: Linie zwischen den Fragen, Frage als Knopf,
+   Antwort klappt auf und zu (Skript im Seiten-JS)
+   ══════════════════════════════════════════════════════════════════ */
+.faq-liste{border-top:1px solid var(--linie)}
+.faq-eintrag{border-bottom:1px solid var(--linie)}
+.faq-frage{width:100%;background:none;border:none;text-align:left;padding:20px 2px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-family:inherit;font-size:1rem;font-weight:500;color:var(--tinte);
+  transition:color .18s}
+.faq-frage:hover{color:var(--blau)}
+.faq-zeichen{flex-shrink:0;width:22px;height:22px;color:var(--gold);
+  transition:transform .25s}
+.faq-zeichen .ico{width:22px;height:22px;stroke-width:1.8}
+.faq-eintrag.auf .faq-zeichen{transform:rotate(45deg)}
+.faq-antwort{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-eintrag.auf .faq-antwort{max-height:420px}
+.faq-antwort p{font-size:.93rem;line-height:1.75;color:var(--tinte-2);
+  margin:0;padding:0 2px 22px}
+
+/* ══════════════════════════════════════════════════════════════════
+   KONTAKT: zwei Spalten, Kontaktwege mit Symbol, Formular mit .feld
+   ══════════════════════════════════════════════════════════════════ */
+.kontakt-raster{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.kontakt-weg{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.kontakt-weg .ico{width:24px;height:24px;color:var(--blau);flex-shrink:0;margin-top:2px}
+.kontakt-weg h3{font-size:.98rem;font-weight:500;color:var(--tinte);margin:0 0 3px}
+.kontakt-weg a{font-size:.95rem;color:var(--blau)}
+.kontakt-weg span{display:block;font-size:.85rem;color:var(--tinte-3)}
+.kontakt-form{display:flex;flex-direction:column;gap:16px}
+.kontakt-form .knopf{align-self:flex-start;margin-top:4px}
+.kontakt-erledigt{color:var(--gruen);font-size:.9rem;margin-top:4px}
+
+/* ══════════════════════════════════════════════════════════════════
+   GUTSCHEINE: Kacheln mit Wert
+   ══════════════════════════════════════════════════════════════════ */
+.gut-raster{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:22px 0 26px}
+.gut{border:1px solid var(--linie);border-radius:var(--radius-gross);padding:30px 20px;
+  text-align:center;background:#fff;cursor:pointer;transition:border-color .18s,background .18s}
+.gut:hover{border-color:var(--blau)}
+.gut.aktiv{border-color:var(--blau);background:var(--blau-hell)}
+.gut-wert{font-family:'Fraunces',serif;font-size:2rem;font-weight:500;color:var(--blau);
+  font-variant-numeric:tabular-nums}
+.gut-label{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--tinte-3);margin-top:6px}
+.gut-abschluss{text-align:center;margin:8px 0 28px}
+.gut-abschluss p{margin-bottom:16px}
+
+/* ══════════════════════════════════════════════════════════════════
+   REZEPTE: Karten mit Bildflaeche (Platzhalter var(--blau-hell))
+   ══════════════════════════════════════════════════════════════════ */
+.rezept-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:8px 0 24px}
+.rezept{border:1px solid var(--linie);border-radius:var(--radius-gross);overflow:hidden;
+  background:#fff;display:flex;flex-direction:column}
+.rezept-bild{aspect-ratio:16/10;background:var(--blau-hell);overflow:hidden}
+.rezept-bild img{width:100%;height:100%;object-fit:cover}
+.rezept-text{padding:18px 20px}
+.rezept-marke{display:inline-block;font-size:.64rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);background:var(--blau-hell);
+  padding:4px 11px;border-radius:999px}
+.rezept-text h3{font-size:1.18rem;font-weight:500;color:var(--tinte);margin:12px 0 6px}
+.rezept-text p{font-size:.88rem;line-height:1.6;color:var(--tinte-2);margin:0}
+
+/* ══════════════════════════════════════════════════════════════════
+   ANMELDEN / REGISTRIEREN: Karte mittig, max 460 px
+   ══════════════════════════════════════════════════════════════════ */
+.konto-karte{max-width:460px;margin:0 auto;border:1px solid var(--linie);
+  border-radius:var(--radius-gross);padding:32px 30px}
+.konto-reiter{display:flex;gap:8px;margin-bottom:24px}
+.konto-reiter a{flex:1;text-align:center;padding:11px;border-radius:999px;
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--tinte-2);border:1px solid var(--linie);text-decoration:none;
+  transition:border-color .18s,color .18s,background .18s}
+.konto-reiter a:hover{border-color:var(--blau);color:var(--blau)}
+.konto-reiter a.aktiv{background:var(--blau);border-color:var(--blau);color:#fff}
+.konto-form{display:flex;flex-direction:column;gap:16px}
+.feld-paar{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.konto-text{font-size:.9rem;line-height:1.65;color:var(--tinte-2);margin-bottom:16px;max-width:560px}
+.konto-abschnitt{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin:8px 0 -2px}
+.konto-haken{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;
+  line-height:1.5;color:var(--tinte-2)}
+.konto-haken input{margin-top:3px;width:16px;height:16px;accent-color:var(--blau);flex-shrink:0}
+.konto-haken a{color:var(--blau)}
+.konto-knopf{width:100%;margin-top:4px}
+.konto-fuss{text-align:center;font-size:.86rem;color:var(--tinte-3);margin-top:6px}
+.konto-fuss a{color:var(--blau);font-weight:500}
+.konto-vergessen{text-align:right;font-size:.82rem;margin-top:-6px}
+.konto-vergessen a{color:var(--tinte-3)}
+.konto-vergessen a:hover{color:var(--blau)}
+.konto-karte .fehler{margin-bottom:16px;background:#fbeeee;border-radius:var(--radius);
+  padding:11px 14px;font-size:.86rem}
+.konto-karte a{border-bottom:none}
+
+/* ══════════════════════════════════════════════════════════════════
+   KONTOSEITE: breiter (max 960 px), Abschnitte mit Linien
+   ══════════════════════════════════════════════════════════════════ */
+.konto-inner{max-width:960px}
+.konto-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.konto-block{padding:32px 0;border-top:1px solid var(--linie)}
+.konto-block:first-of-type{border-top:none;padding-top:8px}
+.konto-block h2{font-size:1.4rem;font-weight:500;color:var(--tinte);margin:0 0 18px}
+.konto-formular{display:flex;flex-direction:column;gap:16px;align-items:stretch}
+.konto-formular .knopf{align-self:flex-start}
+.konto-fest{width:100%;border:1px solid var(--linie);border-radius:var(--radius);
+  padding:0 14px;height:46px;display:flex;align-items:center;font-size:.95rem;
+  color:var(--tinte-3);background:var(--blau-hell)}
+.konto-loeschen{color:var(--rot);border-color:var(--rot)}
+.konto-loeschen:hover{background:var(--rot);color:#fff;border-color:var(--rot)}
+.konto-leer{font-size:.95rem;color:var(--tinte-2)}
+.konto-leer a{color:var(--blau);font-weight:500}
+/* Bestelltabelle */
+.konto-tabelle-huelle{overflow-x:auto}
+.konto-tabelle{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}
+.konto-tabelle th{text-align:left;padding:0 12px 12px;font-size:.72rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--tinte-3);
+  border-bottom:1px solid var(--linie)}
+.konto-tabelle td{padding:14px 12px;border-bottom:1px solid var(--linie);
+  color:var(--tinte-2);vertical-align:top}
+.konto-tabelle td b{color:var(--tinte);font-weight:600}
+.konto-tabelle .rechts{text-align:right}
+.konto-klein{display:block;font-size:.78rem;color:var(--tinte-3);margin-top:2px}
+
+/* ══════════════════════════════════════════════════════════════════
+   STATUS-SEITEN: Newsletter-Bestaetigung, Bestellbestaetigung
+   ══════════════════════════════════════════════════════════════════ */
+.status-block{text-align:center;max-width:640px;margin:0 auto;padding:8px 0 8px}
+.status-zeichen{width:64px;height:64px;border-radius:50%;display:inline-flex;
+  align-items:center;justify-content:center;margin-bottom:20px}
+.status-zeichen .ico{width:30px;height:30px;stroke-width:2}
+.status-ok{background:#eaf3ea;color:var(--gruen)}
+.status-fehler{background:#fbeeee;color:var(--rot)}
+.status-block h1{font-size:2.2rem;line-height:1.1;margin-bottom:14px}
+.status-block p{font-size:.95rem;line-height:1.8;color:var(--tinte-2);margin-bottom:12px}
+.status-block .knopf{margin-top:14px}
+
+/* Bestellbestaetigung: ruhige Karte mit Linien */
+.beleg{max-width:560px;margin:0 auto;border:1px solid var(--linie);
+  border-radius:var(--radius-gross);overflow:hidden}
+.beleg-kopf{padding:22px 26px;border-bottom:1px solid var(--linie)}
+.beleg-kopf .eyebrow{margin-bottom:6px}
+.beleg-nummer{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--tinte)}
+.beleg-zeile{display:flex;justify-content:space-between;gap:16px;padding:14px 26px;
+  border-bottom:1px solid var(--linie);font-size:.95rem;color:var(--tinte-2)}
+.beleg-zeile b{color:var(--tinte);font-variant-numeric:tabular-nums}
+.beleg-zeile.summe{font-size:1.05rem}
+.beleg-text{padding:20px 26px;font-size:.92rem;line-height:1.7;color:var(--tinte-2)}
+.beleg-text p{margin-bottom:10px}
+.beleg-text p:last-child{margin-bottom:0}
+.beleg-bank{background:var(--blau-hell);border-radius:var(--radius);padding:14px 16px;
+  font-size:.9rem;line-height:1.7;color:var(--tinte);margin-top:6px}
+.beleg-bank b{font-variant-numeric:tabular-nums}
+.status-block .beleg{margin-top:8px}
+.beleg-weiter{text-align:center;margin-top:26px}
+
+/* ══════════════════════════════════════════════════════════════════
+   NEWSLETTER-BAND (_newsletter.html)
+   Auf den Unterseiten liegt das Band-CSS hier, weil startseite.css nur
+   auf der Startseite geladen wird. Werte identisch zu startseite.css.
+   ══════════════════════════════════════════════════════════════════ */
+.newsletter{border-top:1px solid var(--linie);padding:56px 0 48px}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.newsletter h3{font-size:1.7rem;line-height:1.2}
+.newsletter p{font-size:.95rem;color:var(--tinte-2);margin-top:8px}
+.newsletter-form{display:flex;gap:10px}
+.newsletter-form input{flex:1;min-width:0;border:1px solid var(--linie);border-radius:999px;
+  padding:0 20px;height:48px;font:inherit;font-size:.95rem;color:var(--tinte);outline:none;
+  transition:border-color .18s}
+.newsletter-form input:focus{border-color:var(--blau)}
+.newsletter-recht{margin-top:20px;font-size:.74rem;line-height:1.6;color:var(--tinte-3)}
+.newsletter-recht a{color:var(--blau)}
+.nl-done{margin-top:14px;font-size:.84rem;line-height:1.6;color:var(--gruen);display:none}
 .nl-done.show{display:block}
-@media(max-width:600px){.newsletter-band{padding:36px 16px}.nl-text h3{font-size:1.4rem}.nl-form{max-width:none;flex-direction:column}.nl-form input,.nl-form button{width:100%}}
 
-/* PAGE HEADER */
-.page-hero{background:linear-gradient(135deg,var(--brand),var(--brand-deep));color:#fff;padding:70px 48px 60px;text-align:center}
-.page-hero .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:12px}
-.page-hero p{font-size:.95rem;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto}
-.page-hero .line{width:46px;height:2px;background:var(--gold);margin:20px auto 0}
+/* ══════════════════════════════════════════════════════════════════
+   MOBIL
+   ══════════════════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  .kontakt-raster{grid-template-columns:1fr;gap:36px}
+  .rezept-raster{grid-template-columns:repeat(2,1fr)}
+  .newsletter-inner{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:600px){
+  .seitenkopf{padding:28px 0 18px}
+  .seitenkopf h1{font-size:2.2rem}
+  .seitenkopf p{font-size:.92rem}
+  .seite{padding:8px 0 56px}
+  .seite h2{font-size:1.35rem;margin-top:30px}
+  .info-karten{grid-template-columns:1fr;gap:14px}
+  .gut-raster{grid-template-columns:1fr 1fr;gap:12px}
+  .rezept-raster{grid-template-columns:1fr;gap:20px}
+  .feld-paar{grid-template-columns:1fr}
+  .konto-kopf{flex-direction:column;align-items:flex-start;gap:12px}
+  .konto-block{padding:26px 0}
+  .status-block h1{font-size:1.7rem}
+  .newsletter{padding:40px 0 36px}
+  .newsletter h3{font-size:1.4rem}
+  .newsletter-form{flex-direction:column}
+  .newsletter-form input{flex:none;width:100%;height:48px}
+  .newsletter-form .knopf{width:100%}
+}
+@media(max-width:360px){
+  .gut-raster{grid-template-columns:1fr}
+}
 
-/* CONTENT */
-.page{max-width:860px;margin:0 auto;padding:60px 24px 80px}
-.page h2{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:600;color:var(--brand);margin:34px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.page h2:first-child{margin-top:0}
-.page h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin:22px 0 8px}
-.page p{color:var(--brown);margin-bottom:14px;font-size:.95rem}
-.page ul,.page ol{margin:0 0 16px 22px}
-.page li{color:var(--brown);margin-bottom:7px;font-size:.95rem}
-.page strong{color:var(--ink)}
-.page a{font-weight:500}
-.muted{color:var(--brown2);font-size:.85rem}
-
-/* INFO CARDS / GRID */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin:24px 0}
-.info-card{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:26px 24px}
-.info-card .ic{width:38px;height:38px;stroke:var(--brand);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
-.info-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brand);margin-bottom:8px}
-.info-card p{font-size:.86rem;margin-bottom:0}
-
-/* FAQ ACCORDION */
-.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;background:#fff}
-.faq-q{width:100%;text-align:left;background:var(--soft);border:none;padding:18px 22px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
-.faq-q:hover{color:var(--brand)}
-.faq-q .plus{font-size:1.3rem;color:var(--gold);transition:transform .25s;flex-shrink:0}
-.faq-item.open .plus{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 22px}
-.faq-item.open .faq-a{max-height:400px;padding:16px 22px 20px}
-.faq-a p{margin-bottom:0}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:10px}
-@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
-.contact-method{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
-.contact-method .ic{width:26px;height:26px;stroke:var(--brand);fill:none;stroke-width:1.6;flex-shrink:0;margin-top:2px}
-.contact-method h3{font-size:.95rem;margin-bottom:2px}
-.contact-method a{font-size:.95rem}
-.form-field{display:flex;flex-direction:column;margin-bottom:16px}
-.form-field label{font-size:.74rem;letter-spacing:.06em;color:var(--brown);margin-bottom:6px}
-.form-field input,.form-field textarea,.form-field select{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--ink);background:var(--soft);outline:none;transition:border-color .2s}
-.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--brand)}
-.form-field textarea{resize:vertical;min-height:120px}
-.btn-primary{background:var(--brand);color:#fff;border:none;border-radius:40px;padding:14px 34px;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .2s}
-.btn-primary:hover{background:var(--brand2);box-shadow:0 8px 22px rgba(var(--brand-rgb),.25)}
-.btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold2)}
-
-/* VOUCHER CARDS */
-.voucher-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:26px 0}
-.voucher{border:2px solid var(--line);border-radius:16px;padding:28px 20px;text-align:center;transition:all .2s;cursor:pointer;background:#fff}
-.voucher:hover{border-color:var(--gold);box-shadow:0 12px 30px rgba(195,154,77,.18);transform:translateY(-4px)}
-.voucher .val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--brand)}
-.voucher .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brown2);margin-top:4px}
-
-/* RECIPE CARDS */
-.recipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin:26px 0}
-.recipe{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 12px rgba(29,29,27,.05)}
-.recipe-img{aspect-ratio:16/10;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:3rem}
-.recipe-body{padding:18px 20px}
-.recipe-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--brand);margin-bottom:6px}
-.recipe-body p{font-size:.86rem;margin-bottom:10px}
-.recipe-tag{display:inline-block;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--soft);padding:4px 11px;border-radius:40px}
-
-/* AUTH (Anmelden / Registrieren) */
-.auth-wrap{max-width:500px;margin:0 auto;padding:50px 24px 70px}
-.auth-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 24px rgba(29,29,27,.06);padding:34px 30px}
-.auth-tabs{display:flex;gap:8px;margin-bottom:26px}
-.auth-tabs a{flex:1;text-align:center;padding:12px;border-radius:40px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;border:1.5px solid var(--line);color:var(--brown)}
-.auth-tabs a:hover{text-decoration:none;border-color:var(--brand);color:var(--brand)}
-.auth-tabs a.active{background:var(--brand);border-color:var(--brand);color:#fff}
-.auth-err{background:#fdecea;color:#a33;border-radius:8px;padding:11px 14px;font-size:.82rem;margin-bottom:16px;display:none}
-.auth-err.show{display:block}
-.auth-section{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:22px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.auth-section:first-child{margin-top:0}
-.auth-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:480px){.auth-row{grid-template-columns:1fr}}
-.auth-check{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--brown);margin:4px 0 2px}
-.auth-check input{margin-top:3px;accent-color:var(--brand);flex-shrink:0}
-.auth-check a{font-weight:500}
-.auth-submit{width:100%;margin-top:18px}
-.auth-hint{text-align:center;font-size:.82rem;color:var(--brown2);margin-top:18px}
-.auth-hint a{font-weight:600}
-
-/* FOOTER */
-.site-footer{background:var(--brand);color:#fff;padding:48px 48px 28px;margin-top:40px}
-
-@media(max-width:600px){.back-shop{padding:8px 14px;font-size:.66rem}
-  .page-hero{padding:50px 16px 44px}
-  .page{padding:40px 16px 60px}
+/* ── Druck (Widerrufsformular) ── */
+@media print{
+  .kopf,.fuss,.newsletter,.cookie-band,.warenkorb-schublade,.warenkorb-huelle,
+  .krume,.nur-druck-weg{display:none !important}
+  .seite{padding:0}
 }

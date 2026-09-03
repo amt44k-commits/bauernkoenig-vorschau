@@ -140,7 +140,7 @@ function openDetail(id) {
         + '<div class="pd-actions">'
           + (p.stock > 0
             ? '<button class="pd-add-btn" onclick="addToCart(' + p.id
-              + ',pdSelectedGrams);closeDetail()">+ In den Warenkorb</button>'
+              + ',pdSelectedGrams);closeDetail()">In den Warenkorb</button>'
             : '<button class="pd-add-btn" disabled>Derzeit vergriffen</button>')
         + '</div>'
         + '<p class="pd-seite">Alle Angaben auf der '

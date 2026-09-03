@@ -1,58 +1,45 @@
-/* Mobiles Menue der Kopfzeile. Wird von allen Seiten geladen.
-   Die Startseite ergaenzt darueber hinaus den Konto-Kasten (mmAccountBox). */
-function toggleMobileMenu() {
-  const m = document.getElementById('mobileMenu');
-  const b = document.getElementById('navBurger');
-  if (!m) return;
-  const offen = m.classList.toggle('open');
-  if (b) b.classList.toggle('open', offen);
-  document.body.style.overflow = offen ? 'hidden' : '';
-}
+/* ══════════════════════════════════════════════════════════════════
+   KOPFZEILE (Entwurf 2): Aufklappmenue am Handy und Suchleiste.
+   Wird von allen Seiten geladen.
 
-function closeMobileMenu() {
-  const m = document.getElementById('mobileMenu');
-  const b = document.getElementById('navBurger');
-  if (m) m.classList.remove('open');
-  if (b) b.classList.remove('open');
-  document.body.style.overflow = '';
-}
+   Burger: setzt .menue-auf am Kopf, die Navigation haengt dann als
+   Liste unter dem Kopf (Regeln in shell.css). Lupe: setzt .suche-auf,
+   die Suchleiste klappt auf und das Feld bekommt den Fokus; Absenden
+   fuehrt nach /sortiment?suche=... (normales Formular, geht auch ohne
+   JavaScript). Klick daneben, Escape und ein Klick auf einen Eintrag
+   schliessen beides.
+   ══════════════════════════════════════════════════════════════════ */
+(function () {
+  var kopf = document.getElementById('kopf');
+  if (!kopf) return;
+  var burger = document.getElementById('kopfBurger');
+  var lupe = document.getElementById('kopfSuche');
+  var feld = document.getElementById('kopfSuchfeld');
 
-// Menue schliesst sich, sobald ein Ziel auf derselben Seite angesprungen wird
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('.mobile-menu a');
-  if (a && a.getAttribute('href') && a.getAttribute('href').startsWith('#')) closeMobileMenu();
-});
-
-
-/* Suche in der Kopfzeile. Auf der Startseite setzt sie den Filter des
-   Sortiments, von jeder anderen Seite springt sie mit dem Begriff dorthin. */
-function suchen(e) {
-  e.preventDefault();
-  const feld = document.getElementById('navSuche');
-  const begriff = (feld && feld.value || '').trim();
-  const filter = document.getElementById('filterSearch');
-  if (filter) {
-    filter.value = begriff;
-    if (typeof applyFilters === 'function') applyFilters();
-    const ziel = document.querySelector('.section-head') || document.querySelector('.products');
-    if (ziel) ziel.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    // Seit es eine eigene Sortimentsseite gibt, landet die Suche dort und
-    // nicht mehr im Filter der Startseite.
-    location.href = '/bauernkoenig-vorschau/sortiment/?suche=' + encodeURIComponent(begriff);
+  function zu() {
+    kopf.classList.remove('menue-auf', 'suche-auf');
+    if (burger) burger.setAttribute('aria-expanded', 'false');
+    if (lupe) lupe.setAttribute('aria-expanded', 'false');
   }
-  return false;
-}
-
-/* Begriff aus der Adresse uebernehmen, wenn man von einer Unterseite kommt */
-document.addEventListener('DOMContentLoaded', function () {
-  const begriff = new URLSearchParams(location.search).get('suche');
-  if (!begriff) return;
-  const feld = document.getElementById('navSuche');
-  const filter = document.getElementById('filterSearch');
-  if (feld) feld.value = begriff;
-  if (filter) {
-    filter.value = begriff;
-    if (typeof applyFilters === 'function') applyFilters();
-  }
-});
+  if (burger) burger.addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    var auf = !kopf.classList.contains('menue-auf');
+    zu();
+    if (auf) { kopf.classList.add('menue-auf'); burger.setAttribute('aria-expanded', 'true'); }
+  });
+  if (lupe) lupe.addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    var auf = !kopf.classList.contains('suche-auf');
+    zu();
+    if (auf) {
+      kopf.classList.add('suche-auf'); lupe.setAttribute('aria-expanded', 'true');
+      if (feld) feld.focus();
+    }
+  });
+  kopf.querySelectorAll('.kopf-nav a').forEach(function (a) { a.addEventListener('click', zu); });
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('#kopf')) return;
+    zu();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu(); });
+})();

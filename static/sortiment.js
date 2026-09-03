@@ -24,7 +24,7 @@ var karten = [];
 var stand = { suche: '', cat: 'all', sort: '' };
 
 document.addEventListener('DOMContentLoaded', function () {
-  karten = Array.prototype.slice.call(document.querySelectorAll('#raster .karte'));
+  karten = Array.prototype.slice.call(document.querySelectorAll('#raster .ware'));
   SEITE = seitengroesse();
   gezeigt = SEITE;
 
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var vorgabeSuche = param.get('suche');
   if (vorgabeSuche) { stand.suche = vorgabeSuche.toLowerCase(); if (suchfeld) suchfeld.value = vorgabeSuche; }
   if (vorgabeKat) {
-    var chip = document.querySelector('.chip[data-cat="' + CSS.escape(vorgabeKat) + '"]');
+    var chip = document.querySelector('.tab[data-cat="' + CSS.escape(vorgabeKat) + '"]');
     if (chip) { stand.cat = vorgabeKat; chipMarkieren(chip); }
   }
 
-  document.querySelectorAll('.chip').forEach(function (c) {
+  document.querySelectorAll('.tab').forEach(function (c) {
     c.addEventListener('click', function () {
       stand.cat = c.dataset.cat;
       chipMarkieren(c);
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function chipMarkieren(aktiv) {
-  document.querySelectorAll('.chip').forEach(function (c) {
+  document.querySelectorAll('.tab').forEach(function (c) {
     c.classList.toggle('aktiv', c === aktiv);
   });
 }
@@ -94,7 +94,7 @@ function filterZuruecksetzen() {
   stand = { suche: '', cat: 'all', sort: '' };
   var s = document.getElementById('filterSearch'); if (s) s.value = '';
   var o = document.getElementById('filterSort'); if (o) o.value = '';
-  var alle = document.querySelector('.chip[data-cat="all"]');
+  var alle = document.querySelector('.tab[data-cat="all"]');
   if (alle) chipMarkieren(alle);
   gezeigt = SEITE;
   anwenden();

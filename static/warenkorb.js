@@ -73,14 +73,20 @@ function addToCart(id, grams) {
   cartSpeichern();
   updateCartCount();
   renderDrawer();
+  // Rueckmeldung am Knopf: der runde Plus-Knopf der Karte bekommt nur die
+  // Klasse, der grosse Knopf der Produktseite kurz den Text. innerHTML
+  // merken, sonst verschwindet das Symbol im Knopf.
   var btn = document.getElementById('addBtn-' + id);
   if (btn) {
     btn.classList.add('fertig');
-    var alt = btn.textContent;
-    btn.textContent = 'Im Warenkorb';
-    setTimeout(function () { btn.classList.remove('fertig'); btn.textContent = alt; }, 1400);
+    if (!btn.classList.contains('ware-plus')) {
+      var alt = btn.innerHTML;
+      btn.textContent = 'Im Warenkorb';
+      setTimeout(function () { btn.innerHTML = alt; }, 1400);
+    }
+    setTimeout(function () { btn.classList.remove('fertig'); }, 1400);
   }
-  showToast(p.name + ' hinzugefügt');
+  showToast((g ? p.name + ', ' + mengeText(g) : p.name) + ' in den Warenkorb gelegt');
 }
 
 function changeQty(key, d) {
@@ -143,7 +149,7 @@ function renderDrawer() {
     body.innerHTML = '<div class="empty-cart">' +
       '<span><svg class="ico" style="width:30px;height:30px"><use href="#ic-cart"/></svg></span>' +
       'Ihr Warenkorb ist leer.' +
-      '<a class="btn btn-rand" href="/bauernkoenig-vorschau/sortiment/" style="margin-top:18px">Zum Sortiment</a></div>';
+      '<a class="knopf knopf-rand" href="/bauernkoenig-vorschau/sortiment/" style="margin-top:18px">Zum Sortiment</a></div>';
   } else {
     body.innerHTML = cart.map(function (i) {
       return '<div class="cart-item">' +

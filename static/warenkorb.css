@@ -15,7 +15,7 @@
 .drawer.open{transform:translateX(0)}
 .drawer-head{background:var(--brand);padding:20px 28px;display:flex;
   align-items:center;justify-content:space-between}
-.drawer-title{font-family:'Playfair Display',serif;font-size:1.4rem;
+.drawer-title{font-family:'Fraunces',serif;font-size:1.4rem;
   font-weight:600;color:var(--cream)}
 .drawer-title .ico{width:22px;height:22px;stroke:var(--cream);fill:none;
   stroke-width:1.7;vertical-align:-.18em;margin-right:7px}
@@ -32,7 +32,7 @@
 .ci-img img{width:100%;height:100%;object-fit:cover}
 .ci-info{flex:1;min-width:0}
 .ci-cat{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.ci-name{font-family:'Playfair Display',serif;font-size:.95rem;margin:2px 0 8px;color:var(--ink)}
+.ci-name{font-family:'Fraunces',serif;font-size:.95rem;margin:2px 0 8px;color:var(--ink)}
 .ci-controls{display:flex;align-items:center;gap:8px}
 .qty-btn{width:24px;height:24px;border:1px solid var(--line);background:none;
   color:var(--ink);font-size:.9rem;cursor:pointer;display:flex;align-items:center;
@@ -44,14 +44,14 @@
   cursor:pointer;margin-left:6px}
 .remove-btn:hover{color:#c0392b}
 .drawer-foot{padding:20px 28px 28px;border-top:1px solid var(--line);background:var(--cream)}
-.subtotal{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;
+.subtotal{display:flex;justify-content:space-between;font-family:'Fraunces',serif;
   font-size:1.15rem}
 .subtotal-label{color:var(--brown)}
 .shipping-note{font-size:.72rem;color:var(--brown2);letter-spacing:.05em;margin-bottom:18px}
 .shipping-note .ico{width:14px;height:14px;stroke:currentColor;fill:none;
   stroke-width:1.7;vertical-align:-.16em;margin-right:5px}
 .checkout-btn{display:block;width:100%;padding:16px;background:var(--brand);
-  color:var(--cream);border:none;font-family:'Inter',sans-serif;font-size:.8rem;
+  color:var(--cream);border:none;font-family:'DM Sans',sans-serif;font-size:.8rem;
   letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-align:center;
   text-decoration:none;transition:background .2s;font-weight:500}
 .checkout-btn:hover{background:var(--brand2)}
@@ -64,3 +64,11 @@
   letter-spacing:.1em;z-index:500;opacity:0;transition:all .3s;white-space:nowrap;
   pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Entwurf 2: Knoepfe der Schublade in Pillenform, ohne Versalien ── */
+.drawer .checkout-btn{border-radius:999px;text-transform:none;letter-spacing:0;font-size:.95rem;
+  font-weight:500;padding:15px 24px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--blau);color:#fff;text-decoration:none;transition:background .18s}
+.drawer .checkout-btn:hover{background:var(--blau-2)}
+.drawer .checkout-btn.aus{background:var(--linie);color:var(--tinte-3);pointer-events:none}
+.drawer .empty-cart .knopf{align-self:center}

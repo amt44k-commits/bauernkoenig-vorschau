@@ -1,26 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Widerruf | Bauern König</title>
+<title>Widerruf, Bauern König</title>
 <meta name="description" content="Widerrufsbelehrung von Bauern König.">
+<meta name="theme-color" content="#17233f">
 <link rel="icon" href="/bauernkoenig-vorschau/static/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=38">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/pages.css?v=38">
-<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=38">
-<style>
-  .widerruf-formular{border:1px solid var(--line);padding:22px 24px;margin:14px 0 18px;
-    background:var(--soft);font-size:.9rem;line-height:1.9}
-  .widerruf-formular p{margin:0 0 8px}
-  @media print{.site-header,.top-bar,.site-footer,.newsletter-band,.snav-btn{display:none !important}}
-</style>
+<link rel="apple-touch-icon" href="/bauernkoenig-vorschau/static/img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/shell.css?v=40">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/warenkorb.css?v=40">
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/schnellansicht.css?v=40">
+
+<link rel="stylesheet" href="/bauernkoenig-vorschau/static/pages.css?v=40">
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
-
-<script>try{var bkP=localStorage.getItem("bk_palette");if(bkP&&/^[a-z]{4,14}$/.test(bkP))document.documentElement.setAttribute("data-theme",bkP);}catch(e){}</script>
-
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -52,174 +51,161 @@
   <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></symbol>
   <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></symbol>
 </svg>
-<div class="top-bar"><svg class="ico"><use href="#ic-leaf"/></svg>Kostenfreier Versand ab <span>€ 75</span> in Österreich · Bestellungen bis 14:00 Uhr, Versand am selben Tag</div>
-
-<nav class="shell-nav">
-  <a class="nav-logo" href="/bauernkoenig-vorschau/"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König, feine Spezialitäten"></a>
-  <div class="nav-links">
-    <a class="nav-link" href="/bauernkoenig-vorschau/sortiment/">Shop</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/versand/">Versand</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/faq/">FAQ</a>
-    <a class="nav-link" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+<header class="kopf" id="kopf">
+  <div class="inner">
+    <a class="kopf-logo" href="/bauernkoenig-vorschau/"><img src="/bauernkoenig-vorschau/static/img/logo/zeile-e2-dunkel.svg?v=40" alt="Bauern König, feine Spezialitäten"></a>
+    <nav class="kopf-nav" id="kopfNav" aria-label="Hauptnavigation">
+      <a class="" href="/bauernkoenig-vorschau/sortiment/">Sortiment</a>
+      <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
+      <a class="" href="/bauernkoenig-vorschau/versand/">Versand</a>
+      <a href="/bauernkoenig-vorschau/#hof">Der Hof</a>
+      <a class="" href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
+      
+      <a class="nur-menue" href="#" data-vorschau="aus">Anmelden</a>
+    </nav>
+    <div class="kopf-rechts">
+      <button type="button" class="kopf-rund kopf-suche" id="kopfSuche" aria-label="Suchen" aria-expanded="false" aria-controls="kopfSuchleiste"><svg class="ico"><use href="#ic-search"/></svg></button>
+      <a class="kopf-rund kopf-konto" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
+      <button type="button" class="kopf-korb" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span>Warenkorb</span><b class="cart-count" id="cartCount">0</b></button>
+      <button type="button" class="kopf-burger" id="kopfBurger" aria-label="Menü" aria-expanded="false" aria-controls="kopfNav"><span></span><span></span></button>
+    </div>
   </div>
-  
-  <form class="nav-suche" role="search" onsubmit="return suchen(event)">
-    <svg class="ico nav-suche-lupe" aria-hidden="true"><use href="#ic-search"/></svg>
-    <input type="search" id="navSuche" name="suche" placeholder="Käse, Speck, Wurst suchen …"
-           aria-label="Sortiment durchsuchen" autocomplete="off">
-  </form>
-  <div class="nav-right">
-    
-    
-      <a class="nav-icon nav-desktop" href="#" data-vorschau="aus" title="Anmelden" aria-label="Anmelden"><svg class="ico"><use href="#ic-user"/></svg></a>
-    
-    <button class="nav-btn cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen"><svg class="ico"><use href="#ic-cart"/></svg><span class="cart-label">Warenkorb</span><span class="cart-count" id="cartCount">0</span></button>
-    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+  <div class="kopf-suchleiste" id="kopfSuchleiste">
+    <form role="search" action="/bauernkoenig-vorschau/sortiment/" method="get">
+      <input type="search" name="suche" id="kopfSuchfeld" placeholder="Käse, Speck, Wurst suchen …" aria-label="Sortiment durchsuchen" autocomplete="off" value="">
+      <button type="submit" class="knopf knopf-blau">Suchen</button>
+    </form>
   </div>
-</nav>
+</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mm-head">
-    <span class="mm-logo"><img data-logo="zeile" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-mitternacht.svg?v=38" alt="Bauern König"></span>
-    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Menü schließen">✕</button>
+<main>
+
+<section class="seitenkopf">
+  <div class="inner">
+    <nav class="krume" aria-label="Pfad"><a href="/bauernkoenig-vorschau/">Startseite</a><span>/</span><b>Widerruf</b></nav>
+    <h1>Widerrufsrecht</h1>
+    <p>Wann ein Widerrufsrecht besteht und wie du es ausübst.</p>
   </div>
-  <nav class="mm-links">
-    <a href="/bauernkoenig-vorschau/sortiment/">Shop</a>
-    <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a>
-    <a href="/bauernkoenig-vorschau/#hof">Unser Hof</a>
-    <a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a>
-    <a href="/bauernkoenig-vorschau/faq/">FAQ</a>
-    <a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a>
-    <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
-    <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
-    
-      <div class="mm-account">
-        <a class="mm-btn ghost" href="#" data-vorschau="aus">Anmelden</a>
-        <a class="mm-btn" href="/bauernkoenig-vorschau/kasse/">Zur Kasse</a>
-      </div>
-    
-  </nav>
-</div>
-
-<section class="page-hero">
-  <p class="eyebrow">Rechtliches</p>
-  <h1>Widerrufsrecht</h1>
-  <div class="line"></div>
 </section>
 
-<main class="page">
-  <p class="muted">Diese Belehrung bildet die gesetzliche Lage ab. Vor dem Livegang bitte anwaltlich prüfen lassen.</p>
+<section class="seite">
+  <div class="inner seite-inner">
+    <p class="notiz">Diese Belehrung bildet die gesetzliche Lage ab. Bitte vor dem Live-Gang an die eigenen Angaben anpassen.</p>
 
-  <h2>Wofür ein Widerrufsrecht besteht</h2>
-  <p>Bei einem Teil unseres Sortiments hast du ein 14-tägiges Widerrufsrecht, bei einem anderen Teil nicht.
-    Was für ein Produkt gilt, steht bei jedem Artikel im Shop unter den Produktinformationen, und noch einmal
-    zusammengefasst im Bestellvorgang, bevor du bestellst.</p>
-  <ul>
-    <li><strong>Kein Widerrufsrecht</strong> bei schnell verderblicher Ware, also frischem Käse, frischem Fleisch
-      und frischen Wurstwaren. Diese Ausnahme sieht das Gesetz ausdrücklich vor, weil solche Ware nach einer
-      Rücksendung nicht mehr verkehrsfähig wäre.</li>
-    <li><strong>Widerrufsrecht von 14 Tagen</strong> bei haltbarer Ware, etwa lang gereiftem Hartkäse,
-      luftgetrockneter Dauerwurst oder Gutscheinen.</li>
-  </ul>
+    <h2>Wofür ein Widerrufsrecht besteht</h2>
+    <p>Bei einem Teil unseres Sortiments hast du ein 14-tägiges Widerrufsrecht, bei einem anderen Teil nicht.
+      Was für ein Produkt gilt, steht bei jedem Artikel im Shop unter den Produktinformationen, und noch einmal
+      zusammengefasst im Bestellvorgang, bevor du bestellst.</p>
+    <ul>
+      <li><strong>Kein Widerrufsrecht</strong> bei schnell verderblicher Ware, also frischem Käse, frischem Fleisch
+        und frischen Wurstwaren. Diese Ausnahme sieht das Gesetz ausdrücklich vor, weil solche Ware nach einer
+        Rücksendung nicht mehr verkehrsfähig wäre.</li>
+      <li><strong>Widerrufsrecht von 14 Tagen</strong> bei haltbarer Ware, etwa lang gereiftem Hartkäse,
+        luftgetrockneter Dauerwurst oder Gutscheinen.</li>
+    </ul>
 
-  <h2>Widerrufsbelehrung</h2>
-  <p>Du hast das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Frist beträgt
-    14 Tage ab dem Tag, an dem du oder ein von dir benannter Dritter, der nicht der Beförderer ist, die Waren
-    in Besitz genommen hat. Bei einer Bestellung mehrerer Waren, die getrennt geliefert werden, läuft die Frist
-    ab der letzten Ware.</p>
-  <p>Um dein Widerrufsrecht auszuüben, musst du uns mit einer eindeutigen Erklärung über deinen Entschluss
-    informieren, etwa per Brief oder E-Mail. Du kannst dafür das untenstehende Musterformular verwenden,
-    musst es aber nicht. Zur Wahrung der Frist genügt es, dass du die Mitteilung vor Ablauf der Frist absendest.</p>
-  <p>
-    Bauern König<br>
-    Seebensteinerstraße<br>
-    2823 Pitten, Österreich<br>
-    
-    
-  </p>
+    <h2>Widerrufsbelehrung</h2>
+    <p>Du hast das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Frist beträgt
+      14 Tage ab dem Tag, an dem du oder ein von dir benannter Dritter, der nicht der Beförderer ist, die Waren
+      in Besitz genommen hat. Bei einer Bestellung mehrerer Waren, die getrennt geliefert werden, läuft die Frist
+      ab der letzten Ware.</p>
+    <p>Um dein Widerrufsrecht auszuüben, musst du uns mit einer eindeutigen Erklärung über deinen Entschluss
+      informieren, etwa per Brief oder E-Mail. Du kannst dafür das untenstehende Musterformular verwenden,
+      musst es aber nicht. Zur Wahrung der Frist genügt es, dass du die Mitteilung vor Ablauf der Frist absendest.</p>
+    <p>
+      Bauern König<br>
+      Seebensteinerstraße<br>
+      2823 Pitten, Österreich<br>
+      
+      
+    </p>
 
-  <h2>Folgen des Widerrufs</h2>
-  <p>Wenn du den Vertrag widerrufst, erstatten wir dir alle Zahlungen zurück, die wir von dir erhalten haben,
-    einschließlich der Lieferkosten in Höhe der günstigsten Standardlieferung. Die Rückzahlung erfolgt
-    unverzüglich, spätestens binnen 14 Tagen ab dem Tag, an dem deine Mitteilung bei uns eingegangen ist.
-    Wir verwenden dafür dasselbe Zahlungsmittel wie bei deiner Bestellung, sofern nichts anderes vereinbart
-    wurde. Wir können die Rückzahlung zurückhalten, bis die Ware bei uns eingegangen ist oder du den Nachweis
-    der Rücksendung erbracht hast.</p>
-  <p>Du trägst die unmittelbaren Kosten der Rücksendung. Für einen Wertverlust der Ware musst du nur aufkommen,
-    wenn dieser auf einen Umgang zurückzuführen ist, der über die Prüfung der Beschaffenheit und Funktionsweise
-    hinausgeht.</p>
+    <h2>Folgen des Widerrufs</h2>
+    <p>Wenn du den Vertrag widerrufst, erstatten wir dir alle Zahlungen zurück, die wir von dir erhalten haben,
+      einschließlich der Lieferkosten in Höhe der günstigsten Standardlieferung. Die Rückzahlung erfolgt
+      unverzüglich, spätestens binnen 14 Tagen ab dem Tag, an dem deine Mitteilung bei uns eingegangen ist.
+      Wir verwenden dafür dasselbe Zahlungsmittel wie bei deiner Bestellung, sofern nichts anderes vereinbart
+      wurde. Wir können die Rückzahlung zurückhalten, bis die Ware bei uns eingegangen ist oder du den Nachweis
+      der Rücksendung erbracht hast.</p>
+    <p>Du trägst die unmittelbaren Kosten der Rücksendung. Für einen Wertverlust der Ware musst du nur aufkommen,
+      wenn dieser auf einen Umgang zurückzuführen ist, der über die Prüfung der Beschaffenheit und Funktionsweise
+      hinausgeht.</p>
 
-  <h2>Muster-Widerrufsformular</h2>
-  <p class="muted">Wenn du den Vertrag widerrufen willst, fülle dieses Formular aus und sende es uns zurück.</p>
-  <div class="widerruf-formular">
-    <p>An Bauern König, Seebensteinerstraße,
-      2823 Pitten:</p>
-    <p>Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über den Kauf der folgenden Waren:</p>
-    <p>&nbsp;</p>
-    <p>Bestellt am ................................ / erhalten am ................................</p>
-    <p>Bestellnummer ................................</p>
-    <p>Name ................................................................</p>
-    <p>Anschrift ................................................................</p>
-    <p>&nbsp;</p>
-    <p>................................................................<br>
-      Unterschrift (nur bei Mitteilung auf Papier) und Datum</p>
+    <h2>Muster-Widerrufsformular</h2>
+    <p class="notiz">Wenn du den Vertrag widerrufen willst, fülle dieses Formular aus und sende es uns zurück.</p>
+    <div class="muster-kasten">
+      <p>An Bauern König, Seebensteinerstraße,
+        2823 Pitten:</p>
+      <p>Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über den Kauf der folgenden Waren:</p>
+      <p>&nbsp;</p>
+      <p>Bestellt am ................................ / erhalten am ................................</p>
+      <p>Bestellnummer ................................</p>
+      <p>Name ................................................................</p>
+      <p>Anschrift ................................................................</p>
+      <p>&nbsp;</p>
+      <p>................................................................<br>
+        Unterschrift (nur bei Mitteilung auf Papier) und Datum</p>
+    </div>
+    <p><button type="button" class="knopf knopf-rand nur-druck-weg" onclick="window.print()">Formular drucken</button></p>
   </div>
-  <p><button type="button" class="snav-btn" onclick="window.print()">Formular drucken</button></p>
+</section>
+
+
+<section class="newsletter" id="newsletter">
+  <div class="inner newsletter-inner">
+    <div>
+      <h3>Neues vom Hof, selten und ohne Lärm.</h3>
+      <p>Neue Sorten, saisonale Boxen und ab und zu ein Rezept.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="return subscribeNewsletter(event)">
+      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
+      <button type="submit" class="knopf knopf-blau">Anmelden</button>
+    </form>
+  </div>
+  <p class="inner newsletter-recht">Mit dem Anmelden willigst du ein, Werbung per E-Mail zu erhalten.
+    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken, und lässt
+    sich jederzeit widerrufen. Näheres im <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <p class="inner nl-done" aria-live="polite"></p>
+</section>
+<script src="/bauernkoenig-vorschau/static/newsletter.js?v=40"></script>
+
 </main>
 
 
-<section class="newsletter-band" id="newsletter">
-  <div class="nl-inner">
-    <div class="nl-text">
-      <h3>Nichts mehr verpassen</h3>
-      <p>Neue Spezialitäten, saisonale Angebote und Genuss-Tipps, direkt in dein Postfach.</p>
-    </div>
-    <form class="nl-form" onsubmit="return subscribeNewsletter(event)">
-      <input type="email" placeholder="deine@email.at" aria-label="E-Mail-Adresse" required>
-      <button type="submit">Abonnieren</button>
-    </form>
-  </div>
-  <p class="nl-recht">Mit dem Abonnieren willigst du ein, Werbung per E-Mail zu erhalten.
-    Die Einwilligung gilt erst nach der Bestätigung über den Link, den wir dir schicken,
-    und lässt sich jederzeit widerrufen. Näheres im
-    <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
-  <p class="nl-done"></p>
-</section>
-<script src="/bauernkoenig-vorschau/static/newsletter.js?v=38"></script>
-
-<footer class="site-footer">
+<footer class="fuss" id="kontakt-fuss">
   <div class="inner">
-    <div class="foot-marke">
-      <img data-logo="zeile-creme" src="/bauernkoenig-vorschau/static/img/logo/palette/zeile-creme-mitternacht.svg?v=38" alt="Bauern König">
-      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof, gekühlt versendet.</p>
+    <div class="fuss-marke">
+      <img src="/bauernkoenig-vorschau/static/img/logo/zeile-e2-creme.svg?v=40" alt="Bauern König">
+      <p>Feine Käse- und Fleischspezialitäten aus eigener Herstellung. Ab Hof in Pitten, gekühlt versendet in ganz Österreich.</p>
     </div>
-    <div><h4>Service</h4><a href="/bauernkoenig-vorschau/sortiment/">Zum Shop</a><a href="/bauernkoenig-vorschau/versand/">Versand &amp; Lieferung</a><a href="/bauernkoenig-vorschau/faq/">FAQ</a><a href="/bauernkoenig-vorschau/kontakt/">Kontakt</a></div>
-    <div><h4>Sortiment</h4><a href="/bauernkoenig-vorschau/sortiment/">Käse &amp; Fleisch</a><a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a><a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a><a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a></div>
-    <div><h4>Rechtliches</h4><a href="/bauernkoenig-vorschau/impressum/">Impressum</a><a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a><a href="/bauernkoenig-vorschau/agb/">AGB</a><a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
+    <div><h4>Sortiment</h4>
+      <a href="/bauernkoenig-vorschau/sortiment/">Alle Spezialitäten</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=kaese">Käse</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=hausschwein">Hausschwein</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=mangalitza">Mangalitza</a>
+      <a href="/bauernkoenig-vorschau/sortiment/?kategorie=wild">Wild</a>
+      <a href="/bauernkoenig-vorschau/#geschenke">Geschenkboxen</a></div>
+    <div><h4>Service</h4>
+      <a href="/bauernkoenig-vorschau/versand/">Versand und Kühlkette</a>
+      <a href="/bauernkoenig-vorschau/faq/">Häufige Fragen</a>
+      <a href="/bauernkoenig-vorschau/gutscheine/">Gutscheine</a>
+      <a href="/bauernkoenig-vorschau/rezepte/">Rezepte</a>
+      <a href="#" data-vorschau="aus">Anmelden</a></div>
+    <div><h4>Rechtliches</h4>
+      <a href="/bauernkoenig-vorschau/impressum/">Impressum</a>
+      <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutz</a>
+      <a href="/bauernkoenig-vorschau/agb/">AGB</a>
+      <a href="/bauernkoenig-vorschau/widerruf/">Widerruf</a></div>
     <div><h4>Kontakt</h4>
       
       
-      <a href="/bauernkoenig-vorschau/kontakt/">2823 Pitten, Seebensteinerstraße</a></div>
+      <a href="/bauernkoenig-vorschau/kontakt/">Seebensteinerstraße<br>2823 Pitten</a></div>
   </div>
-  <div class="footer-bottom">© 2026 Bauern König · Feine Spezialitäten aus Österreich · <a href="#" data-vorschau="aus" style="opacity:.35">Admin</a></div>
+  <div class="fuss-unten">
+    <span>&copy; 2026 Bauern König</span>
+    <span>Feine Spezialitäten aus Österreich</span>
+  </div>
 </footer>
-
-
-
-<div class="palette-picker" id="palettePicker">
-  <button type="button" class="palette-toggle" id="paletteToggle"
-          aria-expanded="false" aria-controls="paletteMenu" title="Farbpalette wählen">
-    <span class="palette-dots"></span><span class="txt">Farbe</span>
-  </button>
-  <div class="palette-menu" id="paletteMenu" hidden>
-    <h4>Farbpalette</h4>
-    <div id="paletteList" role="radiogroup" aria-label="Farbpalette"></div>
-    <p class="palette-note">Die Auswahl gilt nur auf diesem Gerät und ändert nichts an deiner Bestellung.</p>
-  </div>
-</div>
-<script src="/bauernkoenig-vorschau/static/palette.js?v=38"></script>
-
 
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
 <div class="drawer" id="drawer">
@@ -237,8 +223,32 @@
   </div>
 </div>
 <div class="toast" id="toast"></div>
-<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=38"></script>
-<script src="/bauernkoenig-vorschau/static/shell.js?v=38"></script>
+
+<div class="cookie-band" id="cookieBand" hidden role="region" aria-label="Hinweis zu Cookies">
+  <p>Diese Seite verwendet nur technisch notwendige Cookies und speichert deinen Warenkorb
+    in deinem Browser. Näheres im <a href="/bauernkoenig-vorschau/datenschutz/">Datenschutzhinweis</a>.</p>
+  <button type="button" class="knopf knopf-blau" id="cookieOk">Verstanden</button>
+</div>
+<script>
+(function () {
+  var band = document.getElementById('cookieBand'), ok = document.getElementById('cookieOk');
+  if (!band) return;
+  var gesehen = false;
+  try { gesehen = localStorage.getItem('bk_cookie_hinweis') === '1'; } catch (e) {}
+  if (gesehen) return;
+  band.hidden = false;
+  ok.addEventListener('click', function () {
+    try { localStorage.setItem('bk_cookie_hinweis', '1'); } catch (e) {}
+    band.hidden = true;
+  });
+})();
+</script>
+
+
+<script src="/bauernkoenig-vorschau/static/warenkorb.js?v=40"></script>
+<script src="/bauernkoenig-vorschau/static/shell.js?v=40"></script>
+
+
 
 <script>
 /* Vorschau: alles, was einen Server braucht, wird hier abgefangen. */

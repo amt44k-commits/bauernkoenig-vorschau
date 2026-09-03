@@ -31,7 +31,7 @@ function zeichnen() {
 
   if (!cart.length) {
     ziel.innerHTML = '<p class="ka-leer">Dein Warenkorb ist leer.' +
-      '<a class="btn btn-rand" href="/bauernkoenig-vorschau/sortiment/">Zum Sortiment</a></p>';
+      '<a class="knopf knopf-rand" href="/bauernkoenig-vorschau/sortiment/">Zum Sortiment</a></p>';
   } else {
     ziel.innerHTML = cart.map(function (i) {
       return '<div class="posten">' +
@@ -41,7 +41,7 @@ function zeichnen() {
           '<a class="posten-name" href="/bauernkoenig-vorschau/produkt/' + i.id + '/">' + esc(i.name) + '</a>' +
           '<div class="posten-menge">' + esc(i.unitLabel) + '</div>' +
           (i.grundpreis ? '<div class="posten-grund">' + eurBk(i.grundpreis) + ' / kg</div>' : '') +
-          '<div class="posten-steller">' +
+          '<div class="steller">' +
             '<button type="button" onclick="changeQty(\'' + i.key + '\',-1)" aria-label="Weniger">' +
               '<svg class="ico"><use href="#ic-minus"/></svg></button>' +
             '<span class="zahl">' + i.qty + '</span>' +
@@ -50,9 +50,8 @@ function zeichnen() {
           '</div>' +
         '</div>' +
         '<div class="posten-rechts">' +
-          '<span class="posten-preis">' + eurBk(i.price * i.qty) + '</span>' +
-          '<button type="button" class="posten-weg" onclick="removeItem(\'' + i.key + '\')">' +
-            '<svg class="ico"><use href="#ic-trash"/></svg>Entfernen</button>' +
+          '<b class="zahl">' + eurBk(i.price * i.qty) + '</b>' +
+          '<button type="button" class="posten-weg" onclick="removeItem(\'' + i.key + '\')">Entfernen</button>' +
         '</div>' +
       '</div>';
     }).join('');
