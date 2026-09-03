@@ -32,6 +32,18 @@ function cartSpeichern() {
 
 function eurBk(v) { return '€ ' + v.toFixed(2).replace('.', ','); }
 
+/* Mengenangabe: ab einem Kilo in Kilogramm, sonst in Gramm. "1000 g" liest
+   sich schlechter als "1 kg". Von Fenster, Produktseite, Schublade und
+   Kasse genutzt, damit ueberall dasselbe steht. */
+function mengeText(g) {
+  if (!g) return '';
+  if (g >= 1000) {
+    var kg = g / 1000;
+    return (kg % 1 === 0 ? String(kg) : kg.toFixed(2).replace('.', ',')) + ' kg';
+  }
+  return g + ' g';
+}
+
 /* Wird der Artikel nach Gewicht verkauft? Dann zaehlt die Grammwahl. */
 function isPer100(p) { return /100\s*g/i.test(p.unit || ''); }
 
@@ -55,7 +67,7 @@ function addToCart(id, grams) {
   if (ex) ex.qty++;
   else cart.push({
     key: key, id: id, name: p.name, img: p.img, cat: p.cat, grams: g,
-    unitLabel: (g ? g + ' g' : p.unit), price: linePrice, qty: 1,
+    unitLabel: (g ? mengeText(g) : p.unit), price: linePrice, qty: 1,
     grundpreis: p.grundpreis || null
   });
   cartSpeichern();

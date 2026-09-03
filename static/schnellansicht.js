@@ -97,7 +97,7 @@ function openDetail(id) {
     + stufen.map(function (g, idx) {
         return '<button class="pd-weight-btn' + (idx === 0 ? ' active' : '') + '"'
           + ' data-g="' + g + '" onclick="selectWeight(' + g + ',this,' + p.price + ')">'
-          + g + ' g</button>'; }).join('')
+          + mengeText(g) + '</button>'; }).join('')
     + '</div></div>' : '';
 
   var verwandt = (window.products || []).filter(function (x) {

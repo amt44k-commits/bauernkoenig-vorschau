@@ -1245,7 +1245,7 @@ function eur(v){ return '€ ' + v.toFixed(2).replace('.', ','); }
    Modulkopf waere fuer sie unsichtbar. */
 window.KATEGORIEN = {"kaese": {"label": "Käse", "icon": "cheese", "eigen": false}, "mangalitza": {"label": "Mangalitza", "icon": "pig", "eigen": false}, "wild": {"label": "Wild", "icon": "deer", "eigen": false}, "hausschwein": {"label": "Hausschwein", "icon": "bacon", "eigen": false}, "geschenk": {"label": "Geschenkbox", "icon": "gift", "eigen": true}};
 const KATEGORIEN = window.KATEGORIEN;
-window.GRAMM_OPTIONEN = [100, 200, 300, 500];
+window.GRAMM_OPTIONEN = [100, 200, 300, 500, 1000];
 const UNTERKATEGORIEN = {"geschenk": ["kaese", "klassik", "premium", "wurst"], "hausschwein": ["duerre", "geselcht", "schmalz", "speck", "wurst"], "kaese": ["langgereift", "premium", "standard", "ziege-schaf"], "mangalitza": ["edel", "speck", "wurst"], "wild": ["edel", "salami", "schinken"]};
 function catEmoji(c) { const k=(KATEGORIEN[c]||{}).icon||'box'; return `<svg class="ico"><use href="#ic-${k}"/></svg>`; }
 function catLabel(c) { return (KATEGORIEN[c]||{}).label||c; }
